@@ -1,0 +1,7 @@
+{
+  "published_at_utc": "2026-10-15T06:59:54+00:00",
+  "fixture_count": 45,
+  "historical_data_through": "2026-10-14",
+  "hybrid_weight_xgboost": 0.5,
+  "scope": "EPL and Championship; 90-minute result"
+}

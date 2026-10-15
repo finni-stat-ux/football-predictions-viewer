@@ -5,8 +5,21 @@ import streamlit as st
 from cloud_refresh_ui import show_cloud_refresh
 ROOT=Path(__file__).resolve().parent
 PUB=ROOT/'published'
-st.set_page_config(page_title='Conquerors Venture Predictions — Football',layout='wide')
-st.title('Conquerors Venture Predictions · Football')
+st.set_page_config(page_title='Conquerors Venture Predictions',layout='wide')
+# Branded header with Hybrid model formula
+title_col, formula_col = st.columns(
+    [1.35, 1], gap="medium", vertical_alignment="center"
+)
+
+with title_col:
+    st.title("Conquerors Venture Predictions")
+
+with formula_col:
+    st.latex(
+        r"P_{\mathrm{Hybrid}}(h,a)"
+        r"=0.5P_{\mathrm{DC}}(h,a)"
+        r"+0.5P_{\mathrm{XGB}}(h,a)"
+    )
 show_cloud_refresh()
 if st.button('Refresh displayed predictions',help='Reload the latest published snapshot; does not retrain models'):
     st.cache_data.clear()

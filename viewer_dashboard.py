@@ -15,10 +15,22 @@ with title_col:
     st.title("Conquerors Venture Predictions")
 
 with formula_col:
-    st.latex(
-        r"P_{\mathrm{Hybrid}}(h,a)"
-        r"=0.5P_{\mathrm{DC}}(h,a)"
-        r"+0.5P_{\mathrm{XGB}}(h,a)"
+    st.markdown(
+        """
+        <div style="
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: inherit;
+            letter-spacing: -0.02em;
+            overflow-wrap: anywhere;
+        ">
+            P<sub>Hybrid</sub>(h,a) = 0.5P<sub>DC</sub>(h,a)
+            + 0.5P<sub>XGB</sub>(h,a)
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 show_cloud_refresh()
 if st.button('Refresh displayed predictions',help='Reload the latest published snapshot; does not retrain models'):

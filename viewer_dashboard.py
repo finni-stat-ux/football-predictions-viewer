@@ -2,10 +2,15 @@
 from pathlib import Path
 import pandas as pd
 import streamlit as st
+from cloud_refresh_ui import show_cloud_refresh
 ROOT=Path(__file__).resolve().parent
 PUB=ROOT/'published'
-st.set_page_config(page_title='Football Predictions — Viewer',layout='wide')
-st.title('Football Predictions')
+st.set_page_config(page_title='Conquerors Venture Predictions — Football',layout='wide')
+st.title('Conquerors Venture Predictions · Football')
+show_cloud_refresh()
+if st.button('Refresh displayed predictions',help='Reload the latest published snapshot; does not retrain models'):
+    st.cache_data.clear()
+    st.rerun()
 st.caption('Read-only · EPL and Championship · 90-minute results · probabilities are estimates')
 @st.cache_data(ttl=60)
 def read(name):
@@ -31,4 +36,4 @@ if not score.empty:
 with st.expander('Historical backtest performance'):
     if metrics.empty:st.info('Performance snapshot unavailable.')
     else:st.dataframe(metrics,hide_index=True,use_container_width=True)
-st.caption('Forecasts may become stale as results change. Only the admin can update them. No betting guarantees.')
+st.caption('Forecasts may become stale as results change. Updates are initiated through the private GitHub workflow. No betting guarantees.')

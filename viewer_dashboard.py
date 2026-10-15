@@ -6,32 +6,82 @@ from cloud_refresh_ui import show_cloud_refresh
 ROOT=Path(__file__).resolve().parent
 PUB=ROOT/'published'
 st.set_page_config(page_title='Conquerors Venture Predictions',layout='wide')
-# Branded header with Hybrid model formula
-title_col, formula_col = st.columns(
-    [1.35, 1], gap="medium", vertical_alignment="center"
+# Conquerors Venture branded header
+st.markdown(
+    """
+    <style>
+    .cv-brand {
+        margin-bottom: 1.4rem;
+    }
+
+    .cv-brand-title {
+        font-family: inherit;
+        font-size: clamp(2rem, 3.2vw, 2.75rem);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        color: inherit;
+        margin: 0 0 0.65rem 0;
+    }
+
+    .cv-brand-signature {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .cv-formula {
+        display: inline-block;
+        padding: 0.55rem 0.85rem;
+        border: 1px solid rgba(128,128,128,0.25);
+        border-radius: 0.65rem;
+        background: rgba(128,128,128,0.055);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+        font-weight: 500;
+        line-height: 1.6;
+        color: inherit;
+    }
+
+    .cv-formula sub {
+        font-size: 0.65em;
+    }
+
+    .cv-brand-label {
+        font-family: inherit;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #808894;
+    }
+
+    @media (max-width: 640px) {
+        .cv-formula {
+            font-size: 0.9rem;
+        }
+    }
+    </style>
+
+    <div class="cv-brand">
+        <h1 class="cv-brand-title">
+            Conquerors Venture Predictions
+        </h1>
+        <div class="cv-brand-signature">
+            <div class="cv-formula">
+                P<sub>Hybrid</sub>(h,a)
+                = &frac12;P<sub>DC</sub>(h,a)
+                + &frac12;P<sub>XGB</sub>(h,a)
+            </div>
+            <span class="cv-brand-label">
+                HYBRID PREDICTION ENGINE
+            </span>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
-with title_col:
-    st.title("Conquerors Venture Predictions")
-
-with formula_col:
-    st.markdown(
-        """
-        <div style="
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: inherit;
-            letter-spacing: -0.02em;
-            overflow-wrap: anywhere;
-        ">
-            P<sub>Hybrid</sub>(h,a) = 0.5P<sub>DC</sub>(h,a)
-            + 0.5P<sub>XGB</sub>(h,a)
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 show_cloud_refresh()
 if st.button('Refresh displayed predictions',help='Reload the latest published snapshot; does not retrain models'):
     st.cache_data.clear()

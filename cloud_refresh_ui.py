@@ -37,7 +37,7 @@ API = f"https://api.github.com/repos/{REPO}"
 
 
 def show_cloud_refresh():
-    with st.expander("Approved friends: Cloud Prediction Refresh"):
+    with st.expander("Cloud Prediction Refresh"):
         st.caption(
             "Trigger a full football results and prediction refresh "
             "in GitHub Actions. Your computer does not need to be running."

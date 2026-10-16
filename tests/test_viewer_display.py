@@ -29,3 +29,26 @@ def test_app_both_leagues():
         assert not app.exception
         assert any(x.value == 'HYBRID MATCH PICK' for x in app.caption)
         assert len(app.metric) == 3
+
+def test_crests_cover_published_teams_and_winner_is_not_draw():
+    import json
+    from pathlib import Path
+    from viewer_display import team_badge, winner_team
+    root=Path(__file__).resolve().parents[1]
+    logos=json.loads((root/'assets/team_logos.json').read_text())
+    predictions=pd.read_csv(root/'published/predictions.csv')
+    assert (set(predictions.HomeTeam)|set(predictions.AwayTeam)) <= logos.keys()
+    assert winner_team(row((.6,.2,.2))) == 'Arsenal'
+    assert winner_team(row((.2,.5,.3))) is None
+    assert winner_team(row((.4,.4,.2))) is None
+    assert 'Arsenal crest' in team_badge('Arsenal',logos)
+    assert team_badge('Unknown club',logos) == ''
+
+def test_score_chart_is_static_and_keeps_score_order():
+    from viewer_display import score_chart_svg
+    svg=score_chart_svg(pd.DataFrame([dict(score='1-0',probability=.2),dict(score='0-0',probability=.1)]))
+    assert 'pointer-events:none' in svg
+    assert '<script' not in svg
+    assert '20.0%' in svg and '10.0%' in svg
+    assert svg.index('1-0') < svg.index('0-0')
+    assert score_chart_svg(pd.DataFrame()) == ''

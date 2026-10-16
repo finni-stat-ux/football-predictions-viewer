@@ -32,3 +32,40 @@ def display_table(frame):
         if name in result:
             result[name] = result[name] * 100
     return result.rename(columns=LABELS)
+
+def score_chart_svg(scores):
+    """Static SVG: deliberately has no zoom, resize handles or fullscreen control."""
+    from html import escape
+    items = [(str(r['score']), float(r['probability']) * 100) for _, r in scores.iterrows()]
+    if not items:
+        return ''
+    width, height, left, bottom = 640, 300, 48, 250
+    maximum = max(5, math.ceil(max(v for _, v in items) / 5) * 5)
+    plot_width = width - left - 16
+    step = plot_width / len(items)
+    marks = []
+    for tick in range(5):
+        value = maximum * tick / 4
+        y = bottom - value / maximum * 210
+        marks.append(f'<line x1="{left}" x2="624" y1="{y}" y2="{y}" stroke="currentColor" opacity=".15"/><text x="40" y="{y+4}" text-anchor="end" fill="currentColor" font-size="12">{value:g}%</text>')
+    for i, (label, value) in enumerate(items):
+        x = left + i * step + step * .15
+        bar_height = value / maximum * 210
+        marks.append(f'<rect x="{x}" y="{bottom-bar_height}" width="{step*.7}" height="{bar_height}" rx="4" fill="#7856d8"/><text x="{x+step*.35}" y="{bottom+22}" text-anchor="middle" fill="currentColor" font-size="12">{escape(label)}</text><text x="{x+step*.35}" y="{bottom-bar_height-7}" text-anchor="middle" fill="currentColor" font-size="12">{value:.1f}%</text>')
+    return '<svg role="img" aria-label="Score probabilities, static chart" viewBox="0 0 640 300" style="display:block;width:100%;height:300px;pointer-events:none" xmlns="http://www.w3.org/2000/svg"><title>Score probabilities</title>' + ''.join(marks) + '</svg>'
+
+
+def team_badge(team, logos, size=36):
+    from html import escape
+    url = logos.get(team, '')
+    if not url.startswith('https://a.espncdn.com/'):
+        return ''
+    return f'<img src="{escape(url, quote=True)}" alt="{escape(team, quote=True)} crest" width="{size}" height="{size}" style="object-fit:contain;background:white;border-radius:6px;padding:4px;vertical-align:middle;flex-shrink:0">'
+
+
+def winner_team(row):
+    pick, _ = match_pick(row)
+    for team in (row['HomeTeam'], row['AwayTeam']):
+        if pick == f'{team} to win':
+            return team
+    return None

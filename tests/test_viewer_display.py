@@ -27,8 +27,8 @@ def test_app_both_leagues():
     for league in ('EPL','Championship'):
         app.selectbox[0].select(league).run()
         assert not app.exception
-        assert any(x.value == 'HYBRID MATCH PICK' for x in app.caption)
-        assert len(app.metric) == 3
+        assert any('HYBRID MATCH PICK' in x.value for x in app.markdown)
+        assert any('cv-outcomes' in x.value for x in app.markdown)
 
 def test_crests_cover_published_teams_and_winner_is_not_draw():
     import json
@@ -52,3 +52,22 @@ def test_score_chart_is_static_and_keeps_score_order():
     assert '20.0%' in svg and '10.0%' in svg
     assert svg.index('1-0') < svg.index('0-0')
     assert score_chart_svg(pd.DataFrame()) == ''
+
+def test_score_table_has_no_empty_rows():
+    from viewer_display import score_table_html
+    scores=pd.DataFrame([dict(rank=1,score='1-1',probability=.119),dict(rank=2,score='1-0',probability=.101)])
+    html=score_table_html(scores)
+    assert html.count('<tr>')==3
+    assert '11.9%' in html and '10.1%' in html
+    assert '<th scope="col">Score</th>' in html
+
+
+def test_player_form_rejects_old_and_mismatched_fixture():
+    from viewer_display import fixture_player_form
+    fixture={'fixture_id':'f','date':'2026-10-17','competition':'EPL','HomeTeam':'Home','AwayTeam':'Away'}
+    record={k:v for k,v in fixture.items() if k!='fixture_id'}
+    record['teams']={'Home':{'status':'available','source_through':'2026-10-12','players':[]}}
+    snapshot={'schema_version':1,'generated_at_utc':'2026-10-16T00:00:00Z','fixtures':{'f':record}}
+    assert 'Home' in fixture_player_form(snapshot,fixture,now='2026-10-16')
+    assert fixture_player_form(snapshot,{**fixture,'HomeTeam':'Other'},now='2026-10-16')=={}
+    assert fixture_player_form(snapshot,fixture,now='2026-12-16')=={}

@@ -169,4 +169,4 @@ def fixture_tile_label(fixture, logos):
     def badge(team):
         url=logos.get(team,'')
         return f'![{team} crest]({url}) ' if url.startswith('https://a.espncdn.com/') else ''
-    return f"{badge(fixture['HomeTeam'])}**{fixture['HomeTeam']}** vs {badge(fixture['AwayTeam'])}**{fixture['AwayTeam']}** · {fixture['display_time']}"
+    return f"{badge(fixture['HomeTeam'])}**{fixture['HomeTeam']}** vs {badge(fixture['AwayTeam'])}**{fixture['AwayTeam']}**\n{fixture['display_time']}"

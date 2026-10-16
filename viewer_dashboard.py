@@ -1,11 +1,14 @@
 """Read-only viewer. Reads published snapshots only; no admin imports or functions."""
 from pathlib import Path
+import json
+from html import escape
 import pandas as pd
 import streamlit as st
-from viewer_display import match_pick, display_table, OUTCOMES
+from viewer_display import match_pick, display_table, OUTCOMES, team_badge, winner_team, score_chart_svg
 from cloud_refresh_ui import show_cloud_refresh
 ROOT=Path(__file__).resolve().parent
 PUB=ROOT/'published'
+TEAM_LOGOS=json.loads((ROOT/'assets'/'team_logos.json').read_text())
 st.set_page_config(page_title='Conquerors Venture Predictions',layout='wide')
 # Conquerors Venture branded header
 st.markdown(
@@ -88,7 +91,7 @@ show_cloud_refresh()
 if st.button('Refresh displayed predictions',help='Reload the latest published snapshot; does not retrain models'):
     st.cache_data.clear()
     st.rerun()
-st.caption('Read-only · EPL and Championship · 90-minute results · probabilities are estimates')
+st.caption('Read-only · English Premier League and Championship · 90-minute results · probabilities are estimates')
 @st.cache_data(ttl=60)
 def read(name):
     p=PUB/name
@@ -97,8 +100,8 @@ p=read('predictions.csv');scores=read('top_scores.csv');metrics=read('model_perf
 if p.empty:
     st.info('No predictions published yet. Ask the admin to generate and publish a snapshot.');st.stop()
 st.caption('Last published (UTC): '+str(p.published_at_utc.iloc[0]))
-league=st.selectbox('Competition',sorted(p.competition.unique()))
-competition_names = {'EPL': 'Premier League', 'Championship': 'EFL Championship'}
+competition_names = {'EPL': 'English Premier League', 'Championship': 'EFL Championship'}
+league=st.selectbox('Competition',sorted(p.competition.unique()),format_func=lambda value: competition_names.get(value,value))
 competition_assets = {'EPL': 'premier-league.png', 'Championship': 'championship.png'}
 logo, heading = st.columns([1, 6])
 with logo:
@@ -122,12 +125,18 @@ if len(hybrid) == 1:
         pick, probability = match_pick(row)
         with st.container(border=True):
             st.caption('HYBRID MATCH PICK')
-            st.subheader(pick)
+            winner = winner_team(row)
+            badge = team_badge(winner, TEAM_LOGOS, 48) if winner else ''
+            st.markdown(f'<div style="display:flex;align-items:center;gap:12px;margin:8px 0 16px">{badge}<h3 style="margin:0;padding:0">{escape(pick)}</h3></div>', unsafe_allow_html=True)
             st.write(f"**{probability:.1%} estimated probability**")
             st.caption('Most likely single result from the 50/50 hybrid. Other outcomes remain possible.')
             home, draw, away = st.columns(3)
             for column, label, key in zip((home, draw, away), (f'{row.HomeTeam} win', 'Draw', f'{row.AwayTeam} win'), OUTCOMES):
-                column.metric(label, f'{row[key]:.1%}')
+                with column:
+                    team = row.HomeTeam if key == 'p_home_win' else row.AwayTeam if key == 'p_away_win' else None
+                    badge = team_badge(team, TEAM_LOGOS) if team else ''
+                    st.markdown(f'<div style="display:flex;align-items:center;gap:8px;min-height:44px">{badge}<span>{escape(label)}</span></div>', unsafe_allow_html=True)
+                    st.metric(label, f'{row[key]:.1%}', label_visibility='collapsed')
     except ValueError:
         st.info('Match pick unavailable for this fixture.')
 st.subheader('Match probabilities by model')
@@ -136,7 +145,11 @@ st.dataframe(display_table(view[cols]),hide_index=True,use_container_width=True,
 model=st.selectbox('Score probabilities', ['Hybrid','Dixon-Coles','XGBoost'])
 score=scores[(scores.fixture_id==chosen)&(scores.model==model)].sort_values('rank')
 if not score.empty:
-    st.bar_chart(display_table(score).set_index('Score')['Probability (%)']);st.dataframe(display_table(score[['rank','score','probability']]),hide_index=True,column_config={'Probability (%)': st.column_config.NumberColumn(format='%.1f%%')})
+    chart_column, table_column = st.columns([3, 2])
+    with chart_column:
+        st.markdown(score_chart_svg(score), unsafe_allow_html=True)
+    with table_column:
+        st.dataframe(display_table(score[['rank','score','probability']]),hide_index=True,use_container_width=True,height=300,column_config={'Probability (%)': st.column_config.NumberColumn(format='%.1f%%')})
 with st.expander('Historical backtest performance'):
     if metrics.empty:st.info('Performance snapshot unavailable.')
     else:

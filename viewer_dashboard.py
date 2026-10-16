@@ -2,6 +2,7 @@
 from pathlib import Path
 import pandas as pd
 import streamlit as st
+from viewer_display import match_pick, display_table, OUTCOMES
 from cloud_refresh_ui import show_cloud_refresh
 ROOT=Path(__file__).resolve().parent
 PUB=ROOT/'published'
@@ -10,6 +11,7 @@ st.set_page_config(page_title='Conquerors Venture Predictions',layout='wide')
 st.markdown(
     """
     <style>
+    [data-testid="stImage"] img { background: white; padding: 12px; border-radius: 12px; }
     .cv-brand {
         margin-bottom: 1.4rem;
     }
@@ -96,19 +98,50 @@ if p.empty:
     st.info('No predictions published yet. Ask the admin to generate and publish a snapshot.');st.stop()
 st.caption('Last published (UTC): '+str(p.published_at_utc.iloc[0]))
 league=st.selectbox('Competition',sorted(p.competition.unique()))
+competition_names = {'EPL': 'Premier League', 'Championship': 'EFL Championship'}
+competition_assets = {'EPL': 'premier-league.png', 'Championship': 'championship.png'}
+logo, heading = st.columns([1, 6])
+with logo:
+    asset = ROOT / 'assets' / competition_assets.get(league, '')
+    if asset.is_file():
+        st.image(str(asset), width=100)
+with heading:
+    st.subheader(competition_names.get(league, league))
+    st.caption('Match forecasts · Full-time result after 90 minutes')
 filtered=p[p.competition==league]
 options=filtered[['fixture_id','date','HomeTeam','AwayTeam']].drop_duplicates()
 labels={r.fixture_id:f'{r.date} · {r.HomeTeam} vs {r.AwayTeam}' for _,r in options.iterrows()}
 chosen=st.selectbox('Fixture',options.fixture_id.tolist(),format_func=lambda x:labels[x])
 view=filtered[filtered.fixture_id==chosen]
-st.subheader('Model comparison')
+fixture = view.iloc[0]
+st.subheader(f"{fixture.HomeTeam} vs {fixture.AwayTeam}")
+hybrid = view[view.model == 'Hybrid']
+if len(hybrid) == 1:
+    row = hybrid.iloc[0]
+    try:
+        pick, probability = match_pick(row)
+        with st.container(border=True):
+            st.caption('HYBRID MATCH PICK')
+            st.subheader(pick)
+            st.write(f"**{probability:.1%} estimated probability**")
+            st.caption('Most likely single result from the 50/50 hybrid. Other outcomes remain possible.')
+            home, draw, away = st.columns(3)
+            for column, label, key in zip((home, draw, away), (f'{row.HomeTeam} win', 'Draw', f'{row.AwayTeam} win'), OUTCOMES):
+                column.metric(label, f'{row[key]:.1%}')
+    except ValueError:
+        st.info('Match pick unavailable for this fixture.')
+st.subheader('Match probabilities by model')
 cols=['model','p_home_win','p_draw','p_away_win','expected_home_goals','expected_away_goals','p_over_2_5','p_btts','most_likely_score']
-st.dataframe(view[cols],hide_index=True,use_container_width=True)
+st.dataframe(display_table(view[cols]),hide_index=True,use_container_width=True,column_config={name: st.column_config.NumberColumn(format='%.1f%%') for name in ['Home win (%)','Draw (%)','Away win (%)','Over 2.5 goals (%)','Both teams score (%)']})
 model=st.selectbox('Score probabilities', ['Hybrid','Dixon-Coles','XGBoost'])
 score=scores[(scores.fixture_id==chosen)&(scores.model==model)].sort_values('rank')
 if not score.empty:
-    st.bar_chart(score.set_index('score')['probability']);st.dataframe(score[['rank','score','probability']],hide_index=True)
+    st.bar_chart(display_table(score).set_index('Score')['Probability (%)']);st.dataframe(display_table(score[['rank','score','probability']]),hide_index=True,column_config={'Probability (%)': st.column_config.NumberColumn(format='%.1f%%')})
 with st.expander('Historical backtest performance'):
     if metrics.empty:st.info('Performance snapshot unavailable.')
-    else:st.dataframe(metrics,hide_index=True,use_container_width=True)
+    else:
+        st.caption('Lower log loss and Brier scores are better; higher accuracy is better.')
+        st.dataframe(display_table(metrics),hide_index=True,use_container_width=True)
 st.caption('Forecasts may become stale as results change. Updates are initiated through the private GitHub workflow. No betting guarantees.')
+
+st.caption('Competition logos identify the leagues covered. All trademarks belong to their respective owners; no affiliation or endorsement is implied.')

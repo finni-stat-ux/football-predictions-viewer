@@ -9,7 +9,7 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from viewer_display import (display_table, fixture_player_form, player_panel_html,
-                            prediction_card_html, score_chart_svg, score_table_html)
+                            prediction_card_html, score_chart_svg, score_table_html, upcoming_fixtures, fixture_tile_label)
 
 ROOT = Path(__file__).resolve().parent
 PUB = ROOT / 'published'
@@ -45,7 +45,7 @@ if predictions.empty:
     st.info('No predictions published yet.'); st.stop()
 
 st.caption('Predictions updated (UTC): ' + pd.Timestamp(predictions.published_at_utc.iloc[0]).strftime('%d %b %Y, %H:%M UTC'))
-league = st.selectbox('Competition', sorted(predictions.competition.unique()), format_func=lambda value: COMPETITIONS.get(value, value))
+league = st.selectbox('Competition', sorted(predictions.competition.unique()), format_func=lambda value: COMPETITIONS.get(value, value), filter_mode=None)
 asset = ROOT / 'assets' / COMPETITION_ASSETS.get(league, '')
 logo = ''
 if asset.is_file():
@@ -54,9 +54,41 @@ if asset.is_file():
 st.markdown(f'<div class="cv-league">{logo}<div><h2>{escape(COMPETITIONS.get(league, league))}</h2><p>Full-time result after 90 minutes</p></div></div>', unsafe_allow_html=True)
 
 filtered = predictions[predictions.competition == league]
-options = filtered[['fixture_id', 'date', 'HomeTeam', 'AwayTeam']].drop_duplicates()
-labels = {r.fixture_id: f'{r.date} · {r.HomeTeam} vs {r.AwayTeam}' for _, r in options.iterrows()}
-chosen = st.selectbox('Fixture', options.fixture_id.tolist(), format_func=lambda key: labels[key])
+@st.cache_data(ttl=60)
+def read_schedule():
+    path=PUB/'fixture_schedule.json'
+    try:
+        return json.loads(path.read_text()) if path.exists() else {}
+    except (ValueError,OSError):
+        return {}
+
+options = upcoming_fixtures(filtered, read_schedule())
+if options.empty:
+    st.info('No upcoming matches in the published snapshot. Refresh the predictions for the next fixtures.'); st.stop()
+selection_key = 'selected_fixture_' + league
+available = options.fixture_id.tolist()
+if st.session_state.get(selection_key) not in available:
+    st.session_state[selection_key] = available[0]
+chosen = st.session_state[selection_key]
+
+@st.fragment(run_every=60)
+def keep_upcoming_current():
+    if upcoming_fixtures(filtered, read_schedule()).fixture_id.tolist() != available:
+        st.rerun(scope='app')
+
+keep_upcoming_current()
+
+def choose_fixture(key, fixture_id):
+    st.session_state[key] = fixture_id
+
+st.subheader('Choose an upcoming match')
+st.caption('Tap a match tile. Swipe or scroll sideways for more matches. Kickoff times are shown in Sydney time.')
+with st.container(horizontal=True, wrap=False, key='fixture_tiles'):
+    for _, match in options.iterrows():
+        st.button(fixture_tile_label(match, TEAM_LOGOS), key='fixture_tile_' + str(match.fixture_id), width=260,
+                  type='primary' if match.fixture_id == chosen else 'secondary',
+                  on_click=choose_fixture, args=(selection_key, match.fixture_id),
+                  help=f"{match.HomeTeam} vs {match.AwayTeam} · {match.display_time}")
 view = filtered[filtered.fixture_id == chosen]
 fixture = view.iloc[0]
 st.subheader(f'{fixture.HomeTeam} vs {fixture.AwayTeam}')
@@ -68,7 +100,7 @@ if len(hybrid) == 1:
         st.info('Match pick unavailable for this fixture.')
 
 st.subheader('Score probabilities')
-model = st.selectbox('Prediction model', ['Hybrid', 'Dixon-Coles', 'XGBoost'])
+model = st.selectbox('Prediction model', ['Hybrid', 'Dixon-Coles', 'XGBoost'], filter_mode=None)
 score = scores[(scores.fixture_id == chosen) & (scores.model == model)].sort_values('rank')
 if not score.empty:
     st.markdown('<div class="cv-score-grid"><div><div class="cv-chart-desktop">' + score_chart_svg(score) + '</div><div class="cv-chart-mobile">' + score_chart_svg(score, compact=True) + '</div></div><div>' + score_table_html(score) + '</div></div>', unsafe_allow_html=True)

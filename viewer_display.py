@@ -129,3 +129,44 @@ def player_panel_html(team, info, logos):
             content += f'<li><div><span class="cv-name">{index}. {escape(player["name"])}</span><small>{int(player["minutes"])} minutes · {int(player["appearances"])} appearances</small></div><div class="cv-player-xg">{float(player["xg"]):.2f}<small>recorded xG</small></div></li>'
         content += '</ol>'
     return '<section class="cv-player-panel">'+header+content+'</section>'
+
+
+def upcoming_fixtures(predictions, schedule, now=None):
+    """Only unstarted scheduled fixtures; hide unknown same-day kickoff times."""
+    import pandas as pd
+    now = pd.Timestamp.now(tz='UTC') if now is None else pd.Timestamp(now)
+    now = now.tz_localize('UTC') if now.tzinfo is None else now.tz_convert('UTC')
+    rows=[]
+    for _, fixture in predictions[['fixture_id','date','competition','HomeTeam','AwayTeam']].drop_duplicates().iterrows():
+        info = schedule.get('fixtures', {}).get(str(fixture.fixture_id), {}) if schedule.get('schema_version')==1 else {}
+        if any(info.get(k)!=fixture[k] for k in ('date','competition','HomeTeam','AwayTeam')):
+            info={}
+        kickoff=None
+        if info:
+            if info.get('status') not in ('SCHEDULED','TIMED'):
+                continue
+            try:
+                kickoff=pd.Timestamp(info['kickoff_utc'])
+                if kickoff.tzinfo is None:
+                    continue
+                kickoff=kickoff.tz_convert('UTC')
+                if str(kickoff.date())!=str(fixture.date) or kickoff<=now:
+                    continue
+            except (KeyError,TypeError,ValueError):
+                continue
+        elif pd.Timestamp(fixture.date,tz='UTC')<=now.normalize():
+            continue
+        row=fixture.to_dict()
+        row['kickoff_utc']=kickoff.isoformat() if kickoff is not None else None
+        row['sort_time']=kickoff if kickoff is not None else pd.Timestamp(fixture.date,tz='UTC')
+        row['display_time']=(kickoff.tz_convert('Australia/Sydney').strftime('%a %d %b · %H:%M')+' Sydney') if kickoff is not None else pd.Timestamp(fixture.date).strftime('%a %d %b')+' UTC · time TBC'
+        rows.append(row)
+    return pd.DataFrame(rows,columns=['fixture_id','date','competition','HomeTeam','AwayTeam','kickoff_utc','sort_time','display_time']).sort_values(['sort_time','HomeTeam'])
+
+
+def fixture_tile_label(fixture, logos):
+    """Native button Markdown; labels cannot be edited or searched."""
+    def badge(team):
+        url=logos.get(team,'')
+        return f'![{team} crest]({url}) ' if url.startswith('https://a.espncdn.com/') else ''
+    return f"{badge(fixture['HomeTeam'])}**{fixture['HomeTeam']}** vs {badge(fixture['AwayTeam'])}**{fixture['AwayTeam']}** · {fixture['display_time']}"

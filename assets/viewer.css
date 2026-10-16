@@ -49,4 +49,10 @@ h2,h3 {line-height:1.3!important;}
  .cv-player-panel {padding:16px;}
  button,[role="combobox"] {min-height:44px;}
 }
+
+.st-key-fixture_tiles {padding:4px 0 12px;}
+.st-key-fixture_tiles button {min-height:124px;flex-shrink:0;border-radius:12px;text-align:center;}
+.st-key-fixture_tiles button p {font-size:.9rem;line-height:1.7;white-space:normal;}
+.st-key-fixture_tiles button img {height:32px!important;width:32px!important;max-height:32px!important;object-fit:contain;background:white;border-radius:5px;padding:3px;vertical-align:middle;}
+.st-key-fixture_tiles button[kind="primary"] {background:#7856d8;border-color:#7856d8;color:white;}
 </style>

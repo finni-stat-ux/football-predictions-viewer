@@ -71,3 +71,32 @@ def test_player_form_rejects_old_and_mismatched_fixture():
     assert 'Home' in fixture_player_form(snapshot,fixture,now='2026-10-16')
     assert fixture_player_form(snapshot,{**fixture,'HomeTeam':'Other'},now='2026-10-16')=={}
     assert fixture_player_form(snapshot,fixture,now='2026-12-16')=={}
+
+
+def test_upcoming_filters_started_finished_and_unknown_same_day():
+    from viewer_display import upcoming_fixtures
+    now='2026-10-16T10:00:00Z'
+    rows=[dict(fixture_id=str(i),date=date,competition='EPL',HomeTeam='Home',AwayTeam=f'Away{i}') for i,date in enumerate(['2026-10-15','2026-10-16','2026-10-16','2026-10-16','2026-10-17'])]
+    fixtures={}
+    for i,status,time in [(1,'TIMED','2026-10-16T09:00:00Z'),(2,'IN_PLAY','2026-10-16T12:00:00Z'),(3,'TIMED','2026-10-16T12:00:00Z')]:
+        fixtures[str(i)]={**rows[i], 'kickoff_utc':time,'status':status}
+    frame=pd.DataFrame(rows)
+    result=upcoming_fixtures(frame,{'schema_version':1,'fixtures':fixtures},now=now)
+    assert result.fixture_id.tolist()==['3','4']
+    assert '23:00' in result.iloc[0].display_time
+    assert upcoming_fixtures(frame,{},now=now).fixture_id.tolist()==['4']
+
+
+def test_fixture_tiles_select_a_match_without_an_editable_fixture_box():
+    from streamlit.testing.v1 import AppTest
+    from pathlib import Path
+    app=AppTest.from_file(str(Path(__file__).resolve().parents[1]/'viewer_dashboard.py')).run()
+    assert not app.exception
+    assert [s.label for s in app.selectbox]==['Competition','Prediction model']
+    tiles=[b for b in app.button if b.key and b.key.startswith('fixture_tile_')]
+    assert len(tiles)>1
+    assert 'crest' in tiles[1].label
+    label=tiles[1].label
+    tiles[1].click().run()
+    assert not app.exception
+    assert label in [b.label for b in app.button if b.proto.type=='primary']

@@ -115,7 +115,9 @@ def prediction_card_html(row, logos):
     for key, team, label in zip(OUTCOMES, (row['HomeTeam'], None, row['AwayTeam']), (f"{row['HomeTeam']} win", 'Draw', f"{row['AwayTeam']} win")):
         logo = team_badge(team, logos, 32) if team else ''
         cells.append(f'<div class="cv-outcome"><div class="cv-outcome-label">{logo}<span>{escape(label)}</span></div><strong>{float(row[key]):.1%}</strong></div>')
-    return f'<section class="cv-pick" aria-label="Hybrid match pick"><div class="cv-eyebrow">HYBRID MATCH PICK</div><div class="cv-pick-title">{badge}<h3>{escape(pick)}</h3></div><p class="cv-pick-probability">{probability:.1%} estimated probability</p><p class="cv-note">Most likely single result · 90 minutes · Other outcomes remain possible.</p><div class="cv-outcomes">'+''.join(cells)+'</div></section>'
+    model = str(row.get('model', 'Hybrid'))
+    title = 'MATRIX MATCH PICK · EXPERIMENTAL' if model == 'Matrix' else model.upper() + ' MATCH PICK'
+    return f'<section class="cv-pick" aria-label="{escape(model)} match pick"><div class="cv-eyebrow">{escape(title)}</div><div class="cv-pick-title">{badge}<h3>{escape(pick)}</h3></div><p class="cv-pick-probability">{probability:.1%} estimated probability</p><p class="cv-note">Most likely single result · 90 minutes · Other outcomes remain possible.</p><div class="cv-outcomes">'+''.join(cells)+'</div></section>'
 
 
 def player_panel_html(team, info, logos):

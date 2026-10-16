@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "model": "Matrix",
+  "experimental": true,
+  "hybrid_default": true,
+  "published_at_utc": "2026-10-16T21:45:13.709292+00:00",
+  "baseline_predictions_sha256": "9f89de57019901395d7824d8faecc42fa0328aa3bf94c309f6863c326c4ea02b",
+  "historical_data_through": "2026-10-14",
+  "weights": {
+    "EPL": {
+      "Dixon-Coles": 0.31584518339738366,
+      "XGBoost": 0.5134259565327557,
+      "Logistic": 0.17072886006986054
+    },
+    "Championship": {
+      "Dixon-Coles": 0.24232711269042193,
+      "XGBoost": 0.6044447113365673,
+      "Logistic": 0.1532281759730108
+    }
+  },
+  "fixture_count": 44,
+  "scope": [
+    "EPL",
+    "Championship"
+  ],
+  "performance_scope": "Retrospective chronological validation, not prospective accuracy.",
+  "evaluation_seasons": [
+    2023,
+    2024,
+    2025
+  ],
+  "calibration": false,
+  "player_features": false,
+  "formula": "Weighted Dixon-Coles, corrected/Elo XGBoost and direct-result logistic probabilities; score grid reconciled to result marginals.",
+  "environment": {
+    "python": "3.11.17",
+    "xgboost": "3.2.0",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.9.1",
+    "scipy": "1.17.1"
+  }
+}

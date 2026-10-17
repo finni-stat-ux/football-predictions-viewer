@@ -102,13 +102,13 @@ def show_whw_formulas() -> None:
             "goal-scoring distribution."
         )
         st.markdown("**Implied probability (raw, not margin-adjusted)**")
-        st.latex(r"P_{implied} = \\frac{1}{Decimal\\ Odds}")
+        st.latex(r"P_{implied} = \frac{1}{Decimal\ Odds}")
         st.markdown("**Model probability edge (percentage points)**")
         st.latex(r"Edge = P_{model} - P_{implied}")
         st.markdown("**Binary Brier score for a settled selection**")
-        st.latex(r"Brier = (P_{model} - y)^2,\\quad y\\in\\{0,1\\}")
+        st.latex(r"Brier = (P_{model} - y)^2,\quad y\in\{0,1\}")
         st.markdown("**Sample-adjusted historical ROI heuristic**")
-        st.latex(r"S = ROI \\sqrt{\\frac{\\min(n,100)}{100}}")
+        st.latex(r"S = ROI \sqrt{\frac{\min(n,100)}{100}}")
         st.caption(
             "n is the number of settled predictions. The sample adjustment "
             "does not prove profitability or statistical significance. "

@@ -126,13 +126,11 @@ if model == 'Matrix':
     if matrix_metadata.get('published_at_utc'):
         st.caption('Matrix updated: ' + pd.Timestamp(matrix_metadata['published_at_utc']).strftime('%d %b %Y, %H:%M UTC') + ' · Historical results through ' + matrix_metadata.get('historical_data_through', 'unknown'))
 
-if model == 'W-H-W Analysis':
-    st.caption('Score probabilities are shown only for an underlying predictive model; W-H-W is a separate diagnostic view.')
-
-st.subheader('Score probabilities')
-score = scores[(scores.fixture_id == chosen) & (scores.model == model)].sort_values('rank')
-if not score.empty:
-    st.markdown('<div class="cv-score-grid"><div><div class="cv-chart-desktop">' + score_chart_svg(score) + '</div><div class="cv-chart-mobile">' + score_chart_svg(score, compact=True) + '</div></div><div>' + score_table_html(score) + '</div></div>', unsafe_allow_html=True)
+if model != 'W-H-W Analysis':
+    st.subheader('Score probabilities')
+    score = scores[(scores.fixture_id == chosen) & (scores.model == model)].sort_values('rank')
+    if not score.empty:
+        st.markdown('<div class="cv-score-grid"><div><div class="cv-chart-desktop">' + score_chart_svg(score) + '</div><div class="cv-chart-mobile">' + score_chart_svg(score, compact=True) + '</div></div><div>' + score_table_html(score) + '</div></div>', unsafe_allow_html=True)
 
 st.subheader('Top 3 players by recent xG')
 st.caption('Recorded xG over the latest five completed league matches. Historical form—not predicted match xG or confirmed starters.')

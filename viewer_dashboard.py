@@ -117,7 +117,14 @@ model = st.selectbox('Prediction model', model_options,
 selected_prediction = view[view.model == model]
 if model == 'W-H-W Analysis':
     try:
-        show_whw_analysis(view, scores[scores.fixture_id == chosen])
+        # Pass the score snapshot only if the loaded analysis module supports it.
+        # Streamlit Cloud can briefly retain an older imported module across a redeploy.
+        import inspect
+        parameters = inspect.signature(show_whw_analysis).parameters
+        if "fixture_scores" in parameters:
+            show_whw_analysis(view, fixture_scores=scores[scores.fixture_id == chosen])
+        else:
+            show_whw_analysis(view)
     except Exception as exc:
         logging.getLogger(__name__).exception("W-H-W Analysis failed for fixture %s", chosen)
         st.error("W-H-W Analysis encountered an issue. Other prediction models are still available.")

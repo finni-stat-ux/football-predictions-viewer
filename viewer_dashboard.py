@@ -2,6 +2,7 @@
 import base64
 import json
 import io
+import logging
 from html import escape
 from pathlib import Path
 
@@ -115,7 +116,13 @@ model = st.selectbox('Prediction model', model_options,
                      filter_mode=None)
 selected_prediction = view[view.model == model]
 if model == 'W-H-W Analysis':
-    show_whw_analysis(view, scores[scores.fixture_id == chosen])
+    try:
+        show_whw_analysis(view, scores[scores.fixture_id == chosen])
+    except Exception as exc:
+        logging.getLogger(__name__).exception("W-H-W Analysis failed for fixture %s", chosen)
+        st.error("W-H-W Analysis encountered an issue. Other prediction models are still available.")
+        st.caption(f"Diagnostic: {type(exc).__name__}: {str(exc)[:300]}")
+        st.caption("This message identifies the failure without exposing the full server traceback.")
 if len(selected_prediction) == 1:
     try:
         st.markdown(prediction_card_html(selected_prediction.iloc[0], TEAM_LOGOS), unsafe_allow_html=True)

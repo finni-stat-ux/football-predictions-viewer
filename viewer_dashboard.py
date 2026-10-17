@@ -10,6 +10,7 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
+from whw_analysis import show_whw_analysis, show_whw_formulas
 from viewer_display import (display_table, fixture_player_form, player_panel_html,
                             prediction_card_html, score_chart_svg, score_table_html, upcoming_fixtures, fixture_tile_label)
 
@@ -108,10 +109,13 @@ view = filtered[filtered.fixture_id == chosen]
 fixture = view.iloc[0]
 st.subheader(f'{fixture.HomeTeam} vs {fixture.AwayTeam}')
 model_options = [name for name in ['Hybrid', 'Dixon-Coles', 'XGBoost', 'Matrix'] if name in view.model.values]
+model_options.append('W-H-W Analysis')
 model = st.selectbox('Prediction model', model_options,
                      format_func=lambda name: 'Matrix — Experimental' if name == 'Matrix' else name,
                      filter_mode=None)
 selected_prediction = view[view.model == model]
+if model == 'W-H-W Analysis':
+    show_whw_analysis(view)
 if len(selected_prediction) == 1:
     try:
         st.markdown(prediction_card_html(selected_prediction.iloc[0], TEAM_LOGOS), unsafe_allow_html=True)
@@ -121,6 +125,9 @@ if model == 'Matrix':
     st.caption('Experimental formula · Measured separately · Not proven better than Hybrid. Historical player xG is context, not an input.')
     if matrix_metadata.get('published_at_utc'):
         st.caption('Matrix updated: ' + pd.Timestamp(matrix_metadata['published_at_utc']).strftime('%d %b %Y, %H:%M UTC') + ' · Historical results through ' + matrix_metadata.get('historical_data_through', 'unknown'))
+
+if model == 'W-H-W Analysis':
+    st.caption('Score probabilities are shown only for an underlying predictive model; W-H-W is a separate diagnostic view.')
 
 st.subheader('Score probabilities')
 score = scores[(scores.fixture_id == chosen) & (scores.model == model)].sort_values('rank')
@@ -175,6 +182,8 @@ with st.expander('How the predictions work and refresh options'):
     if st.button('Refresh displayed predictions', help='Reload the latest published snapshot; does not retrain models'):
         st.cache_data.clear(); st.rerun()
     show_cloud_refresh()
+
+show_whw_formulas()
 
 st.caption('Probabilities are estimates, not guarantees. Forecasts and historical player form can become stale; lineups and player availability are not confirmed.')
 st.caption('League and team marks identify the competitions covered. All trademarks belong to their owners; no affiliation or endorsement is implied.')

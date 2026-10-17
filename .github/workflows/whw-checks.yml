@@ -1,0 +1,33 @@
+name: W-H-W viewer checks
+
+on:
+  pull_request:
+    paths:
+      - 'whw_analysis.py'
+      - 'viewer_dashboard.py'
+      - 'tests/test_whw_analysis.py'
+      - '.github/workflows/whw-checks.yml'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install viewer dependencies
+        run: pip install -r requirements_viewer.txt
+      - name: Check Python syntax
+        run: python -m compileall -q whw_analysis.py viewer_dashboard.py
+      - name: Run W-H-W regression tests
+        run: python -m unittest discover -s tests -p 'test_whw_analysis.py' -v
+      - name: Verify Streamlit imports and formulas
+        run: |
+          python - <<'PY'
+          import whw_analysis
+          assert whw_analysis.implied_probability(2) == 0.5
+          assert whw_analysis.probability_edge(0.6, 2) > 0
+          print('W-H-W smoke check passed')
+          PY

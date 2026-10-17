@@ -47,7 +47,7 @@ def sample_adjusted_roi(roi: float, settled_count: int) -> float:
     return roi * math.sqrt(min(settled_count, 100) / 100)
 
 
-def show_whw_analysis(fixture_predictions: pd.DataFrame) -> None:
+def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.DataFrame | None = None) -> None:
     """Show analysis of published probabilities without changing model forecasts."""
     st.subheader("W-H-W Analysis")
     st.caption(
@@ -80,6 +80,16 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame) -> None:
     winner = home if pick == "Home win" else away if pick == "Away win" else "Draw"
     score = str(row.get("most_likely_score", "")).strip()
     score_label = score if score and score.lower() not in ("nan", "none") else "Unavailable"
+    score_probability = None
+    if fixture_scores is not None and not fixture_scores.empty:
+        matching = fixture_scores[
+            (fixture_scores["model"] == source)
+            & (fixture_scores["score"].astype(str) == score_label)
+        ]
+        if not matching.empty:
+            value = pd.to_numeric(matching.iloc[0]["probability"], errors="coerce")
+            if pd.notna(value) and math.isfinite(float(value)) and 0 <= float(value) <= 1:
+                score_probability = float(value)
     st.metric("Most likely result", winner)
     st.metric("Most likely score", score_label)
     st.caption(
@@ -92,7 +102,7 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame) -> None:
         {"Market": "Match winner", "Prediction": winner,
          "Likelihood": f"{probabilities[pick] * 100:.1f}%"},
         {"Market": "Most likely score", "Prediction": score_label,
-         "Likelihood": "See score probabilities"},
+         "Likelihood": f"{score_probability * 100:.1f}%" if score_probability is not None else "Unavailable"},
     ]
     if math.isfinite(over) and 0 <= over <= 1:
         records.append({

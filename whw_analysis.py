@@ -66,20 +66,47 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame) -> None:
     source = st.selectbox("Underlying forecast", names, key="whw_source")
     row = available[available["model"] == source].iloc[0]
     st.caption(f"Using {source} probabilities; no W-H-W probabilities are invented.")
-    records = []
-    for label, col in MARKETS:
-        p = pd.to_numeric(pd.Series([row.get(col)]), errors="coerce").iloc[0]
-        if pd.notna(p) and math.isfinite(float(p)) and 0 <= float(p) <= 1:
-            records.append({"Market": label, "Model probability": float(p)})
-    if not records:
-        st.warning("No valid probability inputs available.")
+    home = str(row["HomeTeam"])
+    away = str(row["AwayTeam"])
+    probabilities = {
+        "Home win": float(row["p_home_win"]),
+        "Draw": float(row["p_draw"]),
+        "Away win": float(row["p_away_win"]),
+    }
+    if not all(math.isfinite(p) and 0 <= p <= 1 for p in probabilities.values()):
+        st.warning("Valid match-result probabilities are unavailable.")
         return
-    st.dataframe(
-        pd.DataFrame(records),
-        hide_index=True,
-        use_container_width=True,
-        column_config={"Model probability": st.column_config.NumberColumn(format="%.1f%%")},
+    pick = max(probabilities, key=probabilities.get)
+    winner = home if pick == "Home win" else away if pick == "Away win" else "Draw"
+    score = str(row.get("most_likely_score", "")).strip()
+    score_label = score if score and score.lower() not in ("nan", "none") else "Unavailable"
+    st.metric("Most likely result", winner)
+    st.metric("Most likely score", score_label)
+    st.caption(
+        "The most likely scoreline is the highest-probability individual score, "
+        "so it does not always agree with the most likely overall match result."
     )
+    over = float(row["p_over_2_5"])
+    btts = float(row["p_btts"])
+    records = [
+        {"Market": "Match winner", "Prediction": winner,
+         "Likelihood": f"{probabilities[pick] * 100:.1f}%"},
+        {"Market": "Most likely score", "Prediction": score_label,
+         "Likelihood": "See score probabilities"},
+    ]
+    if math.isfinite(over) and 0 <= over <= 1:
+        records.append({
+            "Market": "Total goals",
+            "Prediction": "Over 2.5 goals" if over >= 0.5 else "Under 2.5 goals",
+            "Likelihood": f"{(max(over, 1 - over)) * 100:.1f}%",
+        })
+    if math.isfinite(btts) and 0 <= btts <= 1:
+        records.append({
+            "Market": "Both teams to score",
+            "Prediction": "Yes" if btts >= 0.5 else "No",
+            "Likelihood": f"{(max(btts, 1 - btts)) * 100:.1f}%",
+        })
+    st.dataframe(pd.DataFrame(records), hide_index=True, use_container_width=True)
     st.write(
         "The workbook also calculates an odds-based probability edge. "
         "This requires a genuine decimal price recorded at the same time "

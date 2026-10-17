@@ -115,7 +115,7 @@ model = st.selectbox('Prediction model', model_options,
                      filter_mode=None)
 selected_prediction = view[view.model == model]
 if model == 'W-H-W Analysis':
-    show_whw_analysis(view)
+    show_whw_analysis(view, scores[scores.fixture_id == chosen])
 if len(selected_prediction) == 1:
     try:
         st.markdown(prediction_card_html(selected_prediction.iloc[0], TEAM_LOGOS), unsafe_allow_html=True)

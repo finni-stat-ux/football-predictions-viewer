@@ -3,6 +3,7 @@ import base64
 import json
 import io
 import importlib
+import inspect
 import logging
 from html import escape
 from pathlib import Path
@@ -12,7 +13,12 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
-from model_accuracy import show_league_accuracy
+# Streamlit Cloud may cache model_accuracy from before the single-footer update.
+# Reload only this stateless display helper; leave authenticated refresh module
+# intact so its process-wide login rate limit is never reset by app reruns.
+import model_accuracy
+model_accuracy = importlib.reload(model_accuracy)
+show_league_accuracy = model_accuracy.show_league_accuracy
 from viewer_freshness import stale_forecast_notice
 # Streamlit Cloud can keep imported modules in memory after syncing GitHub.
 # Reload the lightweight W-H-W module on a viewer rerun so UI changes appear.
@@ -241,7 +247,16 @@ with st.expander('Refresh predictions · display or full cloud refresh'):
     if st.button('Refresh displayed predictions', help='Reload the latest published snapshot; does not retrain models'):
         st.cache_data.clear()
         st.rerun()
-    show_cloud_refresh(embedded=True)
+    # Older cloud sessions may still hold the original no-argument refresh UI.
+    # Never reload cloud_refresh_ui here: its in-memory login rate limit must
+    # survive ordinary Streamlit reruns.
+    if 'embedded' in inspect.signature(show_cloud_refresh).parameters:
+        show_cloud_refresh(embedded=True)
+
+# A legacy cached refresh helper owns its own expander. Render it outside this
+# expander rather than nesting expanders or causing an unexpected-keyword crash.
+if 'embedded' not in inspect.signature(show_cloud_refresh).parameters:
+    show_cloud_refresh()
 
 
 st.caption('Probabilities are estimates, not guarantees. Forecasts and historical player form can become stale; lineups and player availability are not confirmed.')

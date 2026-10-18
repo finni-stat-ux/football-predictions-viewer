@@ -49,6 +49,16 @@ def read_player_form():
     except (ValueError, OSError):
         return {}
 
+@st.cache_data(ttl=60)
+def read_forecast_metadata():
+    path = PUB / 'metadata.json'
+    try:
+        return json.loads(path.read_text()) if path.exists() else {}
+    except (ValueError, OSError):
+        return {}
+
+
+
 
 @st.cache_data(ttl=60)
 def read_prediction_snapshot():
@@ -158,13 +168,21 @@ if model != 'W-H-W Analysis':
     if not score.empty:
         st.markdown('<div class="cv-score-grid"><div><div class="cv-chart-desktop">' + score_chart_svg(score) + '</div><div class="cv-chart-mobile">' + score_chart_svg(score, compact=True) + '</div></div><div>' + score_table_html(score) + '</div></div>', unsafe_allow_html=True)
 
-st.subheader('Top 3 players by recent xG')
-st.caption('Recorded xG over the latest five completed league matches. Historical form—not predicted match xG or confirmed starters.')
+st.subheader('Top 3 players by recorded xG')
+st.caption('Recorded xG from each team\'s last five verified matches at the player-data snapshot date. This historical form may lag behind the latest results—not predicted xG or confirmed starters.')
 player_snapshot = read_player_form()
 player_form = fixture_player_form(player_snapshot, fixture)
 st.markdown('<div class="cv-player-grid">' + ''.join(player_panel_html(team, player_form.get(team), TEAM_LOGOS) for team in (fixture.HomeTeam, fixture.AwayTeam)) + '</div>', unsafe_allow_html=True)
 if player_form:
-    st.caption('Player data checked (UTC): ' + pd.Timestamp(player_snapshot['generated_at_utc']).strftime('%d %b %Y, %H:%M UTC') + ' · Unreported xG is omitted.')
+    snapshot_time = pd.Timestamp(player_snapshot['generated_at_utc'])
+    st.caption('Player xG snapshot (UTC): ' + snapshot_time.strftime('%d %b %Y, %H:%M UTC') + ' · Data verified through the dates shown for each team.')
+    historical_through = read_forecast_metadata().get('historical_data_through')
+    if historical_through and pd.Timestamp(historical_through).date() > snapshot_time.date():
+        st.caption(
+            'Player data predates the latest match results (' + str(historical_through) +
+            '). Displayed player rankings are an older verified five-match sample, '
+            'not necessarily each team\'s latest five matches.'
+        )
 
 with st.expander('Compare models and goal estimates'):
     columns = ['model', 'p_home_win', 'p_draw', 'p_away_win', 'expected_home_goals', 'expected_away_goals', 'p_over_2_5', 'p_btts', 'most_likely_score']

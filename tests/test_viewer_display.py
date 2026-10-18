@@ -187,3 +187,40 @@ def test_player_form_remap_rejects_ambiguous_mismatched_and_outdated_snapshots()
     postmatch={**original,'fixtures':{'old':{**record,'teams':{
         'Wolves':{**record['teams']['Wolves'],'source_through':'2026-10-20'}}}}}
     assert fixture_player_form(postmatch,fixture,now=now)=={}
+
+
+def test_published_player_form_recovery_after_fixture_id_rotation():
+    """Use actual published archives, not just synthetic team names."""
+    import json
+    from pathlib import Path
+    from viewer_display import fixture_player_form
+    root = Path(__file__).resolve().parents[1]
+    predictions = pd.read_csv(root / 'published' / 'predictions.csv')
+    snapshot = json.loads((root / 'published' / 'player_form.json').read_text())
+    for _, fixture in predictions[predictions.model.eq('Hybrid')].iterrows():
+        exact = [
+            record for record in snapshot['fixtures'].values()
+            if all(str(record.get(name)) == str(fixture[name])
+                   for name in ('date', 'competition', 'HomeTeam', 'AwayTeam'))
+        ]
+        if len(exact) != 1 or str(fixture.fixture_id) in snapshot['fixtures']:
+            continue
+        if not any(team.get('status') == 'available'
+                   for team in exact[0].get('teams', {}).values()):
+            continue
+        generated = pd.Timestamp(snapshot['generated_at_utc'])
+        check_at = generated + pd.Timedelta(days=2)
+        matches = fixture_player_form(snapshot, fixture, now=check_at)
+        assert matches, (
+            'Published player xG should recover by the exact fixture identity '
+            'even when old and new FUTURE IDs differ'
+        )
+        return
+    pytest.skip('No renumbered, verifiable fixture in current published player archive')
+
+
+def test_streamlit_entrypoint_reloads_player_display_module():
+    """Prevent reintroducing cached helper functions on Streamlit Cloud."""
+    from pathlib import Path
+    code = (Path(__file__).resolve().parents[1] / 'viewer_dashboard.py').read_text()
+    assert 'importlib.reload(viewer_display)' in code

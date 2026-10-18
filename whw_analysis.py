@@ -94,7 +94,7 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
             value = pd.to_numeric(matching.iloc[0]["probability"], errors="coerce")
             if pd.notna(value) and math.isfinite(float(value)) and 0 <= float(value) <= 1:
                 score_probability = float(value)
-     over = float(row["p_over_2_5"])
+    over = float(row["p_over_2_5"])
     btts = float(row["p_btts"])
     records = [
         {"Market": "Match winner", "Prediction": winner,

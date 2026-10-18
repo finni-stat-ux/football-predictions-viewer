@@ -78,14 +78,22 @@ def score_table_html(scores):
 
 
 def fixture_player_form(snapshot, fixture, now=None):
-    """Reject data from a different fixture or stale source after refresh."""
+    """Use verified player form only for this exact fixture identity.
+
+    A forecast refresh may renumber FUTURE_* IDs without updating the separately
+    published player-form snapshot. Recover an exact unique historical match for
+    at most seven days after collection; never copy statistics to another fixture.
+    These are dated *historical* observations, not freshly collected stats.
+    """
     import pandas as pd
-    if snapshot.get('schema_version') != 1:
+    if snapshot.get('schema_version') != 1 or not isinstance(snapshot.get('fixtures'), dict):
         return {}
-    record = snapshot.get('fixtures', {}).get(str(fixture['fixture_id']), {})
-    expected = {'date': str(pd.Timestamp(fixture['date']).date()), 'competition': fixture['competition'], 'HomeTeam': fixture['HomeTeam'], 'AwayTeam': fixture['AwayTeam']}
-    if any(record.get(k) != value for k, value in expected.items()):
-        return {}
+    expected = {
+        'date': str(pd.Timestamp(fixture['date']).date()),
+        'competition': fixture['competition'],
+        'HomeTeam': fixture['HomeTeam'],
+        'AwayTeam': fixture['AwayTeam'],
+    }
     now = pd.Timestamp.now(tz='UTC') if now is None else pd.Timestamp(now)
     now = now.tz_localize('UTC') if now.tzinfo is None else now.tz_convert('UTC')
     try:
@@ -93,16 +101,30 @@ def fixture_player_form(snapshot, fixture, now=None):
         generated = generated.tz_localize('UTC') if generated.tzinfo is None else generated.tz_convert('UTC')
         if generated > now:
             return {}
+        def same_fixture(record):
+            return isinstance(record, dict) and all(record.get(k) == v for k, v in expected.items())
+        record = snapshot['fixtures'].get(str(fixture['fixture_id']), {})
+        if not same_fixture(record):
+            record = {}
+            if now - generated <= pd.Timedelta(days=7):
+                candidates = [
+                    item for item in snapshot['fixtures'].values() if same_fixture(item)
+                ]
+                if len(candidates) == 1:
+                    record = candidates[0]
+        if not record:
+            return {}
         teams = {}
-        for name, info in record.get('teams', {}).items():
-            if info.get('status') != 'available':
+        for name in (expected['HomeTeam'], expected['AwayTeam']):
+            info = record.get('teams', {}).get(name, {})
+            if info.get('status') != 'available' or not isinstance(info.get('players'), list):
                 continue
             source = pd.Timestamp(info['source_through'], tz='UTC')
             age = (now.normalize() - source).days
             if 0 <= age <= snapshot.get('max_age_days', 45) and source < pd.Timestamp(expected['date'], tz='UTC'):
                 teams[name] = info
         return teams
-    except (KeyError, ValueError, TypeError):
+    except (KeyError, ValueError, TypeError, AttributeError):
         return {}
 
 
@@ -126,7 +148,7 @@ def player_panel_html(team, info, logos):
     if not info:
         content = '<p class="cv-note">Recent player xG is not yet available. Older seasons are not shown as current form.</p>'
     else:
-        content = f'<p class="cv-note">Five league matches · {escape(info["source_from"])} to {escape(info["source_through"])}</p><ol class="cv-player-list">'
+        content = f'<p class="cv-note">Verified five-match sample · {escape(info["source_from"])} to {escape(info["source_through"])}</p><ol class="cv-player-list">'
         for index, player in enumerate(info['players'][:3], 1):
             content += f'<li><div><span class="cv-name">{index}. {escape(player["name"])}</span><small>{int(player["minutes"])} minutes · {int(player["appearances"])} appearances</small></div><div class="cv-player-xg">{float(player["xg"]):.2f}<small>recorded xG</small></div></li>'
         content += '</ol>'

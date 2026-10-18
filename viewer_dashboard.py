@@ -150,7 +150,6 @@ if model == 'W-H-W Analysis':
             show_whw_analysis(view, fixture_scores=scores[scores.fixture_id == chosen])
         else:
             show_whw_analysis(view)
-        whw_analysis.show_whw_history(metrics)
     except Exception as exc:
         logging.getLogger(__name__).exception("W-H-W Analysis failed for fixture %s", chosen)
         st.error("W-H-W Analysis encountered an issue. Other prediction models are still available.")
@@ -188,51 +187,62 @@ if player_form:
             'not necessarily each team\'s latest five matches.'
         )
 
-with st.expander('Compare models and goal estimates'):
-    columns = ['model', 'p_home_win', 'p_draw', 'p_away_win', 'expected_home_goals', 'expected_away_goals', 'p_over_2_5', 'p_btts', 'most_likely_score']
-    st.dataframe(display_table(view[columns]), hide_index=True, use_container_width=True,
-                 column_config={name: st.column_config.NumberColumn(format='%.1f%%') for name in ['Home win (%)', 'Draw (%)', 'Away win (%)', 'Over 2.5 goals (%)', 'Both teams score (%)']})
+# One compact information centre: no stacked model accordions on mobile.
+with st.expander('Models & performance · methods, comparisons and results'):
+    tab_methods, tab_comparison, tab_results = st.tabs([
+        'Models & formulas', 'Match comparison', 'Historical results'
+    ])
 
-if not matrix_predictions.empty:
-    with st.expander('Matrix performance · ' + COMPETITIONS.get(league, league), expanded=model == 'Matrix'):
-        summary = performance_summary(matrix_metrics, league)
-        baseline = performance_summary(matrix_metrics, league, 'Hybrid')
-        if summary and baseline:
-            st.caption(f"Separate retrospective measure · {summary['matches']:,} matches · Chronological season tests, not live accuracy.")
-            a, b, c = st.columns(3)
-            a.metric('Matrix result log loss ↓', f"{summary['1x2_log_loss']:.4f}")
-            b.metric('Matrix Brier score ↓', f"{summary['1x2_brier']:.4f}")
-            c.metric('Matrix result accuracy', f"{summary['1x2_accuracy']:.1%}")
-            gain = 100 * (1 - summary['1x2_log_loss'] / baseline['1x2_log_loss'])
-            direction = 'lower' if gain >= 0 else 'higher'
-            st.caption(f"Result log loss is {abs(gain):.2f}% {direction} than Hybrid on the same {COMPETITIONS.get(league, league)} matches. Lower is better; this does not establish future performance.")
+    with tab_methods:
+        st.markdown('**Dixon–Coles**')
+        st.write('Estimates goal-scoring rates from previous results, with an adjustment for low-scoring outcomes.')
+        st.markdown('**XGBoost**')
+        st.write('Learns expected home and away goals from historical, pre-match team features.')
+        st.markdown('**Hybrid · production default**')
+        st.write('Blends the Dixon–Coles and XGBoost exact-score probability grids equally. Historical player xG is displayed separately and does not change model predictions.')
+        st.latex(r'P_{Hybrid}(h,a)=\frac{1}{2}P_{DC}(h,a)+\frac{1}{2}P_{XGB}(h,a)')
+        if not matrix_predictions.empty:
+            st.markdown('**Matrix · experimental**')
+            st.write('A separately measured blend of Dixon–Coles, Elo-enhanced XGBoost and direct-result logistic probabilities. League-specific weights come from earlier out-of-fold seasons; the score grid is reconciled to match the resulting home/draw/away probabilities.')
+            st.latex(r'P_{Matrix}(r)=w_{DC}P_{DC}(r)+w_{XGB}P_{XGB+Elo}(r)+w_{LR}P_{LR}(r)')
+            weights = matrix_metadata.get('weights', {}).get(league, {})
+            if weights:
+                st.caption('Current ' + COMPETITIONS.get(league, league) + ' Matrix weights: ' + ' · '.join(f'{name} {value:.1%}' for name, value in weights.items()))
+        st.markdown('**W-H-W Analysis · probability interpretation**')
+        st.write('Uses published Hybrid probabilities to present a winner-aligned score from the five highest-ranked scorelines. It does not generate an independent forecast or establish profitability.')
+        show_whw_formulas(embedded=True)
+
+    with tab_comparison:
+        st.caption('Current selected fixture, with predictions from the available football models.')
+        columns = ['model', 'p_home_win', 'p_draw', 'p_away_win', 'expected_home_goals', 'expected_away_goals', 'p_over_2_5', 'p_btts', 'most_likely_score']
+        st.dataframe(display_table(view[columns]), hide_index=True, use_container_width=True,
+                     column_config={name: st.column_config.NumberColumn(format='%.1f%%') for name in ['Home win (%)', 'Draw (%)', 'Away win (%)', 'Over 2.5 goals (%)', 'Both teams score (%)']})
+        st.caption('W-H-W is an analysis of Hybrid, not an independent prediction model.')
+
+    with tab_results:
+        st.caption('Historical, retrospectively evaluated forecasts. Lower log loss and Brier scores are better; higher accuracy is better.')
+        if not metrics.empty:
+            st.markdown('**Production model historical backtests · both leagues**')
+            st.dataframe(display_table(metrics), hide_index=True, use_container_width=True)
+        else:
+            st.info('Production backtest snapshot unavailable.')
+        if not matrix_metrics.empty:
+            st.markdown('**Hybrid vs Matrix · league-specific matched samples**')
+            show_league_accuracy(matrix_metrics, embedded=True)
+            st.markdown('**Matrix detailed historical seasons · ' + COMPETITIONS.get(league, league) + '**')
             shown = matrix_metrics[matrix_metrics.competition == league].drop(columns=['competition'])
             st.dataframe(display_table(shown), hide_index=True, use_container_width=True)
+        st.markdown('**W-H-W evidence · underlying Hybrid backtests**')
+        whw_analysis.show_whw_history(metrics, embedded=True)
 
-with st.expander('Historical backtest performance'):
-    if metrics.empty:
-        st.info('Performance snapshot unavailable.')
-    else:
-        st.caption('Lower log loss and Brier scores are better; higher accuracy is better.')
-        st.dataframe(display_table(metrics), hide_index=True, use_container_width=True)
-
-if not matrix_metrics.empty:
-    show_league_accuracy(matrix_metrics)
-
-with st.expander('How the predictions work and refresh options'):
-    st.write('The production Hybrid combines Dixon–Coles and XGBoost probabilities equally. Player xG cards show historical context and do not change the current model’s predictions.')
-    st.latex(r'P_{Hybrid}(h,a)=\frac{1}{2}P_{DC}(h,a)+\frac{1}{2}P_{XGB}(h,a)')
-    if not matrix_predictions.empty:
-        st.write('Matrix is a separate experimental formula. It combines Dixon–Coles, an Elo-enhanced XGBoost model and a direct home/draw/away logistic model. Each league has its own weights learned from earlier out-of-fold seasons. Its score grid is adjusted to agree with its result probabilities.')
-        st.latex(r'P_{Matrix}(r)=w_{DC}P_{DC}(r)+w_{XGB}P_{XGB+Elo}(r)+w_{LR}P_{LR}(r)')
-        weights = matrix_metadata.get('weights', {}).get(league, {})
-        if weights:
-            st.caption('Current ' + COMPETITIONS.get(league, league) + ' Matrix weights: ' + ' · '.join(f'{name} {value:.1%}' for name, value in weights.items()))
+# Operational controls stay separate from the model explanations.
+with st.expander('Refresh predictions · display or full cloud refresh'):
+    st.caption('Refreshing the display only reloads existing published data; it does not train the models.')
     if st.button('Refresh displayed predictions', help='Reload the latest published snapshot; does not retrain models'):
-        st.cache_data.clear(); st.rerun()
-    show_cloud_refresh()
+        st.cache_data.clear()
+        st.rerun()
+    show_cloud_refresh(embedded=True)
 
-show_whw_formulas()
 
 st.caption('Probabilities are estimates, not guarantees. Forecasts and historical player form can become stale; lineups and player availability are not confirmed.')
 st.caption('League and team marks identify the competitions covered. All trademarks belong to their owners; no affiliation or endorsement is implied.')

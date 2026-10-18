@@ -1,6 +1,7 @@
 ﻿
 """Password-protected GitHub Actions refresh controls for Streamlit."""
 
+from contextlib import nullcontext
 import hmac
 import threading
 import time
@@ -36,8 +37,8 @@ WORKFLOW = "refresh.yml"
 API = f"https://api.github.com/repos/{REPO}"
 
 
-def show_cloud_refresh():
-    with st.expander("Cloud Prediction Refresh"):
+def show_cloud_refresh(*, embedded: bool = False):
+    with (nullcontext() if embedded else st.expander("Cloud Prediction Refresh")):
         st.caption(
             "Trigger a full football results and prediction refresh "
             "in GitHub Actions. Your computer does not need to be running."

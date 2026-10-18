@@ -48,3 +48,36 @@ def test_methodology_and_refresh_controls_are_kept():
     assert "show_league_accuracy(matrix_metrics, embedded=True)" in source
     assert "show_cloud_refresh(embedded=True)" in source
     assert "Refresh displayed predictions" in source
+
+
+def test_old_model_accuracy_import_is_reloaded_on_app_run(monkeypatch):
+    """Reproduce a cached pre-embedded helper from a long-lived Streamlit worker."""
+    import model_accuracy
+
+    def cached_old_helper(raw):
+        raise TypeError("show_league_accuracy() got an unexpected keyword argument 'embedded'")
+
+    monkeypatch.setattr(model_accuracy, "show_league_accuracy", cached_old_helper)
+    app = _app("Championship")
+    assert not app.exception
+    assert [item.label for item in app.get("expander")].count(MODEL_PANEL) == 1
+
+
+def test_old_cloud_refresh_helper_falls_back_without_resetting_login_limits(monkeypatch):
+    """Keep authentication lock state intact; do not hot-reload security globals."""
+    import cloud_refresh_ui
+    import streamlit as st
+
+    def cached_old_cloud_refresh():
+        with st.expander("Cloud Prediction Refresh"):
+            st.caption("Legacy refresh controls")
+
+    monkeypatch.setattr(cloud_refresh_ui, "show_cloud_refresh", cached_old_cloud_refresh)
+    app = _app("EPL")
+    assert not app.exception
+    labels = [item.label for item in app.get("expander")]
+    assert labels.count("Cloud Prediction Refresh") == 1
+    assert labels.count(MODEL_PANEL) == 1
+    source = (ROOT / "viewer_dashboard.py").read_text(encoding="utf-8")
+    assert "importlib.reload(model_accuracy)" in source
+    assert "importlib.reload(cloud_refresh_ui)" not in source

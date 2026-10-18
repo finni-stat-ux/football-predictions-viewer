@@ -40,6 +40,18 @@ def test_published_archive_contains_only_verified_15_oct_pre_match_forecasts():
     assert brentford.actual_home_goals == 1 and brentford.actual_away_goals == 2
     assert brentford.pick == "A"
     assert bool(brentford.correct_pick) is True
+    # Read-only archived full-score probabilities: never recomputed from outcomes.
+    assert burnley.top_five_scores == "1-1|1-0|2-1|2-0|0-1"
+    assert burnley.actual_score_rank == 0
+    assert brentford.actual_score_rank == 2
+    for model, top3, top5 in [
+        ("Hybrid", 4, 5), ("Dixon-Coles", 2, 6), ("XGBoost", 4, 7)
+    ]:
+        chosen = actual[actual.model.eq(model)]
+        assert len(chosen) == 17
+        assert chosen.exact_score_hit.sum() == 0
+        assert chosen.top_three_hit.sum() == top3
+        assert chosen.top_five_hit.sum() == top5
 
 
 @pytest.mark.parametrize("column,value,part", [
@@ -52,6 +64,9 @@ def test_published_archive_contains_only_verified_15_oct_pre_match_forecasts():
     ("most_likely_score", "unavailable", "scoreline"),
     ("result_source_url", "http://example.com/fake", "HTTPS"),
     ("competition", "Fake league", "Unrecognized"),
+    ("top_five_scores", "1-0|1-0|2-1|0-0|2-0", "top-five"),
+    ("actual_score_rank", 4, "ranking disagrees"),
+    ("actual_score_rank", 6, "rank"),
 ])
 def test_invalid_or_post_match_forecast_never_scores(column, value, part):
     archive = original_archive()
@@ -106,6 +121,10 @@ def test_streamlit_shows_completed_match_filters_and_source_links():
     assert len(results) == 1
     assert len(results[0]) == 5
     assert "1-2" in results[0]["Actual FT"].tolist()
+    assert "Top-3 score" in results[0].columns
+    assert "Top-5 score" in results[0].columns
+    assert any("Top-five coverage" in str(x.value) for x in app.caption)
+    assert any("Original five most-probable scores" in str(x.value) for x in app.caption)
 
 
 def test_historical_filter_names_match_main_viewer():

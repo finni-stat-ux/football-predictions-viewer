@@ -47,6 +47,38 @@ def sample_adjusted_roi(roi: float, settled_count: int) -> float:
     return roi * math.sqrt(min(settled_count, 100) / 100)
 
 
+def scoreline_for_pick(fixture_scores: pd.DataFrame | None, source: str, pick: str) -> tuple[str, float | None]:
+    """Find highest-probability *published* score consistent with a 1X2 pick.
+
+    The exported top_scores snapshot contains only five leading scorelines.
+    If none fits the pick, show unavailable instead of inventing a score.
+    The returned probability is unconditional P(exact score), not P(score | pick).
+    """
+    if fixture_scores is None or fixture_scores.empty:
+        return "Unavailable", None
+    if not {"model", "score", "probability"}.issubset(fixture_scores.columns):
+        return "Unavailable", None
+    if pick not in ("Home win", "Draw", "Away win"):
+        raise ValueError("Unknown match result pick")
+    candidates = []
+    for _, item in fixture_scores[fixture_scores["model"] == source].iterrows():
+        parts = str(item["score"]).strip().split("-")
+        if len(parts) != 2 or not all(part.isdecimal() for part in parts):
+            continue
+        home_goals, away_goals = map(int, parts)
+        consistent = (
+            home_goals > away_goals if pick == "Home win"
+            else home_goals < away_goals if pick == "Away win"
+            else home_goals == away_goals
+        )
+        if not consistent:
+            continue
+        probability = pd.to_numeric(item["probability"], errors="coerce")
+        if pd.notna(probability) and math.isfinite(float(probability)) and 0 <= float(probability) <= 1:
+            candidates.append((f"{home_goals}-{away_goals}", float(probability)))
+    return max(candidates, key=lambda value: value[1]) if candidates else ("Unavailable", None)
+
+
 def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.DataFrame | None = None) -> None:
     """Show analysis of published probabilities without changing model forecasts."""
     st.subheader("W-H-W Analysis")
@@ -82,24 +114,13 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
         return
     pick = max(probabilities, key=probabilities.get)
     winner = home if pick == "Home win" else away if pick == "Away win" else "Draw"
-    score = str(row.get("most_likely_score", "")).strip()
-    score_label = score if score and score.lower() not in ("nan", "none") else "Unavailable"
-    score_probability = None
-    if fixture_scores is not None and not fixture_scores.empty:
-        matching = fixture_scores[
-            (fixture_scores["model"] == source)
-            & (fixture_scores["score"].astype(str) == score_label)
-        ]
-        if not matching.empty:
-            value = pd.to_numeric(matching.iloc[0]["probability"], errors="coerce")
-            if pd.notna(value) and math.isfinite(float(value)) and 0 <= float(value) <= 1:
-                score_probability = float(value)
+    score_label, score_probability = scoreline_for_pick(fixture_scores, source, pick)
     over = float(row["p_over_2_5"])
     btts = float(row["p_btts"])
     records = [
         {"Market": "Match winner", "Prediction": winner,
          "Likelihood": f"{probabilities[pick] * 100:.1f}%"},
-        {"Market": "Most likely score", "Prediction": score_label,
+        {"Market": "Likely score for pick", "Prediction": score_label,
          "Likelihood": f"{score_probability * 100:.1f}%" if score_probability is not None else "Unavailable"},
     ]
     if math.isfinite(over) and 0 <= over <= 1:
@@ -116,8 +137,9 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
         })
     st.dataframe(pd.DataFrame(records), hide_index=True, use_container_width=True)
     st.caption(
-        "The most likely scoreline is the highest-probability individual score "
-        "and may differ from the most likely overall match result."
+        "Score shown is the most probable of the five published scorelines "
+        "consistent with the selected winner or draw. Exact-score likelihood "
+        "is unconditional; it is not the chance of that score given a win."
     )
     st.write(
         "The workbook also calculates an odds-based probability edge. "

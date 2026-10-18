@@ -61,11 +61,15 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
     if available.empty:
         st.info("No underlying model forecast is available for W-H-W Analysis.")
         return
-    names = [m for m in ("Hybrid", "Matrix", "Dixon-Coles", "XGBoost")
-             if m in set(available["model"])]
-    source = st.selectbox("Underlying forecast", names, key="whw_source")
-    row = available[available["model"] == source].iloc[0]
-    st.caption(f"Using {source} probabilities; no W-H-W probabilities are invented.")
+    # Keep W-H-W a single-selection, mobile-friendly analysis of the established
+    # Hybrid forecast. Never silently switch to another model.
+    source = "Hybrid"
+    hybrid = available[available["model"] == source]
+    if hybrid.empty:
+        st.info("W-H-W Analysis needs a published Hybrid forecast for this fixture.")
+        return
+    row = hybrid.iloc[0]
+    st.caption("Based on the published Hybrid forecast; W-H-W does not create new probabilities.")
     home = str(row["HomeTeam"])
     away = str(row["AwayTeam"])
     probabilities = {
@@ -90,13 +94,7 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
             value = pd.to_numeric(matching.iloc[0]["probability"], errors="coerce")
             if pd.notna(value) and math.isfinite(float(value)) and 0 <= float(value) <= 1:
                 score_probability = float(value)
-    st.metric("Most likely result", winner)
-    st.metric("Most likely score", score_label)
-    st.caption(
-        "The most likely scoreline is the highest-probability individual score, "
-        "so it does not always agree with the most likely overall match result."
-    )
-    over = float(row["p_over_2_5"])
+     over = float(row["p_over_2_5"])
     btts = float(row["p_btts"])
     records = [
         {"Market": "Match winner", "Prediction": winner,
@@ -117,6 +115,10 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
             "Likelihood": f"{(max(btts, 1 - btts)) * 100:.1f}%",
         })
     st.dataframe(pd.DataFrame(records), hide_index=True, use_container_width=True)
+    st.caption(
+        "The most likely scoreline is the highest-probability individual score "
+        "and may differ from the most likely overall match result."
+    )
     st.write(
         "The workbook also calculates an odds-based probability edge. "
         "This requires a genuine decimal price recorded at the same time "

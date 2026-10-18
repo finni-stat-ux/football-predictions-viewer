@@ -100,3 +100,39 @@ def test_fixture_tiles_select_a_match_without_an_editable_fixture_box():
     tiles[1].click().run()
     assert not app.exception
     assert label in [b.label for b in app.button if b.proto.type=='primary']
+
+
+def test_schedule_matches_fixture_identity_after_refresh_renumbers_ids():
+    from viewer_display import upcoming_fixtures
+    frame=pd.DataFrame([dict(
+        fixture_id='FUTURE_5',date='2026-10-20',competition='Championship',
+        HomeTeam='Wolves',AwayTeam='Portsmouth'
+    )])
+    old_record=dict(date='2026-10-20',competition='Championship',
+                    HomeTeam='Wolves',AwayTeam='Portsmouth',
+                    status='TIMED',kickoff_utc='2026-10-20T18:45:00+00:00')
+    schedule=dict(schema_version=1,checked_at_utc='2026-10-16T09:38:15+00:00',
+                  fixtures={'FUTURE_22':old_record})
+    actual=upcoming_fixtures(frame,schedule,now='2026-10-18T02:41:20Z')
+    assert actual.fixture_id.tolist()==['FUTURE_5']
+    assert actual.iloc[0].display_time=='Wed 21 Oct · 05:45 Sydney'
+
+
+def test_ambiguous_or_stale_schedule_does_not_invent_kickoff():
+    from viewer_display import upcoming_fixtures
+    frame=pd.DataFrame([dict(
+        fixture_id='FUTURE_NEW',date='2026-10-20',competition='Championship',
+        HomeTeam='Wolves',AwayTeam='Portsmouth'
+    )])
+    item=dict(date='2026-10-20',competition='Championship',
+              HomeTeam='Wolves',AwayTeam='Portsmouth',
+              status='TIMED',kickoff_utc='2026-10-20T18:45:00Z')
+    base=dict(schema_version=1,checked_at_utc='2026-10-16T09:38:15Z',
+              fixtures={'old':item})
+    now='2026-10-18T02:41:20Z'
+    duplicate={**base,'fixtures':{'old':item,'another':dict(item)}}
+    assert 'time TBC' in upcoming_fixtures(frame,duplicate,now=now).iloc[0].display_time
+    stale={**base,'checked_at_utc':'2026-10-10T00:00:00Z'}
+    assert 'time TBC' in upcoming_fixtures(frame,stale,now=now).iloc[0].display_time
+    other={**base,'fixtures':{'old':{**item,'AwayTeam':'Millwall'}}}
+    assert 'time TBC' in upcoming_fixtures(frame,other,now=now).iloc[0].display_time

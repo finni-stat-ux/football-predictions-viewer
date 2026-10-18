@@ -138,11 +138,23 @@ def upcoming_fixtures(predictions, schedule, now=None):
     import pandas as pd
     now = pd.Timestamp.now(tz='UTC') if now is None else pd.Timestamp(now)
     now = now.tz_localize('UTC') if now.tzinfo is None else now.tz_convert('UTC')
+    # Reconcile changed fixture IDs by exact identity while provider schedule is fresh.
+    recent_schedule = {}
+    checked = pd.to_datetime(schedule.get('checked_at_utc'), utc=True, errors='coerce')
+    if schedule.get('schema_version') == 1 and pd.notna(checked) and checked <= now and now - checked <= pd.Timedelta(hours=72):
+        for entry in schedule.get('fixtures', {}).values():
+            key = tuple(entry.get(k) for k in ('date','competition','HomeTeam','AwayTeam'))
+            recent_schedule.setdefault(key, []).append(entry)
     rows=[]
     for _, fixture in predictions[['fixture_id','date','competition','HomeTeam','AwayTeam']].drop_duplicates().iterrows():
         info = schedule.get('fixtures', {}).get(str(fixture.fixture_id), {}) if schedule.get('schema_version')==1 else {}
         if any(info.get(k)!=fixture[k] for k in ('date','competition','HomeTeam','AwayTeam')):
             info={}
+        if not info:
+            key = tuple(fixture[k] for k in ('date','competition','HomeTeam','AwayTeam'))
+            matches = recent_schedule.get(key, [])
+            if len(matches) == 1:
+                info = matches[0]
         kickoff=None
         if info:
             if info.get('status') not in ('SCHEDULED','TIMED'):

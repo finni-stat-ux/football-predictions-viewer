@@ -3,8 +3,8 @@
   "model": "Matrix",
   "experimental": true,
   "hybrid_default": true,
-  "published_at_utc": "2026-10-18T02:41:44.002690+00:00",
-  "baseline_predictions_sha256": "677dc03268ff42e1e5974f7fceebbea0b2916a22f3ca81e065f5e9e03a38a2b1",
+  "published_at_utc": "2026-10-18T02:53:50.567956+00:00",
+  "baseline_predictions_sha256": "a47199813e1aad8b8225ebf3ec5028688e5d99a1d0797b1ea829ee41eff62d5f",
   "historical_data_through": "2026-10-17",
   "weights": {
     "EPL": {

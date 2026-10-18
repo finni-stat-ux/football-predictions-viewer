@@ -5,6 +5,7 @@ This is *retrospective* performance, not prospective accuracy or calibration.
 """
 from __future__ import annotations
 
+from contextlib import nullcontext
 import math
 import pandas as pd
 
@@ -100,10 +101,10 @@ def compare_leagues(raw: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(results, columns=columns)
 
 
-def show_league_accuracy(raw: pd.DataFrame) -> None:
+def show_league_accuracy(raw: pd.DataFrame, *, embedded: bool = False) -> None:
     """Compact comparison without implying statistical significance."""
     import streamlit as st
-    with st.expander("Model accuracy · Hybrid vs Matrix by league"):
+    with (nullcontext() if embedded else st.expander("Model accuracy · Hybrid vs Matrix by league")):
         comparison = compare_leagues(raw)
         if comparison.empty:
             st.info("Matching historical Hybrid and Matrix evaluation data is unavailable.")

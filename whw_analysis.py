@@ -6,6 +6,7 @@ present retrospective performance as a prediction.
 """
 from __future__ import annotations
 
+from contextlib import nullcontext
 import math
 import pandas as pd
 import streamlit as st
@@ -186,9 +187,9 @@ def hybrid_history_rows(metrics: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=columns)
 
 
-def show_whw_history(metrics: pd.DataFrame) -> None:
+def show_whw_history(metrics: pd.DataFrame, *, embedded: bool = False) -> None:
     """Expose grounded historical model reliability without inventing W-H-W ROI."""
-    with st.expander("W-H-W historical evidence · Hybrid (both leagues)"):
+    with (nullcontext() if embedded else st.expander("W-H-W historical evidence · Hybrid (both leagues)")):
         history = hybrid_history_rows(metrics)
         if history.empty:
             st.info("Historical Hybrid performance data is not available.")
@@ -214,9 +215,9 @@ def show_whw_history(metrics: pd.DataFrame) -> None:
         )
 
 
-def show_whw_formulas() -> None:
+def show_whw_formulas(*, embedded: bool = False) -> None:
     """Display workbook-derived formulas at the bottom of the page."""
-    with st.expander("W-H-W Analysis — formulas and interpretation"):
+    with (nullcontext() if embedded else st.expander("W-H-W Analysis — formulas and interpretation")):
         st.write(
             "W-H-W adapts the uploaded probability/edge backtesting workbook. "
             "It evaluates existing forecasts rather than producing a new "

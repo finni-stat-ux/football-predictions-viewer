@@ -43,8 +43,14 @@ def test_matrix_selection_changes_pick_chart_and_own_measure_for_both_leagues():
         app.selectbox[1].select('Matrix').run()
         assert not app.exception
         assert any('MATRIX MATCH PICK' in x.value for x in app.markdown)
-        assert len(app.metric)==3
-        assert any('Matrix result log loss' in x.label for x in app.metric)
+        # The consolidated footer shows the exact historical measures in tables
+        # rather than duplicating three standalone metric cards.
+        assert any('Matrix detailed historical seasons' in str(x.value) for x in app.markdown)
+        assert any(
+            'Model' in table.value.columns and
+            'Matrix (experimental)' in table.value['Model'].astype(str).tolist()
+            for table in app.dataframe
+        )
         assert any('cv-score-grid' in x.value for x in app.markdown)
         app.selectbox[1].select('Hybrid').run()
         assert not app.exception

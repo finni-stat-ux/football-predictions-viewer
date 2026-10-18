@@ -94,7 +94,7 @@ def test_fixture_tiles_select_a_match_without_an_editable_fixture_box():
     assert not app.exception
     assert [s.label for s in app.selectbox][:2]==['Competition','Prediction model']
     assert 'Historical competition' in [s.label for s in app.selectbox]
-    assert not any(s.label == 'Editable fixture' for s in app.selectbox]
+    assert not any(s.label == 'Editable fixture' for s in app.selectbox)
     tiles=[b for b in app.button if b.key and b.key.startswith('fixture_tile_')]
     assert len(tiles)>1
     assert 'crest' in tiles[1].label

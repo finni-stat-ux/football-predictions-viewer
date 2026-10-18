@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from historical_matches import validated_history
+from historical_matches import validated_history, competition_label, model_label
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -106,3 +106,28 @@ def test_streamlit_shows_completed_match_filters_and_source_links():
     assert len(results) == 1
     assert len(results[0]) == 5
     assert "1-2" in results[0]["Actual FT"].tolist()
+
+
+def test_historical_filter_names_match_main_viewer():
+    """Keep familiar display labels while preserving raw model and league IDs."""
+    assert competition_label("EPL") == "English Premier League"
+    assert competition_label("Championship") == "EFL Championship"
+    assert competition_label("All competitions") == "All competitions"
+    assert model_label("Hybrid") == "Hybrid"
+    assert model_label("Dixon-Coles") == "Dixon-Coles"
+    assert model_label("XGBoost") == "XGBoost"
+    assert model_label("Matrix") == "Matrix — Experimental"
+    from pathlib import Path
+    main = (Path(__file__).resolve().parents[1] / "viewer_dashboard.py").read_text()
+    assert "'EPL': 'English Premier League'" in main
+    assert "'Championship': 'EFL Championship'" in main
+    assert "'Matrix — Experimental' if name == 'Matrix'" in main
+
+
+def test_historical_dropdowns_apply_consistent_formatters_without_changing_filters():
+    from pathlib import Path
+    helper = (Path(__file__).resolve().parents[1] / "historical_matches.py").read_text()
+    assert "format_func=competition_label" in helper
+    assert "format_func=model_label" in helper
+    assert '"Historical competition"' in helper
+    assert '"Historical model"' in helper

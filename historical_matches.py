@@ -89,7 +89,7 @@ def validated_history(raw: pd.DataFrame) -> pd.DataFrame:
     for _, item in frame.iterrows():
         options = str(item["top_five_scores"]).split("|")
         if len(options) != 5 or len(set(options)) != 5 or not all(
-            re.fullmatch(r"\\d{1,2}-\\d{1,2}", text) for text in options
+            re.fullmatch(r"\d{1,2}-\d{1,2}", text) for text in options
         ):
             raise ValueError("Invalid archived top-five score list")
         if options[0] != item["most_likely_score"]:

@@ -30,6 +30,7 @@ REQUIRED = (
     *IDENTITY, "model", *PROBABILITIES, "most_likely_score",
     "actual_home_goals", "actual_away_goals", "forecast_published_at_utc",
     "forecast_commit", "result_source", "result_source_url",
+    "top_five_scores", "actual_score_rank",
 )
 
 
@@ -79,6 +80,24 @@ def validated_history(raw: pd.DataFrame) -> pd.DataFrame:
         raise ValueError("Historical 1X2 probabilities do not sum to one")
     if not frame["most_likely_score"].astype(str).str.fullmatch(r"\d{1,2}-\d{1,2}").all():
         raise ValueError("Invalid archived most-likely scoreline")
+    # Rank and top-five suggestions are copied from the SAME immutable
+    # archived top_scores.csv, not recreated using outcomes or new models.
+    ranks = pd.to_numeric(frame["actual_score_rank"], errors="coerce")
+    if ranks.isna().any() or not ranks.between(0, 5).all() or not ranks.map(lambda n: float(n).is_integer()).all():
+        raise ValueError("Invalid archived actual-score rank")
+    frame["actual_score_rank"] = ranks.astype(int)
+    for _, item in frame.iterrows():
+        options = str(item["top_five_scores"]).split("|")
+        if len(options) != 5 or len(set(options)) != 5 or not all(
+            re.fullmatch(r"\d{1,2}-\d{1,2}", text) for text in options
+        ):
+            raise ValueError("Invalid archived top-five score list")
+        if options[0] != item["most_likely_score"]:
+            raise ValueError("Archived top-one score differs from published top-five list")
+        actual = f"{item['actual_home_goals']}-{item['actual_away_goals']}"
+        rank = options.index(actual) + 1 if actual in options else 0
+        if int(item["actual_score_rank"]) != rank:
+            raise ValueError("Score ranking disagrees with verified match outcome")
     grouped = frame.groupby(list(IDENTITY), dropna=False)
     for name in ("actual_home_goals", "actual_away_goals"):
         if (grouped[name].nunique() != 1).any():
@@ -97,6 +116,8 @@ def validated_history(raw: pd.DataFrame) -> pd.DataFrame:
     frame["exact_score_hit"] = frame["most_likely_score"].eq(
         frame["actual_home_goals"].astype(str) + "-" + frame["actual_away_goals"].astype(str)
     )
+    frame["top_three_hit"] = frame["actual_score_rank"].between(1, 3)
+    frame["top_five_hit"] = frame["actual_score_rank"].between(1, 5)
     return frame.sort_values(["date", "competition", "HomeTeam", "model"],
                              ascending=[False, True, True, True]).reset_index(drop=True)
 
@@ -157,11 +178,17 @@ def show_historical_matches(source: pd.DataFrame, default_league: str) -> None:
         samples = len(visible)
         result_hits = int(visible.correct_pick.sum())
         score_hits = int(visible.exact_score_hit.sum())
+        top_three_hits = int(visible.top_three_hit.sum())
+        top_five_hits = int(visible.top_five_hit.sum())
         st.caption(
             f"{samples} verified historical matches · "
             f"Match-winner picks correct: {result_hits}/{samples} ({result_hits / samples:.1%}) · "
-            f"Exact most-likely scores: {score_hits}/{samples}. "
-            "Small samples are not evidence of future performance."
+            f"Exact top-one: {score_hits}/{samples} · "
+            f"Top-three coverage: {top_three_hits}/{samples} ({top_three_hits / samples:.1%}) · "
+            f"Top-five coverage: {top_five_hits}/{samples} ({top_five_hits / samples:.1%}). "
+            "Top-N means the actual score appeared among archived suggestions, "
+            "not that the model selected it as its single best score. Small samples "
+            "are not evidence of future performance."
         )
 
         entries = []
@@ -174,6 +201,8 @@ def show_historical_matches(source: pd.DataFrame, default_league: str) -> None:
                 "Actual FT": f"{item['actual_home_goals']}-{item['actual_away_goals']}",
                 "Winner pick": "Correct" if item["correct_pick"] else "Incorrect",
                 "Score pick": "Correct" if item["exact_score_hit"] else "Incorrect",
+                "Top-3 score": "Included" if item["top_three_hit"] else "Not included",
+                "Top-5 score": "Included" if item["top_five_hit"] else "Not included",
             })
         st.dataframe(pd.DataFrame(entries), hide_index=True, width="stretch")
 
@@ -199,6 +228,12 @@ def show_historical_matches(source: pd.DataFrame, default_league: str) -> None:
             "Top exact score": str(selected["most_likely_score"]),
         }])
         st.dataframe(breakdown, hide_index=True, width="stretch")
+        st.caption(
+            "Original five most-probable scores: "
+            + " · ".join(selected["top_five_scores"].split("|"))
+            + " · Actual score rank: "
+            + (str(selected["actual_score_rank"]) if selected["actual_score_rank"] else "Outside top five")
+        )
         commit = selected["forecast_commit"]
         snapshot_link = (
             "https://github.com/finni-stat-ux/football-predictions-viewer/blob/"

@@ -20,6 +20,7 @@ from whw_analysis import (
     brier_score,
     sample_adjusted_roi,
     scoreline_for_pick,
+    hybrid_history_rows,
 )
 
 
@@ -65,6 +66,26 @@ class WHWFormulaTests(unittest.TestCase):
             {"model": "Hybrid", "score": "2-1", "probability": 0.09},
         ])
         self.assertEqual(scoreline_for_pick(scores, "Hybrid", "Home win"), ("2-1", 0.09))
+
+    def test_hybrid_history_uses_only_hybrid_rows(self):
+        raw = pd.DataFrame([
+            {"season": "2024_25", "model": "XGBoost", "matches": 932,
+             "1x2_accuracy": 0.99, "1x2_log_loss": 0.01, "1x2_brier": 0.02},
+            {"season": "2025_26", "model": "Hybrid", "matches": 932,
+             "1x2_accuracy": 0.449571, "1x2_log_loss": 1.059472,
+             "1x2_brier": 0.639178},
+            {"season": "2024_25", "model": "Hybrid", "matches": 932,
+             "1x2_accuracy": 0.493562, "1x2_log_loss": 1.018881,
+             "1x2_brier": 0.610545},
+        ])
+        table = hybrid_history_rows(raw)
+        self.assertEqual(table["Season"].tolist(), ["2024/25", "2025/26"])
+        self.assertEqual(table.iloc[-1]["Matches"], 932)
+        self.assertEqual(table.iloc[-1]["Result accuracy"], "45.0%")
+        self.assertEqual(table.iloc[-1]["1X2 Brier"], "0.6392")
+
+    def test_missing_historical_metrics_stay_unavailable(self):
+        self.assertTrue(hybrid_history_rows(pd.DataFrame()).empty)
 
     def test_invalid_odds(self):
         for odds in (0, 1, -3, float("nan"), float("inf")):

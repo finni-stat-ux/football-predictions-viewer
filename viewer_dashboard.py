@@ -2,6 +2,7 @@
 import base64
 import json
 import io
+import importlib
 import logging
 from html import escape
 from pathlib import Path
@@ -11,7 +12,12 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
-from whw_analysis import show_whw_analysis, show_whw_formulas
+# Streamlit Cloud can keep imported modules in memory after syncing GitHub.
+# Reload the lightweight W-H-W module on a viewer rerun so UI changes appear.
+import whw_analysis
+whw_analysis = importlib.reload(whw_analysis)
+show_whw_analysis = whw_analysis.show_whw_analysis
+show_whw_formulas = whw_analysis.show_whw_formulas
 from viewer_display import (display_table, fixture_player_form, player_panel_html,
                             prediction_card_html, score_chart_svg, score_table_html, upcoming_fixtures, fixture_tile_label)
 

@@ -102,6 +102,7 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
         return
     row = hybrid.iloc[0]
     st.caption("Based on the published Hybrid forecast; W-H-W does not create new probabilities.")
+    st.caption("W-H-W display revision: 18 Oct 2026 · winner-aligned score")
     home = str(row["HomeTeam"])
     away = str(row["AwayTeam"])
     probabilities = {

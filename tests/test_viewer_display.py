@@ -136,3 +136,54 @@ def test_ambiguous_or_stale_schedule_does_not_invent_kickoff():
     assert 'time TBC' in upcoming_fixtures(frame,stale,now=now).iloc[0].display_time
     other={**base,'fixtures':{'old':{**item,'AwayTeam':'Millwall'}}}
     assert 'time TBC' in upcoming_fixtures(frame,other,now=now).iloc[0].display_time
+
+
+def test_player_form_recovers_exact_match_when_new_refresh_renumbers_fixtures():
+    from viewer_display import fixture_player_form
+    fixture = dict(fixture_id='FUTURE_5',date='2026-10-20',competition='Championship',
+                   HomeTeam='Wolves',AwayTeam='Portsmouth')
+    old_record = {
+        'date': '2026-10-20', 'competition': 'Championship',
+        'HomeTeam': 'Wolves', 'AwayTeam': 'Portsmouth',
+        'teams': {
+            'Wolves': {'status': 'available', 'players': [{'name': 'Fer López', 'xg': 2.15}],
+                       'source_from': '2026-09-06', 'source_through': '2026-10-13'},
+            'Portsmouth': {'status': 'available', 'players': [{'name': 'Adrian Segečić', 'xg': 1.47}],
+                           'source_from': '2026-09-05', 'source_through': '2026-10-14'},
+        },
+    }
+    snapshot = {
+        'schema_version': 1, 'generated_at_utc': '2026-10-16T09:17:48Z',
+        'max_age_days': 45, 'fixtures': {'FUTURE_22': old_record},
+    }
+    restored = fixture_player_form(snapshot, fixture, now='2026-10-18T03:08:00Z')
+    assert restored['Wolves']['players'][0]['name'] == 'Fer López'
+    assert restored['Portsmouth']['players'][0]['name'] == 'Adrian Segečić'
+
+
+def test_player_form_remap_rejects_ambiguous_mismatched_and_outdated_snapshots():
+    from viewer_display import fixture_player_form
+    fixture = dict(fixture_id='new',date='2026-10-20',competition='Championship',
+                   HomeTeam='Wolves',AwayTeam='Portsmouth')
+    record = {k:fixture[k] for k in ('date','competition','HomeTeam','AwayTeam')}
+    record['teams'] = {'Wolves': {'status':'available','players':[{'name':'Test player','xg': 1}],
+                                 'source_through':'2026-10-13'}}
+    original = {'schema_version': 1, 'generated_at_utc':'2026-10-16T09:17:48Z',
+                'fixtures': {'old': record}}
+    now='2026-10-18T03:08:00Z'
+    assert fixture_player_form(original,fixture,now=now)
+    # There must be precisely one matching fixture, not a guessed best match.
+    duplicates = {**original,'fixtures':{'old':record,'other':dict(record)}}
+    assert fixture_player_form(duplicates,fixture,now=now)=={}
+    wrong_team={**original,'fixtures':{'old':{**record,'AwayTeam':'Cardiff'}}}
+    assert fixture_player_form(wrong_team,fixture,now=now)=={}
+    wrong_date={**original,'fixtures':{'old':{**record,'date':'2026-10-21'}}}
+    assert fixture_player_form(wrong_date,fixture,now=now)=={}
+    stale = {**original,'generated_at_utc':'2026-10-05T00:00:00Z'}
+    assert fixture_player_form(stale,fixture,now=now)=={}
+    future={**original,'generated_at_utc':'2026-10-20T00:00:00Z'}
+    assert fixture_player_form(future,fixture,now=now)=={}
+    # Never show data recorded on or after the scheduled match day.
+    postmatch={**original,'fixtures':{'old':{**record,'teams':{
+        'Wolves':{**record['teams']['Wolves'],'source_through':'2026-10-20'}}}}}
+    assert fixture_player_form(postmatch,fixture,now=now)=={}

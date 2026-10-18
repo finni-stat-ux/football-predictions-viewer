@@ -20,6 +20,9 @@ import model_accuracy
 model_accuracy = importlib.reload(model_accuracy)
 show_league_accuracy = model_accuracy.show_league_accuracy
 from viewer_freshness import stale_forecast_notice
+# Reload the stateless historical-results helper after Streamlit Cloud updates.
+import historical_matches
+historical_matches = importlib.reload(historical_matches)
 # Streamlit Cloud can keep imported modules in memory after syncing GitHub.
 # Reload the lightweight W-H-W module on a viewer rerun so UI changes appear.
 import whw_analysis
@@ -192,6 +195,10 @@ if player_form:
             '). Displayed player rankings are an older verified five-match sample, '
             'not necessarily each team\'s latest five matches.'
         )
+
+# Historical match outcomes are a separate, verified archive, never a replay
+# from today's trained model. Selecting a past match cannot alter live picks.
+historical_matches.show_historical_matches(read('historical_match_results.csv'), league)
 
 # One compact information centre: no stacked model accordions on mobile.
 with st.expander('Models & performance · methods, comparisons and results'):

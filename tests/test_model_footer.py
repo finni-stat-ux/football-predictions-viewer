@@ -7,6 +7,7 @@ from streamlit.testing.v1 import AppTest
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_PANEL = "Models & performance · methods, comparisons and results"
 REFRESH_PANEL = "Refresh predictions · display or full cloud refresh"
+MATCH_HISTORY_PANEL = "Historical Match Results · predictions vs final scores"
 
 
 def _app(league):
@@ -25,7 +26,8 @@ def test_single_model_information_panel_and_separate_refresh_for_both_leagues():
         expanders = [item.label for item in app.get("expander")]
         assert expanders.count(MODEL_PANEL) == 1
         assert expanders.count(REFRESH_PANEL) == 1
-        assert len(expanders) == 2, f"Duplicate model accordions: {expanders}"
+        assert expanders.count(MATCH_HISTORY_PANEL) == 1
+        assert len(expanders) == 3, f"Duplicate model accordions: {expanders}"
         tab_labels = [item.label for item in app.get("tab")]
         assert tab_labels == ["Models & formulas", "Match comparison", "Historical results"]
 

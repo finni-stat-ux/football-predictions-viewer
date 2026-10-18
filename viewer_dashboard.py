@@ -133,7 +133,6 @@ if model == 'W-H-W Analysis':
         parameters = inspect.signature(show_whw_analysis).parameters
         if "fixture_scores" in parameters:
             show_whw_analysis(view, fixture_scores=scores[scores.fixture_id == chosen])
-        whw_analysis.show_whw_history(metrics)
         else:
             show_whw_analysis(view)
         whw_analysis.show_whw_history(metrics)

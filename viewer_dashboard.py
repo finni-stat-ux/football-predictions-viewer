@@ -20,6 +20,10 @@ import whw_analysis
 whw_analysis = importlib.reload(whw_analysis)
 show_whw_analysis = whw_analysis.show_whw_analysis
 show_whw_formulas = whw_analysis.show_whw_formulas
+# Streamlit reruns may retain a stale imported module after a GitHub sync.
+# Reload the display helpers so fixture-identity recovery actually reaches the UI.
+import viewer_display
+viewer_display = importlib.reload(viewer_display)
 from viewer_display import (display_table, fixture_player_form, player_panel_html,
                             prediction_card_html, score_chart_svg, score_table_html, upcoming_fixtures, fixture_tile_label)
 

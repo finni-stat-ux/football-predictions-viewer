@@ -34,7 +34,7 @@ def validated_history(raw: pd.DataFrame) -> pd.DataFrame:
                                      "pick_probability", "correct_pick", "exact_score_hit"])
     if not set(REQUIRED).issubset(raw.columns):
         raise ValueError("Historical results snapshot lacks required fields")
-    frame = raw.loc[:, REQUIRED].copy()
+    frame = raw.loc[:, list(REQUIRED)].copy()
     if frame[list(IDENTITY) + ["model"]].isna().any().any():
         raise ValueError("Historical fixture identity is incomplete")
     if frame.duplicated([*IDENTITY, "model"]).any():

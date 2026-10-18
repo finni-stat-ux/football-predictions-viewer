@@ -12,6 +12,7 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
+from model_accuracy import show_league_accuracy
 from viewer_freshness import stale_forecast_notice
 # Streamlit Cloud can keep imported modules in memory after syncing GitHub.
 # Reload the lightweight W-H-W module on a viewer rerun so UI changes appear.
@@ -192,6 +193,9 @@ with st.expander('Historical backtest performance'):
     else:
         st.caption('Lower log loss and Brier scores are better; higher accuracy is better.')
         st.dataframe(display_table(metrics), hide_index=True, use_container_width=True)
+
+if not matrix_metrics.empty:
+    show_league_accuracy(matrix_metrics)
 
 with st.expander('How the predictions work and refresh options'):
     st.write('The production Hybrid combines Dixon–Coles and XGBoost probabilities equally. Player xG cards show historical context and do not change the current model’s predictions.')

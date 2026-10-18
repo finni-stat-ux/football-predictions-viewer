@@ -13,6 +13,17 @@ import pandas as pd
 
 LEAGUES = ("EPL", "Championship")
 MODELS = ("Hybrid", "Dixon-Coles", "XGBoost", "Matrix")
+
+# Display labels match the main predictions page; source-data IDs stay unchanged.
+COMPETITION_NAMES = {"EPL": "English Premier League", "Championship": "EFL Championship"}
+
+
+def competition_label(value: str) -> str:
+    return COMPETITION_NAMES.get(value, value)
+
+
+def model_label(value: str) -> str:
+    return "Matrix — Experimental" if value == "Matrix" else value
 IDENTITY = ("date", "competition", "HomeTeam", "AwayTeam")
 PROBABILITIES = ("p_home_win", "p_draw", "p_away_win")
 REQUIRED = (
@@ -123,6 +134,7 @@ def show_historical_matches(source: pd.DataFrame, default_league: str) -> None:
         selected_league = st.selectbox(
             "Historical competition", leagues,
             index=leagues.index(default_league) if default_league in leagues else 0,
+            format_func=competition_label,
             key="history_league"
         )
         visible = history if selected_league == "All competitions" else history[history.competition == selected_league]
@@ -130,6 +142,7 @@ def show_historical_matches(source: pd.DataFrame, default_league: str) -> None:
         model = st.selectbox(
             "Historical model", available_models,
             index=available_models.index("Hybrid") if "Hybrid" in available_models else 0,
+            format_func=model_label,
             key="history_model"
         )
         visible = visible[visible.model == model]

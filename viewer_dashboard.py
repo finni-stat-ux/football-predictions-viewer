@@ -12,6 +12,7 @@ import streamlit as st
 
 from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
+from viewer_freshness import stale_forecast_notice
 # Streamlit Cloud can keep imported modules in memory after syncing GitHub.
 # Reload the lightweight W-H-W module on a viewer rerun so UI changes appear.
 import whw_analysis
@@ -68,6 +69,9 @@ if predictions.empty:
     st.info('No predictions published yet.'); st.stop()
 
 st.caption('Predictions updated (UTC): ' + pd.Timestamp(predictions.published_at_utc.iloc[0]).strftime('%d %b %Y, %H:%M UTC'))
+age_notice = stale_forecast_notice(predictions.published_at_utc.iloc[0])
+if age_notice:
+    st.warning(age_notice)
 league = st.selectbox('Competition', sorted(predictions.competition.unique()), format_func=lambda value: COMPETITIONS.get(value, value), filter_mode=None)
 asset = ROOT / 'assets' / COMPETITION_ASSETS.get(league, '')
 logo = ''
@@ -131,6 +135,7 @@ if model == 'W-H-W Analysis':
             show_whw_analysis(view, fixture_scores=scores[scores.fixture_id == chosen])
         else:
             show_whw_analysis(view)
+        whw_analysis.show_whw_history(metrics)
     except Exception as exc:
         logging.getLogger(__name__).exception("W-H-W Analysis failed for fixture %s", chosen)
         st.error("W-H-W Analysis encountered an issue. Other prediction models are still available.")

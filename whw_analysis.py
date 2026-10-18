@@ -155,6 +155,65 @@ def show_whw_analysis(fixture_predictions: pd.DataFrame, fixture_scores: pd.Data
     )
 
 
+
+def hybrid_history_rows(metrics: pd.DataFrame) -> pd.DataFrame:
+    """Existing chronological Hybrid backtest, not a separate W-H-W backtest."""
+    columns = ["Season", "Matches", "Result accuracy", "1X2 log loss", "1X2 Brier"]
+    needed = {"season", "model", "matches", "1x2_accuracy", "1x2_log_loss", "1x2_brier"}
+    if metrics is None or metrics.empty or not needed.issubset(metrics.columns):
+        return pd.DataFrame(columns=columns)
+    rows = []
+    filtered = metrics[metrics["model"] == "Hybrid"].sort_values("season")
+    for _, item in filtered.iterrows():
+        try:
+            matches = int(item["matches"])
+            accuracy = float(item["1x2_accuracy"])
+            loss = float(item["1x2_log_loss"])
+            brier = float(item["1x2_brier"])
+        except (ValueError, TypeError, OverflowError):
+            continue
+        if not (matches > 0 and 0 <= accuracy <= 1 and all(
+            math.isfinite(v) and v >= 0 for v in (loss, brier)
+        )):
+            continue
+        rows.append({
+            "Season": str(item["season"]).replace("_", "/"),
+            "Matches": matches,
+            "Result accuracy": f"{accuracy * 100:.1f}%",
+            "1X2 log loss": f"{loss:.4f}",
+            "1X2 Brier": f"{brier:.4f}",
+        })
+    return pd.DataFrame(rows, columns=columns)
+
+
+def show_whw_history(metrics: pd.DataFrame) -> None:
+    """Expose grounded historical model reliability without inventing W-H-W ROI."""
+    with st.expander("W-H-W historical evidence · Hybrid (both leagues)"):
+        history = hybrid_history_rows(metrics)
+        if history.empty:
+            st.info("Historical Hybrid performance data is not available.")
+            return
+        recent = history.iloc[-1]
+        st.caption(
+            f"Latest available season {recent['Season']}: "
+            f"{recent['Result accuracy']} match-result accuracy over "
+            f"{recent['Matches']:,} completed matches."
+        )
+        st.dataframe(history, hide_index=True, use_container_width=True)
+        st.caption(
+            "Existing historical backtests for the underlying Hybrid, across "
+            "English Premier League and Championship combined—not a separately "
+            "measured W-H-W model or live prediction record. Lower log loss and "
+            "1X2 Brier are better. This 1X2 Brier is multiclass, whereas the "
+            "uploaded workbook's selection Brier is binary."
+        )
+        st.caption(
+            "The winner-aligned score displayed by W-H-W has not been "
+            "independently backtested. No bookmaker odds or settled selection "
+            "history is available to establish edge or ROI."
+        )
+
+
 def show_whw_formulas() -> None:
     """Display workbook-derived formulas at the bottom of the page."""
     with st.expander("W-H-W Analysis — formulas and interpretation"):

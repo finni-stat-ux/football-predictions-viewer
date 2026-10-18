@@ -83,7 +83,7 @@ def validated_history(raw: pd.DataFrame) -> pd.DataFrame:
     # Rank and top-five suggestions are copied from the SAME immutable
     # archived top_scores.csv, not recreated using outcomes or new models.
     ranks = pd.to_numeric(frame["actual_score_rank"], errors="coerce")
-    if ranks.isna().any() or not ranks.between(0, 5).all() or not ranks.map(float.is_integer).all():
+    if ranks.isna().any() or not ranks.between(0, 5).all() or not ranks.map(lambda n: float(n).is_integer()).all():
         raise ValueError("Invalid archived actual-score rank")
     frame["actual_score_rank"] = ranks.astype(int)
     for _, item in frame.iterrows():

@@ -105,9 +105,8 @@ def pick_html(row, pick, *, compact=False):
 
 def card_html(row, time_label, pick, selected=False):
     state = " atp-card-selected" if selected else ""
-    if row.get("_started"):
-        time_label += " · Start time passed"
-    return f'<article class="atp-card{state}" aria-label="{escape(row["player_a_name"])} versus {escape(row["player_b_name"])}"><div class="atp-card-top">{tournament_mark(row["tournament"])}<div><span>{escape(row["tournament"])}</span><small>{escape(row["round"])} · {escape(row["surface"])}</small></div></div><div class="atp-player">{player_html(row,"a")}</div><div class="atp-versus">VS</div><div class="atp-player">{player_html(row,"b")}</div><div class="atp-start">{escape(time_label)} Sydney</div>{pick_html(row,pick,compact=True)}</article>'
+    status_note=" · Start time passed" if row.get("_started") else ""
+    return f'<article class="atp-card{state}" aria-label="{escape(row["player_a_name"])} versus {escape(row["player_b_name"])}"><div class="atp-card-top">{tournament_mark(row["tournament"])}<div><span>{escape(row["tournament"])}</span><small>{escape(row["round"])} · {escape(row["surface"])}</small></div></div><div class="atp-player">{player_html(row,"a")}</div><div class="atp-versus">VS</div><div class="atp-player">{player_html(row,"b")}</div><div class="atp-start">{escape(time_label)} Sydney{status_note}</div>{pick_html(row,pick,compact=True)}</article>'
 
 
 def tile_label(row, time_label):

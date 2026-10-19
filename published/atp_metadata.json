@@ -70,7 +70,12 @@
       "prior_matches": [
         4,
         9
-      ]
+      ],
+      "player_a_id": 47259,
+      "player_b_id": 104215,
+      "player_a_name": "Clement Tabur",
+      "player_b_name": "Nicolai Budkov Kjaer",
+      "start_time_utc": "2026-10-19T11:30:00Z"
     },
     {
       "fixture_id": 213930,
@@ -78,7 +83,12 @@
       "prior_matches": [
         21,
         0
-      ]
+      ],
+      "player_a_id": 83795,
+      "player_b_id": 106767,
+      "player_a_name": "Jaime Faria",
+      "player_b_name": "Felix Balshaw",
+      "start_time_utc": "2026-10-19T13:00:00Z"
     },
     {
       "fixture_id": 299883,
@@ -86,7 +96,12 @@
       "prior_matches": [
         0,
         145
-      ]
+      ],
+      "player_a_id": 40187,
+      "player_b_id": 92985,
+      "player_a_name": "Andrea Guerrieri",
+      "player_b_name": "Alex Michelsen",
+      "start_time_utc": "2026-10-19T13:30:00Z"
     },
     {
       "fixture_id": 278941,
@@ -94,7 +109,12 @@
       "prior_matches": [
         30,
         3
-      ]
+      ],
+      "player_a_id": 9043,
+      "player_b_id": 74880,
+      "player_a_name": "Mikhail Kukushkin",
+      "player_b_name": "Stefanos Sakellaridis",
+      "start_time_utc": "2026-10-19T14:30:00Z"
     },
     {
       "fixture_id": 213920,
@@ -102,7 +122,12 @@
       "prior_matches": [
         266,
         4
-      ]
+      ],
+      "player_a_id": 31392,
+      "player_b_id": 111498,
+      "player_a_name": "Lorenzo Sonego",
+      "player_b_name": "Moise Kouame",
+      "start_time_utc": "2026-10-19T16:00:00Z"
     },
     {
       "fixture_id": 138877,
@@ -110,7 +135,12 @@
       "prior_matches": [
         217,
         0
-      ]
+      ],
+      "player_a_id": 33860,
+      "player_b_id": 95311,
+      "player_a_name": "Tallon Griekspoor",
+      "player_b_name": "Max Schoenhaus",
+      "start_time_utc": "2026-10-20T08:00:00Z"
     },
     {
       "fixture_id": 138881,
@@ -118,7 +148,12 @@
       "prior_matches": [
         0,
         110
-      ]
+      ],
+      "player_a_id": 79068,
+      "player_b_id": 37741,
+      "player_a_name": "Toby Samuel",
+      "player_b_name": "Zizou Bergs",
+      "start_time_utc": "2026-10-20T08:00:00Z"
     },
     {
       "fixture_id": 299874,
@@ -126,7 +161,12 @@
       "prior_matches": [
         159,
         1
-      ]
+      ],
+      "player_a_id": 11226,
+      "player_b_id": 35296,
+      "player_a_name": "David Goffin",
+      "player_b_name": "Remy Bertola",
+      "start_time_utc": "2026-10-20T08:00:00Z"
     },
     {
       "fixture_id": 299877,
@@ -134,7 +174,12 @@
       "prior_matches": [
         214,
         2
-      ]
+      ],
+      "player_a_id": 24249,
+      "player_b_id": 55828,
+      "player_a_name": "Botic Van De Zandschulp",
+      "player_b_name": "Clement Chidekh",
+      "start_time_utc": "2026-10-20T08:00:00Z"
     }
   ],
   "release_status": "experimental",

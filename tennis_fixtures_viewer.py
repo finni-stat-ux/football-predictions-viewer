@@ -109,10 +109,10 @@ def day_options(rows, now=None):
     counts={day.isoformat():sum(timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date()==day for r in rows) for day in dates}
     return [(day.isoformat(),day.strftime("%A"),counts[day.isoformat()]) for day in sorted(dates,key=lambda d:d.weekday())]
 
-def show_fixtures(root, forecasts=None):
+def show_fixtures(root, forecasts=None, forecast_metadata=None):
     import streamlit as st
     from tennis_design import (inject_style, tournament_mark, player_html,
-                               prediction_for, pick_html, card_html)
+                               prediction_for, pick_html, card_html, pending_reason)
     inject_style(root)
     from sport_icons import TENNIS
     st.markdown('<div class="atp-hero"><img class="atp-tour-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg" alt="ATP Tour logo"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
@@ -137,6 +137,9 @@ def show_fixtures(root, forecasts=None):
     from tennis_set_scores import read_set_scores, add_set_pick
     set_scores=read_set_scores(root)
     picks={r["fixture_id"]:add_set_pick(r,picks[r["fixture_id"]],set_scores) for r in rows}
+    for row in rows:
+        if picks[row["fixture_id"]] is None:
+            row["_prediction_unavailable_reason"]=pending_reason(row,forecast_metadata,forecasts)
     pick_count = sum(p is not None for p in picks.values())
     st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>upcoming matches</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
@@ -173,4 +176,3 @@ def show_fixtures(root, forecasts=None):
             st.table([{"Player":outcome["winner"],"Sets won–lost":outcome["score"],"Estimated probability":f'{outcome["p"]:.1%}'} for outcome in chosen["set_outcomes"]])
     with st.expander("Compact fixture table"):
         st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
-    st.caption("Source: SportsAPI365 · Flags show represented country, using provider records or the checked ATP/ITF player list. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")

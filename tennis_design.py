@@ -67,9 +67,28 @@ def prediction_for(row, forecasts):
     return None
 
 
+
+def pending_reason(row, metadata=None, forecasts=None):
+    """Explain an exclusion only when its original fixture identity still matches."""
+    metadata=metadata or {}
+    for item in metadata.get("excluded_fixtures",[]):
+        if str(item.get("fixture_id"))!=str(row["fixture_id"]):continue
+        identity=("player_a_id","player_b_id","player_a_name","player_b_name","start_time_utc")
+        if any(str(item.get(key))!=str(row.get(key)) for key in identity):continue
+        counts=item.get("prior_matches")
+        if isinstance(counts,list) and len(counts)==2 and all(type(n) is int and n>=0 for n in counts):
+            missing=[f'{row[f"player_{side}_name"]}: {count} recorded' for side,count in zip(("a","b"),counts) if count<5]
+            if missing:
+                return "Insufficient ATP history — "+"; ".join(missing)+". Each player needs at least 5 completed ATP main-draw matches in our dataset. Challenger, ITF and qualifying matches are excluded."
+        return "This fixture was excluded from the latest model run. A new forecast is required."
+    if forecasts is not None and not forecasts.empty and forecasts.fixture_id.astype(str).eq(str(row["fixture_id"])).any():
+        return "Fixture details changed after the forecast was generated. A new forecast is required."
+    return "No validated forecast for this fixture is available in the latest model snapshot."
+
 def pick_html(row, pick, *, compact=False):
     if pick is None:
-        return '<div class="atp-pending"><span class="atp-pick-label">PREDICTED WINNER</span><strong>Prediction pending</strong><span>A validated forecast is not available for this match yet.</span></div>'
+        reason=escape(row.get("_prediction_unavailable_reason","A validated forecast is not available for this match yet."))
+        return f'<div class="atp-pending"><span class="atp-pick-label">PREDICTED WINNER</span><strong>Prediction pending</strong><span>{reason}</span></div>'
     side = pick["side"]
     winner = flag_html(row.get(f"player_{side}_country")) if side else ""
     suffix = ' to win' if side else ''

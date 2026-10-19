@@ -57,3 +57,17 @@ def test_country_optional_but_never_arbitrary_html():
     data["events"][0]["player_a_country"] = '<script>'
     with pytest.raises(ValueError):
         validate_snapshot(data, NOW)
+
+
+def test_missing_prediction_explains_dataset_counts_only_for_exact_identity():
+    from tennis_design import pending_reason
+    row=fixture()
+    item={key:row[key] for key in ('fixture_id','player_a_id','player_b_id','player_a_name','player_b_name','start_time_utc')}
+    item['prior_matches']=[21,0]
+    metadata={'excluded_fixtures':[item]}
+    reason=pending_reason(row,metadata)
+    assert 'Beta Example: 0 recorded' in reason and 'our dataset' in reason and 'at least 5' in reason
+    row['_prediction_unavailable_reason']=reason
+    assert reason in pick_html(row,None)
+    item['player_b_id']=999
+    assert '0 recorded' not in pending_reason(row,metadata)

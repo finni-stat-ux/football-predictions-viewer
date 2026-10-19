@@ -130,7 +130,7 @@ def show_atp(root):
 
     frame, metadata, status = read_atp(root)
     import tennis_fixtures_viewer
-    tennis_fixtures_viewer.show_fixtures(root, frame if status == "ready" else None)
+    tennis_fixtures_viewer.show_fixtures(root, frame if status == "ready" else None, metadata)
     from cloud_refresh_ui import show_cloud_refresh
     show_cloud_refresh(atp=True)
     # The independent market snapshot never triggers a provider API call.
@@ -138,16 +138,23 @@ def show_atp(root):
     import tennis_odds_viewer
     with st.expander("Bookmaker reference (optional)"):
         tennis_odds_viewer.show_market(root, frame if status == "ready" else None)
+    def footer():
+        st.divider()
+        st.caption("Source: SportsAPI365 · Flags show represented country, using provider records or the checked ATP/ITF player list. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")
+        if metadata.get("published_at_utc"):
+            st.caption("ATP snapshot published: " + pd.Timestamp(metadata["published_at_utc"]).strftime("%d %b %Y, %H:%M UTC"))
     if status == "not_published":
         st.info("ATP winner predictions are being validated. The fixture list above is separate from model forecasts.")
+        footer()
         return
     if status in ("invalid", "incomplete"):
         st.warning("ATP publication failed validation. No tennis probabilities are displayed.")
+        footer()
         return
     if status == "no_upcoming":
         st.info("No upcoming ATP matches remain in the last approved snapshot.")
+        footer()
         return
-    st.caption("ATP snapshot published: " + pd.Timestamp(metadata["published_at_utc"]).strftime("%d %b %Y, %H:%M UTC"))
     if (pd.Timestamp.now(tz="UTC") - pd.Timestamp(metadata["published_at_utc"])).total_seconds() > 72 * 3600:
         st.warning("ATP forecast snapshot is over 72 hours old. Confirm freshness before use.")
     with st.expander("Models & performance"):
@@ -156,3 +163,4 @@ def show_atp(root):
             st.caption("Historical results through "+str(metadata["training_through"]))
         if metadata.get("evaluation"):
             st.dataframe(pd.DataFrame(metadata["evaluation"]),hide_index=True,use_container_width=True)
+    footer()

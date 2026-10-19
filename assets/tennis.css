@@ -2,7 +2,8 @@
 .atp-hero{display:flex;align-items:center;gap:18px;margin:20px 0 24px}
 .atp-hero h2{margin:0!important;padding:0!important;font-size:1.6rem!important}
 .atp-hero p{margin:6px 0 0;opacity:.72}
-.atp-hero-icon{width:64px;height:64px;flex:none;border-radius:16px;background:#7856d8;display:grid;place-items:center;color:white}
+.atp-hero-icon{width:64px;height:64px;flex:none;border-radius:16px;background:#f5f0ff;display:grid;place-items:center;color:#7856d8}
+.atp-hero-icon svg{width:48px;height:48px}
 .atp-mark{width:46px;height:46px;flex:none}
 .atp-flag{width:26px!important;height:18px!important;object-fit:cover;border-radius:3px;flex:none;box-shadow:0 0 0 1px #8883}
 .atp-no-flag{display:inline-flex;align-items:center;justify-content:center;width:26px;color:#8d93a4;flex:none}

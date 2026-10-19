@@ -128,6 +128,6 @@ def test_atp_mode_independently_renders_no_data_notice():
     assert not app.exception
     app.button(key="sport_tennis").click().run()
     assert not app.exception
-    assert any("ATP Men's Singles" in str(x.value) for x in app.subheader)
+    assert any("ATP Men’s Singles" in str(x.value) for x in app.markdown)
     assert any("winner predictions are being validated" in str(x.value) for x in app.info)
     assert not any("ATP Hybrid" in str(x.value) for x in app.metric)

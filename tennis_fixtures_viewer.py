@@ -93,7 +93,8 @@ def show_fixtures(root, forecasts=None):
     from tennis_design import (inject_style, tournament_mark, player_html,
                                prediction_for, pick_html, tile_label, card_html)
     inject_style(root)
-    st.markdown('<div class="atp-hero"><div class="atp-hero-icon"><svg width="42" height="42" viewBox="0 0 48 48" role="img" aria-label="Conquerors tennis mark"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 12c17 5 9 21 28 24M36 10C21 18 28 31 12 38" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><h2>ATP Tour</h2><p>Men’s singles · Your next match, at a glance.</p></div></div>', unsafe_allow_html=True)
+    from sport_icons import TENNIS
+    st.markdown('<div class="atp-hero"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
     rows, metadata, status = read_fixtures(root)
     st.markdown("### Upcoming ATP matches")
     if status == "not_published":

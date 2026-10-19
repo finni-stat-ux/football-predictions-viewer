@@ -151,6 +151,8 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
     tournament_rows = rows if choice == "All tournaments" else [r for r in rows if r["tournament"] == choice]
     days=day_options(tournament_rows,metadata["stamp"])
+    from tennis_programme import read_programme,programme_for,programme_html
+    programme=read_programme(root)
     day_key="atp_selected_day"
     if st.session_state.get(day_key) not in {day[0] for day in days}:
         st.session_state[day_key]=next((day[0] for day in sorted(days) if day[2]), sorted(days)[0][0])
@@ -159,15 +161,24 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
     st.caption("Choose a day · Sydney dates and times")
     with st.container(horizontal=True,wrap=True,key="atp_days"):
         for date,label,count in days:
-            st.button(f"{label} · {count}",key="atp_day_"+label.lower(),
+            day_label=f"{label} · {count}" if count else f"{label} · Schedule" if programme_for(programme,date,choice) else f"{label} · 0"
+            st.button(day_label,key="atp_day_"+label.lower(),
                       type="primary" if date==st.session_state[day_key] else "secondary",
                       on_click=choose_day,args=(date,))
     selected_day=datetime.strptime(st.session_state[day_key],"%Y-%m-%d")
     st.markdown("### "+selected_day.strftime("%A")+"’s Match Picks")
     st.caption(selected_day.strftime("%d %B %Y")+" · Sydney time")
     selected=[r for r in tournament_rows if timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date().isoformat()==st.session_state[day_key]]
+    sessions=programme_for(programme,st.session_state[day_key],choice)
+    if sessions:
+        if not selected:
+            st.info("No player-confirmed fixtures are published for this Sydney day yet. Scheduled tournament rounds are shown below.")
+        st.markdown("#### Scheduled rounds · Players to be confirmed")
+        st.caption("Programme dates are venue-local; the Sydney equivalent is shown on each card. These are round/session plans, not confirmed player fixtures. Individual match times may differ. Singles only.")
+        st.markdown('<div class="atp-card-grid">'+''.join(programme_html(r) for r in sessions)+'</div>',unsafe_allow_html=True)
     if not selected:
-        st.info("No matches for this day in the current fixture snapshot. More fixtures may be added on refresh.")
+        if not sessions:
+            st.info("No player-confirmed fixtures are available for this day in the current snapshot. This does not mean no tennis is scheduled.")
         return
     labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
     st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],False) for r in selected)+'</div>', unsafe_allow_html=True)

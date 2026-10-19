@@ -1,11 +1,16 @@
 {
   "schema_version": 1,
   "provider": "SportsAPI365",
-  "fetched_at_utc": "2026-10-19T10:29:53Z",
+  "fetched_at_utc": "2026-10-19T11:52:41Z",
   "coverage_complete": true,
   "dates": [
     "2026-10-19",
-    "2026-10-20"
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-25"
   ],
   "events": [
     {
@@ -54,11 +59,13 @@
       "rank_id": 2,
       "surface": "Indoor hard",
       "round": "First",
-      "start_time_utc": "2026-10-19T11:30:00Z",
+      "start_time_utc": "2026-10-19T12:00:00Z",
       "player_a_id": 14856,
       "player_b_id": 72574,
       "player_a_name": "Yannick Hanfmann",
-      "player_b_name": "Martin Damm"
+      "player_b_name": "Martin Damm",
+      "player_a_country": "GER",
+      "player_b_country": "USA"
     },
     {
       "fixture_id": 213930,
@@ -71,7 +78,9 @@
       "player_a_id": 83795,
       "player_b_id": 106767,
       "player_a_name": "Jaime Faria",
-      "player_b_name": "Felix Balshaw"
+      "player_b_name": "Felix Balshaw",
+      "player_a_country": "POR",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 299883,
@@ -84,7 +93,9 @@
       "player_a_id": 40187,
       "player_b_id": 92985,
       "player_a_name": "Andrea Guerrieri",
-      "player_b_name": "Alex Michelsen"
+      "player_b_name": "Alex Michelsen",
+      "player_a_country": "ITA",
+      "player_b_country": "USA"
     },
     {
       "fixture_id": 213926,
@@ -97,7 +108,9 @@
       "player_a_id": 73956,
       "player_b_id": 63572,
       "player_a_name": "Matteo Arnaldi",
-      "player_b_name": "Lorenzo Musetti"
+      "player_b_name": "Lorenzo Musetti",
+      "player_a_country": "ITA",
+      "player_b_country": "ITA"
     },
     {
       "fixture_id": 278941,
@@ -110,7 +123,9 @@
       "player_a_id": 9043,
       "player_b_id": 74880,
       "player_a_name": "Mikhail Kukushkin",
-      "player_b_name": "Stefanos Sakellaridis"
+      "player_b_name": "Stefanos Sakellaridis",
+      "player_a_country": "KAZ",
+      "player_b_country": "GRE"
     },
     {
       "fixture_id": 213920,
@@ -123,7 +138,9 @@
       "player_a_id": 31392,
       "player_b_id": 111498,
       "player_a_name": "Lorenzo Sonego",
-      "player_b_name": "Moise Kouame"
+      "player_b_name": "Moise Kouame",
+      "player_a_country": "ITA",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 189143,
@@ -136,7 +153,9 @@
       "player_a_id": 67535,
       "player_b_id": 58149,
       "player_a_name": "Terence Atmane",
-      "player_b_name": "Rinky Hijikata"
+      "player_b_name": "Rinky Hijikata",
+      "player_a_country": "FRA",
+      "player_b_country": "AUS"
     },
     {
       "fixture_id": 278952,
@@ -149,7 +168,24 @@
       "player_a_id": 39863,
       "player_b_id": 28900,
       "player_a_name": "Sho Shimabukuro",
-      "player_b_name": "Roman Safiullin"
+      "player_b_name": "Roman Safiullin",
+      "player_a_country": "JPN",
+      "player_b_country": "RUS"
+    },
+    {
+      "fixture_id": 333049,
+      "tournament": "Almaty Open - Almaty",
+      "tournament_id": 21357,
+      "rank_id": 2,
+      "surface": "Indoor hard",
+      "round": "Second",
+      "start_time_utc": "2026-10-20T06:30:00Z",
+      "player_a_id": 11517,
+      "player_b_id": 76127,
+      "player_a_name": "James Duckworth",
+      "player_b_name": "Luciano Darderi",
+      "player_a_country": "AUS",
+      "player_b_country": "ITA"
     },
     {
       "fixture_id": 138874,
@@ -162,7 +198,9 @@
       "player_a_id": 14177,
       "player_b_id": 18736,
       "player_a_name": "Jan-Lennard Struff",
-      "player_b_name": "Marcos Giron"
+      "player_b_name": "Marcos Giron",
+      "player_a_country": "GER",
+      "player_b_country": "USA"
     },
     {
       "fixture_id": 138877,
@@ -175,7 +213,9 @@
       "player_a_id": 33860,
       "player_b_id": 95311,
       "player_a_name": "Tallon Griekspoor",
-      "player_b_name": "Max Schoenhaus"
+      "player_b_name": "Max Schoenhaus",
+      "player_a_country": "NED",
+      "player_b_country": "GER"
     },
     {
       "fixture_id": 138878,
@@ -188,7 +228,9 @@
       "player_a_id": 66828,
       "player_b_id": 52934,
       "player_a_name": "Mariano Navone",
-      "player_b_name": "Juan Manuel Cerundolo"
+      "player_b_name": "Juan Manuel Cerundolo",
+      "player_a_country": "ARG",
+      "player_b_country": "ARG"
     },
     {
       "fixture_id": 138879,
@@ -201,7 +243,9 @@
       "player_a_id": 68090,
       "player_b_id": 46747,
       "player_a_name": "Jacob Fearnley",
-      "player_b_name": "Hugo Gaston"
+      "player_b_name": "Hugo Gaston",
+      "player_a_country": "GBR",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 138881,
@@ -214,7 +258,9 @@
       "player_a_id": 79068,
       "player_b_id": 37741,
       "player_a_name": "Toby Samuel",
-      "player_b_name": "Zizou Bergs"
+      "player_b_name": "Zizou Bergs",
+      "player_a_country": "GBR",
+      "player_b_country": "BEL"
     },
     {
       "fixture_id": 138884,
@@ -227,7 +273,9 @@
       "player_a_id": 85899,
       "player_b_id": 13447,
       "player_a_name": "Dino Prizmic",
-      "player_b_name": "Damir Dzumhur"
+      "player_b_name": "Damir Dzumhur",
+      "player_a_country": "CRO",
+      "player_b_country": "BIH"
     },
     {
       "fixture_id": 189134,
@@ -240,7 +288,9 @@
       "player_a_id": 30470,
       "player_b_id": 39152,
       "player_a_name": "Stefanos Tsitsipas",
-      "player_b_name": "Aleksandar Kovacevic"
+      "player_b_name": "Aleksandar Kovacevic",
+      "player_a_country": "GRE",
+      "player_b_country": "USA"
     },
     {
       "fixture_id": 213907,
@@ -253,7 +303,9 @@
       "player_a_id": 1092,
       "player_b_id": 94493,
       "player_a_name": "Stan Wawrinka",
-      "player_b_name": "Martin Landaluce"
+      "player_b_name": "Martin Landaluce",
+      "player_a_country": "SUI",
+      "player_b_country": "ESP"
     },
     {
       "fixture_id": 213917,
@@ -266,7 +318,9 @@
       "player_a_id": 28899,
       "player_b_id": 27851,
       "player_a_name": "Benjamin Bonzi",
-      "player_b_name": "Cameron Norrie"
+      "player_b_name": "Cameron Norrie",
+      "player_a_country": "FRA",
+      "player_b_country": "GBR"
     },
     {
       "fixture_id": 213918,
@@ -279,7 +333,9 @@
       "player_a_id": 29732,
       "player_b_id": 59092,
       "player_a_name": "Daniel Altmaier",
-      "player_b_name": "Titouan Droguet"
+      "player_b_name": "Titouan Droguet",
+      "player_a_country": "GER",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 213923,
@@ -292,7 +348,9 @@
       "player_a_id": 38911,
       "player_b_id": 36263,
       "player_a_name": "Ugo Humbert",
-      "player_b_name": "Corentin Moutet"
+      "player_b_name": "Corentin Moutet",
+      "player_a_country": "FRA",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 213927,
@@ -305,7 +363,9 @@
       "player_a_id": 79060,
       "player_b_id": 56846,
       "player_a_name": "Hamad Medjedovic",
-      "player_b_name": "Brandon Nakashima"
+      "player_b_name": "Brandon Nakashima",
+      "player_a_country": "SRB",
+      "player_b_country": "USA"
     },
     {
       "fixture_id": 299874,
@@ -318,7 +378,9 @@
       "player_a_id": 11226,
       "player_b_id": 35296,
       "player_a_name": "David Goffin",
-      "player_b_name": "Remy Bertola"
+      "player_b_name": "Remy Bertola",
+      "player_a_country": "BEL",
+      "player_b_country": "SUI"
     },
     {
       "fixture_id": 299877,
@@ -331,7 +393,9 @@
       "player_a_id": 24249,
       "player_b_id": 55828,
       "player_a_name": "Botic Van De Zandschulp",
-      "player_b_name": "Clement Chidekh"
+      "player_b_name": "Clement Chidekh",
+      "player_a_country": "NED",
+      "player_b_country": "FRA"
     },
     {
       "fixture_id": 299898,
@@ -344,7 +408,9 @@
       "player_a_id": 92184,
       "player_b_id": 84235,
       "player_a_name": "Nishesh Basavareddy",
-      "player_b_name": "Raphael Collignon"
+      "player_b_name": "Raphael Collignon",
+      "player_a_country": "USA",
+      "player_b_country": "BEL"
     },
     {
       "fixture_id": 189139,
@@ -357,7 +423,9 @@
       "player_a_id": 52140,
       "player_b_id": 55257,
       "player_a_name": "Fabian Marozsan",
-      "player_b_name": "Timofey Skatov"
+      "player_b_name": "Timofey Skatov",
+      "player_a_country": "HUN",
+      "player_b_country": "KAZ"
     },
     {
       "fixture_id": 278966,
@@ -370,7 +438,39 @@
       "player_a_id": 93550,
       "player_b_id": 25543,
       "player_a_name": "Rei Sakamoto",
-      "player_b_name": "Karen Khachanov"
+      "player_b_name": "Karen Khachanov",
+      "player_a_country": "JPN",
+      "player_b_country": "RUS"
+    },
+    {
+      "fixture_id": 189146,
+      "tournament": "Almaty Open - Almaty",
+      "tournament_id": 21357,
+      "rank_id": 2,
+      "surface": "Indoor hard",
+      "round": "First",
+      "start_time_utc": "2026-10-21T06:00:00Z",
+      "player_a_id": 72578,
+      "player_b_id": 37532,
+      "player_a_name": "Mattia Bellucci",
+      "player_b_name": "Tomas Martin Etcheverry",
+      "player_a_country": "ITA",
+      "player_b_country": "ARG"
+    },
+    {
+      "fixture_id": 189153,
+      "tournament": "Almaty Open - Almaty",
+      "tournament_id": 21357,
+      "rank_id": 2,
+      "surface": "Indoor hard",
+      "round": "First",
+      "start_time_utc": "2026-10-21T06:00:00Z",
+      "player_a_id": 116980,
+      "player_b_id": 58327,
+      "player_a_name": "Zangar Nurlanuly",
+      "player_b_name": "Tomas Machac",
+      "player_a_country": "KAZ",
+      "player_b_country": "CZE"
     }
   ]
 }

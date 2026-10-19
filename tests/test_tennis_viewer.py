@@ -130,5 +130,5 @@ def test_atp_mode_independently_renders_no_data_notice():
     sport.set_value("ATP Men's Singles").run()
     assert not app.exception
     assert any("ATP Men's Singles" in str(x.value) for x in app.subheader)
-    assert any("No licensed" in str(x.value) for x in app.info)
+    assert any("winner predictions are being validated" in str(x.value) for x in app.info)
     assert not any("ATP Hybrid" in str(x.value) for x in app.metric)

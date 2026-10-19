@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "provider": "SportsAPI365",
+  "fetched_at_utc": "2026-10-19T10:20:09Z",
+  "coverage_complete": false,
+  "dates": [
+    "2026-10-19"
+  ],
+  "events": [
+    {
+      "fixture_id": 213920,
+      "tournament": "Grand Prix Auvergne-Rhone-Alpes - Lyon",
+      "tournament_id": 21359,
+      "rank_id": 2,
+      "surface": "Indoor hard",
+      "round": "First",
+      "start_time_utc": "2026-10-19T16:00:00Z",
+      "player_a_id": 31392,
+      "player_b_id": 111498,
+      "player_a_name": "Lorenzo Sonego",
+      "player_b_name": "Moise Kouame"
+    }
+  ]
+}

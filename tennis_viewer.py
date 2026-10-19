@@ -131,13 +131,15 @@ def show_atp(root):
     st.subheader("ATP Men's Singles")
     st.caption("Surface Elo + Serve/return · ATP Hybrid match-winner probabilities")
     frame, metadata, status = read_atp(root)
+    import tennis_fixtures_viewer
+    tennis_fixtures_viewer.show_fixtures(root)
     # The independent market snapshot never triggers a provider API call.
     # ATP Hybrid comparisons require an independently approved forecast file.
     import tennis_odds_viewer
-    tennis_odds_viewer.show_market(root, frame if status == "ready" else None)
+    with st.expander("Bookmaker reference (optional)"):
+        tennis_odds_viewer.show_market(root, frame if status == "ready" else None)
     if status == "not_published":
-        st.info("ATP winner predictions are being prepared. No licensed, independently checked upcoming ATP forecasts have been published yet.")
-        st.write("The engine has separate surface Elo and serve/return models, with a validation-selected hybrid. Football predictions are unchanged.")
+        st.info("ATP winner predictions are being validated. The fixture list above is separate from model forecasts.")
         return
     if status in ("invalid", "incomplete"):
         st.warning("ATP publication failed validation. No tennis probabilities are displayed.")

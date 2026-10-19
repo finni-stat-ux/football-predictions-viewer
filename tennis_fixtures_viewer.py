@@ -135,7 +135,7 @@ def show_fixtures(root, forecasts=None):
     labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
     selection_key = "atp_selected_fixture"
     if st.session_state.get(selection_key) not in labels:
-        st.session_state[selection_key] = selected[0]["fixture_id"]
+        st.session_state[selection_key] = next((r["fixture_id"] for r in selected if picks[r["fixture_id"]] is not None), selected[0]["fixture_id"])
     def choose(identity):
         st.session_state[selection_key] = identity
     st.caption("Choose a match · Swipe or scroll for more fixtures")

@@ -120,9 +120,10 @@ def test_existing_football_remains_default_when_tennis_unpublished():
     assert "if predictions.empty:" in source
 
 
-def test_atp_mode_independently_renders_no_data_notice():
+def test_atp_mode_independently_renders_no_data_notice(monkeypatch):
     from streamlit.testing.v1 import AppTest
 
+    monkeypatch.setattr("tennis_viewer.read_atp", lambda root: (pd.DataFrame(), {}, "not_published"))
     root = Path(__file__).resolve().parents[1]
     app = AppTest.from_file(str(root / "viewer_dashboard.py"), default_timeout=60).run()
     assert not app.exception

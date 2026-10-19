@@ -63,7 +63,8 @@ def prediction_for(row, forecasts):
         side = "a" if probability > .5 else "b" if probability < .5 else None
         return {"model": model, "p_a": probability, "p_b": 1-probability, "side": side,
                 "winner": row[f"player_{side}_name"] if side else "Too close to call",
-                "confidence": max(probability, 1-probability)}
+                "confidence": max(probability, 1-probability),
+                "issued_at_utc": p.get("forecast_issued_at_utc"), "training_through": p.get("forecast_training_through")}
     return None
 
 
@@ -98,6 +99,9 @@ def pick_html(row, pick, *, compact=False):
     set_line=(f'<div class="atp-set-pick"><span>SET-SCORE ESTIMATE</span><strong>{escape(sets["winner"])} {escape(sets["score"])}</strong><small>{sets["p"]:.1%} probability of this exact set result · Experimental</small></div>' if sets else '')
     if row.get("_started"):
         set_line='<small class="atp-retained">Pre-match forecast retained · Result not available</small>'+set_line
+    if not compact and pick.get("issued_at_utc") and pick.get("training_through"):
+        issued=pd.Timestamp(pick["issued_at_utc"]).tz_convert("Australia/Sydney").strftime("%d %b, %I:%M %p")
+        set_line+=f'<small class="atp-retained">Forecast issued {escape(issued)} Sydney · History through {escape(str(pick["training_through"]))}</small>'
     if compact:
         return f'<div class="atp-pick"><span class="atp-pick-label">PREDICTED WINNER · {escape(pick["model"])}</span>{title}<span>{pick["confidence"]:.1%} estimated probability</span>{set_line}</div>'
     return f'<div class="atp-pick"><span class="atp-pick-label">{escape(pick["model"]).upper()} MATCH PICK</span>{title}<p>{pick["confidence"]:.1%} estimated probability</p><div class="atp-prob-grid"><div>{player_html(row,"a")}<b>{pick["p_a"]:.1%}</b></div><div>{player_html(row,"b")}<b>{pick["p_b"]:.1%}</b></div></div><div class="atp-prob-bar" aria-label="Player A {pick["p_a"]:.1%}, Player B {pick["p_b"]:.1%}"><span style="width:{100*pick["p_a"]:.4f}%"></span></div>{set_line}<small>Match winner · Probabilities are estimates, not guarantees.</small></div>'

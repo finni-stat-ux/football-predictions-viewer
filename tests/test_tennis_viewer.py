@@ -120,18 +120,21 @@ def test_existing_football_remains_default_when_tennis_unpublished():
     assert "if predictions.empty:" in source
 
 
-def test_atp_mode_independently_renders_no_data_notice(monkeypatch):
+def test_atp_component_renders_no_data_notice(tmp_path):
     from streamlit.testing.v1 import AppTest
-
-    monkeypatch.setattr("tennis_viewer.read_atp", lambda root, **kwargs: (pd.DataFrame(), {}, "not_published"))
-    root = Path(__file__).resolve().parents[1]
-    app = AppTest.from_file(str(root / "viewer_dashboard.py"), default_timeout=60).run()
+    app=AppTest.from_string(f"import tennis_viewer\ntennis_viewer.show_atp({str(tmp_path)!r})").run()
     assert not app.exception
+    assert any("winner predictions are being validated" in str(x.value) for x in app.info)
+
+
+def test_atp_entry_reload_uses_prediction_only_view():
+    from streamlit.testing.v1 import AppTest
+    root=Path(__file__).resolve().parents[1]
+    app=AppTest.from_file(str(root/"viewer_dashboard.py"),default_timeout=60).run()
     app.button(key="sport_tennis").click().run()
     assert not app.exception
-    assert any("ATP Men’s Singles" in str(x.value) for x in app.markdown)
-    assert any("winner predictions are being validated" in str(x.value) for x in app.info)
-    assert not any("ATP Hybrid" in str(x.value) for x in app.metric)
+    assert any("Only matches with validated predictions" in str(x.value) for x in app.caption)
+    assert not any("Prediction pending" in str(x.value) for x in app.markdown)
 
 
 def test_retained_forecast_must_have_been_published_before_start():
@@ -140,3 +143,13 @@ def test_retained_forecast_must_have_been_published_before_start():
     assert len(validated_atp(fiction(),permit(),later,retain_started=True))==3
     late=permit();late['published_at_utc']='2026-10-23T02:00:00Z'
     assert validated_atp(fiction(),late,later,retain_started=True).empty
+
+
+def test_per_forecast_issue_time_preserves_old_pick_after_new_publication():
+    data=fiction();data['forecast_issued_at_utc']='2026-10-19T02:00:00Z';data['forecast_training_through']='2026-05-08'
+    metadata=permit();metadata['published_at_utc']='2026-10-23T02:00:00Z'
+    now=datetime(2026,10,23,12,tzinfo=timezone.utc)
+    assert len(validated_atp(data,metadata,now,retain_started=True))==3
+    data['forecast_issued_at_utc']='2026-10-23T02:00:00Z'
+    with pytest.raises(ValueError,match='before match start'):
+        validated_atp(data,metadata,now,retain_started=True)

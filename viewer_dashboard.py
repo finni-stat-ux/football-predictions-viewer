@@ -52,7 +52,11 @@ st.markdown('<p class="cv-intro">Your match forecast. The probabilities behind i
 from sport_icons import show_sport_picker
 sport = show_sport_picker()
 if sport == "ATP Men's Singles":
-    import tennis_viewer
+    # Match the existing football reload policy: Cloud may cache imported UI modules.
+    import tennis_design, tennis_fixtures_viewer, tennis_viewer
+    importlib.reload(tennis_design)
+    importlib.reload(tennis_fixtures_viewer)
+    importlib.reload(tennis_viewer)
     tennis_viewer.show_atp(ROOT)
     st.stop()
 

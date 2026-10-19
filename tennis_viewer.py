@@ -63,7 +63,8 @@ def validated_atp(frame, metadata, now=None, *, retain_started=False):
         raise ValueError("Invalid ATP trained blend weight")
     if frame is None or frame.empty or not set(KEYS).issubset(frame.columns):
         raise ValueError("Missing ATP prediction data")
-    data = frame.loc[:, list(KEYS)].copy()
+    optional=[key for key in ("forecast_issued_at_utc","forecast_training_through") if key in frame]
+    data = frame.loc[:, list(KEYS)+optional].copy()
     if data.isna().any().any() or data.duplicated(["fixture_id", "model"]).any():
         raise ValueError("Incomplete or duplicate ATP prediction")
     if not data.model.isin(MODELS).all() or not data.surface.isin(("Hard", "Clay", "Grass", "Carpet")).all():
@@ -107,7 +108,20 @@ def validated_atp(frame, metadata, now=None, *, retain_started=False):
             hybrid = float(match.loc[match.model.eq("ATP Hybrid"), "p_player_a"].iloc[0])
             if not math.isclose(hybrid, (1-weight)*elo + weight*sr, abs_tol=1e-6):
                 raise ValueError("Unreproducible ATP Hybrid probability")
-    visible=(data.kickoff_utc > now) | (retain_started & (data.kickoff_utc > published))
+    issued=pd.Series(published,index=data.index)
+    if "forecast_issued_at_utc" in data:
+        issued=pd.to_datetime(data.forecast_issued_at_utc,utc=True,errors="coerce")
+        if issued.isna().any() or (issued>published).any() or (issued>now).any() or (issued>=data.kickoff_utc).any():
+            raise ValueError("Forecast was not issued before match start")
+    if "forecast_training_through" in data:
+        dates=data.forecast_training_through.astype(str)
+        parsed=pd.to_datetime(dates,format="%Y-%m-%d",errors="coerce")
+        if parsed.isna().any() or not dates.str.fullmatch(r"\d{4}-\d{2}-\d{2}").all() or (dates>=data.match_date).any():
+            raise ValueError("Forecast history includes match day or later")
+    for _,match in data.groupby("fixture_id"):
+        if any(match[column].nunique()!=1 for column in optional):
+            raise ValueError("Conflicting forecast issue provenance")
+    visible=(data.kickoff_utc > now) | (retain_started & (data.kickoff_utc > issued))
     return data.loc[visible].sort_values(["kickoff_utc", "fixture_id", "model"]).reset_index(drop=True)
 
 

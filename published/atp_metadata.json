@@ -3,16 +3,14 @@
   "approved_for_publication": true,
   "source_rights_confirmed": true,
   "holdout_checked": true,
-  "holdout_matches": 2486,
+  "holdout_matches": 2479,
   "history_rights_url": "https://tennisdata.app/downloads/",
   "fixture_rights_url": "https://sportsapi365.com/docs/direct/tennis",
-  "source_permission_basis": "The free season CSV download page expressly permits using these files in any way. This release contains independently computed model forecasts only; no raw CSV redistribution.",
-  "published_at_utc": "2026-10-19T11:21:20Z",
+  "published_at_utc": "2026-10-19T22:33:56Z",
   "hybrid_weight_serve_return": 0.25,
+  "training_through": "2026-10-18",
   "validation_year": 2024,
   "holdout_year": 2025,
-  "training_through": "2026-05-08",
-  "history_sha256": "a3550693f0095c4eb33531b53404156197e48d0f71b5d6f6bd17c1ff998da058",
   "evaluation": [
     {
       "split": "validation",
@@ -25,17 +23,17 @@
     {
       "split": "holdout",
       "model": "Surface Elo",
-      "matches": 2486,
-      "log_loss": 0.6226299465839394,
-      "brier": 0.2171792599428908,
-      "accuracy": 0.6496379726468222
+      "matches": 2479,
+      "log_loss": 0.6211807807033116,
+      "brier": 0.21665615696155113,
+      "accuracy": 0.6506655909640984
     },
     {
       "split": "validation",
       "model": "Serve/return",
       "matches": 2642,
       "log_loss": 0.6448667200200058,
-      "brier": 0.2268094357753188,
+      "brier": 0.22680943577531887,
       "accuracy": 0.6283118849356548
     },
     {
@@ -43,98 +41,60 @@
       "model": "ATP Hybrid",
       "matches": 2687,
       "log_loss": 0.6166156375824018,
-      "brier": 0.2144130919381838,
+      "brier": 0.21441309193818384,
       "accuracy": 0.6505396352809825
     },
     {
       "split": "holdout",
       "model": "Serve/return",
-      "matches": 2440,
-      "log_loss": 0.6498841480316667,
-      "brier": 0.2289337182053041,
-      "accuracy": 0.6262295081967213
+      "matches": 2433,
+      "log_loss": 0.649225187466727,
+      "brier": 0.22863969985335042,
+      "accuracy": 0.6280312371557748
     },
     {
       "split": "holdout",
       "model": "ATP Hybrid",
-      "matches": 2486,
-      "log_loss": 0.6216753125232233,
-      "brier": 0.2167059641318398,
-      "accuracy": 0.6484312148028962
+      "matches": 2479,
+      "log_loss": 0.6205295748992021,
+      "brier": 0.21626204602282156,
+      "accuracy": 0.6494554255748286
     }
   ],
   "excluded_fixtures": [
     {
-      "fixture_id": 297210,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        4,
-        9
-      ],
-      "player_a_id": 47259,
-      "player_b_id": 104215,
-      "player_a_name": "Clement Tabur",
-      "player_b_name": "Nicolai Budkov Kjaer",
-      "start_time_utc": "2026-10-19T11:30:00Z"
+      "fixture_id": 333049,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 11517,
+      "player_b_id": 76127,
+      "player_a_name": "James Duckworth",
+      "player_b_name": "Luciano Darderi",
+      "start_time_utc": "2026-10-20T06:30:00Z"
     },
     {
-      "fixture_id": 213930,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        21,
-        0
-      ],
-      "player_a_id": 83795,
-      "player_b_id": 106767,
-      "player_a_name": "Jaime Faria",
-      "player_b_name": "Felix Balshaw",
-      "start_time_utc": "2026-10-19T13:00:00Z"
+      "fixture_id": 189146,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 72578,
+      "player_b_id": 37532,
+      "player_a_name": "Mattia Bellucci",
+      "player_b_name": "Tomas Martin Etcheverry",
+      "start_time_utc": "2026-10-21T06:00:00Z"
     },
     {
-      "fixture_id": 299883,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        0,
-        145
-      ],
-      "player_a_id": 40187,
-      "player_b_id": 92985,
-      "player_a_name": "Andrea Guerrieri",
-      "player_b_name": "Alex Michelsen",
-      "start_time_utc": "2026-10-19T13:30:00Z"
-    },
-    {
-      "fixture_id": 278941,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        30,
-        3
-      ],
-      "player_a_id": 9043,
-      "player_b_id": 74880,
-      "player_a_name": "Mikhail Kukushkin",
-      "player_b_name": "Stefanos Sakellaridis",
-      "start_time_utc": "2026-10-19T14:30:00Z"
-    },
-    {
-      "fixture_id": 213920,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        266,
-        4
-      ],
-      "player_a_id": 31392,
-      "player_b_id": 111498,
-      "player_a_name": "Lorenzo Sonego",
-      "player_b_name": "Moise Kouame",
-      "start_time_utc": "2026-10-19T16:00:00Z"
+      "fixture_id": 189153,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 116980,
+      "player_b_id": 58327,
+      "player_a_name": "Zangar Nurlanuly",
+      "player_b_name": "Tomas Machac",
+      "start_time_utc": "2026-10-21T06:00:00Z"
     },
     {
       "fixture_id": 138877,
-      "reason": "Fewer than five earlier ATP main-draw matches",
+      "reason": "Insufficient earlier player history",
       "prior_matches": [
-        217,
-        0
+        230,
+        2
       ],
       "player_a_id": 33860,
       "player_b_id": 95311,
@@ -143,23 +103,10 @@
       "start_time_utc": "2026-10-20T08:00:00Z"
     },
     {
-      "fixture_id": 138881,
-      "reason": "Fewer than five earlier ATP main-draw matches",
-      "prior_matches": [
-        0,
-        110
-      ],
-      "player_a_id": 79068,
-      "player_b_id": 37741,
-      "player_a_name": "Toby Samuel",
-      "player_b_name": "Zizou Bergs",
-      "start_time_utc": "2026-10-20T08:00:00Z"
-    },
-    {
       "fixture_id": 299874,
-      "reason": "Fewer than five earlier ATP main-draw matches",
+      "reason": "Insufficient earlier player history",
       "prior_matches": [
-        159,
+        158,
         1
       ],
       "player_a_id": 11226,
@@ -170,9 +117,9 @@
     },
     {
       "fixture_id": 299877,
-      "reason": "Fewer than five earlier ATP main-draw matches",
+      "reason": "Insufficient earlier player history",
       "prior_matches": [
-        214,
+        245,
         2
       ],
       "player_a_id": 24249,
@@ -183,5 +130,8 @@
     }
   ],
   "release_status": "experimental",
-  "player_id_crosswalk": "Exact provider IDs and full names; verified opponent/date/tournament schedule pairs"
+  "history_sha256": "2c8a35da5d4838b980dec9a0b896837dc280789060c3106a40096698a9d85c32",
+  "retained_elapsed_forecasts": 6,
+  "source_permission_basis": "The free season CSV download page expressly permits using these files in any way. This release contains independently computed model forecasts only; no raw CSV redistribution.",
+  "publication_note": "Only future picks were regenerated. Retained picks keep their original issue time and training cutoff."
 }

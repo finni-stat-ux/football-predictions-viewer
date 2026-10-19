@@ -94,7 +94,7 @@ def show_fixtures(root, forecasts=None):
                                prediction_for, pick_html, tile_label, card_html)
     inject_style(root)
     from sport_icons import TENNIS
-    st.markdown('<div class="atp-hero"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="atp-hero"><img class="atp-tour-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg" alt="ATP Tour logo"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
     rows, metadata, status = read_fixtures(root)
     st.markdown("### Upcoming ATP matches")
     if status == "not_published":
@@ -136,4 +136,4 @@ def show_fixtures(root, forecasts=None):
     st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],r["fixture_id"]==row["fixture_id"]) for r in selected)+'</div>', unsafe_allow_html=True)
     with st.expander("Compact fixture table"):
         st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
-    st.caption("Source: SportsAPI365 · Country flags follow the provider’s player records. Tournament court badges are original identifiers, not official tournament logos.")
+    st.caption("Source: SportsAPI365 · Country flags follow the provider’s player records. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")

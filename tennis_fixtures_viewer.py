@@ -2,7 +2,7 @@
 import json
 import re
 from html import escape
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -100,10 +100,19 @@ def display_rows(rows):
     } for r in rows]
 
 
+
+def day_options(rows, now=None):
+    """Seven Sydney calendar dates, displayed in Monday-to-Sunday order."""
+    now=now or datetime.now(timezone.utc)
+    today=now.astimezone(ZoneInfo("Australia/Sydney")).date()
+    dates=[today+timedelta(days=i) for i in range(7)]
+    counts={day.isoformat():sum(timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date()==day for r in rows) for day in dates}
+    return [(day.isoformat(),day.strftime("%A"),counts[day.isoformat()]) for day in sorted(dates,key=lambda d:d.weekday())]
+
 def show_fixtures(root, forecasts=None):
     import streamlit as st
     from tennis_design import (inject_style, tournament_mark, player_html,
-                               prediction_for, pick_html, tile_label, card_html)
+                               prediction_for, pick_html, card_html)
     inject_style(root)
     from sport_icons import TENNIS
     st.markdown('<div class="atp-hero"><img class="atp-tour-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg" alt="ATP Tour logo"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
@@ -131,28 +140,37 @@ def show_fixtures(root, forecasts=None):
     pick_count = sum(p is not None for p in picks.values())
     st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>upcoming matches</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
-    selected = rows if choice == "All tournaments" else [r for r in rows if r["tournament"] == choice]
+    tournament_rows = rows if choice == "All tournaments" else [r for r in rows if r["tournament"] == choice]
+    days=day_options(tournament_rows)
+    day_key="atp_selected_day"
+    if st.session_state.get(day_key) not in {day[0] for day in days}:
+        st.session_state[day_key]=next((day[0] for day in sorted(days) if day[2]), sorted(days)[0][0])
+    def choose_day(value):
+        st.session_state[day_key]=value
+    st.caption("Choose a day · Sydney dates and times")
+    with st.container(horizontal=True,wrap=True,key="atp_days"):
+        for date,label,count in days:
+            st.button(f"{label} · {count}",key="atp_day_"+label.lower(),
+                      type="primary" if date==st.session_state[day_key] else "secondary",
+                      on_click=choose_day,args=(date,))
+    selected_day=datetime.strptime(st.session_state[day_key],"%Y-%m-%d")
+    st.markdown("### "+selected_day.strftime("%A")+"’s Match Picks")
+    st.caption(selected_day.strftime("%d %B %Y")+" · Sydney time")
+    selected=[r for r in tournament_rows if timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date().isoformat()==st.session_state[day_key]]
+    if not selected:
+        st.info("No upcoming matches for this day in the current fixture snapshot. More fixtures may be added on refresh.")
+        return
     labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
-    selection_key = "atp_selected_fixture"
-    if st.session_state.get(selection_key) not in labels:
-        st.session_state[selection_key] = next((r["fixture_id"] for r in selected if picks[r["fixture_id"]] is not None), selected[0]["fixture_id"])
-    def choose(identity):
-        st.session_state[selection_key] = identity
-    st.caption("Choose a match · Swipe or scroll for more fixtures")
-    with st.container(horizontal=True, wrap=False, key="atp_fixture_tiles"):
-        for row in selected:
-            st.button(tile_label(row, labels[row["fixture_id"]]), key="atp_tile_"+str(row["fixture_id"]),
-                      width=270, type="primary" if row["fixture_id"] == st.session_state[selection_key] else "secondary",
-                      on_click=choose, args=(row["fixture_id"],))
-    row = next(r for r in selected if r["fixture_id"] == st.session_state[selection_key])
-    st.markdown('<div class="atp-selected-head">'+tournament_mark(row["tournament"])+'<div><h3>'+escape(row["tournament"])+ '</h3><small>'+escape(row["round"])+" · "+escape(row["surface"])+" · "+escape(labels[row["fixture_id"]])+" Sydney</small></div></div>", unsafe_allow_html=True)
-    st.markdown('<div class="atp-matchup">'+player_html(row,"a")+'<em>VS</em>'+player_html(row,"b")+'</div>'+pick_html(row,picks[row["fixture_id"]]), unsafe_allow_html=True)
-    chosen=picks[row["fixture_id"]]
-    if chosen and chosen.get("set_outcomes"):
-        st.caption("Set-score probabilities · Best of three · Experimental")
-        st.table([{"Player":outcome["winner"],"Sets won–lost":outcome["score"],"Estimated probability":f'{outcome["p"]:.1%}'} for outcome in chosen["set_outcomes"]])
-    st.markdown("### All upcoming match picks")
-    st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],r["fixture_id"]==row["fixture_id"]) for r in selected)+'</div>', unsafe_allow_html=True)
+    st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],False) for r in selected)+'</div>', unsafe_allow_html=True)
+    with st.expander("Match details & set-score probabilities"):
+        lookup={r["fixture_id"]:r for r in selected}
+        selected_id=st.selectbox("Match on this day",list(lookup),format_func=lambda identity:lookup[identity]["player_a_name"]+" vs "+lookup[identity]["player_b_name"],key="atp_day_match")
+        row=lookup[selected_id]
+        st.markdown('<div class="atp-matchup">'+player_html(row,"a")+'<em>VS</em>'+player_html(row,"b")+'</div>'+pick_html(row,picks[selected_id]),unsafe_allow_html=True)
+        chosen=picks[selected_id]
+        if chosen and chosen.get("set_outcomes"):
+            st.caption("Set-score probabilities · Best of three · Experimental")
+            st.table([{"Player":outcome["winner"],"Sets won–lost":outcome["score"],"Estimated probability":f'{outcome["p"]:.1%}'} for outcome in chosen["set_outcomes"]])
     with st.expander("Compact fixture table"):
         st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
     st.caption("Source: SportsAPI365 · Flags show represented country, using provider records or the checked ATP/ITF player list. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")

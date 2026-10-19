@@ -17,10 +17,9 @@
 .atp-winner{display:flex;align-items:center;gap:10px;font-size:1.35rem;overflow-wrap:anywhere}.atp-pick p{font-weight:600;margin:8px 0 14px}.atp-pick small{opacity:.7;font-size:.8rem}.atp-pick>span:last-child{font-size:.85rem;display:block;margin-top:8px}
 .atp-prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.atp-prob-grid>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.9rem}.atp-prob-grid b{display:block;width:100%;font-size:1.7rem;margin-top:4px}
 .atp-prob-bar{background:#b8c0d5;height:8px;border-radius:8px;overflow:hidden;margin:14px 0}.atp-prob-bar span{display:block;height:100%;background:#7856d8}
-.atp-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:16px 0 24px}.atp-card{border:1px solid #8883;border-radius:14px;padding:20px;min-width:0}.atp-card-selected{border-color:#7856d8;box-shadow:0 0 0 1px #7856d8}
+.atp-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:16px 0 24px}.atp-card{border:1px solid #8883;border-radius:14px;padding:20px;min-width:0}.atp-card-selected{border-color:#7856d8;box-shadow:0 0 0 1px #7856d8}
 .atp-card-top{display:flex;align-items:center;gap:12px;min-height:64px;margin-bottom:18px}.atp-card-top>div>span{font-size:.8rem;font-weight:650;display:block;line-height:1.4}.atp-card-top small{font-size:.75rem;opacity:.65;display:block;margin-top:5px}
 .atp-player{display:flex;align-items:center;gap:10px;font-weight:650;font-size:1.05rem;overflow-wrap:anywhere}.atp-versus{font-size:.65rem;font-weight:700;opacity:.5;margin:8px 0 8px 36px;letter-spacing:.08em}.atp-start{font-size:.8rem;opacity:.72;margin:18px 0 0;font-variant-numeric:tabular-nums}.atp-card .atp-winner{font-size:.95rem}.atp-card .atp-pending,.atp-card .atp-pick{padding:12px}.atp-card .atp-pick-label{font-size:.6rem}
-.st-key-atp_fixture_tiles button{min-height:135px;min-width:240px;border-radius:12px;text-align:center}.st-key-atp_fixture_tiles button p{white-space:pre-line;font-size:.88rem;line-height:1.65}.st-key-atp_fixture_tiles button img{width:22px!important;height:15px!important;object-fit:cover;border-radius:2px;vertical-align:middle}.st-key-atp_fixture_tiles button[kind="primary"]{background:#7856d8;border-color:#7856d8;color:white}
 @media(max-width:1000px){.atp-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.atp-card-grid{grid-template-columns:minmax(0,1fr);gap:14px}.atp-card{padding:16px}.atp-hero{gap:12px}.atp-hero h2{font-size:1.25rem!important}.atp-hero-icon{width:52px;height:52px}.atp-stats{gap:12px;padding:12px}.atp-stats b{font-size:1.15rem}.atp-stats span{font-size:.75rem}.atp-winner{font-size:1.15rem}.atp-prob-grid{gap:10px}.atp-matchup{font-size:1.1rem}.atp-selected-head h3{font-size:1.1rem!important}}
 
@@ -29,4 +28,5 @@
 .atp-tour-logo{width:112px;height:auto;object-fit:contain;background:#fff;padding:10px;border-radius:10px;flex:none}
 @media(max-width:680px){.atp-hero{flex-wrap:wrap}.atp-tour-logo{width:90px}.atp-hero-icon{display:none}}
 .atp-set-pick{display:flex;flex-direction:column;gap:5px;margin:14px 0;padding-top:12px;border-top:1px solid #dfd9ee}.atp-set-pick>span{font-size:.68rem;letter-spacing:.07em;opacity:.7}.atp-set-pick strong{font-size:1rem}.atp-set-pick small{font-size:.76rem;opacity:.7}
+.st-key-atp_days button{min-height:44px;border-radius:10px}.st-key-atp_days button[kind="primary"]{background:#7856d8;border-color:#7856d8;color:white}
 </style>

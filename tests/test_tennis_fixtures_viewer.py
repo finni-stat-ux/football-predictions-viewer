@@ -66,3 +66,15 @@ def test_streamlit_fixture_screen(tmp_path):
     assert not app.exception
     assert len(app.dataframe) == 1
     assert "Partial fixture list" in app.info[0].value
+
+
+def test_day_options_use_sydney_midnight_and_monday_to_sunday_order():
+    from tennis_fixtures_viewer import day_options
+    rows=[{'start_time_utc':'2026-10-19T10:30:00Z'}, # Monday Sydney
+          {'start_time_utc':'2026-10-19T13:30:00Z'}, # Tuesday Sydney
+          {'start_time_utc':'2026-10-25T14:00:00Z'}] # Following Monday outside window
+    days=day_options(rows,datetime(2026,10,19,9,tzinfo=timezone.utc))
+    assert [day[1] for day in days]==['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    assert days[0]==('2026-10-19','Monday',1)
+    assert days[1]==('2026-10-20','Tuesday',1)
+    assert sum(day[2] for day in days)==2

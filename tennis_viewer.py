@@ -150,30 +150,9 @@ def show_atp(root):
     st.caption("ATP snapshot published: " + pd.Timestamp(metadata["published_at_utc"]).strftime("%d %b %Y, %H:%M UTC"))
     if (pd.Timestamp.now(tz="UTC") - pd.Timestamp(metadata["published_at_utc"])).total_seconds() > 72 * 3600:
         st.warning("ATP forecast snapshot is over 72 hours old. Confirm freshness before use.")
-    fixtures = frame.drop_duplicates("fixture_id")
-    labels = {
-        r.fixture_id: (
-            f"{r.player_a_name} vs {r.player_b_name} · {r.surface} · "
-            + r.kickoff_utc.tz_convert("Australia/Sydney").strftime("%d %b, %I:%M %p Sydney")
-        )
-        for r in fixtures.itertuples()
-    }
-    selected_id = st.selectbox("Upcoming ATP match", list(labels), format_func=lambda x: labels[x])
-    match = frame.loc[frame.fixture_id.eq(selected_id)]
-    models = [name for name in ("ATP Hybrid", "Surface Elo", "Serve/return") if name in match.model.values]
-    model = st.selectbox("ATP prediction model", models)
-    row = match.loc[match.model.eq(model)].iloc[0]
-    st.markdown("**" + str(row.player_a_name) + " vs " + str(row.player_b_name) + "**")
-    st.caption(f"{row.event_name} · {row.surface} · Winner after completed match")
-    left, right = st.columns(2)
-    left.metric(str(row.player_a_name), f"{row.p_player_a:.1%}")
-    right.metric(str(row.player_b_name), f"{row.p_player_b:.1%}")
-    if math.isclose(row.p_player_a, 0.5, abs_tol=1e-8):
-        st.write("Prediction: Too close to call")
-    else:
-        st.write("Predicted winner: " + (str(row.player_a_name) if row.p_player_a > 0.5 else str(row.player_b_name)))
-    st.dataframe(pd.DataFrame([
-        {"Model": entry.model, row.player_a_name: f"{entry.p_player_a:.1%}", row.player_b_name: f"{entry.p_player_b:.1%}"}
-        for entry in match.itertuples()
-    ]), hide_index=True, use_container_width=True)
-    st.caption("ATP Hybrid is experimental. Set-score estimates are experimental and available for supported best-of-three matches. Probabilities are estimates, not guarantees.")
+    with st.expander("Models & performance"):
+        st.caption("ATP Hybrid combines surface Elo and earlier serve/return form. Set-score estimates use a separate experimental model for supported best-of-three matches.")
+        if metadata.get("training_through"):
+            st.caption("Historical results through "+str(metadata["training_through"]))
+        if metadata.get("evaluation"):
+            st.dataframe(pd.DataFrame(metadata["evaluation"]),hide_index=True,use_container_width=True)

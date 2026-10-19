@@ -133,6 +133,8 @@ def show_atp(root):
     frame, metadata, status = read_atp(root)
     import tennis_fixtures_viewer
     tennis_fixtures_viewer.show_fixtures(root)
+    from cloud_refresh_ui import show_cloud_refresh
+    show_cloud_refresh(atp=True)
     # The independent market snapshot never triggers a provider API call.
     # ATP Hybrid comparisons require an independently approved forecast file.
     import tennis_odds_viewer

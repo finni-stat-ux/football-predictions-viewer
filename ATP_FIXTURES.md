@@ -14,3 +14,11 @@ and quota ledgers stay outside the public repository.
 
 The independent ATP Hybrid forecast validation and optional The Odds API
 market section retain their existing behavior.
+
+
+The password-protected **Refresh ATP fixtures** panel dispatches the private
+engine's manual seven-day collection and publication workflow. Reuses the
+existing refresh password/token. Provider credentials remain in private Actions
+secrets. A shared daily cloud request ledger caps collection at 40 attempted
+requests per UTC day. The button checks for queued/running ATP jobs and never
+calls the provider from the public app. Reload after the cloud job finishes.

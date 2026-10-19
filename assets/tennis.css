@@ -24,7 +24,9 @@
 @media(max-width:1000px){.atp-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.atp-card-grid{grid-template-columns:minmax(0,1fr);gap:14px}.atp-card{padding:16px}.atp-hero{gap:12px}.atp-hero h2{font-size:1.25rem!important}.atp-hero-icon{width:52px;height:52px}.atp-stats{gap:12px;padding:12px}.atp-stats b{font-size:1.15rem}.atp-stats span{font-size:.75rem}.atp-winner{font-size:1.15rem}.atp-prob-grid{gap:10px}.atp-matchup{font-size:1.1rem}.atp-selected-head h3{font-size:1.1rem!important}}
 
-</style>
+
 
 .atp-tour-logo{width:112px;height:auto;object-fit:contain;background:#fff;padding:10px;border-radius:10px;flex:none}
 @media(max-width:680px){.atp-hero{flex-wrap:wrap}.atp-tour-logo{width:90px}.atp-hero-icon{display:none}}
+</style>
+

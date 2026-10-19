@@ -33,7 +33,7 @@ def _https(value):
         return False
 
 
-def validated_atp(frame, metadata, now=None):
+def validated_atp(frame, metadata, now=None, *, retain_started=False):
     """Never publish stale fixtures, unlicensed data or fabricated hybrids."""
     now = pd.Timestamp.now(tz="UTC") if now is None else pd.Timestamp(now)
     if now.tzinfo is None:
@@ -107,10 +107,11 @@ def validated_atp(frame, metadata, now=None):
             hybrid = float(match.loc[match.model.eq("ATP Hybrid"), "p_player_a"].iloc[0])
             if not math.isclose(hybrid, (1-weight)*elo + weight*sr, abs_tol=1e-6):
                 raise ValueError("Unreproducible ATP Hybrid probability")
-    return data.loc[data.kickoff_utc > now].sort_values(["kickoff_utc", "fixture_id", "model"]).reset_index(drop=True)
+    visible=(data.kickoff_utc > now) | (retain_started & (data.kickoff_utc > published))
+    return data.loc[visible].sort_values(["kickoff_utc", "fixture_id", "model"]).reset_index(drop=True)
 
 
-def read_atp(root, now=None):
+def read_atp(root, now=None, *, retain_started=False):
     base = Path(root) / "published"
     csv_path, json_path = base / "atp_predictions.csv", base / "atp_metadata.json"
     if not csv_path.exists() and not json_path.exists():
@@ -119,7 +120,7 @@ def read_atp(root, now=None):
         return pd.DataFrame(), {}, "incomplete"
     try:
         metadata = json.loads(json_path.read_text(encoding="utf-8"))
-        frame = validated_atp(pd.read_csv(csv_path), metadata, now)
+        frame = validated_atp(pd.read_csv(csv_path), metadata, now, retain_started=retain_started)
     except (ValueError, TypeError, KeyError, OSError, pd.errors.ParserError):
         return pd.DataFrame(), {}, "invalid"
     return frame, metadata, "ready" if not frame.empty else "no_upcoming"
@@ -128,7 +129,7 @@ def read_atp(root, now=None):
 def show_atp(root):
     import streamlit as st
 
-    frame, metadata, status = read_atp(root)
+    frame, metadata, status = read_atp(root, retain_started=True)
     import tennis_fixtures_viewer
     tennis_fixtures_viewer.show_fixtures(root, frame if status == "ready" else None, metadata)
     from cloud_refresh_ui import show_cloud_refresh

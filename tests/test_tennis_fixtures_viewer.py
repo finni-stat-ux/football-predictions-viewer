@@ -78,3 +78,13 @@ def test_day_options_use_sydney_midnight_and_monday_to_sunday_order():
     assert days[0]==('2026-10-19','Monday',1)
     assert days[1]==('2026-10-20','Tuesday',1)
     assert sum(day[2] for day in days)==2
+
+
+def test_retention_keeps_elapsed_fixture_and_week_stays_anchored():
+    from datetime import timedelta
+    data=snapshot()
+    later=NOW+timedelta(days=1)
+    assert not validate_snapshot(data,later)[0]
+    assert len(validate_snapshot(data,later,retain_started=True)[0])==1
+    from tennis_fixtures_viewer import day_options
+    assert day_options([],later)[0][0]=='2026-10-19'

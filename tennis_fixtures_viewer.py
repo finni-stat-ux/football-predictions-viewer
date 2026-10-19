@@ -18,7 +18,7 @@ def timestamp(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def validate_snapshot(data, now=None):
+def validate_snapshot(data, now=None, *, retain_started=False):
     now = now or datetime.now(timezone.utc)
     if now.tzinfo is None:
         raise ValueError("Clock must have timezone")
@@ -29,7 +29,7 @@ def validate_snapshot(data, now=None):
     stamp = timestamp(data["fetched_at_utc"])
     if stamp > now or not isinstance(data["coverage_complete"], bool):
         raise ValueError("Invalid snapshot metadata")
-    if not isinstance(data["dates"], list) or not 1 <= len(data["dates"]) <= 7:
+    if not isinstance(data["dates"], list) or not 1 <= len(data["dates"]) <= 14:
         raise ValueError("Invalid date window")
     for date in data["dates"]:
         if datetime.strptime(date, "%Y-%m-%d").strftime("%Y-%m-%d") != date:
@@ -63,7 +63,7 @@ def validate_snapshot(data, now=None):
         start = timestamp(row["start_time_utc"])
         if start.date().isoformat() not in data["dates"]:
             raise ValueError("Fixture outside collection window")
-        if start > now:
+        if start > now or retain_started:
             upcoming.append(row)
     return sorted(upcoming, key=lambda r: (r["start_time_utc"], r["fixture_id"])), stamp
 
@@ -74,7 +74,10 @@ def read_fixtures(root, now=None):
         return [], {}, "not_published"
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-        rows, stamp = validate_snapshot(data, now)
+        rows, stamp = validate_snapshot(data, now, retain_started=True)
+        clock=now or datetime.now(timezone.utc)
+        for row in rows:
+            row["_started"]=timestamp(row["start_time_utc"]) <= clock
         # Country cache requires BOTH exact provider ID and full name.
         try:
             countries=json.loads((Path(root)/"published"/"atp_player_countries.json").read_text())
@@ -102,10 +105,11 @@ def display_rows(rows):
 
 
 def day_options(rows, now=None):
-    """Seven Sydney calendar dates, displayed in Monday-to-Sunday order."""
+    """The snapshot’s Sydney calendar week, Monday through Sunday."""
     now=now or datetime.now(timezone.utc)
     today=now.astimezone(ZoneInfo("Australia/Sydney")).date()
-    dates=[today+timedelta(days=i) for i in range(7)]
+    monday=today-timedelta(days=today.weekday())
+    dates=[monday+timedelta(days=i) for i in range(7)]
     counts={day.isoformat():sum(timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date()==day for r in rows) for day in dates}
     return [(day.isoformat(),day.strftime("%A"),counts[day.isoformat()]) for day in sorted(dates,key=lambda d:d.weekday())]
 
@@ -115,9 +119,9 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
                                prediction_for, pick_html, card_html, pending_reason)
     inject_style(root)
     from sport_icons import TENNIS
-    st.markdown('<div class="atp-hero"><img class="atp-tour-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg" alt="ATP Tour logo"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Upcoming matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="atp-hero"><img class="atp-tour-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg" alt="ATP Tour logo"><div class="atp-hero-icon">'+TENNIS+'<'+ '/div><div><h2>ATP Men’s Singles</h2><p>Weekly matches · Sydney times · Match-winner outlook</p></div></div>', unsafe_allow_html=True)
     rows, metadata, status = read_fixtures(root)
-    st.markdown("### Upcoming ATP matches")
+    st.markdown("### ATP matches this week")
     if status == "not_published":
         st.info("ATP fixture snapshot is being prepared.")
         return
@@ -132,6 +136,11 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
     if not rows:
         st.info("No upcoming ATP matches remain in this snapshot. This does not mean the ATP calendar is empty.")
         return
+    week_dates={day[0] for day in day_options(rows,metadata["stamp"])}
+    rows=[r for r in rows if timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date().isoformat() in week_dates]
+    if not rows:
+        st.info("No matches in this week’s fixture snapshot.")
+        return
     events = sorted({r["tournament"] for r in rows})
     picks = {r["fixture_id"]: prediction_for(r, forecasts) for r in rows}
     from tennis_set_scores import read_set_scores, add_set_pick
@@ -141,10 +150,10 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
         if picks[row["fixture_id"]] is None:
             row["_prediction_unavailable_reason"]=pending_reason(row,forecast_metadata,forecasts)
     pick_count = sum(p is not None for p in picks.values())
-    st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>upcoming matches</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>matches this week</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
     tournament_rows = rows if choice == "All tournaments" else [r for r in rows if r["tournament"] == choice]
-    days=day_options(tournament_rows)
+    days=day_options(tournament_rows,metadata["stamp"])
     day_key="atp_selected_day"
     if st.session_state.get(day_key) not in {day[0] for day in days}:
         st.session_state[day_key]=next((day[0] for day in sorted(days) if day[2]), sorted(days)[0][0])
@@ -161,7 +170,7 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
     st.caption(selected_day.strftime("%d %B %Y")+" · Sydney time")
     selected=[r for r in tournament_rows if timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).date().isoformat()==st.session_state[day_key]]
     if not selected:
-        st.info("No upcoming matches for this day in the current fixture snapshot. More fixtures may be added on refresh.")
+        st.info("No matches for this day in the current fixture snapshot. More fixtures may be added on refresh.")
         return
     labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
     st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],False) for r in selected)+'</div>', unsafe_allow_html=True)

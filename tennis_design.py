@@ -96,6 +96,8 @@ def pick_html(row, pick, *, compact=False):
     title = f'<div class="atp-winner">{winner}<strong>{heading}</strong></div>'
     sets=pick.get("set_pick")
     set_line=(f'<div class="atp-set-pick"><span>SET-SCORE ESTIMATE</span><strong>{escape(sets["winner"])} {escape(sets["score"])}</strong><small>{sets["p"]:.1%} probability of this exact set result · Experimental</small></div>' if sets else '')
+    if row.get("_started"):
+        set_line='<small class="atp-retained">Pre-match forecast retained · Result not available</small>'+set_line
     if compact:
         return f'<div class="atp-pick"><span class="atp-pick-label">PREDICTED WINNER · {escape(pick["model"])}</span>{title}<span>{pick["confidence"]:.1%} estimated probability</span>{set_line}</div>'
     return f'<div class="atp-pick"><span class="atp-pick-label">{escape(pick["model"]).upper()} MATCH PICK</span>{title}<p>{pick["confidence"]:.1%} estimated probability</p><div class="atp-prob-grid"><div>{player_html(row,"a")}<b>{pick["p_a"]:.1%}</b></div><div>{player_html(row,"b")}<b>{pick["p_b"]:.1%}</b></div></div><div class="atp-prob-bar" aria-label="Player A {pick["p_a"]:.1%}, Player B {pick["p_b"]:.1%}"><span style="width:{100*pick["p_a"]:.4f}%"></span></div>{set_line}<small>Match winner · Probabilities are estimates, not guarantees.</small></div>'
@@ -103,6 +105,8 @@ def pick_html(row, pick, *, compact=False):
 
 def card_html(row, time_label, pick, selected=False):
     state = " atp-card-selected" if selected else ""
+    if row.get("_started"):
+        time_label += " · Start time passed"
     return f'<article class="atp-card{state}" aria-label="{escape(row["player_a_name"])} versus {escape(row["player_b_name"])}"><div class="atp-card-top">{tournament_mark(row["tournament"])}<div><span>{escape(row["tournament"])}</span><small>{escape(row["round"])} · {escape(row["surface"])}</small></div></div><div class="atp-player">{player_html(row,"a")}</div><div class="atp-versus">VS</div><div class="atp-player">{player_html(row,"b")}</div><div class="atp-start">{escape(time_label)} Sydney</div>{pick_html(row,pick,compact=True)}</article>'
 
 

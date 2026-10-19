@@ -123,7 +123,7 @@ def test_existing_football_remains_default_when_tennis_unpublished():
 def test_atp_mode_independently_renders_no_data_notice(monkeypatch):
     from streamlit.testing.v1 import AppTest
 
-    monkeypatch.setattr("tennis_viewer.read_atp", lambda root: (pd.DataFrame(), {}, "not_published"))
+    monkeypatch.setattr("tennis_viewer.read_atp", lambda root, **kwargs: (pd.DataFrame(), {}, "not_published"))
     root = Path(__file__).resolve().parents[1]
     app = AppTest.from_file(str(root / "viewer_dashboard.py"), default_timeout=60).run()
     assert not app.exception
@@ -132,3 +132,11 @@ def test_atp_mode_independently_renders_no_data_notice(monkeypatch):
     assert any("ATP Men’s Singles" in str(x.value) for x in app.markdown)
     assert any("winner predictions are being validated" in str(x.value) for x in app.info)
     assert not any("ATP Hybrid" in str(x.value) for x in app.metric)
+
+
+def test_retained_forecast_must_have_been_published_before_start():
+    later=datetime(2026,10,23,12,tzinfo=timezone.utc)
+    assert validated_atp(fiction(),permit(),later).empty
+    assert len(validated_atp(fiction(),permit(),later,retain_started=True))==3
+    late=permit();late['published_at_utc']='2026-10-23T02:00:00Z'
+    assert validated_atp(fiction(),late,later,retain_started=True).empty

@@ -159,7 +159,7 @@ def show_atp(root):
     if (pd.Timestamp.now(tz="UTC") - pd.Timestamp(metadata["published_at_utc"])).total_seconds() > 72 * 3600:
         st.warning("ATP forecast snapshot is over 72 hours old. Confirm freshness before use.")
     with st.expander("Models & performance"):
-        st.caption("ATP Hybrid combines surface Elo and earlier serve/return form. Set-score estimates use a separate experimental model for supported best-of-three matches.")
+        st.caption("ATP Hybrid combines surface Elo and earlier serve/return form to estimate the match winner.")
         if metadata.get("training_through"):
             st.caption("Historical results through "+str(metadata["training_through"]))
         if metadata.get("evaluation"):

@@ -143,9 +143,6 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
         return
     events = sorted({r["tournament"] for r in rows})
     picks = {r["fixture_id"]: prediction_for(r, forecasts) for r in rows}
-    from tennis_set_scores import read_set_scores, add_set_pick
-    set_scores=read_set_scores(root)
-    picks={r["fixture_id"]:add_set_pick(r,picks[r["fixture_id"]],set_scores) for r in rows}
     for row in rows:
         if picks[row["fixture_id"]] is None:
             row["_prediction_unavailable_reason"]=pending_reason(row,forecast_metadata,forecasts)
@@ -174,14 +171,10 @@ def show_fixtures(root, forecasts=None, forecast_metadata=None):
         return
     labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
     st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],False) for r in selected)+'</div>', unsafe_allow_html=True)
-    with st.expander("Match details & set-score probabilities"):
+    with st.expander("Match details & winner probabilities"):
         lookup={r["fixture_id"]:r for r in selected}
         selected_id=st.selectbox("Match on this day",list(lookup),format_func=lambda identity:lookup[identity]["player_a_name"]+" vs "+lookup[identity]["player_b_name"],key="atp_day_match")
         row=lookup[selected_id]
         st.markdown('<div class="atp-matchup">'+player_html(row,"a")+'<em>VS</em>'+player_html(row,"b")+'</div>'+pick_html(row,picks[selected_id]),unsafe_allow_html=True)
-        chosen=picks[selected_id]
-        if chosen and chosen.get("set_outcomes"):
-            st.caption("Set-score probabilities · Best of three · Experimental")
-            st.table([{"Player":outcome["winner"],"Sets won–lost":outcome["score"],"Estimated probability":f'{outcome["p"]:.1%}'} for outcome in chosen["set_outcomes"]])
     with st.expander("Compact fixture table"):
         st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)

@@ -64,7 +64,8 @@ def test_streamlit_fixture_screen(tmp_path):
     (folder / "atp_fixtures.json").write_text(json.dumps(data))
     app = AppTest.from_string(f"from tennis_fixtures_viewer import show_fixtures\nshow_fixtures({str(tmp_path)!r})").run()
     assert not app.exception
-    assert len(app.dataframe) == 1
+    assert len(app.dataframe) == 0
+    assert any("No validated match predictions" in str(item.value) for item in app.info)
     assert "Partial fixture list" in app.info[0].value
 
 

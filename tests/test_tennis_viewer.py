@@ -114,7 +114,7 @@ def test_partial_publication_rejected(tmp_path):
 def test_existing_football_remains_default_when_tennis_unpublished():
     root = Path(__file__).resolve().parents[1]
     source = (root / "viewer_dashboard.py").read_text()
-    assert 'default="Football"' in source
+    assert "sport = show_sport_picker()" in source
     assert 'if sport == "ATP Men\'s Singles":' in source
     assert "tennis_viewer.show_atp(ROOT)" in source
     assert "if predictions.empty:" in source
@@ -126,8 +126,7 @@ def test_atp_mode_independently_renders_no_data_notice():
     root = Path(__file__).resolve().parents[1]
     app = AppTest.from_file(str(root / "viewer_dashboard.py"), default_timeout=60).run()
     assert not app.exception
-    sport = next(x for x in app.get("segmented_control") if x.label == "Sport")
-    sport.set_value("ATP Men's Singles").run()
+    app.button(key="sport_tennis").click().run()
     assert not app.exception
     assert any("ATP Men's Singles" in str(x.value) for x in app.subheader)
     assert any("winner predictions are being validated" in str(x.value) for x in app.info)

@@ -1,0 +1,26 @@
+<style>
+.atp-hero{display:flex;align-items:center;gap:18px;margin:20px 0 24px}
+.atp-hero h2{margin:0!important;padding:0!important;font-size:1.6rem!important}
+.atp-hero p{margin:6px 0 0;opacity:.72}
+.atp-hero-icon{width:64px;height:64px;flex:none;border-radius:16px;background:#7856d8;display:grid;place-items:center;color:white}
+.atp-mark{width:46px;height:46px;flex:none}
+.atp-flag{width:26px!important;height:18px!important;object-fit:cover;border-radius:3px;flex:none;box-shadow:0 0 0 1px #8883}
+.atp-no-flag{display:inline-flex;align-items:center;justify-content:center;width:26px;color:#8d93a4;flex:none}
+.atp-stats{display:flex;gap:24px;flex-wrap:wrap;margin:10px 0 20px;padding:16px 20px;border:1px solid #8883;border-radius:12px}
+.atp-stats div{display:flex;gap:8px;align-items:baseline}.atp-stats b{font-size:1.4rem}.atp-stats span{font-size:.85rem;opacity:.72}
+.atp-selected-head{display:flex;gap:14px;align-items:center;margin:20px 0 10px}.atp-selected-head h3{margin:0!important;padding:0!important}.atp-selected-head small{opacity:.75}
+.atp-matchup{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:1.3rem;font-weight:650;margin:18px 0}.atp-matchup span{overflow-wrap:anywhere}.atp-matchup em{font-size:.8rem;opacity:.55;font-style:normal}
+.atp-pick,.atp-pending{padding:18px;border-radius:12px;margin-top:16px;background:#7856d80c;border:1px solid #7856d83b;border-top:3px solid #7856d8}
+.atp-pending{background:#88888807;border-color:#8883;border-top-color:#a1a5b0}.atp-pending strong{display:block;font-size:1.05rem;margin:8px 0}.atp-pending>span:last-child{font-size:.8rem;opacity:.7;display:block;line-height:1.5}
+.atp-pick-label{font-size:.68rem;font-weight:750;letter-spacing:.09em;opacity:.75;display:block;margin-bottom:10px}
+.atp-winner{display:flex;align-items:center;gap:10px;font-size:1.35rem;overflow-wrap:anywhere}.atp-pick p{font-weight:600;margin:8px 0 14px}.atp-pick small{opacity:.7;font-size:.8rem}.atp-pick>span:last-child{font-size:.85rem;display:block;margin-top:8px}
+.atp-prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.atp-prob-grid>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.9rem}.atp-prob-grid b{display:block;width:100%;font-size:1.7rem;margin-top:4px}
+.atp-prob-bar{background:#b8c0d5;height:8px;border-radius:8px;overflow:hidden;margin:14px 0}.atp-prob-bar span{display:block;height:100%;background:#7856d8}
+.atp-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:16px 0 24px}.atp-card{border:1px solid #8883;border-radius:14px;padding:20px;min-width:0}.atp-card-selected{border-color:#7856d8;box-shadow:0 0 0 1px #7856d8}
+.atp-card-top{display:flex;align-items:center;gap:12px;min-height:64px;margin-bottom:18px}.atp-card-top>div>span{font-size:.8rem;font-weight:650;display:block;line-height:1.4}.atp-card-top small{font-size:.75rem;opacity:.65;display:block;margin-top:5px}
+.atp-player{display:flex;align-items:center;gap:10px;font-weight:650;font-size:1.05rem;overflow-wrap:anywhere}.atp-versus{font-size:.65rem;font-weight:700;opacity:.5;margin:8px 0 8px 36px;letter-spacing:.08em}.atp-start{font-size:.8rem;opacity:.72;margin:18px 0 0;font-variant-numeric:tabular-nums}.atp-card .atp-winner{font-size:.95rem}.atp-card .atp-pending,.atp-card .atp-pick{padding:12px}.atp-card .atp-pick-label{font-size:.6rem}
+.st-key-atp_fixture_tiles button{min-height:135px;min-width:240px;border-radius:12px;text-align:center}.st-key-atp_fixture_tiles button p{white-space:pre-line;font-size:.88rem;line-height:1.65}.st-key-atp_fixture_tiles button img{width:22px!important;height:15px!important;object-fit:cover;border-radius:2px;vertical-align:middle}.st-key-atp_fixture_tiles button[kind="primary"]{background:#7856d8;border-color:#7856d8;color:white}
+@media(max-width:1000px){.atp-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.atp-card-grid{grid-template-columns:minmax(0,1fr);gap:14px}.atp-card{padding:16px}.atp-hero{gap:12px}.atp-hero h2{font-size:1.25rem!important}.atp-hero-icon{width:52px;height:52px}.atp-stats{gap:12px;padding:12px}.atp-stats b{font-size:1.15rem}.atp-stats span{font-size:.75rem}.atp-winner{font-size:1.15rem}.atp-prob-grid{gap:10px}.atp-matchup{font-size:1.1rem}.atp-selected-head h3{font-size:1.1rem!important}}
+
+</style>

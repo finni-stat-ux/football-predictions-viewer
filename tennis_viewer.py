@@ -129,10 +129,10 @@ def show_atp(root):
     import streamlit as st
 
     st.subheader("ATP Men's Singles")
-    st.caption("Surface Elo + Serve/return · ATP Hybrid match-winner probabilities")
+    st.caption("Upcoming matches · Sydney start times · Match-winner outlook")
     frame, metadata, status = read_atp(root)
     import tennis_fixtures_viewer
-    tennis_fixtures_viewer.show_fixtures(root)
+    tennis_fixtures_viewer.show_fixtures(root, frame if status == "ready" else None)
     from cloud_refresh_ui import show_cloud_refresh
     show_cloud_refresh(atp=True)
     # The independent market snapshot never triggers a provider API call.

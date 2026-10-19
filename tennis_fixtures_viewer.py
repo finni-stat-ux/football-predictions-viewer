@@ -1,11 +1,14 @@
 """Static SportsAPI365 ATP Tour fixtures; no credentials or network calls."""
 import json
+import re
+from html import escape
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT_KEYS = {"schema_version", "provider", "fetched_at_utc", "coverage_complete", "dates", "events"}
 EVENT_KEYS = {"fixture_id", "tournament", "tournament_id", "rank_id", "surface", "round", "start_time_utc", "player_a_id", "player_b_id", "player_a_name", "player_b_name"}
+OPTIONAL_EVENT_KEYS = {"player_a_country", "player_b_country"}
 TIERS = {2: "ATP Tour", 3: "Masters", 4: "Grand Slam", 7: "Tour Finals"}
 
 
@@ -35,7 +38,7 @@ def validate_snapshot(data, now=None):
         raise ValueError("Invalid fixture count")
     seen, upcoming = set(), []
     for row in data["events"]:
-        if not isinstance(row, dict) or set(row) != EVENT_KEYS:
+        if not isinstance(row, dict) or not EVENT_KEYS.issubset(row) or set(row) - EVENT_KEYS - OPTIONAL_EVENT_KEYS:
             raise ValueError("Invalid fixture fields")
         for field in ("fixture_id", "tournament_id", "player_a_id", "player_b_id"):
             if type(row[field]) is not int or row[field] <= 0:
@@ -48,6 +51,10 @@ def validate_snapshot(data, now=None):
         for field in ("tournament", "round", "player_a_name", "player_b_name"):
             if not isinstance(row[field], str) or not 1 <= len(row[field].strip()) <= 160:
                 raise ValueError("Invalid fixture label")
+        for field in OPTIONAL_EVENT_KEYS:
+            value = row.get(field)
+            if value is not None and (not isinstance(value, str) or not re.fullmatch(r"[A-Z]{3}", value)):
+                raise ValueError("Invalid country code")
         names = (row["player_a_name"], row["player_b_name"])
         if names[0].casefold() == names[1].casefold() or any(m in n for n in names for m in ("/", " & ", " + ")):
             raise ValueError("Not distinct singles players")
@@ -81,8 +88,12 @@ def display_rows(rows):
     } for r in rows]
 
 
-def show_fixtures(root):
+def show_fixtures(root, forecasts=None):
     import streamlit as st
+    from tennis_design import (inject_style, tournament_mark, player_html,
+                               prediction_for, pick_html, tile_label, card_html)
+    inject_style(root)
+    st.markdown('<div class="atp-hero"><div class="atp-hero-icon"><svg width="42" height="42" viewBox="0 0 48 48" role="img" aria-label="Conquerors tennis mark"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 12c17 5 9 21 28 24M36 10C21 18 28 31 12 38" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><h2>ATP Tour</h2><p>Men’s singles · Your next match, at a glance.</p></div></div>', unsafe_allow_html=True)
     rows, metadata, status = read_fixtures(root)
     st.markdown("### Upcoming ATP matches")
     if status == "not_published":
@@ -91,7 +102,7 @@ def show_fixtures(root):
     if status == "invalid":
         st.warning("ATP fixtures could not be verified. Please check back after the next update.")
         return
-    st.caption("Source: SportsAPI365 · Updated " + metadata["stamp"].astimezone(ZoneInfo("Australia/Sydney")).strftime("%d %b, %I:%M %p Sydney") + " · Scheduled times may change")
+    st.caption("Updated " + metadata["stamp"].astimezone(ZoneInfo("Australia/Sydney")).strftime("%d %b, %I:%M %p Sydney") + " · Scheduled times may change")
     if not metadata["complete"]:
         st.info("Partial fixture list — more matches may be scheduled. The next full refresh will expand coverage.")
     if (datetime.now(timezone.utc) - metadata["stamp"]).total_seconds() > 86400:
@@ -100,7 +111,28 @@ def show_fixtures(root):
         st.info("No upcoming ATP matches remain in this snapshot. This does not mean the ATP calendar is empty.")
         return
     events = sorted({r["tournament"] for r in rows})
+    picks = {r["fixture_id"]: prediction_for(r, forecasts) for r in rows}
+    pick_count = sum(p is not None for p in picks.values())
+    st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>upcoming matches</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
     selected = rows if choice == "All tournaments" else [r for r in rows if r["tournament"] == choice]
-    st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
-    st.caption("Men’s singles · ATP Tour, Masters, Grand Slams and Tour Finals · Fixtures only; winner predictions will appear separately when ready.")
+    labels = {r["fixture_id"]: timestamp(r["start_time_utc"]).astimezone(ZoneInfo("Australia/Sydney")).strftime("%a %d %b, %I:%M %p") for r in selected}
+    selection_key = "atp_selected_fixture"
+    if st.session_state.get(selection_key) not in labels:
+        st.session_state[selection_key] = selected[0]["fixture_id"]
+    def choose(identity):
+        st.session_state[selection_key] = identity
+    st.caption("Choose a match · Swipe or scroll for more fixtures")
+    with st.container(horizontal=True, wrap=False, key="atp_fixture_tiles"):
+        for row in selected:
+            st.button(tile_label(row, labels[row["fixture_id"]]), key="atp_tile_"+str(row["fixture_id"]),
+                      width=270, type="primary" if row["fixture_id"] == st.session_state[selection_key] else "secondary",
+                      on_click=choose, args=(row["fixture_id"],))
+    row = next(r for r in selected if r["fixture_id"] == st.session_state[selection_key])
+    st.markdown('<div class="atp-selected-head">'+tournament_mark(row["tournament"])+'<div><h3>'+escape(row["tournament"])+ '</h3><small>'+escape(row["round"])+" · "+escape(row["surface"])+" · "+escape(labels[row["fixture_id"]])+" Sydney</small></div></div>", unsafe_allow_html=True)
+    st.markdown('<div class="atp-matchup">'+player_html(row,"a")+'<em>VS</em>'+player_html(row,"b")+'</div>'+pick_html(row,picks[row["fixture_id"]]), unsafe_allow_html=True)
+    st.markdown("### All upcoming match picks")
+    st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],r["fixture_id"]==row["fixture_id"]) for r in selected)+'</div>', unsafe_allow_html=True)
+    with st.expander("Compact fixture table"):
+        st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
+    st.caption("Source: SportsAPI365 · Country flags follow the provider’s player records. Tournament court badges are original identifiers, not official tournament logos.")

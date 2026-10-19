@@ -49,7 +49,8 @@ st.markdown('<p class="cv-intro">Your match forecast. The probabilities behind i
 
 # Sport selection leaves existing football controls and their original indices
 # untouched. ATP has its own optional, independently validated forecast files.
-sport = st.segmented_control("Sport", ["Football", "ATP Men's Singles"], default="Football")
+from sport_icons import show_sport_picker
+sport = show_sport_picker()
 if sport == "ATP Men's Singles":
     import tennis_viewer
     tennis_viewer.show_atp(ROOT)

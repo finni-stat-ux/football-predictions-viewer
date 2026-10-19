@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "description": "Represented country / sporting nationality, not birthplace. Exact provider ID and full name required. Provider-supplied countries take precedence.",
+  "source_urls": [
+    "https://www.atptour.com/-/media/files/media-guide/2026/2026-atp-media-guide-rankings-stats-results-updated.pdf",
+    "https://www.itftennis.com/en/players/felix-balshaw/800529791/fra/mt/s/",
+    "https://www.itftennis.com/en/players/andrea-guerrieri/800335585/ita/mt/s/overview/",
+    "https://www.itftennis.com/en/players/toby-samuel/800416712/gbr/mt/s/overview/",
+    "https://www.itftennis.com/en/players/max-schoenhaus/800545935/ger/mt/s/overview/",
+    "https://www.itftennis.com/en/players/moise-kouame/800589546/fra/mt/s/"
+  ],
+  "players": {
+    "65904": {
+      "name": "Kyrian Jacquet",
+      "country": "FRA"
+    },
+    "26925": {
+      "name": "Michael Mmoh",
+      "country": "USA"
+    },
+    "6101": {
+      "name": "Marin Cilic",
+      "country": "CRO"
+    },
+    "14716": {
+      "name": "Nikoloz Basilashvili",
+      "country": "GEO"
+    },
+    "47259": {
+      "name": "Clement Tabur",
+      "country": "FRA"
+    },
+    "104215": {
+      "name": "Nicolai Budkov Kjaer",
+      "country": "NOR"
+    },
+    "14856": {
+      "name": "Yannick Hanfmann",
+      "country": "GER"
+    },
+    "72574": {
+      "name": "Martin Damm",
+      "country": "USA"
+    },
+    "83795": {
+      "name": "Jaime Faria",
+      "country": "POR"
+    },
+    "106767": {
+      "name": "Felix Balshaw",
+      "country": "FRA"
+    },
+    "40187": {
+      "name": "Andrea Guerrieri",
+      "country": "ITA"
+    },
+    "92985": {
+      "name": "Alex Michelsen",
+      "country": "USA"
+    },
+    "73956": {
+      "name": "Matteo Arnaldi",
+      "country": "ITA"
+    },
+    "63572": {
+      "name": "Lorenzo Musetti",
+      "country": "ITA"
+    },
+    "9043": {
+      "name": "Mikhail Kukushkin",
+      "country": "KAZ"
+    },
+    "74880": {
+      "name": "Stefanos Sakellaridis",
+      "country": "GRE"
+    },
+    "31392": {
+      "name": "Lorenzo Sonego",
+      "country": "ITA"
+    },
+    "111498": {
+      "name": "Moise Kouame",
+      "country": "FRA"
+    },
+    "67535": {
+      "name": "Terence Atmane",
+      "country": "FRA"
+    },
+    "58149": {
+      "name": "Rinky Hijikata",
+      "country": "AUS"
+    },
+    "39863": {
+      "name": "Sho Shimabukuro",
+      "country": "JPN"
+    },
+    "28900": {
+      "name": "Roman Safiullin",
+      "country": "RUS"
+    },
+    "14177": {
+      "name": "Jan-Lennard Struff",
+      "country": "GER"
+    },
+    "18736": {
+      "name": "Marcos Giron",
+      "country": "USA"
+    },
+    "33860": {
+      "name": "Tallon Griekspoor",
+      "country": "NED"
+    },
+    "95311": {
+      "name": "Max Schoenhaus",
+      "country": "GER"
+    },
+    "66828": {
+      "name": "Mariano Navone",
+      "country": "ARG"
+    },
+    "52934": {
+      "name": "Juan Manuel Cerundolo",
+      "country": "ARG"
+    },
+    "68090": {
+      "name": "Jacob Fearnley",
+      "country": "GBR"
+    },
+    "46747": {
+      "name": "Hugo Gaston",
+      "country": "FRA"
+    },
+    "79068": {
+      "name": "Toby Samuel",
+      "country": "GBR"
+    },
+    "37741": {
+      "name": "Zizou Bergs",
+      "country": "BEL"
+    },
+    "85899": {
+      "name": "Dino Prizmic",
+      "country": "CRO"
+    },
+    "13447": {
+      "name": "Damir Dzumhur",
+      "country": "BIH"
+    },
+    "30470": {
+      "name": "Stefanos Tsitsipas",
+      "country": "GRE"
+    },
+    "39152": {
+      "name": "Aleksandar Kovacevic",
+      "country": "USA"
+    },
+    "1092": {
+      "name": "Stan Wawrinka",
+      "country": "SUI"
+    },
+    "94493": {
+      "name": "Martin Landaluce",
+      "country": "ESP"
+    },
+    "28899": {
+      "name": "Benjamin Bonzi",
+      "country": "FRA"
+    },
+    "27851": {
+      "name": "Cameron Norrie",
+      "country": "GBR"
+    },
+    "29732": {
+      "name": "Daniel Altmaier",
+      "country": "GER"
+    },
+    "59092": {
+      "name": "Titouan Droguet",
+      "country": "FRA"
+    },
+    "38911": {
+      "name": "Ugo Humbert",
+      "country": "FRA"
+    },
+    "36263": {
+      "name": "Corentin Moutet",
+      "country": "FRA"
+    },
+    "79060": {
+      "name": "Hamad Medjedovic",
+      "country": "SRB"
+    },
+    "56846": {
+      "name": "Brandon Nakashima",
+      "country": "USA"
+    },
+    "11226": {
+      "name": "David Goffin",
+      "country": "BEL"
+    },
+    "35296": {
+      "name": "Remy Bertola",
+      "country": "SUI"
+    },
+    "24249": {
+      "name": "Botic Van De Zandschulp",
+      "country": "NED"
+    },
+    "55828": {
+      "name": "Clement Chidekh",
+      "country": "FRA"
+    },
+    "92184": {
+      "name": "Nishesh Basavareddy",
+      "country": "USA"
+    },
+    "84235": {
+      "name": "Raphael Collignon",
+      "country": "BEL"
+    },
+    "52140": {
+      "name": "Fabian Marozsan",
+      "country": "HUN"
+    },
+    "55257": {
+      "name": "Timofey Skatov",
+      "country": "KAZ"
+    },
+    "93550": {
+      "name": "Rei Sakamoto",
+      "country": "JPN"
+    },
+    "25543": {
+      "name": "Karen Khachanov",
+      "country": "RUS"
+    }
+  }
+}

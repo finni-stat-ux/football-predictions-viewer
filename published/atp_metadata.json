@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "approved_for_publication": true,
+  "source_rights_confirmed": true,
+  "holdout_checked": true,
+  "holdout_matches": 2486,
+  "history_rights_url": "https://tennisdata.app/downloads/",
+  "fixture_rights_url": "https://sportsapi365.com/docs/direct/tennis",
+  "source_permission_basis": "The free season CSV download page expressly permits using these files in any way. This release contains independently computed model forecasts only; no raw CSV redistribution.",
+  "published_at_utc": "2026-10-19T11:21:20Z",
+  "hybrid_weight_serve_return": 0.25,
+  "validation_year": 2024,
+  "holdout_year": 2025,
+  "training_through": "2026-05-08",
+  "history_sha256": "a3550693f0095c4eb33531b53404156197e48d0f71b5d6f6bd17c1ff998da058",
+  "evaluation": [
+    {
+      "split": "validation",
+      "model": "Surface Elo",
+      "matches": 2687,
+      "log_loss": 0.616878740136075,
+      "brier": 0.2150373637331853,
+      "accuracy": 0.64756233717901
+    },
+    {
+      "split": "holdout",
+      "model": "Surface Elo",
+      "matches": 2486,
+      "log_loss": 0.6226299465839394,
+      "brier": 0.2171792599428908,
+      "accuracy": 0.6496379726468222
+    },
+    {
+      "split": "validation",
+      "model": "Serve/return",
+      "matches": 2642,
+      "log_loss": 0.6448667200200058,
+      "brier": 0.2268094357753188,
+      "accuracy": 0.6283118849356548
+    },
+    {
+      "split": "validation",
+      "model": "ATP Hybrid",
+      "matches": 2687,
+      "log_loss": 0.6166156375824018,
+      "brier": 0.2144130919381838,
+      "accuracy": 0.6505396352809825
+    },
+    {
+      "split": "holdout",
+      "model": "Serve/return",
+      "matches": 2440,
+      "log_loss": 0.6498841480316667,
+      "brier": 0.2289337182053041,
+      "accuracy": 0.6262295081967213
+    },
+    {
+      "split": "holdout",
+      "model": "ATP Hybrid",
+      "matches": 2486,
+      "log_loss": 0.6216753125232233,
+      "brier": 0.2167059641318398,
+      "accuracy": 0.6484312148028962
+    }
+  ],
+  "excluded_fixtures": [
+    {
+      "fixture_id": 297210,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        4,
+        9
+      ]
+    },
+    {
+      "fixture_id": 213930,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        21,
+        0
+      ]
+    },
+    {
+      "fixture_id": 299883,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        0,
+        145
+      ]
+    },
+    {
+      "fixture_id": 278941,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        30,
+        3
+      ]
+    },
+    {
+      "fixture_id": 213920,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        266,
+        4
+      ]
+    },
+    {
+      "fixture_id": 138877,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        217,
+        0
+      ]
+    },
+    {
+      "fixture_id": 138881,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        0,
+        110
+      ]
+    },
+    {
+      "fixture_id": 299874,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        159,
+        1
+      ]
+    },
+    {
+      "fixture_id": 299877,
+      "reason": "Fewer than five earlier ATP main-draw matches",
+      "prior_matches": [
+        214,
+        2
+      ]
+    }
+  ],
+  "release_status": "experimental",
+  "player_id_crosswalk": "Exact provider IDs and full names; verified opponent/date/tournament schedule pairs"
+}

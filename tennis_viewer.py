@@ -176,4 +176,4 @@ def show_atp(root):
         {"Model": entry.model, row.player_a_name: f"{entry.p_player_a:.1%}", row.player_b_name: f"{entry.p_player_b:.1%}"}
         for entry in match.itertuples()
     ]), hide_index=True, use_container_width=True)
-    st.caption("ATP Hybrid is experimental. Rankings, live lineups and set scores are not confirmed or predicted. Probabilities are estimates, not guarantees.")
+    st.caption("ATP Hybrid is experimental. Set-score estimates are experimental and available for supported best-of-three matches. Probabilities are estimates, not guarantees.")

@@ -75,9 +75,11 @@ def pick_html(row, pick, *, compact=False):
     suffix = ' to win' if side else ''
     heading = escape(pick["winner"]) + suffix
     title = f'<div class="atp-winner">{winner}<strong>{heading}</strong></div>'
+    sets=pick.get("set_pick")
+    set_line=(f'<div class="atp-set-pick"><span>SET-SCORE ESTIMATE</span><strong>{escape(sets["winner"])} {escape(sets["score"])}</strong><small>{sets["p"]:.1%} probability of this exact set result · Experimental</small></div>' if sets else '')
     if compact:
-        return f'<div class="atp-pick"><span class="atp-pick-label">PREDICTED WINNER · {escape(pick["model"])}</span>{title}<span>{pick["confidence"]:.1%} estimated probability</span></div>'
-    return f'<div class="atp-pick"><span class="atp-pick-label">{escape(pick["model"]).upper()} MATCH PICK</span>{title}<p>{pick["confidence"]:.1%} estimated probability</p><div class="atp-prob-grid"><div>{player_html(row,"a")}<b>{pick["p_a"]:.1%}</b></div><div>{player_html(row,"b")}<b>{pick["p_b"]:.1%}</b></div></div><div class="atp-prob-bar" aria-label="Player A {pick["p_a"]:.1%}, Player B {pick["p_b"]:.1%}"><span style="width:{100*pick["p_a"]:.4f}%"></span></div><small>Match winner · Probabilities are estimates, not guarantees.</small></div>'
+        return f'<div class="atp-pick"><span class="atp-pick-label">PREDICTED WINNER · {escape(pick["model"])}</span>{title}<span>{pick["confidence"]:.1%} estimated probability</span>{set_line}</div>'
+    return f'<div class="atp-pick"><span class="atp-pick-label">{escape(pick["model"]).upper()} MATCH PICK</span>{title}<p>{pick["confidence"]:.1%} estimated probability</p><div class="atp-prob-grid"><div>{player_html(row,"a")}<b>{pick["p_a"]:.1%}</b></div><div>{player_html(row,"b")}<b>{pick["p_b"]:.1%}</b></div></div><div class="atp-prob-bar" aria-label="Player A {pick["p_a"]:.1%}, Player B {pick["p_b"]:.1%}"><span style="width:{100*pick["p_a"]:.4f}%"></span></div>{set_line}<small>Match winner · Probabilities are estimates, not guarantees.</small></div>'
 
 
 def card_html(row, time_label, pick, selected=False):

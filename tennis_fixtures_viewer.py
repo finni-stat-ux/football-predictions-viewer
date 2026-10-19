@@ -75,6 +75,18 @@ def read_fixtures(root, now=None):
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
         rows, stamp = validate_snapshot(data, now)
+        # Country cache requires BOTH exact provider ID and full name.
+        try:
+            countries=json.loads((Path(root)/"published"/"atp_player_countries.json").read_text())
+            if countries.get("schema_version")==1:
+                for row in rows:
+                    for side in ("a","b"):
+                        entry=countries.get("players",{}).get(str(row[f"player_{side}_id"]),{})
+                        code=entry.get("country")
+                        if not row.get(f"player_{side}_country") and entry.get("name")==row[f"player_{side}_name"] and isinstance(code,str) and re.fullmatch(r"[A-Z]{3}",code):
+                            row[f"player_{side}_country"]=code
+        except (OSError,ValueError,TypeError,AttributeError):
+            pass
     except (ValueError, TypeError, KeyError, OSError):
         return [], {}, "invalid"
     return rows, {"stamp": stamp, "complete": data["coverage_complete"], "dates": data["dates"]}, "ready" if rows else "no_upcoming"
@@ -113,6 +125,9 @@ def show_fixtures(root, forecasts=None):
         return
     events = sorted({r["tournament"] for r in rows})
     picks = {r["fixture_id"]: prediction_for(r, forecasts) for r in rows}
+    from tennis_set_scores import read_set_scores, add_set_pick
+    set_scores=read_set_scores(root)
+    picks={r["fixture_id"]:add_set_pick(r,picks[r["fixture_id"]],set_scores) for r in rows}
     pick_count = sum(p is not None for p in picks.values())
     st.markdown(f'<div class="atp-stats"><div><b>{len(rows)}</b><span>upcoming matches</span></div><div><b>{len(events)}</b><span>tournaments</span></div><div><b>{pick_count}</b><span>validated match picks</span></div></div>', unsafe_allow_html=True)
     choice = st.selectbox("ATP tournament", ["All tournaments"] + events, key="atp_fixture_tournament")
@@ -132,8 +147,12 @@ def show_fixtures(root, forecasts=None):
     row = next(r for r in selected if r["fixture_id"] == st.session_state[selection_key])
     st.markdown('<div class="atp-selected-head">'+tournament_mark(row["tournament"])+'<div><h3>'+escape(row["tournament"])+ '</h3><small>'+escape(row["round"])+" · "+escape(row["surface"])+" · "+escape(labels[row["fixture_id"]])+" Sydney</small></div></div>", unsafe_allow_html=True)
     st.markdown('<div class="atp-matchup">'+player_html(row,"a")+'<em>VS</em>'+player_html(row,"b")+'</div>'+pick_html(row,picks[row["fixture_id"]]), unsafe_allow_html=True)
+    chosen=picks[row["fixture_id"]]
+    if chosen and chosen.get("set_outcomes"):
+        st.caption("Set-score probabilities · Best of three · Experimental")
+        st.table([{"Player":outcome["winner"],"Sets won–lost":outcome["score"],"Estimated probability":f'{outcome["p"]:.1%}'} for outcome in chosen["set_outcomes"]])
     st.markdown("### All upcoming match picks")
     st.markdown('<div class="atp-card-grid">'+''.join(card_html(r,labels[r["fixture_id"]],picks[r["fixture_id"]],r["fixture_id"]==row["fixture_id"]) for r in selected)+'</div>', unsafe_allow_html=True)
     with st.expander("Compact fixture table"):
         st.dataframe(display_rows(selected), hide_index=True, use_container_width=True)
-    st.caption("Source: SportsAPI365 · Country flags follow the provider’s player records. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")
+    st.caption("Source: SportsAPI365 · Flags show represented country, using provider records or the checked ATP/ITF player list. Independent predictions site; not affiliated with ATP. Tournament court badges are original identifiers.")

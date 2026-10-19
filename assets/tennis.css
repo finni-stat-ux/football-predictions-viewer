@@ -28,5 +28,5 @@
 
 .atp-tour-logo{width:112px;height:auto;object-fit:contain;background:#fff;padding:10px;border-radius:10px;flex:none}
 @media(max-width:680px){.atp-hero{flex-wrap:wrap}.atp-tour-logo{width:90px}.atp-hero-icon{display:none}}
+.atp-set-pick{display:flex;flex-direction:column;gap:5px;margin:14px 0;padding-top:12px;border-top:1px solid #dfd9ee}.atp-set-pick>span{font-size:.68rem;letter-spacing:.07em;opacity:.7}.atp-set-pick strong{font-size:1rem}.atp-set-pick small{font-size:.76rem;opacity:.7}
 </style>
-

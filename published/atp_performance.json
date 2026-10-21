@@ -1,35 +1,118 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-21T02:47:03.391195+00:00",
+  "generated_at_utc": "2026-10-21T10:52:27.405045+00:00",
   "method": "First saved pre-match forecast per fixture and model; completed verified matches only",
   "summary": [
     {
       "model": "ATP Hybrid",
-      "settled": 0,
-      "pending": 18,
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "settled": 17,
+      "pending": 3,
+      "accuracy": 0.5882352941176471,
+      "brier": 0.2194903712138546,
+      "log_loss": 0.6282322605453553
     },
     {
       "model": "Serve/return",
-      "settled": 0,
-      "pending": 18,
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "settled": 17,
+      "pending": 3,
+      "accuracy": 0.6470588235294118,
+      "brier": 0.19312728076906874,
+      "log_loss": 0.5751097509255322
     },
     {
       "model": "Surface Elo",
-      "settled": 0,
-      "pending": 18,
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "settled": 17,
+      "pending": 3,
+      "accuracy": 0.5294117647058824,
+      "brier": 0.2320478381596793,
+      "log_loss": 0.6524120579354908
     }
   ],
-  "weekly": [],
-  "calibration": [],
+  "weekly": [
+    {
+      "model": "ATP Hybrid",
+      "week_start": "2026-10-19",
+      "matches": 17,
+      "accuracy": 0.5882352941176471
+    },
+    {
+      "model": "Serve/return",
+      "week_start": "2026-10-19",
+      "matches": 17,
+      "accuracy": 0.6470588235294118
+    },
+    {
+      "model": "Surface Elo",
+      "week_start": "2026-10-19",
+      "matches": 17,
+      "accuracy": 0.5294117647058824
+    }
+  ],
+  "calibration": [
+    {
+      "model": "ATP Hybrid",
+      "band": "50\u201360%",
+      "matches": 11,
+      "mean_probability": 0.5568992870252379,
+      "actual_win_rate": 0.36363636363636365
+    },
+    {
+      "model": "ATP Hybrid",
+      "band": "60\u201370%",
+      "matches": 5,
+      "mean_probability": 0.6500213541239267,
+      "actual_win_rate": 1.0
+    },
+    {
+      "model": "ATP Hybrid",
+      "band": "70\u201380%",
+      "matches": 1,
+      "mean_probability": 0.7583404019640196,
+      "actual_win_rate": 1.0
+    },
+    {
+      "model": "Serve/return",
+      "band": "50\u201360%",
+      "matches": 10,
+      "mean_probability": 0.5421915736750468,
+      "actual_win_rate": 0.4
+    },
+    {
+      "model": "Serve/return",
+      "band": "60\u201370%",
+      "matches": 6,
+      "mean_probability": 0.6505234151505339,
+      "actual_win_rate": 1.0
+    },
+    {
+      "model": "Serve/return",
+      "band": "70\u201380%",
+      "matches": 1,
+      "mean_probability": 0.7385503038343462,
+      "actual_win_rate": 1.0
+    },
+    {
+      "model": "Surface Elo",
+      "band": "50\u201360%",
+      "matches": 10,
+      "mean_probability": 0.5638048162093237,
+      "actual_win_rate": 0.4
+    },
+    {
+      "model": "Surface Elo",
+      "band": "60\u201370%",
+      "matches": 5,
+      "mean_probability": 0.64585571786526,
+      "actual_win_rate": 0.6
+    },
+    {
+      "model": "Surface Elo",
+      "band": "70\u201380%",
+      "matches": 2,
+      "mean_probability": 0.7521040395644025,
+      "actual_win_rate": 1.0
+    }
+  ],
   "matches": [
     {
       "forecast_id": "002d56424a1c99c3eb213a5d6f29d9ea8a5079df204ab4e84c32fd4d8f5be8d0",
@@ -41,7 +124,12 @@
       "predicted_winner": "Benjamin Bonzi",
       "confidence": 0.6588364272996562,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Benjamin Bonzi",
+      "correct": true,
+      "brier": 0.11639258333766278,
+      "log_loss": 0.4172799887955333,
+      "result_id": "158573612"
     },
     {
       "forecast_id": "0b3415fba6a4b78ba51582a97d59f317c0cb8fdb84bc79b8e2c1d7e2c4059f1b",
@@ -53,7 +141,12 @@
       "predicted_winner": "Brandon Nakashima",
       "confidence": 0.5698810957949945,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Brandon Nakashima",
+      "correct": true,
+      "brier": 0.18500227175451467,
+      "log_loss": 0.5623275437827852,
+      "result_id": "165599682"
     },
     {
       "forecast_id": "0fa709221b97378a30fb330d2172d7fba54ec6bdca368a260b345616ca3ba4c2",
@@ -65,7 +158,12 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.7583404019640196,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.058399361322911576,
+      "log_loss": 0.276622915037404,
+      "result_id": "123452915"
     },
     {
       "forecast_id": "159f042d73314e1a328de04a0353d91bab7b2c91fe9c928328229ddef5c359c7",
@@ -89,7 +187,12 @@
       "predicted_winner": "Titouan Droguet",
       "confidence": 0.5692954852267511,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Daniel Altmaier",
+      "correct": false,
+      "brier": 0.324097349499562,
+      "log_loss": 0.842333004568726,
+      "result_id": "157168511"
     },
     {
       "forecast_id": "1ba05c42e4fe07bb99b9d7f84bf3832ee0780dde3240f9cbc5a95015998d9ebd",
@@ -113,7 +216,12 @@
       "predicted_winner": "Yannick Hanfmann",
       "confidence": 0.5958943086131657,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Martin Damm",
+      "correct": false,
+      "brier": 0.3550900270375628,
+      "log_loss": 0.9060788228918798,
+      "result_id": "117834427"
     },
     {
       "forecast_id": "22d1ad60460febbc8b8ae780bf3f9fe8f4f9d489f2ff99c3779a9191108d2f88",
@@ -125,7 +233,12 @@
       "predicted_winner": "Jacob Fearnley",
       "confidence": 0.5529833736641236,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jacob Fearnley",
+      "correct": true,
+      "brier": 0.1998238642207085,
+      "log_loss": 0.5924273436186135,
+      "result_id": "155763405"
     },
     {
       "forecast_id": "2584fb77bce562135b088f3cf170c8328cfc345fe54c957e502c6bdb852e5904",
@@ -137,7 +250,12 @@
       "predicted_winner": "Yannick Hanfmann",
       "confidence": 0.5894399509670518,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Martin Damm",
+      "correct": false,
+      "brier": 0.34743945579604046,
+      "log_loss": 0.8902330781254392,
+      "result_id": "117834427"
     },
     {
       "forecast_id": "26e2bfdda6809f84156ca7bf4598f7271338a1a457d1005bc8041b970c223904",
@@ -149,7 +267,12 @@
       "predicted_winner": "Fabian Marozsan",
       "confidence": 0.6776909193861416,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Fabian Marozsan",
+      "correct": true,
+      "brier": 0.1038831434461507,
+      "log_loss": 0.3890639660944527,
+      "result_id": "151548358"
     },
     {
       "forecast_id": "31cab9728bcd81d46fb7168c71843782ab42c080dac45c2ecd87a746e1f0c08e",
@@ -161,7 +284,12 @@
       "predicted_winner": "Karen Khachanov",
       "confidence": 0.6803127413275905,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Karen Khachanov",
+      "correct": true,
+      "brier": 0.10219994335748006,
+      "log_loss": 0.3852026728228375,
+      "result_id": "155763392"
     },
     {
       "forecast_id": "3508eff350e3265812e61cc3de73964c60d8f408cf13a4501e46c7b733da3d57",
@@ -173,7 +301,12 @@
       "predicted_winner": "Ugo Humbert",
       "confidence": 0.5858761772304305,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Corentin Moutet",
+      "correct": false,
+      "brier": 0.3432508950461428,
+      "log_loss": 0.8815902610595809,
+      "result_id": "155763428"
     },
     {
       "forecast_id": "3da01763f2f3289bb9aefd2885d51a209afbecb772a0323af712451a92bd5ed3",
@@ -185,7 +318,12 @@
       "predicted_winner": "Roman Safiullin",
       "confidence": 0.5089600428119272,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Sho Shimabukuro",
+      "correct": false,
+      "brier": 0.25904032517911874,
+      "log_loss": 0.7112297752969464,
+      "result_id": "145928824"
     },
     {
       "forecast_id": "40ad143fc69b2054eafef55d81a88c4551fbabe522c6b3c3ccaffeab54fb8f65",
@@ -197,7 +335,12 @@
       "predicted_winner": "Terence Atmane",
       "confidence": 0.5494590012910673,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Terence Atmane",
+      "correct": true,
+      "brier": 0.20298719151764252,
+      "log_loss": 0.5988211188572686,
+      "result_id": "144524012"
     },
     {
       "forecast_id": "45a5a5be33962eeaf3cec2c07473fed99b942e769d10e51cf08676243119ad11",
@@ -209,7 +352,12 @@
       "predicted_winner": "Corentin Moutet",
       "confidence": 0.5258642855847944,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Corentin Moutet",
+      "correct": true,
+      "brier": 0.22480467568401738,
+      "log_loss": 0.6427121117315087,
+      "result_id": "155763428"
     },
     {
       "forecast_id": "598763d667e2537efaa1b0fecd2dc007efae120acdbc4adfb7c2cb6afdeb12d5",
@@ -221,7 +369,12 @@
       "predicted_winner": "Hugo Gaston",
       "confidence": 0.5161239255446501,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jacob Fearnley",
+      "correct": false,
+      "brier": 0.2663839065196196,
+      "log_loss": 0.7259264495642384,
+      "result_id": "155763405"
     },
     {
       "forecast_id": "654d6d5471ae20044c83d9456545895889ed0a45a7c842f87b5a282750826731",
@@ -233,7 +386,12 @@
       "predicted_winner": "Roman Safiullin",
       "confidence": 0.5929762451204248,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Sho Shimabukuro",
+      "correct": false,
+      "brier": 0.35162082727711813,
+      "log_loss": 0.8988837294452768,
+      "result_id": "145928824"
     },
     {
       "forecast_id": "6d601b21a6222e3204429462bc0f4a0782b374d92411e9cc5c5ed39fa1aee917",
@@ -245,7 +403,12 @@
       "predicted_winner": "Fabian Marozsan",
       "confidence": 0.6944362521480092,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Fabian Marozsan",
+      "correct": true,
+      "brier": 0.09336920400135501,
+      "log_loss": 0.36465491056436006,
+      "result_id": "151548358"
     },
     {
       "forecast_id": "703b6b73a48877eb34e0e5d01a8d14b090114c8d89e2a3db303b94c2c6919088",
@@ -257,7 +420,12 @@
       "predicted_winner": "Terence Atmane",
       "confidence": 0.5582088514470898,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Terence Atmane",
+      "correct": true,
+      "brier": 0.19517941893969962,
+      "log_loss": 0.5830221008807909,
+      "result_id": "144524012"
     },
     {
       "forecast_id": "7607e60516faf670c38c816d1429655a4a5af27b561a5df912bc283253660811",
@@ -269,7 +437,12 @@
       "predicted_winner": "Raphael Collignon",
       "confidence": 0.7385503038343462,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Raphael Collignon",
+      "correct": true,
+      "brier": 0.06835594362511273,
+      "log_loss": 0.30306606310255063,
+      "result_id": "161383934"
     },
     {
       "forecast_id": "7779219bf94e7cbd244da2e8f93954a75cb3d1916a71a2efc9b40c60dfe22ba6",
@@ -293,7 +466,12 @@
       "predicted_winner": "Roman Safiullin",
       "confidence": 0.5719721945433004,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Sho Shimabukuro",
+      "correct": false,
+      "brier": 0.3271521913306791,
+      "log_loss": 0.8485671194902146,
+      "result_id": "145928824"
     },
     {
       "forecast_id": "8172efdae8610149e42d9e152003664abe42a4747907a0e3b428c24d709c5990",
@@ -317,7 +495,12 @@
       "predicted_winner": "Yannick Hanfmann",
       "confidence": 0.57007687802871,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Martin Damm",
+      "correct": false,
+      "brier": 0.32498764686296067,
+      "log_loss": 0.8441488723919504,
+      "result_id": "117834427"
     },
     {
       "forecast_id": "8266130c6283b2f2bb4c01cb72eaff607d0926fb6679df1936020cc3c04f1fea",
@@ -329,7 +512,12 @@
       "predicted_winner": "Aleksandar Kovacevic",
       "confidence": 0.508760411634213,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": false,
+      "brier": 0.2588371564462139,
+      "log_loss": 0.7108233101896024,
+      "result_id": "148738554"
     },
     {
       "forecast_id": "84861fea20898cf66f83cbce690cb2838e882722b5ab67ef47d0f9f2a67680e8",
@@ -341,7 +529,12 @@
       "predicted_winner": "Karen Khachanov",
       "confidence": 0.6911341570969423,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Karen Khachanov",
+      "correct": true,
+      "brier": 0.09539810891221631,
+      "log_loss": 0.36942132485935686,
+      "result_id": "155763392"
     },
     {
       "forecast_id": "8738738a567b8e36b411a8506e96f54c51308f02c0d27268a652cca572939d9f",
@@ -353,7 +546,12 @@
       "predicted_winner": "Titouan Droguet",
       "confidence": 0.5898606459683988,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Daniel Altmaier",
+      "correct": false,
+      "brier": 0.34793558166225674,
+      "log_loss": 0.8912582891506305,
+      "result_id": "157168511"
     },
     {
       "forecast_id": "893726604fc2f3de6c90e9de4dfa7ba03fc7022b76e56418a9552a47a176ef8d",
@@ -365,7 +563,12 @@
       "predicted_winner": "Cameron Norrie",
       "confidence": 0.5370861391453419,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Benjamin Bonzi",
+      "correct": false,
+      "brier": 0.2884615208620495,
+      "log_loss": 0.7702142878748303,
+      "result_id": "158573612"
     },
     {
       "forecast_id": "8a54a39115a8133d528b80c31ec5e90af17a79fd539c16f4d14401cfe5504756",
@@ -389,7 +592,12 @@
       "predicted_winner": "Fabian Marozsan",
       "confidence": 0.6274549211005388,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Fabian Marozsan",
+      "correct": true,
+      "brier": 0.13878983581220578,
+      "log_loss": 0.4660834494403378,
+      "result_id": "151548358"
     },
     {
       "forecast_id": "975d10cc0a25ac293e5adc1cd123eab37199ae319d9b0dfc0d8a1722fd87ff6b",
@@ -401,7 +609,12 @@
       "predicted_winner": "Raphael Collignon",
       "confidence": 0.6098082858093887,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Raphael Collignon",
+      "correct": true,
+      "brier": 0.15224957382300763,
+      "log_loss": 0.49461065677121563,
+      "result_id": "161383934"
     },
     {
       "forecast_id": "99dcc513af46ab94d98ede29077417a2d72f45197ecca2759c7648ae08cf74b8",
@@ -425,7 +638,12 @@
       "predicted_winner": "Marcos Giron",
       "confidence": 0.5096125739149857,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jan-Lennard Struff",
+      "correct": false,
+      "brier": 0.2597049754922568,
+      "log_loss": 0.7125595348091297,
+      "result_id": "152953317"
     },
     {
       "forecast_id": "a0f6386046739ca0af39ebea85c2016f80b42238219fd65af9e9bd255d8616b5",
@@ -437,7 +655,12 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.7895619934017121,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.04428415462106106,
+      "log_loss": 0.2362769260110692,
+      "result_id": "123452915"
     },
     {
       "forecast_id": "a4379379dfb27e7acc93622d9b4c73ae83d9325df12e400ce2790fa04e7f0a81",
@@ -449,7 +672,12 @@
       "predicted_winner": "Brandon Nakashima",
       "confidence": 0.5430009332061463,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Brandon Nakashima",
+      "correct": true,
+      "brier": 0.20884814705045318,
+      "log_loss": 0.610644240437991,
+      "result_id": "165599682"
     },
     {
       "forecast_id": "a659b6dd81196d172461102b789480d87e6bf0412414f28fae1705ee29057aa2",
@@ -461,7 +689,12 @@
       "predicted_winner": "Marcos Giron",
       "confidence": 0.530571144860051,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jan-Lennard Struff",
+      "correct": false,
+      "brier": 0.28150573975810517,
+      "log_loss": 0.756238525064387,
+      "result_id": "152953317"
     },
     {
       "forecast_id": "a89ce3cddd4d3f32808d9b89974799c36467515b86cba2d2bbdff52ce3e2ec9e",
@@ -473,7 +706,12 @@
       "predicted_winner": "Jan-Lennard Struff",
       "confidence": 0.5532631389202104,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jan-Lennard Struff",
+      "correct": true,
+      "brier": 0.19957382304742324,
+      "log_loss": 0.5919215517198487,
+      "result_id": "152953317"
     },
     {
       "forecast_id": "ac1850cf48f75ccdc8c425b1180edca58f54b70dd82663b7da917c1daee6721a",
@@ -485,7 +723,12 @@
       "predicted_winner": "Cameron Norrie",
       "confidence": 0.6023936612936744,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Benjamin Bonzi",
+      "correct": false,
+      "brier": 0.3628781231667982,
+      "log_loss": 0.9222928619064611,
+      "result_id": "158573612"
     },
     {
       "forecast_id": "b27465904f07de3c390a69edd59f3d3ff74edd7c56a17133014b17fa3b94dced",
@@ -497,7 +740,12 @@
       "predicted_winner": "Jacob Fearnley",
       "confidence": 0.5760191400670482,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Jacob Fearnley",
+      "correct": true,
+      "brier": 0.17975976958948525,
+      "log_loss": 0.5516143895552563,
+      "result_id": "155763405"
     },
     {
       "forecast_id": "b4310b27943094bb6f984b503594e7c960c7cf6cdd319487a06471bcd8b13ef8",
@@ -509,7 +757,12 @@
       "predicted_winner": "Mariano Navone",
       "confidence": 0.526829867247399,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Mariano Navone",
+      "correct": true,
+      "brier": 0.22388997452911405,
+      "log_loss": 0.6408776151100496,
+      "result_id": "150143462"
     },
     {
       "forecast_id": "ba67eeed6a5baadbd847b958991727524be624ecdb36f8ac4fd9fb9a66c24dc9",
@@ -521,7 +774,12 @@
       "predicted_winner": "Terence Atmane",
       "confidence": 0.5844584019151573,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Terence Atmane",
+      "correct": true,
+      "brier": 0.17267481973890494,
+      "log_loss": 0.5370696692678806,
+      "result_id": "144524012"
     },
     {
       "forecast_id": "c378506d2502d920ea7d7615b7501a569271acd5b44995ca426b49fb8b544274",
@@ -533,7 +791,12 @@
       "predicted_winner": "Raphael Collignon",
       "confidence": 0.5668942798010697,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Raphael Collignon",
+      "correct": true,
+      "brier": 0.18758056486903418,
+      "log_loss": 0.5675824480166523,
+      "result_id": "161383934"
     },
     {
       "forecast_id": "c40ef72701bf50c7a0da5339b4d2ca1fcf07a343a2f991f0c7aea386ad2d1255",
@@ -545,7 +808,12 @@
       "predicted_winner": "Karen Khachanov",
       "confidence": 0.6478484940195349,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Karen Khachanov",
+      "correct": true,
+      "brier": 0.12401068316430953,
+      "log_loss": 0.43409841549204436,
+      "result_id": "155763392"
     },
     {
       "forecast_id": "cea21d47d7bbc283a596acf8d1185adad1f68092407fcb166c54b002aef0841c",
@@ -557,7 +825,12 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.6646756276509427,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.11244243469128927,
+      "log_loss": 0.4084561352971629,
+      "result_id": "123452915"
     },
     {
       "forecast_id": "d097f27523c9a1e012c330dda7cd50c9f08b76b54bb68ff9f093d1f73808cff1",
@@ -569,7 +842,12 @@
       "predicted_winner": "Brandon Nakashima",
       "confidence": 0.5340408790098636,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Brandon Nakashima",
+      "correct": true,
+      "brier": 0.21711790243390058,
+      "log_loss": 0.6272828904990037,
+      "result_id": "165599682"
     },
     {
       "forecast_id": "d4101c8e351f3b2ec882160837d06360f0594a98fb68f17acf91be9fc18307c9",
@@ -581,7 +859,12 @@
       "predicted_winner": "Stefanos Tsitsipas",
       "confidence": 0.6587944613867666,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": true,
+      "brier": 0.11642121958034674,
+      "log_loss": 0.4173436878379042,
+      "result_id": "148738554"
     },
     {
       "forecast_id": "d92e792db5db69c12b0215f236a4e6fadb374553ed6bfd1f9071e15645098267",
@@ -593,7 +876,12 @@
       "predicted_winner": "Titouan Droguet",
       "confidence": 0.5967156995489481,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Daniel Altmaier",
+      "correct": false,
+      "brier": 0.3560696260881905,
+      "log_loss": 0.9081135055792089,
+      "result_id": "157168511"
     },
     {
       "forecast_id": "f3ad8a7512d67bc56aa5f9a85f315f71007f567bf4a9be683dfbef4d81a475b6",
@@ -605,7 +893,12 @@
       "predicted_winner": "Mariano Navone",
       "confidence": 0.6648981318500502,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Mariano Navone",
+      "correct": true,
+      "brier": 0.11229326203758634,
+      "log_loss": 0.4081214352482266,
+      "result_id": "150143462"
     },
     {
       "forecast_id": "f4fbe9389af3de7f23770a4329c10718ccce94d603234af9c660f631346ea78b",
@@ -617,7 +910,12 @@
       "predicted_winner": "Juan Manuel Cerundolo",
       "confidence": 0.5191928876201515,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Mariano Navone",
+      "correct": false,
+      "brier": 0.26956125455535124,
+      "log_loss": 0.7322891030672062,
+      "result_id": "150143462"
     },
     {
       "forecast_id": "fc1f10ab37e8a074beb1feb537af032b2957a842310aab614fa1f24e95a8b03f",
@@ -629,7 +927,12 @@
       "predicted_winner": "Stefanos Tsitsipas",
       "confidence": 0.7146460857270931,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": true,
+      "brier": 0.08142685639086951,
+      "log_loss": 0.3359678438307161,
+      "result_id": "148738554"
     },
     {
       "forecast_id": "ff331ead366318c9321976209d063d91eb75d7b9d3066dda1568dd19a2247264",
@@ -641,7 +944,12 @@
       "predicted_winner": "Ugo Humbert",
       "confidence": 0.6231229981688388,
       "issued_at_utc": "2026-10-19T11:21:20Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Corentin Moutet",
+      "correct": false,
+      "brier": 0.38828227084692263,
+      "log_loss": 0.9758363998566547,
+      "result_id": "155763428"
     },
     {
       "forecast_id": "1567e033543db143145dcf0483f431020c5e9f6a022f6f36509620229c51f52a",
@@ -653,7 +961,12 @@
       "predicted_winner": "Zizou Bergs",
       "confidence": 0.6181915206188349,
       "issued_at_utc": "2026-10-19T22:33:56Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Zizou Bergs",
+      "correct": true,
+      "brier": 0.14577771492735755,
+      "log_loss": 0.48095696562077306,
+      "result_id": "158573597"
     },
     {
       "forecast_id": "33b518447c62b5f3625a01b8919c57432a75bac3a42c2ac1bb89735b336dd341",
@@ -665,7 +978,12 @@
       "predicted_winner": "Zizou Bergs",
       "confidence": 0.6394268889824808,
       "issued_at_utc": "2026-10-19T22:33:56Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Zizou Bergs",
+      "correct": true,
+      "brier": 0.13001296838885223,
+      "log_loss": 0.44718298978037274,
+      "result_id": "158573597"
     },
     {
       "forecast_id": "f7358309da009ea72c99ffbfd6924c076038139dbcc716c05d63a9db185c1cd5",
@@ -677,8 +995,100 @@
       "predicted_winner": "Zizou Bergs",
       "confidence": 0.6235003627097464,
       "issued_at_utc": "2026-10-19T22:33:56Z",
+      "status": "settled",
+      "actual_winner": "Zizou Bergs",
+      "correct": true,
+      "brier": 0.14175197687969252,
+      "log_loss": 0.47240593213046467,
+      "result_id": "158573597"
+    },
+    {
+      "forecast_id": "0012ff715908d18df6bef57f12ffc05c1ddcfdd32dbc506d2d7ba8386856f28c",
+      "fixture_id": "360086",
+      "model": "Surface Elo",
+      "match_date": "2026-10-21",
+      "player_a_name": "Moise Kouame",
+      "player_b_name": "Lorenzo Musetti",
+      "predicted_winner": "Lorenzo Musetti",
+      "confidence": 0.7732351200240382,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "28790b3b98a6db2b93a4f88885647031f12a646d72189cfdfcd5e2f87f0b219b",
+      "fixture_id": "360086",
+      "model": "Serve/return",
+      "match_date": "2026-10-21",
+      "player_a_name": "Moise Kouame",
+      "player_b_name": "Lorenzo Musetti",
+      "predicted_winner": "Lorenzo Musetti",
+      "confidence": 0.7296174468048009,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "42bcff58a90ed020318d8f2f6c8285f89175f68ea88c89f981b630e716108f41",
+      "fixture_id": "189146",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mattia Bellucci",
+      "player_b_name": "Tomas Martin Etcheverry",
+      "predicted_winner": "Tomas Martin Etcheverry",
+      "confidence": 0.5610214499433493,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "settled",
+      "actual_winner": "Mattia Bellucci",
+      "correct": false,
+      "brier": 0.31474506729653806,
+      "log_loss": 0.8233047280194905,
+      "result_id": "179652412"
+    },
+    {
+      "forecast_id": "6003d3c9ce3ac83164de2a5da5d00296766663cb62e7acf6d240efe13f6a2591",
+      "fixture_id": "189146",
+      "model": "Surface Elo",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mattia Bellucci",
+      "player_b_name": "Tomas Martin Etcheverry",
+      "predicted_winner": "Tomas Martin Etcheverry",
+      "confidence": 0.5762845761614458,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "settled",
+      "actual_winner": "Mattia Bellucci",
+      "correct": false,
+      "brier": 0.33210391272157724,
+      "log_loss": 0.8586932192778131,
+      "result_id": "179652412"
+    },
+    {
+      "forecast_id": "c8c36f0050e651a8fd0625951c9a7fed2c4515ad4d50e8760e6079f76551f101",
+      "fixture_id": "189146",
+      "model": "Serve/return",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mattia Bellucci",
+      "player_b_name": "Tomas Martin Etcheverry",
+      "predicted_winner": "Tomas Martin Etcheverry",
+      "confidence": 0.5152320712890601,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "settled",
+      "actual_winner": "Mattia Bellucci",
+      "correct": false,
+      "brier": 0.26546408728481513,
+      "log_loss": 0.7240850000643329,
+      "result_id": "179652412"
+    },
+    {
+      "forecast_id": "e23ab5c97e6c3a8f7c1c2b9e094542bad57a73a31d2aa883187c1291752569e3",
+      "fixture_id": "360086",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-21",
+      "player_a_name": "Moise Kouame",
+      "player_b_name": "Lorenzo Musetti",
+      "predicted_winner": "Lorenzo Musetti",
+      "confidence": 0.7623307017192288,
+      "issued_at_utc": "2026-10-21T02:47:03Z",
       "status": "awaiting_verified_result"
     }
   ],
-  "results_checked_at_utc": null
+  "results_checked_at_utc": "2026-10-21T10:52:27.405045+00:00"
 }

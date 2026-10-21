@@ -61,56 +61,106 @@
   "release_status": "evaluated_frozen_model",
   "validation_year": 2024,
   "holdout_year": 2025,
-  "published_at_utc": "2026-10-21T02:47:03Z",
+  "history_sha256": "2c8a35da5d4838b980dec9a0b896837dc280789060c3106a40096698a9d85c32",
+  "published_at_utc": "2026-10-21T10:52:27Z",
   "excluded_fixtures": [
     {
-      "fixture_id": 340083,
+      "fixture_id": 417618,
       "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 7806,
-      "player_b_id": 29372,
-      "player_a_name": "Adrian Mannarino",
-      "player_b_name": "Andrey Rublev",
-      "start_time_utc": "2026-10-21T06:00:00Z"
+      "player_a_id": 56641,
+      "player_b_id": 14177,
+      "player_a_name": "Gauthier Onclin",
+      "player_b_name": "Jan-Lennard Struff",
+      "start_time_utc": "2026-10-21T17:30:00Z"
     },
     {
-      "fixture_id": 344860,
+      "fixture_id": 423297,
       "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 64741,
-      "player_b_id": 14716,
-      "player_a_name": "Facundo Diaz Acosta",
-      "player_b_name": "Nikoloz Basilashvili",
-      "start_time_utc": "2026-10-21T06:00:00Z"
+      "player_a_id": 28899,
+      "player_b_id": 29935,
+      "player_a_name": "Benjamin Bonzi",
+      "player_b_name": "Tommy Paul",
+      "start_time_utc": "2026-10-21T18:30:00Z"
     },
     {
-      "fixture_id": 342512,
+      "fixture_id": 398088,
       "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 83135,
-      "player_b_id": 31358,
-      "player_a_name": "Arthur Fils",
-      "player_b_name": "Jaume Antoni Munar Clar",
-      "start_time_utc": "2026-10-21T08:00:00Z"
+      "player_a_id": 22807,
+      "player_b_id": 39863,
+      "player_a_name": "Daniil Medvedev",
+      "player_b_name": "Sho Shimabukuro",
+      "start_time_utc": "2026-10-22T06:00:00Z"
     },
     {
-      "fixture_id": 344910,
+      "fixture_id": 409169,
       "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 72574,
-      "player_b_id": 52279,
-      "player_a_name": "Martin Damm",
-      "player_b_name": "Francisco Cerundolo",
-      "start_time_utc": "2026-10-21T08:00:00Z"
+      "player_a_id": 24245,
+      "player_b_id": 52140,
+      "player_a_name": "Alexander Bublik",
+      "player_b_name": "Fabian Marozsan",
+      "start_time_utc": "2026-10-22T06:00:00Z"
     },
     {
-      "fixture_id": 189153,
+      "fixture_id": 406488,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 14727,
+      "player_b_id": 29932,
+      "player_a_name": "Pierre-Hugues Herbert",
+      "player_b_name": "Taylor Fritz",
+      "start_time_utc": "2026-10-22T08:00:00Z"
+    },
+    {
+      "fixture_id": 420483,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 30550,
+      "player_b_id": 29732,
+      "player_a_name": "Borna Gojo",
+      "player_b_name": "Daniel Altmaier",
+      "start_time_utc": "2026-10-22T08:00:00Z"
+    },
+    {
+      "fixture_id": 426143,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 36594,
+      "player_b_id": 82371,
+      "player_a_name": "Valentin Vacherot",
+      "player_b_name": "Luca Van Assche",
+      "start_time_utc": "2026-10-22T08:00:00Z"
+    },
+    {
+      "fixture_id": 428934,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 84235,
+      "player_b_id": 61838,
+      "player_a_name": "Raphael Collignon",
+      "player_b_name": "Jiri Lehecka",
+      "start_time_utc": "2026-10-22T08:00:00Z"
+    },
+    {
+      "fixture_id": 417615,
       "reason": "Insufficient earlier player history",
       "prior_matches": [
-        0,
-        136
+        2,
+        51
       ],
-      "player_a_id": 116980,
-      "player_b_id": 58327,
-      "player_a_name": "Zangar Nurlanuly",
-      "player_b_name": "Tomas Machac",
-      "start_time_utc": "2026-10-21T06:00:00Z"
+      "player_a_id": 55828,
+      "player_b_id": 68090,
+      "player_a_name": "Clement Chidekh",
+      "player_b_name": "Jacob Fearnley",
+      "start_time_utc": "2026-10-21T12:30:00Z"
+    },
+    {
+      "fixture_id": 417674,
+      "reason": "Insufficient earlier player history",
+      "prior_matches": [
+        176,
+        1
+      ],
+      "player_a_id": 36263,
+      "player_b_id": 106767,
+      "player_a_name": "Corentin Moutet",
+      "player_b_name": "Felix Balshaw",
+      "start_time_utc": "2026-10-21T13:30:00Z"
     },
     {
       "fixture_id": 299874,
@@ -123,63 +173,112 @@
       "player_b_id": 35296,
       "player_a_name": "David Goffin",
       "player_b_name": "Remy Bertola",
-      "start_time_utc": "2026-10-21T08:00:00Z"
+      "start_time_utc": "2026-10-21T16:00:00Z"
     }
   ],
   "refresh_status": "fixtures_predictions_results",
-  "results_status": "awaiting_result_collection",
+  "results_status": "checked",
   "coverage": {
-    "future_fixtures": 10,
-    "predicted_future_fixtures": 4,
+    "future_fixtures": 17,
+    "predicted_future_fixtures": 6,
     "excluded": [
       {
-        "fixture_id": 340083,
+        "fixture_id": 417618,
         "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 7806,
-        "player_b_id": 29372,
-        "player_a_name": "Adrian Mannarino",
-        "player_b_name": "Andrey Rublev",
-        "start_time_utc": "2026-10-21T06:00:00Z"
+        "player_a_id": 56641,
+        "player_b_id": 14177,
+        "player_a_name": "Gauthier Onclin",
+        "player_b_name": "Jan-Lennard Struff",
+        "start_time_utc": "2026-10-21T17:30:00Z"
       },
       {
-        "fixture_id": 344860,
+        "fixture_id": 423297,
         "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 64741,
-        "player_b_id": 14716,
-        "player_a_name": "Facundo Diaz Acosta",
-        "player_b_name": "Nikoloz Basilashvili",
-        "start_time_utc": "2026-10-21T06:00:00Z"
+        "player_a_id": 28899,
+        "player_b_id": 29935,
+        "player_a_name": "Benjamin Bonzi",
+        "player_b_name": "Tommy Paul",
+        "start_time_utc": "2026-10-21T18:30:00Z"
       },
       {
-        "fixture_id": 342512,
+        "fixture_id": 398088,
         "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 83135,
-        "player_b_id": 31358,
-        "player_a_name": "Arthur Fils",
-        "player_b_name": "Jaume Antoni Munar Clar",
-        "start_time_utc": "2026-10-21T08:00:00Z"
+        "player_a_id": 22807,
+        "player_b_id": 39863,
+        "player_a_name": "Daniil Medvedev",
+        "player_b_name": "Sho Shimabukuro",
+        "start_time_utc": "2026-10-22T06:00:00Z"
       },
       {
-        "fixture_id": 344910,
+        "fixture_id": 409169,
         "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 72574,
-        "player_b_id": 52279,
-        "player_a_name": "Martin Damm",
-        "player_b_name": "Francisco Cerundolo",
-        "start_time_utc": "2026-10-21T08:00:00Z"
+        "player_a_id": 24245,
+        "player_b_id": 52140,
+        "player_a_name": "Alexander Bublik",
+        "player_b_name": "Fabian Marozsan",
+        "start_time_utc": "2026-10-22T06:00:00Z"
       },
       {
-        "fixture_id": 189153,
+        "fixture_id": 406488,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 14727,
+        "player_b_id": 29932,
+        "player_a_name": "Pierre-Hugues Herbert",
+        "player_b_name": "Taylor Fritz",
+        "start_time_utc": "2026-10-22T08:00:00Z"
+      },
+      {
+        "fixture_id": 420483,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 30550,
+        "player_b_id": 29732,
+        "player_a_name": "Borna Gojo",
+        "player_b_name": "Daniel Altmaier",
+        "start_time_utc": "2026-10-22T08:00:00Z"
+      },
+      {
+        "fixture_id": 426143,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 36594,
+        "player_b_id": 82371,
+        "player_a_name": "Valentin Vacherot",
+        "player_b_name": "Luca Van Assche",
+        "start_time_utc": "2026-10-22T08:00:00Z"
+      },
+      {
+        "fixture_id": 428934,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 84235,
+        "player_b_id": 61838,
+        "player_a_name": "Raphael Collignon",
+        "player_b_name": "Jiri Lehecka",
+        "start_time_utc": "2026-10-22T08:00:00Z"
+      },
+      {
+        "fixture_id": 417615,
         "reason": "Insufficient earlier player history",
         "prior_matches": [
-          0,
-          136
+          2,
+          51
         ],
-        "player_a_id": 116980,
-        "player_b_id": 58327,
-        "player_a_name": "Zangar Nurlanuly",
-        "player_b_name": "Tomas Machac",
-        "start_time_utc": "2026-10-21T06:00:00Z"
+        "player_a_id": 55828,
+        "player_b_id": 68090,
+        "player_a_name": "Clement Chidekh",
+        "player_b_name": "Jacob Fearnley",
+        "start_time_utc": "2026-10-21T12:30:00Z"
+      },
+      {
+        "fixture_id": 417674,
+        "reason": "Insufficient earlier player history",
+        "prior_matches": [
+          176,
+          1
+        ],
+        "player_a_id": 36263,
+        "player_b_id": 106767,
+        "player_a_name": "Corentin Moutet",
+        "player_b_name": "Felix Balshaw",
+        "start_time_utc": "2026-10-21T13:30:00Z"
       },
       {
         "fixture_id": 299874,
@@ -192,15 +291,15 @@
         "player_b_id": 35296,
         "player_a_name": "David Goffin",
         "player_b_name": "Remy Bertola",
-        "start_time_utc": "2026-10-21T08:00:00Z"
+        "start_time_utc": "2026-10-21T16:00:00Z"
       }
     ]
   },
   "set_score_research": {
-    "graded": 0,
-    "pending": 16,
-    "exact_score_accuracy": null,
-    "mean_log_loss": null,
+    "graded": 14,
+    "pending": 2,
+    "exact_score_accuracy": 0.42857142857142855,
+    "mean_log_loss": 1.3094396566100925,
     "release_status": "Awaiting sufficient independent future results; public set scores remain disabled"
   }
 }

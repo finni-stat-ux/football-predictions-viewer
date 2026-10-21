@@ -9,8 +9,10 @@ import time
 import requests
 import streamlit as st
 
-_AUTH_LOCK = threading.Lock()
-_FAILED_ATTEMPTS = []
+if "_AUTH_LOCK" not in globals():
+    _AUTH_LOCK = threading.Lock()
+if "_FAILED_ATTEMPTS" not in globals():
+    _FAILED_ATTEMPTS = []
 _MAX_ATTEMPTS = 10
 _WINDOW_SECONDS = 900
 

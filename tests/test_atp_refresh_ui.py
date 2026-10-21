@@ -38,3 +38,13 @@ show_cloud_refresh(atp=True)
         next(b for b in app.button if "next 7 days" in b.label).click().run()
         assert not app.exception and not post.called
         assert app.warning
+
+
+def test_refresh_module_reload_preserves_failed_login_throttle():
+    import importlib,cloud_refresh_ui
+    before=list(cloud_refresh_ui._FAILED_ATTEMPTS)
+    cloud_refresh_ui.record_failed_login()
+    entries=cloud_refresh_ui._FAILED_ATTEMPTS
+    importlib.reload(cloud_refresh_ui)
+    assert cloud_refresh_ui._FAILED_ATTEMPTS is entries and len(entries)==len(before)+1
+    entries[:]=before

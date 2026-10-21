@@ -53,9 +53,10 @@ from sport_icons import show_sport_picker
 sport = show_sport_picker()
 if sport == "ATP Men's Singles":
     # Match the existing football reload policy: Cloud may cache imported UI modules.
-    import tennis_design, tennis_fixtures_viewer, tennis_viewer, tennis_performance
+    import tennis_design, tennis_fixtures_viewer, tennis_viewer, tennis_performance, cloud_refresh_ui
     importlib.reload(tennis_design)
     importlib.reload(tennis_fixtures_viewer)
+    importlib.reload(cloud_refresh_ui)
     importlib.reload(tennis_performance)
     importlib.reload(tennis_viewer)
     tennis_viewer.show_atp(ROOT)

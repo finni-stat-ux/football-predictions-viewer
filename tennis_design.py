@@ -33,6 +33,20 @@ def tournament_mark(name):
     return f'<svg class="atp-mark" viewBox="0 0 64 64" role="img" aria-label="{escape(city)} tennis badge"><rect x="1" y="1" width="62" height="62" rx="16" fill="{color}"/><rect x="12" y="10" width="40" height="30" rx="2" fill="none" stroke="white" opacity=".75"/><path d="M12 25h40M20 10v30m24-30v30m-24-15h24M32 10v30" stroke="white" opacity=".75"/><text x="32" y="56" text-anchor="middle" fill="white" font-family="sans-serif" font-size="12" font-weight="700">{initials}</text></svg>'
 
 
+def compatible_start(prediction, row):
+    """Keep an as-issued forecast after a same-day time change, never a new matchup."""
+    try:
+        original, current = pd.Timestamp(prediction.kickoff_utc), pd.Timestamp(row["start_time_utc"])
+        if original == current:
+            return True
+        issued = pd.Timestamp(prediction.get("forecast_issued_at_utc"))
+        return bool(original.tzinfo and current.tzinfo and issued.tzinfo
+                    and issued < min(original, current)
+                    and original.tz_convert("Australia/Sydney").date() == current.tz_convert("Australia/Sydney").date())
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+
 def prediction_for(row, forecasts):
     """Bind an already-approved forecast to exact fixture/player identity."""
     required = {"fixture_id", "model", "kickoff_utc", "event_name", "surface", "player_a_id", "player_b_id", "player_a_name", "player_b_name", "p_player_a", "p_player_b"}
@@ -44,7 +58,7 @@ def prediction_for(row, forecasts):
         if len(candidates) != 1:
             continue
         p = candidates.iloc[0]
-        if pd.Timestamp(p.kickoff_utc) != pd.Timestamp(row["start_time_utc"]) or p.event_name != row["tournament"]:
+        if not compatible_start(p, row) or p.event_name != row["tournament"]:
             continue
         if p.surface != ("Hard" if row["surface"] == "Indoor hard" else row["surface"]):
             continue
@@ -64,6 +78,7 @@ def prediction_for(row, forecasts):
         return {"model": model, "p_a": probability, "p_b": 1-probability, "side": side,
                 "winner": row[f"player_{side}_name"] if side else "Too close to call",
                 "confidence": max(probability, 1-probability),
+                "start_updated": pd.Timestamp(p.kickoff_utc) != pd.Timestamp(row["start_time_utc"]),
                 "issued_at_utc": p.get("forecast_issued_at_utc"), "training_through": p.get("forecast_training_through")}
     return None
 
@@ -97,6 +112,8 @@ def pick_html(row, pick, *, compact=False):
     title = f'<div class="atp-winner">{winner}<strong>{heading}</strong></div>'
     sets=pick.get("set_pick")
     set_line=(f'<div class="atp-set-pick"><span>SET-SCORE ESTIMATE</span><strong>{escape(sets["winner"])} {escape(sets["score"])}</strong><small>{sets["p"]:.1%} probability of this exact set result · Experimental</small></div>' if sets else '')
+    if pick.get("start_updated"):
+        set_line+='<small class="atp-retained">Original forecast · Scheduled start updated</small>'
     if row.get("_started"):
         set_line='<small class="atp-retained">Pre-match forecast retained · Result not available</small>'+set_line
     if not compact and pick.get("issued_at_utc") and pick.get("training_through"):

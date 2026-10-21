@@ -6,11 +6,8 @@
   "holdout_matches": 2479,
   "history_rights_url": "https://tennisdata.app/downloads/",
   "fixture_rights_url": "https://sportsapi365.com/docs/direct/tennis",
-  "published_at_utc": "2026-10-19T22:33:56Z",
   "hybrid_weight_serve_return": 0.25,
   "training_through": "2026-10-18",
-  "validation_year": 2024,
-  "holdout_year": 2025,
   "evaluation": [
     {
       "split": "validation",
@@ -61,46 +58,59 @@
       "accuracy": 0.6494554255748286
     }
   ],
+  "release_status": "evaluated_frozen_model",
+  "validation_year": 2024,
+  "holdout_year": 2025,
+  "published_at_utc": "2026-10-21T02:47:03Z",
   "excluded_fixtures": [
     {
-      "fixture_id": 333049,
+      "fixture_id": 340083,
       "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 11517,
-      "player_b_id": 76127,
-      "player_a_name": "James Duckworth",
-      "player_b_name": "Luciano Darderi",
-      "start_time_utc": "2026-10-20T06:30:00Z"
-    },
-    {
-      "fixture_id": 189146,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 72578,
-      "player_b_id": 37532,
-      "player_a_name": "Mattia Bellucci",
-      "player_b_name": "Tomas Martin Etcheverry",
+      "player_a_id": 7806,
+      "player_b_id": 29372,
+      "player_a_name": "Adrian Mannarino",
+      "player_b_name": "Andrey Rublev",
       "start_time_utc": "2026-10-21T06:00:00Z"
     },
     {
-      "fixture_id": 189153,
+      "fixture_id": 344860,
       "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 64741,
+      "player_b_id": 14716,
+      "player_a_name": "Facundo Diaz Acosta",
+      "player_b_name": "Nikoloz Basilashvili",
+      "start_time_utc": "2026-10-21T06:00:00Z"
+    },
+    {
+      "fixture_id": 342512,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 83135,
+      "player_b_id": 31358,
+      "player_a_name": "Arthur Fils",
+      "player_b_name": "Jaume Antoni Munar Clar",
+      "start_time_utc": "2026-10-21T08:00:00Z"
+    },
+    {
+      "fixture_id": 344910,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 72574,
+      "player_b_id": 52279,
+      "player_a_name": "Martin Damm",
+      "player_b_name": "Francisco Cerundolo",
+      "start_time_utc": "2026-10-21T08:00:00Z"
+    },
+    {
+      "fixture_id": 189153,
+      "reason": "Insufficient earlier player history",
+      "prior_matches": [
+        0,
+        136
+      ],
       "player_a_id": 116980,
       "player_b_id": 58327,
       "player_a_name": "Zangar Nurlanuly",
       "player_b_name": "Tomas Machac",
       "start_time_utc": "2026-10-21T06:00:00Z"
-    },
-    {
-      "fixture_id": 138877,
-      "reason": "Insufficient earlier player history",
-      "prior_matches": [
-        230,
-        2
-      ],
-      "player_a_id": 33860,
-      "player_b_id": 95311,
-      "player_a_name": "Tallon Griekspoor",
-      "player_b_name": "Max Schoenhaus",
-      "start_time_utc": "2026-10-20T08:00:00Z"
     },
     {
       "fixture_id": 299874,
@@ -113,25 +123,84 @@
       "player_b_id": 35296,
       "player_a_name": "David Goffin",
       "player_b_name": "Remy Bertola",
-      "start_time_utc": "2026-10-20T08:00:00Z"
-    },
-    {
-      "fixture_id": 299877,
-      "reason": "Insufficient earlier player history",
-      "prior_matches": [
-        245,
-        2
-      ],
-      "player_a_id": 24249,
-      "player_b_id": 55828,
-      "player_a_name": "Botic Van De Zandschulp",
-      "player_b_name": "Clement Chidekh",
-      "start_time_utc": "2026-10-20T08:00:00Z"
+      "start_time_utc": "2026-10-21T08:00:00Z"
     }
   ],
-  "release_status": "experimental",
-  "history_sha256": "2c8a35da5d4838b980dec9a0b896837dc280789060c3106a40096698a9d85c32",
-  "retained_elapsed_forecasts": 6,
-  "source_permission_basis": "The free season CSV download page expressly permits using these files in any way. This release contains independently computed model forecasts only; no raw CSV redistribution.",
-  "publication_note": "Only future picks were regenerated. Retained picks keep their original issue time and training cutoff."
+  "refresh_status": "fixtures_predictions_results",
+  "results_status": "awaiting_result_collection",
+  "coverage": {
+    "future_fixtures": 10,
+    "predicted_future_fixtures": 4,
+    "excluded": [
+      {
+        "fixture_id": 340083,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 7806,
+        "player_b_id": 29372,
+        "player_a_name": "Adrian Mannarino",
+        "player_b_name": "Andrey Rublev",
+        "start_time_utc": "2026-10-21T06:00:00Z"
+      },
+      {
+        "fixture_id": 344860,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 64741,
+        "player_b_id": 14716,
+        "player_a_name": "Facundo Diaz Acosta",
+        "player_b_name": "Nikoloz Basilashvili",
+        "start_time_utc": "2026-10-21T06:00:00Z"
+      },
+      {
+        "fixture_id": 342512,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 83135,
+        "player_b_id": 31358,
+        "player_a_name": "Arthur Fils",
+        "player_b_name": "Jaume Antoni Munar Clar",
+        "start_time_utc": "2026-10-21T08:00:00Z"
+      },
+      {
+        "fixture_id": 344910,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 72574,
+        "player_b_id": 52279,
+        "player_a_name": "Martin Damm",
+        "player_b_name": "Francisco Cerundolo",
+        "start_time_utc": "2026-10-21T08:00:00Z"
+      },
+      {
+        "fixture_id": 189153,
+        "reason": "Insufficient earlier player history",
+        "prior_matches": [
+          0,
+          136
+        ],
+        "player_a_id": 116980,
+        "player_b_id": 58327,
+        "player_a_name": "Zangar Nurlanuly",
+        "player_b_name": "Tomas Machac",
+        "start_time_utc": "2026-10-21T06:00:00Z"
+      },
+      {
+        "fixture_id": 299874,
+        "reason": "Insufficient earlier player history",
+        "prior_matches": [
+          158,
+          1
+        ],
+        "player_a_id": 11226,
+        "player_b_id": 35296,
+        "player_a_name": "David Goffin",
+        "player_b_name": "Remy Bertola",
+        "start_time_utc": "2026-10-21T08:00:00Z"
+      }
+    ]
+  },
+  "set_score_research": {
+    "graded": 0,
+    "pending": 16,
+    "exact_score_accuracy": null,
+    "mean_log_loss": null,
+    "release_status": "Awaiting sufficient independent future results; public set scores remain disabled"
+  }
 }

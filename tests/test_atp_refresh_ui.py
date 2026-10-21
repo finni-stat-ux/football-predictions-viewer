@@ -16,11 +16,11 @@ show_cloud_refresh(atp=True)
     with patch("cloud_refresh_ui.requests.get") as get, patch("cloud_refresh_ui.requests.post") as post:
         get.return_value.json.return_value = {"workflow_runs": []}
         app.run()
-        next(b for b in app.button if b.label == "Refresh ATP fixtures — next 7 days").click().run()
+        next(b for b in app.button if b.label == "Refresh ATP predictions & results — next 7 days").click().run()
         assert not app.exception
         assert "/atp-fixtures.yml/dispatches" in post.call_args.args[0]
         assert post.call_args.kwargs["json"] == {"ref": "main"}
-        assert any("ATP fixtures will update" in x.value for x in app.success)
+        assert any("ATP fixtures, eligible predictions and verified results will update" in x.value for x in app.success)
 
 
 def test_atp_button_does_not_dispatch_while_active():

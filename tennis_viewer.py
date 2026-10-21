@@ -148,6 +148,23 @@ def show_atp(root):
     tennis_fixtures_viewer.show_fixtures(root, frame if status == "ready" else None, metadata)
     from cloud_refresh_ui import show_cloud_refresh
     show_cloud_refresh(atp=True)
+    from tennis_performance import show_performance
+    show_performance(root)
+    if metadata.get('coverage'):
+        coverage=metadata['coverage']
+        with st.expander('Prediction coverage & missing matches'):
+            st.caption(f"{coverage['predicted_future_fixtures']} of {coverage['future_fixtures']} future fixtures have a validated winner prediction. Both players need verified identities and at least five eligible prior ATP main-draw matches.")
+            excluded=coverage.get('excluded',[])
+            if excluded:
+                table=[]
+                for item in excluded:
+                    reason=item['reason']
+                    if item.get('prior_matches'):
+                        reason+=' · Prior matches: '+str(item['prior_matches'][0])+' / '+str(item['prior_matches'][1])
+                    table.append({'Match':item['player_a_name']+' vs '+item['player_b_name'],'Reason':reason})
+                st.dataframe(pd.DataFrame(table),hide_index=True,use_container_width=True)
+            else:
+                st.caption('All currently confirmed future fixtures meet the prediction requirements.')
     # The independent market snapshot never triggers a provider API call.
     # ATP Hybrid comparisons require an independently approved forecast file.
     import tennis_odds_viewer
@@ -178,4 +195,12 @@ def show_atp(root):
             st.caption("Historical results through "+str(metadata["training_through"]))
         if metadata.get("evaluation"):
             st.dataframe(pd.DataFrame(metadata["evaluation"]),hide_index=True,use_container_width=True)
+    if metadata.get('set_score_research'):
+        with st.expander('Set-score research progress'):
+            research=metadata['set_score_research']
+            st.caption('Set-score estimates remain hidden while saved experimental forecasts are checked against independent completed results.')
+            st.write(f"Verified outcomes: {research['graded']} · Awaiting results: {research['pending']}")
+            if research.get('exact_score_accuracy') is not None:
+                st.write(f"Experimental exact-score accuracy: {research['exact_score_accuracy']:.1%}")
+            st.caption('A small sample cannot establish an improvement. No public set-score release is approved.')
     footer()

@@ -71,3 +71,18 @@ def test_missing_prediction_explains_dataset_counts_only_for_exact_identity():
     assert reason in pick_html(row,None)
     item['player_b_id']=999
     assert '0 recorded' not in pending_reason(row,metadata)
+
+
+def test_time_change_keeps_pre_match_forecast_but_not_changed_matchup():
+    row, frame = fixture(), forecast()
+    frame['forecast_issued_at_utc'] = '2026-10-20T00:00:00Z'
+    row['start_time_utc'] = '2026-10-21T12:30:00Z'
+    pick = prediction_for(row, frame)
+    assert pick['p_a'] == .64 and pick['start_updated']
+    assert 'Scheduled start updated' in pick_html(row, pick)
+    row['player_a_id'] = 99
+    assert prediction_for(row, frame) is None
+    row = fixture(); row['start_time_utc'] = '2026-10-22T12:00:00Z'
+    assert prediction_for(row, frame) is None
+    row = fixture(); row['start_time_utc'] = '2026-10-20T00:00:00Z'
+    assert prediction_for(row, frame) is None

@@ -3,9 +3,9 @@
   "model": "Matrix",
   "experimental": true,
   "hybrid_default": true,
-  "published_at_utc": "2026-10-18T02:53:50.567956+00:00",
-  "baseline_predictions_sha256": "a47199813e1aad8b8225ebf3ec5028688e5d99a1d0797b1ea829ee41eff62d5f",
-  "historical_data_through": "2026-10-17",
+  "published_at_utc": "2026-10-21T10:51:14.053143+00:00",
+  "baseline_predictions_sha256": "27dde6fdabd1b8b6f30387336256df9acb3ea700748dc71b48e1f6becba4701f",
+  "historical_data_through": "2026-10-20",
   "weights": {
     "EPL": {
       "Dixon-Coles": 0.3158505553722035,
@@ -18,7 +18,7 @@
       "Logistic": 0.1532298058481541
     }
   },
-  "fixture_count": 49,
+  "fixture_count": 56,
   "scope": [
     "EPL",
     "Championship"

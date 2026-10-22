@@ -62,26 +62,8 @@
   "validation_year": 2024,
   "holdout_year": 2025,
   "history_sha256": "2c8a35da5d4838b980dec9a0b896837dc280789060c3106a40096698a9d85c32",
-  "published_at_utc": "2026-10-21T10:52:27Z",
+  "published_at_utc": "2026-10-22T09:25:04Z",
   "excluded_fixtures": [
-    {
-      "fixture_id": 417618,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 56641,
-      "player_b_id": 14177,
-      "player_a_name": "Gauthier Onclin",
-      "player_b_name": "Jan-Lennard Struff",
-      "start_time_utc": "2026-10-21T17:30:00Z"
-    },
-    {
-      "fixture_id": 423297,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 28899,
-      "player_b_id": 29935,
-      "player_a_name": "Benjamin Bonzi",
-      "player_b_name": "Tommy Paul",
-      "start_time_utc": "2026-10-21T18:30:00Z"
-    },
     {
       "fixture_id": 398088,
       "reason": "Player identity not in checked crosswalk",
@@ -89,43 +71,7 @@
       "player_b_id": 39863,
       "player_a_name": "Daniil Medvedev",
       "player_b_name": "Sho Shimabukuro",
-      "start_time_utc": "2026-10-22T06:00:00Z"
-    },
-    {
-      "fixture_id": 409169,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 24245,
-      "player_b_id": 52140,
-      "player_a_name": "Alexander Bublik",
-      "player_b_name": "Fabian Marozsan",
-      "start_time_utc": "2026-10-22T06:00:00Z"
-    },
-    {
-      "fixture_id": 406488,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 14727,
-      "player_b_id": 29932,
-      "player_a_name": "Pierre-Hugues Herbert",
-      "player_b_name": "Taylor Fritz",
-      "start_time_utc": "2026-10-22T08:00:00Z"
-    },
-    {
-      "fixture_id": 420483,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 30550,
-      "player_b_id": 29732,
-      "player_a_name": "Borna Gojo",
-      "player_b_name": "Daniel Altmaier",
-      "start_time_utc": "2026-10-22T08:00:00Z"
-    },
-    {
-      "fixture_id": 426143,
-      "reason": "Player identity not in checked crosswalk",
-      "player_a_id": 36594,
-      "player_b_id": 82371,
-      "player_a_name": "Valentin Vacherot",
-      "player_b_name": "Luca Van Assche",
-      "start_time_utc": "2026-10-22T08:00:00Z"
+      "start_time_utc": "2026-10-22T10:00:00Z"
     },
     {
       "fixture_id": 428934,
@@ -134,72 +80,96 @@
       "player_b_id": 61838,
       "player_a_name": "Raphael Collignon",
       "player_b_name": "Jiri Lehecka",
-      "start_time_utc": "2026-10-22T08:00:00Z"
+      "start_time_utc": "2026-10-22T11:30:00Z"
     },
     {
-      "fixture_id": 417615,
-      "reason": "Insufficient earlier player history",
-      "prior_matches": [
-        2,
-        51
-      ],
+      "fixture_id": 420483,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 30550,
+      "player_b_id": 29732,
+      "player_a_name": "Borna Gojo",
+      "player_b_name": "Daniel Altmaier",
+      "start_time_utc": "2026-10-22T12:00:00Z"
+    },
+    {
+      "fixture_id": 426143,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 36594,
+      "player_b_id": 82371,
+      "player_a_name": "Valentin Vacherot",
+      "player_b_name": "Luca Van Assche",
+      "start_time_utc": "2026-10-22T12:00:00Z"
+    },
+    {
+      "fixture_id": 406488,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 14727,
+      "player_b_id": 29932,
+      "player_a_name": "Pierre-Hugues Herbert",
+      "player_b_name": "Taylor Fritz",
+      "start_time_utc": "2026-10-22T13:30:00Z"
+    },
+    {
+      "fixture_id": 409169,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 24245,
+      "player_b_id": 52140,
+      "player_a_name": "Alexander Bublik",
+      "player_b_name": "Fabian Marozsan",
+      "start_time_utc": "2026-10-22T14:30:00Z"
+    },
+    {
+      "fixture_id": 483510,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 67546,
+      "player_b_id": 1092,
+      "player_a_name": "Flavio Cobolli",
+      "player_b_name": "Stan Wawrinka",
+      "start_time_utc": "2026-10-22T17:00:00Z"
+    },
+    {
+      "fixture_id": 477570,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 14716,
+      "player_b_id": 7806,
+      "player_a_name": "Nikoloz Basilashvili",
+      "player_b_name": "Adrian Mannarino",
+      "start_time_utc": "2026-10-23T06:00:00Z"
+    },
+    {
+      "fixture_id": 486303,
+      "reason": "Player identity not in checked crosswalk",
+      "player_a_id": 30470,
+      "player_b_id": 11517,
+      "player_a_name": "Stefanos Tsitsipas",
+      "player_b_name": "James Duckworth",
+      "start_time_utc": "2026-10-23T06:00:00Z"
+    },
+    {
+      "fixture_id": 486357,
+      "reason": "Player identity not in checked crosswalk",
       "player_a_id": 55828,
-      "player_b_id": 68090,
+      "player_b_id": 52279,
       "player_a_name": "Clement Chidekh",
-      "player_b_name": "Jacob Fearnley",
-      "start_time_utc": "2026-10-21T12:30:00Z"
+      "player_b_name": "Francisco Cerundolo",
+      "start_time_utc": "2026-10-23T08:00:00Z"
     },
     {
-      "fixture_id": 417674,
-      "reason": "Insufficient earlier player history",
-      "prior_matches": [
-        176,
-        1
-      ],
+      "fixture_id": 503954,
+      "reason": "Player identity not in checked crosswalk",
       "player_a_id": 36263,
-      "player_b_id": 106767,
+      "player_b_id": 29935,
       "player_a_name": "Corentin Moutet",
-      "player_b_name": "Felix Balshaw",
-      "start_time_utc": "2026-10-21T13:30:00Z"
-    },
-    {
-      "fixture_id": 299874,
-      "reason": "Insufficient earlier player history",
-      "prior_matches": [
-        158,
-        1
-      ],
-      "player_a_id": 11226,
-      "player_b_id": 35296,
-      "player_a_name": "David Goffin",
-      "player_b_name": "Remy Bertola",
-      "start_time_utc": "2026-10-21T16:00:00Z"
+      "player_b_name": "Tommy Paul",
+      "start_time_utc": "2026-10-23T08:00:00Z"
     }
   ],
   "refresh_status": "fixtures_predictions_results",
   "results_status": "checked",
   "coverage": {
-    "future_fixtures": 17,
-    "predicted_future_fixtures": 6,
+    "future_fixtures": 14,
+    "predicted_future_fixtures": 3,
     "excluded": [
-      {
-        "fixture_id": 417618,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 56641,
-        "player_b_id": 14177,
-        "player_a_name": "Gauthier Onclin",
-        "player_b_name": "Jan-Lennard Struff",
-        "start_time_utc": "2026-10-21T17:30:00Z"
-      },
-      {
-        "fixture_id": 423297,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 28899,
-        "player_b_id": 29935,
-        "player_a_name": "Benjamin Bonzi",
-        "player_b_name": "Tommy Paul",
-        "start_time_utc": "2026-10-21T18:30:00Z"
-      },
       {
         "fixture_id": 398088,
         "reason": "Player identity not in checked crosswalk",
@@ -207,43 +177,7 @@
         "player_b_id": 39863,
         "player_a_name": "Daniil Medvedev",
         "player_b_name": "Sho Shimabukuro",
-        "start_time_utc": "2026-10-22T06:00:00Z"
-      },
-      {
-        "fixture_id": 409169,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 24245,
-        "player_b_id": 52140,
-        "player_a_name": "Alexander Bublik",
-        "player_b_name": "Fabian Marozsan",
-        "start_time_utc": "2026-10-22T06:00:00Z"
-      },
-      {
-        "fixture_id": 406488,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 14727,
-        "player_b_id": 29932,
-        "player_a_name": "Pierre-Hugues Herbert",
-        "player_b_name": "Taylor Fritz",
-        "start_time_utc": "2026-10-22T08:00:00Z"
-      },
-      {
-        "fixture_id": 420483,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 30550,
-        "player_b_id": 29732,
-        "player_a_name": "Borna Gojo",
-        "player_b_name": "Daniel Altmaier",
-        "start_time_utc": "2026-10-22T08:00:00Z"
-      },
-      {
-        "fixture_id": 426143,
-        "reason": "Player identity not in checked crosswalk",
-        "player_a_id": 36594,
-        "player_b_id": 82371,
-        "player_a_name": "Valentin Vacherot",
-        "player_b_name": "Luca Van Assche",
-        "start_time_utc": "2026-10-22T08:00:00Z"
+        "start_time_utc": "2026-10-22T10:00:00Z"
       },
       {
         "fixture_id": 428934,
@@ -252,46 +186,88 @@
         "player_b_id": 61838,
         "player_a_name": "Raphael Collignon",
         "player_b_name": "Jiri Lehecka",
-        "start_time_utc": "2026-10-22T08:00:00Z"
+        "start_time_utc": "2026-10-22T11:30:00Z"
       },
       {
-        "fixture_id": 417615,
-        "reason": "Insufficient earlier player history",
-        "prior_matches": [
-          2,
-          51
-        ],
+        "fixture_id": 420483,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 30550,
+        "player_b_id": 29732,
+        "player_a_name": "Borna Gojo",
+        "player_b_name": "Daniel Altmaier",
+        "start_time_utc": "2026-10-22T12:00:00Z"
+      },
+      {
+        "fixture_id": 426143,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 36594,
+        "player_b_id": 82371,
+        "player_a_name": "Valentin Vacherot",
+        "player_b_name": "Luca Van Assche",
+        "start_time_utc": "2026-10-22T12:00:00Z"
+      },
+      {
+        "fixture_id": 406488,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 14727,
+        "player_b_id": 29932,
+        "player_a_name": "Pierre-Hugues Herbert",
+        "player_b_name": "Taylor Fritz",
+        "start_time_utc": "2026-10-22T13:30:00Z"
+      },
+      {
+        "fixture_id": 409169,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 24245,
+        "player_b_id": 52140,
+        "player_a_name": "Alexander Bublik",
+        "player_b_name": "Fabian Marozsan",
+        "start_time_utc": "2026-10-22T14:30:00Z"
+      },
+      {
+        "fixture_id": 483510,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 67546,
+        "player_b_id": 1092,
+        "player_a_name": "Flavio Cobolli",
+        "player_b_name": "Stan Wawrinka",
+        "start_time_utc": "2026-10-22T17:00:00Z"
+      },
+      {
+        "fixture_id": 477570,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 14716,
+        "player_b_id": 7806,
+        "player_a_name": "Nikoloz Basilashvili",
+        "player_b_name": "Adrian Mannarino",
+        "start_time_utc": "2026-10-23T06:00:00Z"
+      },
+      {
+        "fixture_id": 486303,
+        "reason": "Player identity not in checked crosswalk",
+        "player_a_id": 30470,
+        "player_b_id": 11517,
+        "player_a_name": "Stefanos Tsitsipas",
+        "player_b_name": "James Duckworth",
+        "start_time_utc": "2026-10-23T06:00:00Z"
+      },
+      {
+        "fixture_id": 486357,
+        "reason": "Player identity not in checked crosswalk",
         "player_a_id": 55828,
-        "player_b_id": 68090,
+        "player_b_id": 52279,
         "player_a_name": "Clement Chidekh",
-        "player_b_name": "Jacob Fearnley",
-        "start_time_utc": "2026-10-21T12:30:00Z"
+        "player_b_name": "Francisco Cerundolo",
+        "start_time_utc": "2026-10-23T08:00:00Z"
       },
       {
-        "fixture_id": 417674,
-        "reason": "Insufficient earlier player history",
-        "prior_matches": [
-          176,
-          1
-        ],
+        "fixture_id": 503954,
+        "reason": "Player identity not in checked crosswalk",
         "player_a_id": 36263,
-        "player_b_id": 106767,
+        "player_b_id": 29935,
         "player_a_name": "Corentin Moutet",
-        "player_b_name": "Felix Balshaw",
-        "start_time_utc": "2026-10-21T13:30:00Z"
-      },
-      {
-        "fixture_id": 299874,
-        "reason": "Insufficient earlier player history",
-        "prior_matches": [
-          158,
-          1
-        ],
-        "player_a_id": 11226,
-        "player_b_id": 35296,
-        "player_a_name": "David Goffin",
-        "player_b_name": "Remy Bertola",
-        "start_time_utc": "2026-10-21T16:00:00Z"
+        "player_b_name": "Tommy Paul",
+        "start_time_utc": "2026-10-23T08:00:00Z"
       }
     ]
   },

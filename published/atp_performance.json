@@ -1,60 +1,60 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-21T10:52:27.405045+00:00",
+  "generated_at_utc": "2026-10-22T09:25:04.059270+00:00",
   "method": "First saved pre-match forecast per fixture and model; completed verified matches only",
   "summary": [
     {
       "model": "ATP Hybrid",
-      "settled": 17,
-      "pending": 3,
-      "accuracy": 0.5882352941176471,
-      "brier": 0.2194903712138546,
-      "log_loss": 0.6282322605453553
+      "settled": 20,
+      "pending": 4,
+      "accuracy": 0.65,
+      "brier": 0.2011103311221365,
+      "log_loss": 0.5879516749507332
     },
     {
       "model": "Serve/return",
-      "settled": 17,
-      "pending": 3,
-      "accuracy": 0.6470588235294118,
-      "brier": 0.19312728076906874,
-      "log_loss": 0.5751097509255322
+      "settled": 20,
+      "pending": 4,
+      "accuracy": 0.7,
+      "brier": 0.18268976292897893,
+      "log_loss": 0.5528400520378701
     },
     {
       "model": "Surface Elo",
-      "settled": 17,
-      "pending": 3,
-      "accuracy": 0.5294117647058824,
-      "brier": 0.2320478381596793,
-      "log_loss": 0.6524120579354908
+      "settled": 20,
+      "pending": 4,
+      "accuracy": 0.6,
+      "brier": 0.21067735387542347,
+      "log_loss": 0.6053506365736478
     }
   ],
   "weekly": [
     {
       "model": "ATP Hybrid",
       "week_start": "2026-10-19",
-      "matches": 17,
-      "accuracy": 0.5882352941176471
+      "matches": 20,
+      "accuracy": 0.65
     },
     {
       "model": "Serve/return",
       "week_start": "2026-10-19",
-      "matches": 17,
-      "accuracy": 0.6470588235294118
+      "matches": 20,
+      "accuracy": 0.7
     },
     {
       "model": "Surface Elo",
       "week_start": "2026-10-19",
-      "matches": 17,
-      "accuracy": 0.5294117647058824
+      "matches": 20,
+      "accuracy": 0.6
     }
   ],
   "calibration": [
     {
       "model": "ATP Hybrid",
       "band": "50\u201360%",
-      "matches": 11,
-      "mean_probability": 0.5568992870252379,
-      "actual_win_rate": 0.36363636363636365
+      "matches": 12,
+      "mean_probability": 0.5573682049685881,
+      "actual_win_rate": 0.4166666666666667
     },
     {
       "model": "ATP Hybrid",
@@ -66,37 +66,37 @@
     {
       "model": "ATP Hybrid",
       "band": "70\u201380%",
-      "matches": 1,
-      "mean_probability": 0.7583404019640196,
+      "matches": 3,
+      "mean_probability": 0.7711019243711074,
       "actual_win_rate": 1.0
     },
     {
       "model": "Serve/return",
       "band": "50\u201360%",
-      "matches": 10,
-      "mean_probability": 0.5421915736750468,
-      "actual_win_rate": 0.4
+      "matches": 11,
+      "mean_probability": 0.5424102241781802,
+      "actual_win_rate": 0.45454545454545453
     },
     {
       "model": "Serve/return",
       "band": "60\u201370%",
-      "matches": 6,
-      "mean_probability": 0.6505234151505339,
+      "matches": 7,
+      "mean_probability": 0.6575599338038884,
       "actual_win_rate": 1.0
     },
     {
       "model": "Serve/return",
       "band": "70\u201380%",
-      "matches": 1,
-      "mean_probability": 0.7385503038343462,
+      "matches": 2,
+      "mean_probability": 0.7340838753195735,
       "actual_win_rate": 1.0
     },
     {
       "model": "Surface Elo",
       "band": "50\u201360%",
-      "matches": 10,
-      "mean_probability": 0.5638048162093237,
-      "actual_win_rate": 0.4
+      "matches": 11,
+      "mean_probability": 0.5642319080743016,
+      "actual_win_rate": 0.45454545454545453
     },
     {
       "model": "Surface Elo",
@@ -108,8 +108,15 @@
     {
       "model": "Surface Elo",
       "band": "70\u201380%",
-      "matches": 2,
-      "mean_probability": 0.7521040395644025,
+      "matches": 3,
+      "mean_probability": 0.7591477330509478,
+      "actual_win_rate": 1.0
+    },
+    {
+      "model": "Surface Elo",
+      "band": "80\u201390%",
+      "matches": 1,
+      "mean_probability": 0.8235865439987595,
       "actual_win_rate": 1.0
     }
   ],
@@ -1012,7 +1019,12 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.7732351200240382,
       "issued_at_utc": "2026-10-21T02:47:03Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.051422310790512404,
+      "log_loss": 0.25717211102398624,
+      "result_id": "193707687"
     },
     {
       "forecast_id": "28790b3b98a6db2b93a4f88885647031f12a646d72189cfdfcd5e2f87f0b219b",
@@ -1024,7 +1036,12 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.7296174468048009,
       "issued_at_utc": "2026-10-21T02:47:03Z",
-      "status": "awaiting_verified_result"
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.07310672507235465,
+      "log_loss": 0.3152349276723951,
+      "result_id": "193707687"
     },
     {
       "forecast_id": "42bcff58a90ed020318d8f2f6c8285f89175f68ea88c89f981b630e716108f41",
@@ -1087,8 +1104,187 @@
       "predicted_winner": "Lorenzo Musetti",
       "confidence": 0.7623307017192288,
       "issued_at_utc": "2026-10-21T02:47:03Z",
+      "status": "settled",
+      "actual_winner": "Lorenzo Musetti",
+      "correct": true,
+      "brier": 0.0564866953452742,
+      "log_loss": 0.2713748256851571,
+      "result_id": "193707687"
+    },
+    {
+      "forecast_id": "19485c9189c8befc0845c63861833886ffe28567d36b961dc05c18d13120a314",
+      "fixture_id": "437537",
+      "model": "Serve/return",
+      "match_date": "2026-10-22",
+      "player_a_name": "Kyrian Jacquet",
+      "player_b_name": "Brandon Nakashima",
+      "predicted_winner": "Brandon Nakashima",
+      "confidence": 0.5034917320495934,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
       "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "1d49032ad132fe0f111a62b06b6bbe935a610175572453c69d3e50e37aa443ad",
+      "fixture_id": "406446",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mariano Navone",
+      "player_b_name": "Tallon Griekspoor",
+      "predicted_winner": "Tallon Griekspoor",
+      "confidence": 0.5625263023454401,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Tallon Griekspoor",
+      "correct": true,
+      "brier": 0.19138323613955324,
+      "log_loss": 0.5753173862715368,
+      "result_id": "186679683"
+    },
+    {
+      "forecast_id": "2ec1237e74b92c6c623073c7e058c6571746334d6fe57a9df0ee06cbfbd79c10",
+      "fixture_id": "466025",
+      "model": "Serve/return",
+      "match_date": "2026-10-22",
+      "player_a_name": "Terence Atmane",
+      "player_b_name": "Mattia Bellucci",
+      "predicted_winner": "Mattia Bellucci",
+      "confidence": 0.504172897863653,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "5dbbd906a92b23eb2a34582842dcba16507101413ddfeb43b1644c7d70b7ac63",
+      "fixture_id": "403624",
+      "model": "Serve/return",
+      "match_date": "2026-10-22",
+      "player_a_name": "Stefanos Tsitsipas",
+      "player_b_name": "Mikhail Kukushkin",
+      "predicted_winner": "Stefanos Tsitsipas",
+      "confidence": 0.6997790457240154,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": true,
+      "brier": 0.09013262138638284,
+      "log_loss": 0.35699064273204506,
+      "result_id": "189490740"
+    },
+    {
+      "forecast_id": "618b59febe4aa3fc910a81f4d97257755b618e4dc7a7159c2789016474edbf29",
+      "fixture_id": "466025",
+      "model": "Surface Elo",
+      "match_date": "2026-10-22",
+      "player_a_name": "Terence Atmane",
+      "player_b_name": "Mattia Bellucci",
+      "predicted_winner": "Terence Atmane",
+      "confidence": 0.6131935405145389,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "64e66d8b0965da0955db084f4512eb2a0f5d2f60b4efeeb5312481778c6f0ea0",
+      "fixture_id": "437537",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-22",
+      "player_a_name": "Kyrian Jacquet",
+      "player_b_name": "Brandon Nakashima",
+      "predicted_winner": "Brandon Nakashima",
+      "confidence": 0.6735660802522554,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "6de9046aa6043bec84f5e479a63d471e16a70cf20aba99df3d9dae11de7543a6",
+      "fixture_id": "466025",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-22",
+      "player_a_name": "Terence Atmane",
+      "player_b_name": "Mattia Bellucci",
+      "predicted_winner": "Terence Atmane",
+      "confidence": 0.583851930919991,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "737e845cae3500f3a25781f18d63100825ddf3f94bbfb6d85e4b56564825cc2e",
+      "fixture_id": "406446",
+      "model": "Surface Elo",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mariano Navone",
+      "player_b_name": "Tallon Griekspoor",
+      "predicted_winner": "Tallon Griekspoor",
+      "confidence": 0.5685028267240821,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Tallon Griekspoor",
+      "correct": true,
+      "brier": 0.18618981054510753,
+      "log_loss": 0.5647489935539833,
+      "result_id": "186679683"
+    },
+    {
+      "forecast_id": "8524c25fefb067279771be149d6d05654b5841ff019b18809909253527a15c36",
+      "fixture_id": "403624",
+      "model": "Surface Elo",
+      "match_date": "2026-10-22",
+      "player_a_name": "Stefanos Tsitsipas",
+      "player_b_name": "Mikhail Kukushkin",
+      "predicted_winner": "Stefanos Tsitsipas",
+      "confidence": 0.8235865439987595,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": true,
+      "brier": 0.03112170745830161,
+      "log_loss": 0.1940866419916449,
+      "result_id": "189490740"
+    },
+    {
+      "forecast_id": "8a87cac5565b6d94db1d8fd0fc174dd0cded910853a35df27e820fd7ede20996",
+      "fixture_id": "406446",
+      "model": "Serve/return",
+      "match_date": "2026-10-21",
+      "player_a_name": "Mariano Navone",
+      "player_b_name": "Tallon Griekspoor",
+      "predicted_winner": "Tallon Griekspoor",
+      "confidence": 0.5445967292095144,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Tallon Griekspoor",
+      "correct": true,
+      "brier": 0.2073921390466724,
+      "log_loss": 0.6077097046189149,
+      "result_id": "186679683"
+    },
+    {
+      "forecast_id": "a5426c8fd9c7fc535c003a49cd3c1ad4f1a2d748b734782eaf58d0389ad39a97",
+      "fixture_id": "437537",
+      "model": "Surface Elo",
+      "match_date": "2026-10-22",
+      "player_a_name": "Kyrian Jacquet",
+      "player_b_name": "Brandon Nakashima",
+      "predicted_winner": "Brandon Nakashima",
+      "confidence": 0.7302575296531427,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "awaiting_verified_result"
+    },
+    {
+      "forecast_id": "bfd9136a53226a7fbd9a5c9199893642e8471edce2bd7fc0ae128768206fa738",
+      "fixture_id": "403624",
+      "model": "ATP Hybrid",
+      "match_date": "2026-10-22",
+      "player_a_name": "Stefanos Tsitsipas",
+      "player_b_name": "Mikhail Kukushkin",
+      "predicted_winner": "Stefanos Tsitsipas",
+      "confidence": 0.7926346694300734,
+      "issued_at_utc": "2026-10-21T10:52:27Z",
+      "status": "settled",
+      "actual_winner": "Stefanos Tsitsipas",
+      "correct": true,
+      "brier": 0.04300038032237492,
+      "log_loss": 0.2323928577869292,
+      "result_id": "189490740"
     }
   ],
-  "results_checked_at_utc": "2026-10-21T10:52:27.405045+00:00"
+  "results_checked_at_utc": "2026-10-22T09:25:04.059270+00:00"
 }

@@ -181,7 +181,7 @@ def test_player_form_remap_rejects_ambiguous_mismatched_and_outdated_snapshots()
     assert fixture_player_form(wrong_team,fixture,now=now)=={}
     wrong_date={**original,'fixtures':{'old':{**record,'date':'2026-10-21'}}}
     assert fixture_player_form(wrong_date,fixture,now=now)=={}
-    stale = {**original,'generated_at_utc':'2026-10-05T00:00:00Z'}
+    stale = {**original,'generated_at_utc':'2026-08-05T00:00:00Z'}
     assert fixture_player_form(stale,fixture,now=now)=={}
     future={**original,'generated_at_utc':'2026-10-20T00:00:00Z'}
     assert fixture_player_form(future,fixture,now=now)=={}
@@ -226,3 +226,14 @@ def test_streamlit_entrypoint_reloads_player_display_module():
     from pathlib import Path
     code = (Path(__file__).resolve().parents[1] / 'viewer_dashboard.py').read_text()
     assert 'importlib.reload(viewer_display)' in code
+
+
+def test_player_form_uses_stable_identity_after_seven_days_without_redating():
+    from viewer_display import fixture_player_form
+    fixture=dict(fixture_id='new',date='2026-10-25',competition='EPL',HomeTeam='Home',AwayTeam='Away')
+    record={k:fixture[k] for k in ('date','competition','HomeTeam','AwayTeam')}
+    record['teams']={'Home':dict(status='available',players=[{'name':'Example','xg':1}],source_through='2026-10-13')}
+    snapshot=dict(schema_version=1,generated_at_utc='2026-10-16T09:17:48Z',fixtures={'old':record},max_age_days=45)
+    assert fixture_player_form(snapshot,fixture,now='2026-10-24T12:00:00Z')['Home']['source_through']=='2026-10-13'
+    assert snapshot['generated_at_utc']=='2026-10-16T09:17:48Z'
+    assert fixture_player_form(snapshot,fixture,now='2026-12-24T12:00:00Z')=={}

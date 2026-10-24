@@ -215,6 +215,11 @@ if player_form:
 # from today's trained model. Selecting a past match cannot alter live picks.
 historical_matches.show_historical_matches(read('historical_match_results.csv'), league)
 
+# Reload refresh controls without clearing process-wide authentication throttles.
+import cloud_refresh_ui as player_refresh_ui
+player_refresh_ui = importlib.reload(player_refresh_ui)
+show_cloud_refresh = player_refresh_ui.show_cloud_refresh
+
 # One compact information centre: no stacked model accordions on mobile.
 with st.expander('Models & performance · methods, comparisons and results'):
     tab_methods, tab_comparison, tab_results = st.tabs([
@@ -270,10 +275,13 @@ with st.expander('Refresh predictions · display or full cloud refresh'):
         st.cache_data.clear()
         st.rerun()
     # Older cloud sessions may still hold the original no-argument refresh UI.
-    # Never reload cloud_refresh_ui here: its in-memory login rate limit must
-    # survive ordinary Streamlit reruns.
+    # The refreshed helper preserves its process-wide lock and failed-login
+    # history across module reloads; each workflow has distinct widget keys.
     if 'embedded' in inspect.signature(show_cloud_refresh).parameters:
         show_cloud_refresh(embedded=True)
+        st.divider()
+        st.markdown('**Refresh player xG**')
+        player_refresh_ui.show_cloud_refresh(players=True, embedded=True)
 
 # A legacy cached refresh helper owns its own expander. Render it outside this
 # expander rather than nesting expanders or causing an unexpected-keyword crash.

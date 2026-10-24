@@ -65,8 +65,8 @@ def test_old_model_accuracy_import_is_reloaded_on_app_run(monkeypatch):
     assert [item.label for item in app.get("expander")].count(MODEL_PANEL) == 1
 
 
-def test_old_cloud_refresh_helper_falls_back_without_resetting_login_limits(monkeypatch):
-    """Keep authentication lock state intact; do not hot-reload security globals."""
+def test_cached_cloud_refresh_helper_updates_without_resetting_login_limits(monkeypatch):
+    """Refresh cached UI definitions while retaining the authentication throttle."""
     import cloud_refresh_ui
     import streamlit as st
 
@@ -74,12 +74,15 @@ def test_old_cloud_refresh_helper_falls_back_without_resetting_login_limits(monk
         with st.expander("Cloud Prediction Refresh"):
             st.caption("Legacy refresh controls")
 
+    entries=cloud_refresh_ui._FAILED_ATTEMPTS
+    lock=cloud_refresh_ui._AUTH_LOCK
     monkeypatch.setattr(cloud_refresh_ui, "show_cloud_refresh", cached_old_cloud_refresh)
     app = _app("EPL")
     assert not app.exception
     labels = [item.label for item in app.get("expander")]
-    assert labels.count("Cloud Prediction Refresh") == 1
+    assert labels.count("Cloud Prediction Refresh") == 0
+    assert cloud_refresh_ui._FAILED_ATTEMPTS is entries
+    assert cloud_refresh_ui._AUTH_LOCK is lock
     assert labels.count(MODEL_PANEL) == 1
     source = (ROOT / "viewer_dashboard.py").read_text(encoding="utf-8")
     assert "importlib.reload(model_accuracy)" in source
-    assert "importlib.reload(cloud_refresh_ui)" not in source

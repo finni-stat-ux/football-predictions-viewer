@@ -80,10 +80,9 @@ def score_table_html(scores):
 def fixture_player_form(snapshot, fixture, now=None):
     """Use verified player form only for this exact fixture identity.
 
-    A forecast refresh may renumber FUTURE_* IDs without updating the separately
-    published player-form snapshot. Recover an exact unique historical match for
-    at most seven days after collection; never copy statistics to another fixture.
-    These are dated *historical* observations, not freshly collected stats.
+    Match by competition, date and both teams, independent of FUTURE_* numbering.
+    Keep the actual source dates visible and reject ambiguous, post-match or
+    expired samples. Snapshot creation time is never changed by this lookup.
     """
     import pandas as pd
     if snapshot.get('schema_version') != 1 or not isinstance(snapshot.get('fixtures'), dict):
@@ -99,21 +98,14 @@ def fixture_player_form(snapshot, fixture, now=None):
     try:
         generated = pd.Timestamp(snapshot['generated_at_utc'])
         generated = generated.tz_localize('UTC') if generated.tzinfo is None else generated.tz_convert('UTC')
-        if generated > now:
+        if generated > now or now - generated > pd.Timedelta(days=45):
             return {}
         def same_fixture(record):
             return isinstance(record, dict) and all(record.get(k) == v for k, v in expected.items())
-        record = snapshot['fixtures'].get(str(fixture['fixture_id']), {})
-        if not same_fixture(record):
-            record = {}
-            if now - generated <= pd.Timedelta(days=7):
-                candidates = [
-                    item for item in snapshot['fixtures'].values() if same_fixture(item)
-                ]
-                if len(candidates) == 1:
-                    record = candidates[0]
-        if not record:
+        candidates = [item for item in snapshot['fixtures'].values() if same_fixture(item)]
+        if len(candidates) != 1:
             return {}
+        record = candidates[0]
         teams = {}
         for name in (expected['HomeTeam'], expected['AwayTeam']):
             info = record.get('teams', {}).get(name, {})
@@ -149,6 +141,8 @@ def player_panel_html(team, info, logos):
         content = '<p class="cv-note">Recent player xG is not yet available. Older seasons are not shown as current form.</p>'
     else:
         content = f'<p class="cv-note">Verified five-match sample · {escape(info["source_from"])} to {escape(info["source_through"])}</p><ol class="cv-player-list">'
+        if info.get('retained_from_snapshot_utc'):
+            content += '<li class="cv-note">Older verified sample · Latest five-match data is still being collected.</li>'
         for index, player in enumerate(info['players'][:3], 1):
             content += f'<li><div><span class="cv-name">{index}. {escape(player["name"])}</span><small>{int(player["minutes"])} minutes · {int(player["appearances"])} appearances</small></div><div class="cv-player-xg">{float(player["xg"]):.2f}<small>recorded xG</small></div></li>'
         content += '</ol>'

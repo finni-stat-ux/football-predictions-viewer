@@ -34,14 +34,23 @@ def record_failed_login():
     with _AUTH_LOCK:
         _FAILED_ATTEMPTS.append(time.monotonic())
 
+
+def clear_refresh_login():
+    st.session_state['refresh_authenticated'] = False
+    for key in list(st.session_state):
+        if str(key).startswith('cloud_refresh_password'):
+            st.session_state[key] = ''
+
 REPO = "finni-stat-ux/conquerors-venture-engine"
 WORKFLOW = "refresh.yml"
 API = f"https://api.github.com/repos/{REPO}"
 
 
-def show_cloud_refresh(*, embedded: bool = False, atp: bool = False):
-    workflow = "atp-fixtures.yml" if atp else WORKFLOW
-    panel_title = "Refresh ATP predictions & results" if atp else "Cloud Prediction Refresh"
+def show_cloud_refresh(*, embedded: bool = False, atp: bool = False, players: bool = False):
+    if atp and players:
+        raise ValueError("Choose one refresh type")
+    workflow = "refresh-player-xg.yml" if players else "atp-fixtures.yml" if atp else WORKFLOW
+    panel_title = "Refresh player xG" if players else "Refresh ATP predictions & results" if atp else "Cloud Prediction Refresh"
     with (nullcontext() if embedded else st.expander(panel_title)):
         st.caption(
             ("Update fixtures for the next seven UTC dates, generate eligible winner predictions and check completed results. "
@@ -78,11 +87,11 @@ def show_cloud_refresh(*, embedded: bool = False, atp: bool = False):
         entered = st.text_input(
             "Refresh access password",
             type="password",
-            key="cloud_refresh_password",
+            key=f"cloud_refresh_password_{workflow}",
         )
 
         if not st.session_state.get("refresh_authenticated", False):
-            if not st.button("Log in to Cloud Refresh"):
+            if not st.button("Log in to Cloud Refresh", key=f"cloud_refresh_login_{workflow}"):
                 return
 
             if not entered or not hmac.compare_digest(entered, password):
@@ -95,9 +104,7 @@ def show_cloud_refresh(*, embedded: bool = False, atp: bool = False):
             st.session_state["refresh_authenticated"] = True
 
         st.success("Refresh access granted.")
-        if st.button("Log out of Cloud Refresh"):
-            st.session_state["refresh_authenticated"] = False
-            st.session_state["cloud_refresh_password"] = ""
+        if st.button("Log out of Cloud Refresh", key=f"cloud_refresh_logout_{workflow}", on_click=clear_refresh_login):
             st.rerun()
 
         headers = {
@@ -106,7 +113,7 @@ def show_cloud_refresh(*, embedded: bool = False, atp: bool = False):
             "X-GitHub-Api-Version": "2022-11-28",
         }
 
-        if st.button("Refresh ATP predictions & results — next 7 days" if atp else "Run Full Prediction Refresh", type="primary"):
+        if st.button("Refresh player xG — both leagues" if players else "Refresh ATP predictions & results — next 7 days" if atp else "Run Full Prediction Refresh", type="primary", key=f"cloud_refresh_run_{workflow}"):
             try:
                 # Check whether a refresh is already running.
                 runs_response = requests.get(
@@ -140,7 +147,7 @@ def show_cloud_refresh(*, embedded: bool = False, atp: bool = False):
 
                 st.success(
                     "GitHub accepted the refresh request. " +
-                    ("ATP fixtures, eligible predictions and verified results will update after the workflow completes." if atp else
+                    ("Player xG cards will update after collection and validation complete. Some teams may need another bounded batch." if players else "ATP fixtures, eligible predictions and verified results will update after the workflow completes." if atp else
                      "Predictions will update after the workflow completes.")
                 )
                 st.info(

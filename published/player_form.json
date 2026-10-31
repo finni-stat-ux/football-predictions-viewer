@@ -1,1530 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-24T06:38:05.565689+00:00",
+  "generated_at_utc": "2026-10-31T01:51:11.283710+00:00",
   "basis": "recorded_xg_last_5_league_matches",
   "window_matches": 5,
   "max_age_days": 45,
   "fixtures": {
-    "FUTURE_2": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Blackburn",
-      "AwayTeam": "Wrexham",
-      "teams": {
-        "Blackburn": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 194.0,
-              "xg": 1.1099999999999999,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Andri Gu\u00f0johnsen",
-              "player_id": "p_3l5L8L"
-            },
-            {
-              "minutes": 335.0,
-              "xg": 0.93,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Oladapo Afolayan",
-              "player_id": "p_1PQCya"
-            },
-            {
-              "minutes": 106.0,
-              "xg": 0.73,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Moussa Baradji",
-              "player_id": "p_0j1EYP"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        },
-        "Wrexham": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 441.0,
-              "xg": 1.25,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Callum O'Hare",
-              "player_id": "p_19UjEG"
-            },
-            {
-              "minutes": 156.0,
-              "xg": 0.84,
-              "appearances": 3,
-              "xg_observed_matches": 1,
-              "name": "Oliver Rathbone",
-              "player_id": "p_2HLbpC"
-            },
-            {
-              "minutes": 335.0,
-              "xg": 0.77,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Kieffer Moore",
-              "player_id": "p_0ZyHLs"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-11",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_3": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Cardiff",
-      "AwayTeam": "Birmingham",
-      "teams": {
-        "Cardiff": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 421.0,
-              "xg": 2.92,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Jack Moylan",
-              "player_id": "p_46hDdo"
-            },
-            {
-              "minutes": 255.0,
-              "xg": 2.7800000000000002,
-              "appearances": 3,
-              "xg_observed_matches": 3,
-              "name": "Yousef Salech",
-              "player_id": "p_3YDJTr"
-            },
-            {
-              "minutes": 422.0,
-              "xg": 1.9400000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Ollie Tanner",
-              "player_id": "p_3YSfQE"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-08",
-          "source_through": "2026-10-13",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Birmingham": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 318.0,
-              "xg": 2.17,
-              "appearances": 4,
-              "xg_observed_matches": 4,
-              "name": "August Priske",
-              "player_id": "p_4DEUyZ"
-            },
-            {
-              "minutes": 431.0,
-              "xg": 1.42,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Jay Stansfield",
-              "player_id": "p_4eGVg7"
-            },
-            {
-              "minutes": 350.0,
-              "xg": 1.31,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Liam Millar",
-              "player_id": "p_07A8fP"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_4": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Charlton",
-      "AwayTeam": "Norwich",
-      "teams": {
-        "Charlton": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 410.0,
-              "xg": 1.39,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Karlan Grant",
-              "player_id": "p_1R6oKB"
-            },
-            {
-              "minutes": 432.0,
-              "xg": 1.1,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Tyreece Campbell",
-              "player_id": "p_2R24Ba"
-            },
-            {
-              "minutes": 217.0,
-              "xg": 1.0699999999999998,
-              "appearances": 3,
-              "xg_observed_matches": 2,
-              "name": "Kayne Ramsay",
-              "player_id": "p_3ztI8c"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        },
-        "Norwich": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 242.0,
-              "xg": 1.1300000000000001,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jovon Makama",
-              "player_id": "p_11UPOm"
-            },
-            {
-              "minutes": 327.0,
-              "xg": 0.82,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jacob Wright",
-              "player_id": "p_3ndT4j"
-            },
-            {
-              "minutes": 148.0,
-              "xg": 0.29000000000000004,
-              "appearances": 3,
-              "xg_observed_matches": 3,
-              "name": "Mathias Kvistgaarden",
-              "player_id": "p_4NRceM"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_5": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Lincoln",
-      "AwayTeam": "Burnley",
-      "teams": {
-        "Lincoln": {
-          "status": "unavailable",
-          "reason": "Recent player statistics are not yet available.",
-          "players": []
-        },
-        "Burnley": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 307.0,
-              "xg": 2.0,
-              "appearances": 4,
-              "xg_observed_matches": 4,
-              "name": "Zeki Amdouni",
-              "player_id": "p_3S2BcZ"
-            },
-            {
-              "minutes": 344.0,
-              "xg": 1.08,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Largie Ramazani",
-              "player_id": "p_3yROAX"
-            },
-            {
-              "minutes": 173.0,
-              "xg": 0.5700000000000001,
-              "appearances": 3,
-              "xg_observed_matches": 2,
-              "name": "Oliver Sonne",
-              "player_id": "p_0sC4rz"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-08",
-          "source_through": "2026-10-13",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_6": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Portsmouth",
-      "AwayTeam": "Millwall",
-      "teams": {
-        "Portsmouth": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 385.0,
-              "xg": 1.46,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Adrian Sege\u010di\u0107",
-              "player_id": "p_3MkuJh"
-            },
-            {
-              "minutes": 329.0,
-              "xg": 1.0899999999999999,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Ryan Kavuma-McQueen",
-              "player_id": "p_2yaZoU"
-            },
-            {
-              "minutes": 195.0,
-              "xg": 1.01,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Marezi",
-              "player_id": "p_2Gw18y"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-19",
-          "source_through": "2026-10-20"
-        },
-        "Millwall": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 220.0,
-              "xg": 1.44,
-              "appearances": 4,
-              "xg_observed_matches": 2,
-              "name": "Kyrell Lisbie",
-              "player_id": "p_2ABdpJ"
-            },
-            {
-              "minutes": 230.0,
-              "xg": 1.32,
-              "appearances": 3,
-              "xg_observed_matches": 3,
-              "name": "Ta\u00efryk Arconte",
-              "player_id": "p_2gS0kv"
-            },
-            {
-              "minutes": 416.0,
-              "xg": 1.13,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Lyndon Dykes",
-              "player_id": "p_1ysiIq"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_7": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Preston",
-      "AwayTeam": "West Brom",
-      "teams": {
-        "Preston": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 200.0,
-              "xg": 1.01,
-              "appearances": 3,
-              "xg_observed_matches": 3,
-              "name": "Johnny Kenny",
-              "player_id": "p_1FfwH1"
-            },
-            {
-              "minutes": 410.0,
-              "xg": 0.55,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Alfie Devine",
-              "player_id": "p_3jIjB4"
-            },
-            {
-              "minutes": 159.0,
-              "xg": 0.47,
-              "appearances": 4,
-              "xg_observed_matches": 2,
-              "name": "Jusef Erabi",
-              "player_id": "p_0QHMRq"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        },
-        "West Brom": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 246.0,
-              "xg": 1.72,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Aune Selland Heggeb\u00f8",
-              "player_id": "p_1Qwpzd"
-            },
-            {
-              "minutes": 365.0,
-              "xg": 1.47,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Isaac Price",
-              "player_id": "p_3dc99c"
-            },
-            {
-              "minutes": 297.0,
-              "xg": 0.97,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jimmy-Jay Morgan",
-              "player_id": "p_3qn7Nz"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_8": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "QPR",
-      "AwayTeam": "Swansea",
-      "teams": {
-        "QPR": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 315.0,
-              "xg": 1.95,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Nicolas Madsen",
-              "player_id": "p_20x1Iz"
-            },
-            {
-              "minutes": 369.0,
-              "xg": 1.1300000000000001,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Kwame Poku",
-              "player_id": "p_0c4oQO"
-            },
-            {
-              "minutes": 231.0,
-              "xg": 0.77,
-              "appearances": 3,
-              "xg_observed_matches": 1,
-              "name": "Boy Kemper",
-              "player_id": "p_0gkE1e"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        },
-        "Swansea": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 277.0,
-              "xg": 2.0100000000000002,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Adam Idah",
-              "player_id": "p_4QF5Wo"
-            },
-            {
-              "minutes": 374.0,
-              "xg": 1.78,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Moussa Kounfolo Yeo",
-              "player_id": "p_15Hdr9"
-            },
-            {
-              "minutes": 162.0,
-              "xg": 0.93,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "\u017dan Vipotnik",
-              "player_id": "p_13oaER"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_9": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Sheffield United",
-      "AwayTeam": "Derby",
-      "teams": {
-        "Sheffield United": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 300.0,
-              "xg": 1.69,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Thomas Cannon",
-              "player_id": "p_4Cjsvr"
-            },
-            {
-              "minutes": 326.0,
-              "xg": 1.32,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Patrick Bamford",
-              "player_id": "p_3F5vxz"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 0.52,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Japhet Tanganga",
-              "player_id": "p_30sAHY"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-13",
-          "source_through": "2026-10-17"
-        },
-        "Derby": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 409.0,
-              "xg": 1.02,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Sammie Szmodics",
-              "player_id": "p_16nSOn"
-            },
-            {
-              "minutes": 441.0,
-              "xg": 0.85,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Bobby Clark",
-              "player_id": "p_2gZeZh"
-            },
-            {
-              "minutes": 360.0,
-              "xg": 0.62,
-              "appearances": 4,
-              "xg_observed_matches": 1,
-              "name": "Dion Sanderson",
-              "player_id": "p_26yT19"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_10": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Stoke",
-      "AwayTeam": "Bristol City",
-      "teams": {
-        "Stoke": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 140.0,
-              "xg": 0.48,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "George Hirst",
-              "player_id": "p_2Shw6v"
-            },
-            {
-              "minutes": 333.0,
-              "xg": 0.46,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Lamine Ciss\u00e9",
-              "player_id": "p_2qzHmM"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 0.42000000000000004,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Ben Wilmot",
-              "player_id": "p_3MkPWA"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        },
-        "Bristol City": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 363.0,
-              "xg": 1.5700000000000003,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Dominic Ballard",
-              "player_id": "p_02fton"
-            },
-            {
-              "minutes": 348.0,
-              "xg": 1.09,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Yu Hirakawa",
-              "player_id": "p_1FJru7"
-            },
-            {
-              "minutes": 266.0,
-              "xg": 0.9400000000000001,
-              "appearances": 4,
-              "xg_observed_matches": 2,
-              "name": "Scott Twine",
-              "player_id": "p_1WPzqc"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_11": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "West Ham",
-      "AwayTeam": "Southampton",
-      "teams": {
-        "West Ham": {
-          "status": "unavailable",
-          "reason": "Recent player statistics are not yet available.",
-          "players": []
-        },
-        "Southampton": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 297.0,
-              "xg": 1.5200000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Cyle Larin",
-              "player_id": "p_00ZNIx"
-            },
-            {
-              "minutes": 334.0,
-              "xg": 1.35,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Kuryu Matsuki",
-              "player_id": "p_4BNxRv"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 1.33,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "James Ward-Prowse",
-              "player_id": "p_30wVFS"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_12": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Wolves",
-      "AwayTeam": "Watford",
-      "teams": {
-        "Wolves": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 352.0,
-              "xg": 2.1500000000000004,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Fer L\u00f3pez",
-              "player_id": "p_2v3cQe"
-            },
-            {
-              "minutes": 445.0,
-              "xg": 1.5799999999999998,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Adam Armstrong",
-              "player_id": "p_48OEXM"
-            },
-            {
-              "minutes": 270.0,
-              "xg": 0.82,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Rodrigo Gomes",
-              "player_id": "p_0Tbbz2"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-06",
-          "source_through": "2026-10-13",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Watford": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 232.0,
-              "xg": 1.15,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Luca Kjerrumgaard",
-              "player_id": "p_0mBvJs"
-            },
-            {
-              "minutes": 277.0,
-              "xg": 0.84,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Mamadou Doumbia",
-              "player_id": "p_49NJhf"
-            },
-            {
-              "minutes": 172.0,
-              "xg": 0.84,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Myron Boadu",
-              "player_id": "p_3kGAWY"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_13": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Arsenal",
-      "AwayTeam": "Everton",
-      "teams": {
-        "Arsenal": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 440.0,
-              "xg": 3.09,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Bukayo Saka",
-              "player_id": "p_402hSM"
-            },
-            {
-              "minutes": 395.0,
-              "xg": 1.67,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Martin \u00d8degaard",
-              "player_id": "p_3Jf13O"
-            },
-            {
-              "minutes": 411.0,
-              "xg": 1.5899999999999999,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Kai Havertz",
-              "player_id": "p_2Yd5On"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-31",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Everton": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 426.0,
-              "xg": 3.96,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Thierno Barry",
-              "player_id": "p_1RfpBt"
-            },
-            {
-              "minutes": 449.0,
-              "xg": 1.29,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Kiernan Dewsbury-Hall",
-              "player_id": "p_0Onz9h"
-            },
-            {
-              "minutes": 301.0,
-              "xg": 1.07,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Brennan Johnson",
-              "player_id": "p_1NBF1K"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-11",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_14": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Aston Villa",
-      "AwayTeam": "Man City",
-      "teams": {
-        "Aston Villa": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 444.0,
-              "xg": 1.54,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "John McGinn",
-              "player_id": "p_3gdecS"
-            },
-            {
-              "minutes": 379.0,
-              "xg": 1.0999999999999999,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Nicolas Jackson",
-              "player_id": "p_3giUjN"
-            },
-            {
-              "minutes": 382.0,
-              "xg": 1.02,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Emiliano Buend\u00eda",
-              "player_id": "p_49VLdA"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-31",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Man City": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 440.0,
-              "xg": 3.58,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Erling Haaland",
-              "player_id": "p_3WzTQX"
-            },
-            {
-              "minutes": 368.0,
-              "xg": 1.7400000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Rayan Cherki",
-              "player_id": "p_3rEFLS"
-            },
-            {
-              "minutes": 137.0,
-              "xg": 0.98,
-              "appearances": 3,
-              "xg_observed_matches": 2,
-              "name": "Phil Foden",
-              "player_id": "p_3pVR6Q"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-28",
-          "source_through": "2026-10-11",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_15": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Chelsea",
-      "AwayTeam": "Tottenham",
-      "teams": {
-        "Chelsea": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 342.0,
-              "xg": 2.13,
-              "appearances": 4,
-              "xg_observed_matches": 4,
-              "name": "Jo\u00e3o Pedro",
-              "player_id": "p_48SKOM"
-            },
-            {
-              "minutes": 448.0,
-              "xg": 1.05,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Cole Palmer",
-              "player_id": "p_2t8CbN"
-            },
-            {
-              "minutes": 441.0,
-              "xg": 0.9299999999999999,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Morgan Rogers",
-              "player_id": "p_1Hb4kD"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Tottenham": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 240.0,
-              "xg": 1.1,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Dominic Solanke",
-              "player_id": "p_146Ul2"
-            },
-            {
-              "minutes": 163.0,
-              "xg": 0.82,
-              "appearances": 3,
-              "xg_observed_matches": 2,
-              "name": "Conor Gallagher",
-              "player_id": "p_3eqjYM"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 0.69,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jan Paul van Hecke",
-              "player_id": "p_2PORri"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_16": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Coventry",
-      "AwayTeam": "Fulham",
-      "teams": {
-        "Coventry": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 364.0,
-              "xg": 1.54,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Jack Rudoni",
-              "player_id": "p_1oE8ug"
-            },
-            {
-              "minutes": 214.0,
-              "xg": 1.31,
-              "appearances": 3,
-              "xg_observed_matches": 3,
-              "name": "Taiwo Awoniyi",
-              "player_id": "p_1E8MtJ"
-            },
-            {
-              "minutes": 445.0,
-              "xg": 0.51,
-              "appearances": 5,
-              "xg_observed_matches": 2,
-              "name": "Jay Dasilva",
-              "player_id": "p_3haTq6"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-12",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Fulham": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 424.0,
-              "xg": 2.27,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Gonzalo Garc\u00eda",
-              "player_id": "p_0jxrL1"
-            },
-            {
-              "minutes": 413.0,
-              "xg": 1.37,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Joshua King",
-              "player_id": "p_4Xos2q"
-            },
-            {
-              "minutes": 357.0,
-              "xg": 1.03,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Oscar Bobb",
-              "player_id": "p_3q4Wsn"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_17": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Crystal Palace",
-      "AwayTeam": "Newcastle",
-      "teams": {
-        "Crystal Palace": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 357.0,
-              "xg": 1.17,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "J\u00f8rgen Strand Larsen",
-              "player_id": "p_0j0g0T"
-            },
-            {
-              "minutes": 435.0,
-              "xg": 1.15,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Anan Khalaili",
-              "player_id": "p_0KFCEf"
-            },
-            {
-              "minutes": 359.0,
-              "xg": 0.83,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Y\u00e9remi Pino",
-              "player_id": "p_2xoong"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-28",
-          "source_through": "2026-10-11",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Newcastle": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 430.0,
-              "xg": 1.4700000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Yoane Wissa",
-              "player_id": "p_2si7QR"
-            },
-            {
-              "minutes": 313.0,
-              "xg": 1.04,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Joseph Willock",
-              "player_id": "p_12ZKIz"
-            },
-            {
-              "minutes": 449.0,
-              "xg": 0.92,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Harvey Barnes",
-              "player_id": "p_3UL6aW"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-12",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_18": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Hull",
-      "AwayTeam": "Brentford",
-      "teams": {
-        "Hull": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 442.0,
-              "xg": 1.22,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Oli McBurnie",
-              "player_id": "p_1PfXEl"
-            },
-            {
-              "minutes": 334.0,
-              "xg": 0.95,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Mohamed Belloumi",
-              "player_id": "p_0AJ3rl"
-            },
-            {
-              "minutes": 71.0,
-              "xg": 0.88,
-              "appearances": 2,
-              "xg_observed_matches": 2,
-              "name": "Joe Gelhardt",
-              "player_id": "p_2yTfKG"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-11",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Brentford": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 450.0,
-              "xg": 2.13,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Igor Thiago",
-              "player_id": "p_45Flbu"
-            },
-            {
-              "minutes": 410.0,
-              "xg": 1.4,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Kevin Schade",
-              "player_id": "p_3AcACj"
-            },
-            {
-              "minutes": 332.0,
-              "xg": 1.1900000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jaidon Anthony",
-              "player_id": "p_098Qx4"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_19": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Liverpool",
-      "AwayTeam": "Brighton",
-      "teams": {
-        "Liverpool": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 325.0,
-              "xg": 2.45,
-              "appearances": 4,
-              "xg_observed_matches": 4,
-              "name": "Alexander Isak",
-              "player_id": "p_2YlH3E"
-            },
-            {
-              "minutes": 406.0,
-              "xg": 0.87,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Florian Wirtz",
-              "player_id": "p_06lEAz"
-            },
-            {
-              "minutes": 351.0,
-              "xg": 0.56,
-              "appearances": 4,
-              "xg_observed_matches": 4,
-              "name": "Dominik Szoboszlai",
-              "player_id": "p_1SwvER"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-11",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Brighton": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 450.0,
-              "xg": 2.0200000000000005,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Pascal Gro\u00df",
-              "player_id": "p_2QcUKx"
-            },
-            {
-              "minutes": 256.0,
-              "xg": 1.46,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Malick Junior Yalcouy\u00e9",
-              "player_id": "p_30wICU"
-            },
-            {
-              "minutes": 390.0,
-              "xg": 1.18,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Charalampos Kostoulas",
-              "player_id": "p_3SZLzP"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_20": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Man United",
-      "AwayTeam": "Bournemouth",
-      "teams": {
-        "Man United": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 450.0,
-              "xg": 2.65,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Bryan Mbeumo",
-              "player_id": "p_48E2Ui"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 2.43,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Bruno Fernandes",
-              "player_id": "p_0pG7uM"
-            },
-            {
-              "minutes": 311.0,
-              "xg": 0.78,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Marcus Rashford",
-              "player_id": "p_40gdsO"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Bournemouth": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 450.0,
-              "xg": 1.59,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Ant\u00f3nio Silva",
-              "player_id": "p_21djiZ"
-            },
-            {
-              "minutes": 440.0,
-              "xg": 1.48,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Evanilson",
-              "player_id": "p_2Wusbu"
-            },
-            {
-              "minutes": 409.0,
-              "xg": 1.28,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Marcus Tavernier",
-              "player_id": "p_3GKfdy"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-29",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
     "FUTURE_21": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Sunderland",
-      "AwayTeam": "Leeds",
-      "teams": {
-        "Sunderland": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 334.0,
-              "xg": 2.64,
-              "appearances": 4,
-              "xg_observed_matches": 3,
-              "name": "Brian Brobbey",
-              "player_id": "p_49QBCH"
-            },
-            {
-              "minutes": 440.0,
-              "xg": 2.08,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Enzo Le F\u00e9e",
-              "player_id": "p_1OVq56"
-            },
-            {
-              "minutes": 184.0,
-              "xg": 1.66,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Wilson Isidor",
-              "player_id": "p_4TrA2q"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        },
-        "Leeds": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 421.0,
-              "xg": 2.77,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Dominic Calvert-Lewin",
-              "player_id": "p_0Fu8Pp"
-            },
-            {
-              "minutes": 365.0,
-              "xg": 1.4300000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jayden Bogle",
-              "player_id": "p_02iv5F"
-            },
-            {
-              "minutes": 448.0,
-              "xg": 0.9600000000000001,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Anton Stach",
-              "player_id": "p_2MxVhx"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-08-30",
-          "source_through": "2026-10-10",
-          "retained_from_snapshot_utc": "2026-10-16T09:17:48.572445+00:00"
-        }
-      }
-    },
-    "FUTURE_22": {
-      "date": "2026-10-30",
-      "competition": "Championship",
-      "HomeTeam": "Sheffield United",
-      "AwayTeam": "Wrexham",
-      "teams": {
-        "Sheffield United": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 300.0,
-              "xg": 1.69,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Thomas Cannon",
-              "player_id": "p_4Cjsvr"
-            },
-            {
-              "minutes": 326.0,
-              "xg": 1.32,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Patrick Bamford",
-              "player_id": "p_3F5vxz"
-            },
-            {
-              "minutes": 450.0,
-              "xg": 0.52,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Japhet Tanganga",
-              "player_id": "p_30sAHY"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-13",
-          "source_through": "2026-10-17"
-        },
-        "Wrexham": {
-          "status": "available",
-          "reason": null,
-          "players": [
-            {
-              "minutes": 441.0,
-              "xg": 1.25,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Callum O'Hare",
-              "player_id": "p_19UjEG"
-            },
-            {
-              "minutes": 156.0,
-              "xg": 0.84,
-              "appearances": 3,
-              "xg_observed_matches": 1,
-              "name": "Oliver Rathbone",
-              "player_id": "p_2HLbpC"
-            },
-            {
-              "minutes": 335.0,
-              "xg": 0.77,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Kieffer Moore",
-              "player_id": "p_0ZyHLs"
-            }
-          ],
-          "matches": 5,
-          "source_from": "2026-09-11",
-          "source_through": "2026-10-17"
-        }
-      }
-    },
-    "FUTURE_23": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Bolton",
@@ -1568,37 +49,37 @@
           "reason": null,
           "players": [
             {
-              "minutes": 363.0,
-              "xg": 1.5700000000000003,
+              "minutes": 419.0,
+              "xg": 1.7800000000000002,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Dominic Ballard",
               "player_id": "p_02fton"
             },
             {
-              "minutes": 348.0,
-              "xg": 1.09,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Yu Hirakawa",
-              "player_id": "p_1FJru7"
-            },
-            {
-              "minutes": 266.0,
+              "minutes": 190.0,
               "xg": 0.9400000000000001,
-              "appearances": 4,
+              "appearances": 3,
               "xg_observed_matches": 2,
               "name": "Scott Twine",
               "player_id": "p_1WPzqc"
+            },
+            {
+              "minutes": 258.0,
+              "xg": 0.73,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Yu Hirakawa",
+              "player_id": "p_1FJru7"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_24": {
+    "FUTURE_22": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Burnley",
@@ -1614,37 +95,37 @@
           "reason": null,
           "players": [
             {
-              "minutes": 385.0,
-              "xg": 1.46,
+              "minutes": 375.0,
+              "xg": 1.3,
               "appearances": 5,
-              "xg_observed_matches": 5,
+              "xg_observed_matches": 4,
               "name": "Adrian Sege\u010di\u0107",
               "player_id": "p_3MkuJh"
             },
             {
-              "minutes": 329.0,
-              "xg": 1.0899999999999999,
+              "minutes": 266.0,
+              "xg": 1.3,
               "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Ryan Kavuma-McQueen",
-              "player_id": "p_2yaZoU"
-            },
-            {
-              "minutes": 195.0,
-              "xg": 1.01,
-              "appearances": 4,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 4,
               "name": "Marezi",
               "player_id": "p_2Gw18y"
+            },
+            {
+              "minutes": 235.0,
+              "xg": 0.65,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Ebou Adams",
+              "player_id": "p_4Y5uXx"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-19",
-          "source_through": "2026-10-20"
+          "source_from": "2026-10-11",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_25": {
+    "FUTURE_23": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Lincoln",
@@ -1660,83 +141,111 @@
           "reason": null,
           "players": [
             {
-              "minutes": 318.0,
-              "xg": 2.17,
-              "appearances": 4,
-              "xg_observed_matches": 4,
+              "minutes": 245.0,
+              "xg": 1.8399999999999999,
+              "appearances": 3,
+              "xg_observed_matches": 3,
               "name": "August Priske",
               "player_id": "p_4DEUyZ"
             },
             {
-              "minutes": 431.0,
-              "xg": 1.42,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Jay Stansfield",
-              "player_id": "p_4eGVg7"
-            },
-            {
-              "minutes": 350.0,
+              "minutes": 347.0,
               "xg": 1.31,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Liam Millar",
               "player_id": "p_07A8fP"
+            },
+            {
+              "minutes": 432.0,
+              "xg": 1.21,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jay Stansfield",
+              "player_id": "p_4eGVg7"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_26": {
+    "FUTURE_24": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Middlesbrough",
       "AwayTeam": "Charlton",
       "teams": {
         "Middlesbrough": {
-          "status": "unavailable",
-          "reason": "Recent player statistics are not yet available.",
-          "players": []
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 378.0,
+              "xg": 3.93,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Will Lankshear",
+              "player_id": "p_2UEFak"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 1.9900000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Aidan Morris",
+              "player_id": "p_35mghf"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 1.5100000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Amario Cozier-Duberry",
+              "player_id": "p_2v8Mc6"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-23"
         },
         "Charlton": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 410.0,
-              "xg": 1.39,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Karlan Grant",
-              "player_id": "p_1R6oKB"
-            },
-            {
               "minutes": 432.0,
-              "xg": 1.1,
+              "xg": 1.28,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Tyreece Campbell",
               "player_id": "p_2R24Ba"
             },
             {
-              "minutes": 217.0,
+              "minutes": 165.0,
+              "xg": 1.1,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Charlie Kelman",
+              "player_id": "p_1FciyE"
+            },
+            {
+              "minutes": 307.0,
               "xg": 1.0699999999999998,
-              "appearances": 3,
+              "appearances": 4,
               "xg_observed_matches": 2,
               "name": "Kayne Ramsay",
               "player_id": "p_3ztI8c"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_27": {
+    "FUTURE_25": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Millwall",
@@ -1747,70 +256,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 220.0,
-              "xg": 1.44,
-              "appearances": 4,
-              "xg_observed_matches": 2,
+              "minutes": 288.0,
+              "xg": 1.71,
+              "appearances": 5,
+              "xg_observed_matches": 3,
               "name": "Kyrell Lisbie",
               "player_id": "p_2ABdpJ"
             },
             {
-              "minutes": 230.0,
-              "xg": 1.32,
-              "appearances": 3,
-              "xg_observed_matches": 3,
+              "minutes": 155.0,
+              "xg": 1.22,
+              "appearances": 2,
+              "xg_observed_matches": 2,
               "name": "Ta\u00efryk Arconte",
               "player_id": "p_2gS0kv"
             },
             {
-              "minutes": 416.0,
-              "xg": 1.13,
+              "minutes": 449.0,
+              "xg": 1.02,
               "appearances": 5,
               "xg_observed_matches": 5,
-              "name": "Lyndon Dykes",
-              "player_id": "p_1ysiIq"
+              "name": "Camiel Neghli",
+              "player_id": "p_3sPCSU"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Derby": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 409.0,
-              "xg": 1.02,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Sammie Szmodics",
-              "player_id": "p_16nSOn"
-            },
-            {
               "minutes": 441.0,
-              "xg": 0.85,
+              "xg": 1.27,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Bobby Clark",
               "player_id": "p_2gZeZh"
             },
             {
-              "minutes": 360.0,
+              "minutes": 426.0,
               "xg": 0.62,
-              "appearances": 4,
+              "appearances": 5,
               "xg_observed_matches": 1,
               "name": "Dion Sanderson",
               "player_id": "p_26yT19"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Sammie Szmodics",
+              "player_id": "p_16nSOn"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_28": {
+    "FUTURE_26": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Norwich",
@@ -1821,70 +330,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 242.0,
-              "xg": 1.1300000000000001,
-              "appearances": 5,
+              "minutes": 223.0,
+              "xg": 0.73,
+              "appearances": 4,
               "xg_observed_matches": 4,
-              "name": "Jovon Makama",
-              "player_id": "p_11UPOm"
-            },
-            {
-              "minutes": 327.0,
-              "xg": 0.82,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jacob Wright",
-              "player_id": "p_3ndT4j"
-            },
-            {
-              "minutes": 148.0,
-              "xg": 0.29000000000000004,
-              "appearances": 3,
-              "xg_observed_matches": 3,
               "name": "Mathias Kvistgaarden",
               "player_id": "p_4NRceM"
+            },
+            {
+              "minutes": 356.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andre Brooks",
+              "player_id": "p_3JY42L"
+            },
+            {
+              "minutes": 112.0,
+              "xg": 0.61,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Anthony Musaba",
+              "player_id": "p_3WJydL"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
         },
         "Watford": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 232.0,
-              "xg": 1.15,
+              "minutes": 283.0,
+              "xg": 1.06,
               "appearances": 4,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 2,
               "name": "Luca Kjerrumgaard",
               "player_id": "p_0mBvJs"
             },
             {
-              "minutes": 277.0,
+              "minutes": 244.0,
               "xg": 0.84,
               "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Mamadou Doumbia",
-              "player_id": "p_49NJhf"
-            },
-            {
-              "minutes": 172.0,
-              "xg": 0.84,
-              "appearances": 4,
               "xg_observed_matches": 3,
               "name": "Myron Boadu",
               "player_id": "p_3kGAWY"
+            },
+            {
+              "minutes": 154.0,
+              "xg": 0.7400000000000001,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Jordan Zemura",
+              "player_id": "p_3xdIk0"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_29": {
+    "FUTURE_27": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Southampton",
@@ -1895,16 +404,16 @@
           "reason": null,
           "players": [
             {
-              "minutes": 297.0,
-              "xg": 1.5200000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Cyle Larin",
-              "player_id": "p_00ZNIx"
+              "minutes": 221.0,
+              "xg": 1.93,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Lewis Dobbin",
+              "player_id": "p_2jTZnb"
             },
             {
-              "minutes": 334.0,
-              "xg": 1.35,
+              "minutes": 317.0,
+              "xg": 1.33,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Kuryu Matsuki",
@@ -1912,7 +421,7 @@
             },
             {
               "minutes": 450.0,
-              "xg": 1.33,
+              "xg": 1.02,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "James Ward-Prowse",
@@ -1920,45 +429,45 @@
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "QPR": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 315.0,
-              "xg": 1.95,
+              "minutes": 164.0,
+              "xg": 2.5199999999999996,
               "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Richard Kone",
+              "player_id": "p_3Nr6g8"
+            },
+            {
+              "minutes": 270.0,
+              "xg": 1.95,
+              "appearances": 3,
               "xg_observed_matches": 3,
               "name": "Nicolas Madsen",
               "player_id": "p_20x1Iz"
             },
             {
-              "minutes": 369.0,
-              "xg": 1.1300000000000001,
+              "minutes": 360.0,
+              "xg": 1.0300000000000002,
               "appearances": 5,
-              "xg_observed_matches": 5,
+              "xg_observed_matches": 4,
               "name": "Kwame Poku",
               "player_id": "p_0c4oQO"
-            },
-            {
-              "minutes": 231.0,
-              "xg": 0.77,
-              "appearances": 3,
-              "xg_observed_matches": 1,
-              "name": "Boy Kemper",
-              "player_id": "p_0gkE1e"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_30": {
+    "FUTURE_28": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Stoke",
@@ -1969,70 +478,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 140.0,
-              "xg": 0.48,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "George Hirst",
-              "player_id": "p_2Shw6v"
-            },
-            {
-              "minutes": 333.0,
-              "xg": 0.46,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Lamine Ciss\u00e9",
-              "player_id": "p_2qzHmM"
-            },
-            {
               "minutes": 450.0,
-              "xg": 0.42000000000000004,
+              "xg": 0.8200000000000001,
               "appearances": 5,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 4,
               "name": "Ben Wilmot",
               "player_id": "p_3MkPWA"
+            },
+            {
+              "minutes": 384.0,
+              "xg": 0.26,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack McGlynn",
+              "player_id": "p_1ecxgb"
+            },
+            {
+              "minutes": 208.0,
+              "xg": 0.25,
+              "appearances": 5,
+              "xg_observed_matches": 2,
+              "name": "Luca Bombino",
+              "player_id": "p_2HtMHj"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Preston": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 200.0,
-              "xg": 1.01,
+              "minutes": 206.0,
+              "xg": 1.16,
               "appearances": 3,
               "xg_observed_matches": 3,
               "name": "Johnny Kenny",
               "player_id": "p_1FfwH1"
             },
             {
-              "minutes": 410.0,
-              "xg": 0.55,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Alfie Devine",
-              "player_id": "p_3jIjB4"
-            },
-            {
-              "minutes": 159.0,
-              "xg": 0.47,
+              "minutes": 153.0,
+              "xg": 0.73,
               "appearances": 4,
-              "xg_observed_matches": 2,
+              "xg_observed_matches": 3,
               "name": "Jusef Erabi",
               "player_id": "p_0QHMRq"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 0.54,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andrew Hughes",
+              "player_id": "p_1BSleM"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_31": {
+    "FUTURE_29": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Swansea",
@@ -2043,70 +552,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 277.0,
-              "xg": 2.0100000000000002,
+              "minutes": 310.0,
+              "xg": 1.34,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Moussa Kounfolo Yeo",
+              "player_id": "p_15Hdr9"
+            },
+            {
+              "minutes": 287.0,
+              "xg": 1.13,
               "appearances": 4,
               "xg_observed_matches": 3,
               "name": "Adam Idah",
               "player_id": "p_4QF5Wo"
             },
             {
-              "minutes": 374.0,
-              "xg": 1.78,
+              "minutes": 325.0,
+              "xg": 0.71,
               "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Moussa Kounfolo Yeo",
-              "player_id": "p_15Hdr9"
-            },
-            {
-              "minutes": 162.0,
-              "xg": 0.93,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "\u017dan Vipotnik",
-              "player_id": "p_13oaER"
+              "xg_observed_matches": 2,
+              "name": "Joseph Opoku",
+              "player_id": "p_47j5bn"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Blackburn": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 194.0,
-              "xg": 1.1099999999999999,
+              "minutes": 263.0,
+              "xg": 1.04,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Andri Gu\u00f0johnsen",
               "player_id": "p_3l5L8L"
             },
             {
-              "minutes": 335.0,
-              "xg": 0.93,
+              "minutes": 356.0,
+              "xg": 0.8800000000000001,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Oladapo Afolayan",
               "player_id": "p_1PQCya"
             },
             {
-              "minutes": 106.0,
+              "minutes": 195.0,
               "xg": 0.73,
-              "appearances": 4,
+              "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Moussa Baradji",
               "player_id": "p_0j1EYP"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_32": {
+    "FUTURE_30": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "West Ham",
@@ -2122,37 +631,37 @@
           "reason": null,
           "players": [
             {
-              "minutes": 246.0,
-              "xg": 1.72,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Aune Selland Heggeb\u00f8",
-              "player_id": "p_1Qwpzd"
-            },
-            {
               "minutes": 365.0,
-              "xg": 1.47,
+              "xg": 1.77,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Isaac Price",
               "player_id": "p_3dc99c"
             },
             {
-              "minutes": 297.0,
-              "xg": 0.97,
+              "minutes": 202.0,
+              "xg": 1.55,
               "appearances": 5,
               "xg_observed_matches": 4,
-              "name": "Jimmy-Jay Morgan",
-              "player_id": "p_3qn7Nz"
+              "name": "Aune Selland Heggeb\u00f8",
+              "player_id": "p_1Qwpzd"
+            },
+            {
+              "minutes": 167.0,
+              "xg": 1.33,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "Felix Horn Myhre",
+              "player_id": "p_0133rf"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_33": {
+    "FUTURE_31": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Wolves",
@@ -2164,13 +673,41 @@
           "players": []
         },
         "Cardiff": {
-          "status": "unavailable",
-          "reason": "Recent player statistics are not yet available.",
-          "players": []
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 180.0,
+              "xg": 3.05,
+              "appearances": 2,
+              "xg_observed_matches": 2,
+              "name": "Yousef Salech",
+              "player_id": "p_3YDJTr"
+            },
+            {
+              "minutes": 418.0,
+              "xg": 2.9600000000000004,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack Moylan",
+              "player_id": "p_46hDdo"
+            },
+            {
+              "minutes": 389.0,
+              "xg": 1.1800000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Ollie Tanner",
+              "player_id": "p_3YSfQE"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_34": {
+    "FUTURE_32": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Aston Villa",
@@ -2188,7 +725,7 @@
         }
       }
     },
-    "FUTURE_35": {
+    "FUTURE_33": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Bournemouth",
@@ -2206,7 +743,7 @@
         }
       }
     },
-    "FUTURE_36": {
+    "FUTURE_34": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Brentford",
@@ -2224,7 +761,7 @@
         }
       }
     },
-    "FUTURE_37": {
+    "FUTURE_35": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Chelsea",
@@ -2242,7 +779,7 @@
         }
       }
     },
-    "FUTURE_38": {
+    "FUTURE_36": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Coventry",
@@ -2260,7 +797,7 @@
         }
       }
     },
-    "FUTURE_39": {
+    "FUTURE_37": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Hull",
@@ -2278,7 +815,7 @@
         }
       }
     },
-    "FUTURE_40": {
+    "FUTURE_38": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Man City",
@@ -2296,7 +833,7 @@
         }
       }
     },
-    "FUTURE_41": {
+    "FUTURE_39": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Tottenham",
@@ -2314,7 +851,7 @@
         }
       }
     },
-    "FUTURE_42": {
+    "FUTURE_40": {
       "date": "2026-11-01",
       "competition": "EPL",
       "HomeTeam": "Liverpool",
@@ -2332,7 +869,7 @@
         }
       }
     },
-    "FUTURE_43": {
+    "FUTURE_41": {
       "date": "2026-11-02",
       "competition": "EPL",
       "HomeTeam": "Newcastle",
@@ -2350,7 +887,7 @@
         }
       }
     },
-    "FUTURE_44": {
+    "FUTURE_42": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Birmingham",
@@ -2361,70 +898,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 318.0,
-              "xg": 2.17,
-              "appearances": 4,
-              "xg_observed_matches": 4,
+              "minutes": 245.0,
+              "xg": 1.8399999999999999,
+              "appearances": 3,
+              "xg_observed_matches": 3,
               "name": "August Priske",
               "player_id": "p_4DEUyZ"
             },
             {
-              "minutes": 431.0,
-              "xg": 1.42,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Jay Stansfield",
-              "player_id": "p_4eGVg7"
-            },
-            {
-              "minutes": 350.0,
+              "minutes": 347.0,
               "xg": 1.31,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Liam Millar",
               "player_id": "p_07A8fP"
+            },
+            {
+              "minutes": 432.0,
+              "xg": 1.21,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jay Stansfield",
+              "player_id": "p_4eGVg7"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Millwall": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 220.0,
-              "xg": 1.44,
-              "appearances": 4,
-              "xg_observed_matches": 2,
+              "minutes": 288.0,
+              "xg": 1.71,
+              "appearances": 5,
+              "xg_observed_matches": 3,
               "name": "Kyrell Lisbie",
               "player_id": "p_2ABdpJ"
             },
             {
-              "minutes": 230.0,
-              "xg": 1.32,
-              "appearances": 3,
-              "xg_observed_matches": 3,
+              "minutes": 155.0,
+              "xg": 1.22,
+              "appearances": 2,
+              "xg_observed_matches": 2,
               "name": "Ta\u00efryk Arconte",
               "player_id": "p_2gS0kv"
             },
             {
-              "minutes": 416.0,
-              "xg": 1.13,
+              "minutes": 449.0,
+              "xg": 1.02,
               "appearances": 5,
               "xg_observed_matches": 5,
-              "name": "Lyndon Dykes",
-              "player_id": "p_1ysiIq"
+              "name": "Camiel Neghli",
+              "player_id": "p_3sPCSU"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_45": {
+    "FUTURE_43": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Blackburn",
@@ -2435,70 +972,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 194.0,
-              "xg": 1.1099999999999999,
+              "minutes": 263.0,
+              "xg": 1.04,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Andri Gu\u00f0johnsen",
               "player_id": "p_3l5L8L"
             },
             {
-              "minutes": 335.0,
-              "xg": 0.93,
+              "minutes": 356.0,
+              "xg": 0.8800000000000001,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Oladapo Afolayan",
               "player_id": "p_1PQCya"
             },
             {
-              "minutes": 106.0,
+              "minutes": 195.0,
               "xg": 0.73,
-              "appearances": 4,
+              "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Moussa Baradji",
               "player_id": "p_0j1EYP"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Stoke": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 140.0,
-              "xg": 0.48,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "George Hirst",
-              "player_id": "p_2Shw6v"
-            },
-            {
-              "minutes": 333.0,
-              "xg": 0.46,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Lamine Ciss\u00e9",
-              "player_id": "p_2qzHmM"
-            },
-            {
               "minutes": 450.0,
-              "xg": 0.42000000000000004,
+              "xg": 0.8200000000000001,
               "appearances": 5,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 4,
               "name": "Ben Wilmot",
               "player_id": "p_3MkPWA"
+            },
+            {
+              "minutes": 384.0,
+              "xg": 0.26,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack McGlynn",
+              "player_id": "p_1ecxgb"
+            },
+            {
+              "minutes": 208.0,
+              "xg": 0.25,
+              "appearances": 5,
+              "xg_observed_matches": 2,
+              "name": "Luca Bombino",
+              "player_id": "p_2HtMHj"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_46": {
+    "FUTURE_44": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Charlton",
@@ -2509,33 +1046,33 @@
           "reason": null,
           "players": [
             {
-              "minutes": 410.0,
-              "xg": 1.39,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Karlan Grant",
-              "player_id": "p_1R6oKB"
-            },
-            {
               "minutes": 432.0,
-              "xg": 1.1,
+              "xg": 1.28,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Tyreece Campbell",
               "player_id": "p_2R24Ba"
             },
             {
-              "minutes": 217.0,
+              "minutes": 165.0,
+              "xg": 1.1,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Charlie Kelman",
+              "player_id": "p_1FciyE"
+            },
+            {
+              "minutes": 307.0,
               "xg": 1.0699999999999998,
-              "appearances": 3,
+              "appearances": 4,
               "xg_observed_matches": 2,
               "name": "Kayne Ramsay",
               "player_id": "p_3ztI8c"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Bolton": {
           "status": "available",
@@ -2572,7 +1109,7 @@
         }
       }
     },
-    "FUTURE_47": {
+    "FUTURE_45": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Derby",
@@ -2583,70 +1120,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 409.0,
-              "xg": 1.02,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Sammie Szmodics",
-              "player_id": "p_16nSOn"
-            },
-            {
               "minutes": 441.0,
-              "xg": 0.85,
+              "xg": 1.27,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Bobby Clark",
               "player_id": "p_2gZeZh"
             },
             {
-              "minutes": 360.0,
+              "minutes": 426.0,
               "xg": 0.62,
-              "appearances": 4,
+              "appearances": 5,
               "xg_observed_matches": 1,
               "name": "Dion Sanderson",
               "player_id": "p_26yT19"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Sammie Szmodics",
+              "player_id": "p_16nSOn"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Norwich": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 242.0,
-              "xg": 1.1300000000000001,
-              "appearances": 5,
+              "minutes": 223.0,
+              "xg": 0.73,
+              "appearances": 4,
               "xg_observed_matches": 4,
-              "name": "Jovon Makama",
-              "player_id": "p_11UPOm"
-            },
-            {
-              "minutes": 327.0,
-              "xg": 0.82,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Jacob Wright",
-              "player_id": "p_3ndT4j"
-            },
-            {
-              "minutes": 148.0,
-              "xg": 0.29000000000000004,
-              "appearances": 3,
-              "xg_observed_matches": 3,
               "name": "Mathias Kvistgaarden",
               "player_id": "p_4NRceM"
+            },
+            {
+              "minutes": 356.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andre Brooks",
+              "player_id": "p_3JY42L"
+            },
+            {
+              "minutes": 112.0,
+              "xg": 0.61,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Anthony Musaba",
+              "player_id": "p_3WJydL"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_48": {
+    "FUTURE_46": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Portsmouth",
@@ -2657,70 +1194,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 385.0,
-              "xg": 1.46,
+              "minutes": 375.0,
+              "xg": 1.3,
               "appearances": 5,
-              "xg_observed_matches": 5,
+              "xg_observed_matches": 4,
               "name": "Adrian Sege\u010di\u0107",
               "player_id": "p_3MkuJh"
             },
             {
-              "minutes": 329.0,
-              "xg": 1.0899999999999999,
+              "minutes": 266.0,
+              "xg": 1.3,
               "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "Ryan Kavuma-McQueen",
-              "player_id": "p_2yaZoU"
-            },
-            {
-              "minutes": 195.0,
-              "xg": 1.01,
-              "appearances": 4,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 4,
               "name": "Marezi",
               "player_id": "p_2Gw18y"
+            },
+            {
+              "minutes": 235.0,
+              "xg": 0.65,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Ebou Adams",
+              "player_id": "p_4Y5uXx"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-19",
-          "source_through": "2026-10-20"
+          "source_from": "2026-10-11",
+          "source_through": "2026-10-24"
         },
         "Swansea": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 277.0,
-              "xg": 2.0100000000000002,
+              "minutes": 310.0,
+              "xg": 1.34,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Moussa Kounfolo Yeo",
+              "player_id": "p_15Hdr9"
+            },
+            {
+              "minutes": 287.0,
+              "xg": 1.13,
               "appearances": 4,
               "xg_observed_matches": 3,
               "name": "Adam Idah",
               "player_id": "p_4QF5Wo"
             },
             {
-              "minutes": 374.0,
-              "xg": 1.78,
+              "minutes": 325.0,
+              "xg": 0.71,
               "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Moussa Kounfolo Yeo",
-              "player_id": "p_15Hdr9"
-            },
-            {
-              "minutes": 162.0,
-              "xg": 0.93,
-              "appearances": 5,
-              "xg_observed_matches": 3,
-              "name": "\u017dan Vipotnik",
-              "player_id": "p_13oaER"
+              "xg_observed_matches": 2,
+              "name": "Joseph Opoku",
+              "player_id": "p_47j5bn"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_49": {
+    "FUTURE_47": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Preston",
@@ -2731,70 +1268,70 @@
           "reason": null,
           "players": [
             {
-              "minutes": 200.0,
-              "xg": 1.01,
+              "minutes": 206.0,
+              "xg": 1.16,
               "appearances": 3,
               "xg_observed_matches": 3,
               "name": "Johnny Kenny",
               "player_id": "p_1FfwH1"
             },
             {
-              "minutes": 410.0,
-              "xg": 0.55,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Alfie Devine",
-              "player_id": "p_3jIjB4"
-            },
-            {
-              "minutes": 159.0,
-              "xg": 0.47,
+              "minutes": 153.0,
+              "xg": 0.73,
               "appearances": 4,
-              "xg_observed_matches": 2,
+              "xg_observed_matches": 3,
               "name": "Jusef Erabi",
               "player_id": "p_0QHMRq"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 0.54,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andrew Hughes",
+              "player_id": "p_1BSleM"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Sheffield United": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 300.0,
-              "xg": 1.69,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Thomas Cannon",
-              "player_id": "p_4Cjsvr"
-            },
-            {
-              "minutes": 326.0,
-              "xg": 1.32,
+              "minutes": 317.0,
+              "xg": 2.13,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "Patrick Bamford",
               "player_id": "p_3F5vxz"
             },
             {
-              "minutes": 450.0,
-              "xg": 0.52,
+              "minutes": 341.0,
+              "xg": 1.3800000000000001,
               "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Japhet Tanganga",
-              "player_id": "p_30sAHY"
+              "xg_observed_matches": 5,
+              "name": "Thomas Cannon",
+              "player_id": "p_4Cjsvr"
+            },
+            {
+              "minutes": 25.0,
+              "xg": 0.92,
+              "appearances": 3,
+              "xg_observed_matches": 1,
+              "name": "Tyrese Campbell",
+              "player_id": "p_3q7E0h"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-13",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_50": {
+    "FUTURE_48": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "QPR",
@@ -2805,33 +1342,33 @@
           "reason": null,
           "players": [
             {
-              "minutes": 315.0,
-              "xg": 1.95,
+              "minutes": 164.0,
+              "xg": 2.5199999999999996,
               "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Richard Kone",
+              "player_id": "p_3Nr6g8"
+            },
+            {
+              "minutes": 270.0,
+              "xg": 1.95,
+              "appearances": 3,
               "xg_observed_matches": 3,
               "name": "Nicolas Madsen",
               "player_id": "p_20x1Iz"
             },
             {
-              "minutes": 369.0,
-              "xg": 1.1300000000000001,
+              "minutes": 360.0,
+              "xg": 1.0300000000000002,
               "appearances": 5,
-              "xg_observed_matches": 5,
+              "xg_observed_matches": 4,
               "name": "Kwame Poku",
               "player_id": "p_0c4oQO"
-            },
-            {
-              "minutes": 231.0,
-              "xg": 0.77,
-              "appearances": 3,
-              "xg_observed_matches": 1,
-              "name": "Boy Kemper",
-              "player_id": "p_0gkE1e"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Burnley": {
           "status": "unavailable",
@@ -2840,7 +1377,7 @@
         }
       }
     },
-    "FUTURE_51": {
+    "FUTURE_49": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Watford",
@@ -2851,33 +1388,33 @@
           "reason": null,
           "players": [
             {
-              "minutes": 232.0,
-              "xg": 1.15,
+              "minutes": 283.0,
+              "xg": 1.06,
               "appearances": 4,
-              "xg_observed_matches": 3,
+              "xg_observed_matches": 2,
               "name": "Luca Kjerrumgaard",
               "player_id": "p_0mBvJs"
             },
             {
-              "minutes": 277.0,
+              "minutes": 244.0,
               "xg": 0.84,
               "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Mamadou Doumbia",
-              "player_id": "p_49NJhf"
-            },
-            {
-              "minutes": 172.0,
-              "xg": 0.84,
-              "appearances": 4,
               "xg_observed_matches": 3,
               "name": "Myron Boadu",
               "player_id": "p_3kGAWY"
+            },
+            {
+              "minutes": 154.0,
+              "xg": 0.7400000000000001,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Jordan Zemura",
+              "player_id": "p_3xdIk0"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
         },
         "Lincoln": {
           "status": "unavailable",
@@ -2886,7 +1423,7 @@
         }
       }
     },
-    "FUTURE_52": {
+    "FUTURE_50": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "West Brom",
@@ -2897,49 +1434,49 @@
           "reason": null,
           "players": [
             {
-              "minutes": 246.0,
-              "xg": 1.72,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Aune Selland Heggeb\u00f8",
-              "player_id": "p_1Qwpzd"
-            },
-            {
               "minutes": 365.0,
-              "xg": 1.47,
+              "xg": 1.77,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Isaac Price",
               "player_id": "p_3dc99c"
             },
             {
-              "minutes": 297.0,
-              "xg": 0.97,
+              "minutes": 202.0,
+              "xg": 1.55,
               "appearances": 5,
               "xg_observed_matches": 4,
-              "name": "Jimmy-Jay Morgan",
-              "player_id": "p_3qn7Nz"
+              "name": "Aune Selland Heggeb\u00f8",
+              "player_id": "p_1Qwpzd"
+            },
+            {
+              "minutes": 167.0,
+              "xg": 1.33,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "Felix Horn Myhre",
+              "player_id": "p_0133rf"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
         },
         "Southampton": {
           "status": "available",
           "reason": null,
           "players": [
             {
-              "minutes": 297.0,
-              "xg": 1.5200000000000002,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Cyle Larin",
-              "player_id": "p_00ZNIx"
+              "minutes": 221.0,
+              "xg": 1.93,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Lewis Dobbin",
+              "player_id": "p_2jTZnb"
             },
             {
-              "minutes": 334.0,
-              "xg": 1.35,
+              "minutes": 317.0,
+              "xg": 1.33,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Kuryu Matsuki",
@@ -2947,7 +1484,7 @@
             },
             {
               "minutes": 450.0,
-              "xg": 1.33,
+              "xg": 1.02,
               "appearances": 5,
               "xg_observed_matches": 3,
               "name": "James Ward-Prowse",
@@ -2955,12 +1492,12 @@
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-12",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         }
       }
     },
-    "FUTURE_53": {
+    "FUTURE_51": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Bristol City",
@@ -2971,33 +1508,33 @@
           "reason": null,
           "players": [
             {
-              "minutes": 363.0,
-              "xg": 1.5700000000000003,
+              "minutes": 419.0,
+              "xg": 1.7800000000000002,
               "appearances": 5,
               "xg_observed_matches": 5,
               "name": "Dominic Ballard",
               "player_id": "p_02fton"
             },
             {
-              "minutes": 348.0,
-              "xg": 1.09,
-              "appearances": 5,
-              "xg_observed_matches": 5,
-              "name": "Yu Hirakawa",
-              "player_id": "p_1FJru7"
-            },
-            {
-              "minutes": 266.0,
+              "minutes": 190.0,
               "xg": 0.9400000000000001,
-              "appearances": 4,
+              "appearances": 3,
               "xg_observed_matches": 2,
               "name": "Scott Twine",
               "player_id": "p_1WPzqc"
+            },
+            {
+              "minutes": 258.0,
+              "xg": 0.73,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Yu Hirakawa",
+              "player_id": "p_1FJru7"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-15",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
         },
         "Wolves": {
           "status": "unavailable",
@@ -3006,16 +1543,44 @@
         }
       }
     },
-    "FUTURE_54": {
+    "FUTURE_52": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Cardiff",
       "AwayTeam": "West Ham",
       "teams": {
         "Cardiff": {
-          "status": "unavailable",
-          "reason": "Recent player statistics are not yet available.",
-          "players": []
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 180.0,
+              "xg": 3.05,
+              "appearances": 2,
+              "xg_observed_matches": 2,
+              "name": "Yousef Salech",
+              "player_id": "p_3YDJTr"
+            },
+            {
+              "minutes": 418.0,
+              "xg": 2.9600000000000004,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack Moylan",
+              "player_id": "p_46hDdo"
+            },
+            {
+              "minutes": 389.0,
+              "xg": 1.1800000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Ollie Tanner",
+              "player_id": "p_3YSfQE"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "West Ham": {
           "status": "unavailable",
@@ -3024,7 +1589,7 @@
         }
       }
     },
-    "FUTURE_55": {
+    "FUTURE_53": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Wrexham",
@@ -3036,34 +1601,928 @@
           "players": [
             {
               "minutes": 441.0,
-              "xg": 1.25,
+              "xg": 1.48,
               "appearances": 5,
               "xg_observed_matches": 4,
               "name": "Callum O'Hare",
               "player_id": "p_19UjEG"
             },
             {
-              "minutes": 156.0,
+              "minutes": 402.0,
+              "xg": 1.1600000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Kieffer Moore",
+              "player_id": "p_0ZyHLs"
+            },
+            {
+              "minutes": 168.0,
               "xg": 0.84,
-              "appearances": 3,
+              "appearances": 4,
               "xg_observed_matches": 1,
               "name": "Oliver Rathbone",
               "player_id": "p_2HLbpC"
-            },
-            {
-              "minutes": 335.0,
-              "xg": 0.77,
-              "appearances": 5,
-              "xg_observed_matches": 4,
-              "name": "Kieffer Moore",
-              "player_id": "p_0ZyHLs"
             }
           ],
           "matches": 5,
-          "source_from": "2026-09-11",
-          "source_through": "2026-10-17"
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
         },
         "Middlesbrough": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 378.0,
+              "xg": 3.93,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Will Lankshear",
+              "player_id": "p_2UEFak"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 1.9900000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Aidan Morris",
+              "player_id": "p_35mghf"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 1.5100000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Amario Cozier-Duberry",
+              "player_id": "p_2v8Mc6"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-23"
+        }
+      }
+    },
+    "FUTURE_54": {
+      "date": "2026-11-06",
+      "competition": "Championship",
+      "HomeTeam": "Derby",
+      "AwayTeam": "Bolton",
+      "teams": {
+        "Derby": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 441.0,
+              "xg": 1.27,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Bobby Clark",
+              "player_id": "p_2gZeZh"
+            },
+            {
+              "minutes": 426.0,
+              "xg": 0.62,
+              "appearances": 5,
+              "xg_observed_matches": 1,
+              "name": "Dion Sanderson",
+              "player_id": "p_26yT19"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Sammie Szmodics",
+              "player_id": "p_16nSOn"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Bolton": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 311.0,
+              "xg": 2.08,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Sam Dalby",
+              "player_id": "p_21ndvk"
+            },
+            {
+              "minutes": 147.0,
+              "xg": 1.4000000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Thelonius Bair",
+              "player_id": "p_4bX3b1"
+            },
+            {
+              "minutes": 247.0,
+              "xg": 1.15,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "R\u00faben Rodrigues",
+              "player_id": "p_4Jfn2p"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-23"
+        }
+      }
+    },
+    "FUTURE_55": {
+      "date": "2026-11-06",
+      "competition": "EPL",
+      "HomeTeam": "Everton",
+      "AwayTeam": "Coventry",
+      "teams": {
+        "Everton": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        },
+        "Coventry": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_56": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Birmingham",
+      "AwayTeam": "Swansea",
+      "teams": {
+        "Birmingham": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 245.0,
+              "xg": 1.8399999999999999,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "August Priske",
+              "player_id": "p_4DEUyZ"
+            },
+            {
+              "minutes": 347.0,
+              "xg": 1.31,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Liam Millar",
+              "player_id": "p_07A8fP"
+            },
+            {
+              "minutes": 432.0,
+              "xg": 1.21,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jay Stansfield",
+              "player_id": "p_4eGVg7"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Swansea": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 310.0,
+              "xg": 1.34,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Moussa Kounfolo Yeo",
+              "player_id": "p_15Hdr9"
+            },
+            {
+              "minutes": 287.0,
+              "xg": 1.13,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Adam Idah",
+              "player_id": "p_4QF5Wo"
+            },
+            {
+              "minutes": 325.0,
+              "xg": 0.71,
+              "appearances": 5,
+              "xg_observed_matches": 2,
+              "name": "Joseph Opoku",
+              "player_id": "p_47j5bn"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_57": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Blackburn",
+      "AwayTeam": "West Ham",
+      "teams": {
+        "Blackburn": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 263.0,
+              "xg": 1.04,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andri Gu\u00f0johnsen",
+              "player_id": "p_3l5L8L"
+            },
+            {
+              "minutes": 356.0,
+              "xg": 0.8800000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Oladapo Afolayan",
+              "player_id": "p_1PQCya"
+            },
+            {
+              "minutes": 195.0,
+              "xg": 0.73,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Moussa Baradji",
+              "player_id": "p_0j1EYP"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "West Ham": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_58": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Bristol City",
+      "AwayTeam": "Norwich",
+      "teams": {
+        "Bristol City": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 419.0,
+              "xg": 1.7800000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Dominic Ballard",
+              "player_id": "p_02fton"
+            },
+            {
+              "minutes": 190.0,
+              "xg": 0.9400000000000001,
+              "appearances": 3,
+              "xg_observed_matches": 2,
+              "name": "Scott Twine",
+              "player_id": "p_1WPzqc"
+            },
+            {
+              "minutes": 258.0,
+              "xg": 0.73,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Yu Hirakawa",
+              "player_id": "p_1FJru7"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
+        },
+        "Norwich": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 223.0,
+              "xg": 0.73,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Mathias Kvistgaarden",
+              "player_id": "p_4NRceM"
+            },
+            {
+              "minutes": 356.0,
+              "xg": 0.6100000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andre Brooks",
+              "player_id": "p_3JY42L"
+            },
+            {
+              "minutes": 112.0,
+              "xg": 0.61,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Anthony Musaba",
+              "player_id": "p_3WJydL"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_59": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Cardiff",
+      "AwayTeam": "Burnley",
+      "teams": {
+        "Cardiff": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 180.0,
+              "xg": 3.05,
+              "appearances": 2,
+              "xg_observed_matches": 2,
+              "name": "Yousef Salech",
+              "player_id": "p_3YDJTr"
+            },
+            {
+              "minutes": 418.0,
+              "xg": 2.9600000000000004,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack Moylan",
+              "player_id": "p_46hDdo"
+            },
+            {
+              "minutes": 389.0,
+              "xg": 1.1800000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Ollie Tanner",
+              "player_id": "p_3YSfQE"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Burnley": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_60": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Charlton",
+      "AwayTeam": "Sheffield United",
+      "teams": {
+        "Charlton": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 432.0,
+              "xg": 1.28,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Tyreece Campbell",
+              "player_id": "p_2R24Ba"
+            },
+            {
+              "minutes": 165.0,
+              "xg": 1.1,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Charlie Kelman",
+              "player_id": "p_1FciyE"
+            },
+            {
+              "minutes": 307.0,
+              "xg": 1.0699999999999998,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Kayne Ramsay",
+              "player_id": "p_3ztI8c"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Sheffield United": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 317.0,
+              "xg": 2.13,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Patrick Bamford",
+              "player_id": "p_3F5vxz"
+            },
+            {
+              "minutes": 341.0,
+              "xg": 1.3800000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Thomas Cannon",
+              "player_id": "p_4Cjsvr"
+            },
+            {
+              "minutes": 25.0,
+              "xg": 0.92,
+              "appearances": 3,
+              "xg_observed_matches": 1,
+              "name": "Tyrese Campbell",
+              "player_id": "p_3q7E0h"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_61": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Portsmouth",
+      "AwayTeam": "Stoke",
+      "teams": {
+        "Portsmouth": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 375.0,
+              "xg": 1.3,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Adrian Sege\u010di\u0107",
+              "player_id": "p_3MkuJh"
+            },
+            {
+              "minutes": 266.0,
+              "xg": 1.3,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Marezi",
+              "player_id": "p_2Gw18y"
+            },
+            {
+              "minutes": 235.0,
+              "xg": 0.65,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Ebou Adams",
+              "player_id": "p_4Y5uXx"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-10-11",
+          "source_through": "2026-10-24"
+        },
+        "Stoke": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 450.0,
+              "xg": 0.8200000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Ben Wilmot",
+              "player_id": "p_3MkPWA"
+            },
+            {
+              "minutes": 384.0,
+              "xg": 0.26,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Jack McGlynn",
+              "player_id": "p_1ecxgb"
+            },
+            {
+              "minutes": 208.0,
+              "xg": 0.25,
+              "appearances": 5,
+              "xg_observed_matches": 2,
+              "name": "Luca Bombino",
+              "player_id": "p_2HtMHj"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_62": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Preston",
+      "AwayTeam": "Southampton",
+      "teams": {
+        "Preston": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 206.0,
+              "xg": 1.16,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "Johnny Kenny",
+              "player_id": "p_1FfwH1"
+            },
+            {
+              "minutes": 153.0,
+              "xg": 0.73,
+              "appearances": 4,
+              "xg_observed_matches": 3,
+              "name": "Jusef Erabi",
+              "player_id": "p_0QHMRq"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 0.54,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Andrew Hughes",
+              "player_id": "p_1BSleM"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Southampton": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 221.0,
+              "xg": 1.93,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Lewis Dobbin",
+              "player_id": "p_2jTZnb"
+            },
+            {
+              "minutes": 317.0,
+              "xg": 1.33,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Kuryu Matsuki",
+              "player_id": "p_4BNxRv"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 1.02,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "James Ward-Prowse",
+              "player_id": "p_30wVFS"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_63": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "QPR",
+      "AwayTeam": "Lincoln",
+      "teams": {
+        "QPR": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 164.0,
+              "xg": 2.5199999999999996,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Richard Kone",
+              "player_id": "p_3Nr6g8"
+            },
+            {
+              "minutes": 270.0,
+              "xg": 1.95,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "Nicolas Madsen",
+              "player_id": "p_20x1Iz"
+            },
+            {
+              "minutes": 360.0,
+              "xg": 1.0300000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Kwame Poku",
+              "player_id": "p_0c4oQO"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Lincoln": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_64": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Watford",
+      "AwayTeam": "Middlesbrough",
+      "teams": {
+        "Watford": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 283.0,
+              "xg": 1.06,
+              "appearances": 4,
+              "xg_observed_matches": 2,
+              "name": "Luca Kjerrumgaard",
+              "player_id": "p_0mBvJs"
+            },
+            {
+              "minutes": 244.0,
+              "xg": 0.84,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Myron Boadu",
+              "player_id": "p_3kGAWY"
+            },
+            {
+              "minutes": 154.0,
+              "xg": 0.7400000000000001,
+              "appearances": 4,
+              "xg_observed_matches": 4,
+              "name": "Jordan Zemura",
+              "player_id": "p_3xdIk0"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-18",
+          "source_through": "2026-10-24"
+        },
+        "Middlesbrough": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 378.0,
+              "xg": 3.93,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Will Lankshear",
+              "player_id": "p_2UEFak"
+            },
+            {
+              "minutes": 450.0,
+              "xg": 1.9900000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Aidan Morris",
+              "player_id": "p_35mghf"
+            },
+            {
+              "minutes": 392.0,
+              "xg": 1.5100000000000002,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Amario Cozier-Duberry",
+              "player_id": "p_2v8Mc6"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-23"
+        }
+      }
+    },
+    "FUTURE_65": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "West Brom",
+      "AwayTeam": "Millwall",
+      "teams": {
+        "West Brom": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 365.0,
+              "xg": 1.77,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Isaac Price",
+              "player_id": "p_3dc99c"
+            },
+            {
+              "minutes": 202.0,
+              "xg": 1.55,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Aune Selland Heggeb\u00f8",
+              "player_id": "p_1Qwpzd"
+            },
+            {
+              "minutes": 167.0,
+              "xg": 1.33,
+              "appearances": 3,
+              "xg_observed_matches": 3,
+              "name": "Felix Horn Myhre",
+              "player_id": "p_0133rf"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-20",
+          "source_through": "2026-10-24"
+        },
+        "Millwall": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 288.0,
+              "xg": 1.71,
+              "appearances": 5,
+              "xg_observed_matches": 3,
+              "name": "Kyrell Lisbie",
+              "player_id": "p_2ABdpJ"
+            },
+            {
+              "minutes": 155.0,
+              "xg": 1.22,
+              "appearances": 2,
+              "xg_observed_matches": 2,
+              "name": "Ta\u00efryk Arconte",
+              "player_id": "p_2gS0kv"
+            },
+            {
+              "minutes": 449.0,
+              "xg": 1.02,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Camiel Neghli",
+              "player_id": "p_3sPCSU"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        }
+      }
+    },
+    "FUTURE_66": {
+      "date": "2026-11-07",
+      "competition": "Championship",
+      "HomeTeam": "Wrexham",
+      "AwayTeam": "Wolves",
+      "teams": {
+        "Wrexham": {
+          "status": "available",
+          "reason": null,
+          "players": [
+            {
+              "minutes": 441.0,
+              "xg": 1.48,
+              "appearances": 5,
+              "xg_observed_matches": 4,
+              "name": "Callum O'Hare",
+              "player_id": "p_19UjEG"
+            },
+            {
+              "minutes": 402.0,
+              "xg": 1.1600000000000001,
+              "appearances": 5,
+              "xg_observed_matches": 5,
+              "name": "Kieffer Moore",
+              "player_id": "p_0ZyHLs"
+            },
+            {
+              "minutes": 168.0,
+              "xg": 0.84,
+              "appearances": 4,
+              "xg_observed_matches": 1,
+              "name": "Oliver Rathbone",
+              "player_id": "p_2HLbpC"
+            }
+          ],
+          "matches": 5,
+          "source_from": "2026-09-19",
+          "source_through": "2026-10-24"
+        },
+        "Wolves": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_67": {
+      "date": "2026-11-07",
+      "competition": "EPL",
+      "HomeTeam": "Arsenal",
+      "AwayTeam": "Hull",
+      "teams": {
+        "Arsenal": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        },
+        "Hull": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_68": {
+      "date": "2026-11-07",
+      "competition": "EPL",
+      "HomeTeam": "Fulham",
+      "AwayTeam": "Newcastle",
+      "teams": {
+        "Fulham": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        },
+        "Newcastle": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_69": {
+      "date": "2026-11-07",
+      "competition": "EPL",
+      "HomeTeam": "Leeds",
+      "AwayTeam": "Tottenham",
+      "teams": {
+        "Leeds": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        },
+        "Tottenham": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        }
+      }
+    },
+    "FUTURE_70": {
+      "date": "2026-11-07",
+      "competition": "EPL",
+      "HomeTeam": "Nott'm Forest",
+      "AwayTeam": "Man City",
+      "teams": {
+        "Nott'm Forest": {
+          "status": "unavailable",
+          "reason": "Recent player statistics are not yet available.",
+          "players": []
+        },
+        "Man City": {
           "status": "unavailable",
           "reason": "Recent player statistics are not yet available.",
           "players": []
@@ -3075,14 +2534,14 @@
     {
       "league": "premier_league",
       "saved": 13,
-      "remaining": 38,
+      "remaining": 24,
       "production_changed": false,
       "rejected_match_ids": []
     },
     {
       "league": "championship",
       "saved": 12,
-      "remaining": 2,
+      "remaining": 1,
       "production_changed": false,
       "rejected_match_ids": []
     }

@@ -3,22 +3,22 @@
   "model": "Matrix",
   "experimental": true,
   "hybrid_default": true,
-  "published_at_utc": "2026-10-24T06:38:56.204244+00:00",
-  "baseline_predictions_sha256": "c90dda44237193c8af8d7daf12beb6f5f46cddf39e05dcb12ad611f5ce27f0e0",
-  "historical_data_through": "2026-10-23",
+  "published_at_utc": "2026-10-31T01:51:54.312581+00:00",
+  "baseline_predictions_sha256": "2a83c21eb53a7105d01845cd3a23a0990d25b82a35bae1aa50fba74765294f29",
+  "historical_data_through": "2026-10-25",
   "weights": {
     "EPL": {
-      "Dixon-Coles": 0.3158505553722035,
-      "XGBoost": 0.5134315713755511,
-      "Logistic": 0.1707178732522454
+      "Dixon-Coles": 0.31584518339738366,
+      "XGBoost": 0.5134259565327557,
+      "Logistic": 0.17072886006986054
     },
     "Championship": {
-      "Dixon-Coles": 0.242283566444747,
-      "XGBoost": 0.6044866277070989,
-      "Logistic": 0.1532298058481541
+      "Dixon-Coles": 0.24232711269042193,
+      "XGBoost": 0.6044447113365673,
+      "Logistic": 0.1532281759730108
     }
   },
-  "fixture_count": 71,
+  "fixture_count": 55,
   "scope": [
     "EPL",
     "Championship"

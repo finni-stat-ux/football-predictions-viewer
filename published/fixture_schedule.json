@@ -1,80 +1,8 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-24T06:38:28.131556+00:00",
+  "checked_at_utc": "2026-10-31T01:51:36.758837+00:00",
   "fixtures": {
-    "FUTURE_12": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Aston Villa",
-      "AwayTeam": "Man City",
-      "kickoff_utc": "2026-10-24T11:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_11": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Arsenal",
-      "AwayTeam": "Everton",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
     "FUTURE_14": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Coventry",
-      "AwayTeam": "Fulham",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_13": {
-      "date": "2026-10-24",
-      "competition": "EPL",
-      "HomeTeam": "Chelsea",
-      "AwayTeam": "Tottenham",
-      "kickoff_utc": "2026-10-24T16:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_17": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Liverpool",
-      "AwayTeam": "Brighton",
-      "kickoff_utc": "2026-10-25T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_15": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Crystal Palace",
-      "AwayTeam": "Newcastle",
-      "kickoff_utc": "2026-10-25T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_18": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Man United",
-      "AwayTeam": "Bournemouth",
-      "kickoff_utc": "2026-10-25T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_16": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Hull",
-      "AwayTeam": "Brentford",
-      "kickoff_utc": "2026-10-25T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_19": {
-      "date": "2026-10-25",
-      "competition": "EPL",
-      "HomeTeam": "Sunderland",
-      "AwayTeam": "Leeds",
-      "kickoff_utc": "2026-10-25T16:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_35": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Chelsea",
@@ -82,7 +10,7 @@
       "kickoff_utc": "2026-10-31T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_38": {
+    "FUTURE_17": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Man City",
@@ -90,7 +18,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_33": {
+    "FUTURE_12": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Bournemouth",
@@ -98,7 +26,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_36": {
+    "FUTURE_15": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Coventry",
@@ -106,7 +34,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_37": {
+    "FUTURE_16": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Hull",
@@ -114,7 +42,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_34": {
+    "FUTURE_13": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Brentford",
@@ -122,7 +50,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_39": {
+    "FUTURE_18": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Tottenham",
@@ -130,7 +58,7 @@
       "kickoff_utc": "2026-10-31T17:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_32": {
+    "FUTURE_11": {
       "date": "2026-10-31",
       "competition": "EPL",
       "HomeTeam": "Aston Villa",
@@ -138,7 +66,7 @@
       "kickoff_utc": "2026-10-31T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_40": {
+    "FUTURE_19": {
       "date": "2026-11-01",
       "competition": "EPL",
       "HomeTeam": "Liverpool",
@@ -146,7 +74,7 @@
       "kickoff_utc": "2026-11-01T16:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_41": {
+    "FUTURE_20": {
       "date": "2026-11-02",
       "competition": "EPL",
       "HomeTeam": "Newcastle",
@@ -154,7 +82,7 @@
       "kickoff_utc": "2026-11-02T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_55": {
+    "FUTURE_34": {
       "date": "2026-11-06",
       "competition": "EPL",
       "HomeTeam": "Everton",
@@ -162,7 +90,7 @@
       "kickoff_utc": "2026-11-06T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_69": {
+    "FUTURE_48": {
       "date": "2026-11-07",
       "competition": "EPL",
       "HomeTeam": "Leeds",
@@ -170,7 +98,7 @@
       "kickoff_utc": "2026-11-07T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_67": {
+    "FUTURE_46": {
       "date": "2026-11-07",
       "competition": "EPL",
       "HomeTeam": "Arsenal",
@@ -178,7 +106,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_68": {
+    "FUTURE_47": {
       "date": "2026-11-07",
       "competition": "EPL",
       "HomeTeam": "Fulham",
@@ -186,7 +114,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_70": {
+    "FUTURE_49": {
       "date": "2026-11-07",
       "competition": "EPL",
       "HomeTeam": "Nott'm Forest",
@@ -194,103 +122,47 @@
       "kickoff_utc": "2026-11-07T17:30:00+00:00",
       "status": "TIMED"
     },
+    "FUTURE_51": {
+      "date": "2026-11-08",
+      "competition": "EPL",
+      "HomeTeam": "Crystal Palace",
+      "AwayTeam": "Liverpool",
+      "kickoff_utc": "2026-11-08T14:00:00+00:00",
+      "status": "TIMED"
+    },
+    "FUTURE_54": {
+      "date": "2026-11-08",
+      "competition": "EPL",
+      "HomeTeam": "Sunderland",
+      "AwayTeam": "Chelsea",
+      "kickoff_utc": "2026-11-08T14:00:00+00:00",
+      "status": "TIMED"
+    },
+    "FUTURE_52": {
+      "date": "2026-11-08",
+      "competition": "EPL",
+      "HomeTeam": "Ipswich",
+      "AwayTeam": "Bournemouth",
+      "kickoff_utc": "2026-11-08T14:00:00+00:00",
+      "status": "TIMED"
+    },
+    "FUTURE_50": {
+      "date": "2026-11-08",
+      "competition": "EPL",
+      "HomeTeam": "Brighton",
+      "AwayTeam": "Brentford",
+      "kickoff_utc": "2026-11-08T14:00:00+00:00",
+      "status": "TIMED"
+    },
+    "FUTURE_53": {
+      "date": "2026-11-08",
+      "competition": "EPL",
+      "HomeTeam": "Man United",
+      "AwayTeam": "Aston Villa",
+      "kickoff_utc": "2026-11-08T16:30:00+00:00",
+      "status": "TIMED"
+    },
     "FUTURE_7": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Sheffield United",
-      "AwayTeam": "Derby",
-      "kickoff_utc": "2026-10-24T11:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_2": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Charlton",
-      "AwayTeam": "Norwich",
-      "kickoff_utc": "2026-10-24T11:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_4": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Portsmouth",
-      "AwayTeam": "Millwall",
-      "kickoff_utc": "2026-10-24T11:30:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_1": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Cardiff",
-      "AwayTeam": "Birmingham",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_6": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "QPR",
-      "AwayTeam": "Swansea",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_8": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Stoke",
-      "AwayTeam": "Bristol City",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_5": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Preston",
-      "AwayTeam": "West Brom",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_3": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Lincoln",
-      "AwayTeam": "Burnley",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_9": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "West Ham",
-      "AwayTeam": "Southampton",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_0": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Blackburn",
-      "AwayTeam": "Wrexham",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_10": {
-      "date": "2026-10-24",
-      "competition": "Championship",
-      "HomeTeam": "Wolves",
-      "AwayTeam": "Watford",
-      "kickoff_utc": "2026-10-24T14:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_20": {
-      "date": "2026-10-30",
-      "competition": "Championship",
-      "HomeTeam": "Sheffield United",
-      "AwayTeam": "Wrexham",
-      "kickoff_utc": "2026-10-30T20:00:00+00:00",
-      "status": "TIMED"
-    },
-    "FUTURE_28": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Stoke",
@@ -298,7 +170,7 @@
       "kickoff_utc": "2026-10-31T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_26": {
+    "FUTURE_5": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Norwich",
@@ -306,7 +178,7 @@
       "kickoff_utc": "2026-10-31T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_23": {
+    "FUTURE_2": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Lincoln",
@@ -314,7 +186,7 @@
       "kickoff_utc": "2026-10-31T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_31": {
+    "FUTURE_10": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Wolves",
@@ -322,7 +194,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_30": {
+    "FUTURE_9": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "West Ham",
@@ -330,7 +202,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_29": {
+    "FUTURE_8": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Swansea",
@@ -338,7 +210,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_21": {
+    "FUTURE_0": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Bolton",
@@ -346,7 +218,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_24": {
+    "FUTURE_3": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Middlesbrough",
@@ -354,7 +226,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_22": {
+    "FUTURE_1": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Burnley",
@@ -362,7 +234,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_25": {
+    "FUTURE_4": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Millwall",
@@ -370,7 +242,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_27": {
+    "FUTURE_6": {
       "date": "2026-10-31",
       "competition": "Championship",
       "HomeTeam": "Southampton",
@@ -378,7 +250,7 @@
       "kickoff_utc": "2026-10-31T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_48": {
+    "FUTURE_27": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "QPR",
@@ -386,7 +258,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_45": {
+    "FUTURE_24": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Derby",
@@ -394,7 +266,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_43": {
+    "FUTURE_22": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Blackburn",
@@ -402,7 +274,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_49": {
+    "FUTURE_28": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Watford",
@@ -410,7 +282,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_44": {
+    "FUTURE_23": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Charlton",
@@ -418,7 +290,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_46": {
+    "FUTURE_25": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Portsmouth",
@@ -426,7 +298,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_47": {
+    "FUTURE_26": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Preston",
@@ -434,7 +306,7 @@
       "kickoff_utc": "2026-11-03T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_50": {
+    "FUTURE_29": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "West Brom",
@@ -442,7 +314,7 @@
       "kickoff_utc": "2026-11-03T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_42": {
+    "FUTURE_21": {
       "date": "2026-11-03",
       "competition": "Championship",
       "HomeTeam": "Birmingham",
@@ -450,7 +322,7 @@
       "kickoff_utc": "2026-11-03T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_52": {
+    "FUTURE_31": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Cardiff",
@@ -458,7 +330,7 @@
       "kickoff_utc": "2026-11-04T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_53": {
+    "FUTURE_32": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Wrexham",
@@ -466,7 +338,7 @@
       "kickoff_utc": "2026-11-04T19:45:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_51": {
+    "FUTURE_30": {
       "date": "2026-11-04",
       "competition": "Championship",
       "HomeTeam": "Bristol City",
@@ -474,7 +346,7 @@
       "kickoff_utc": "2026-11-04T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_54": {
+    "FUTURE_33": {
       "date": "2026-11-06",
       "competition": "Championship",
       "HomeTeam": "Derby",
@@ -482,7 +354,7 @@
       "kickoff_utc": "2026-11-06T20:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_66": {
+    "FUTURE_45": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Wrexham",
@@ -490,7 +362,7 @@
       "kickoff_utc": "2026-11-07T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_61": {
+    "FUTURE_40": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Portsmouth",
@@ -498,7 +370,7 @@
       "kickoff_utc": "2026-11-07T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_58": {
+    "FUTURE_37": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Bristol City",
@@ -506,7 +378,7 @@
       "kickoff_utc": "2026-11-07T12:30:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_63": {
+    "FUTURE_42": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "QPR",
@@ -514,7 +386,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_59": {
+    "FUTURE_38": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Cardiff",
@@ -522,7 +394,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_60": {
+    "FUTURE_39": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Charlton",
@@ -530,7 +402,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_64": {
+    "FUTURE_43": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Watford",
@@ -538,7 +410,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_57": {
+    "FUTURE_36": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Blackburn",
@@ -546,7 +418,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_65": {
+    "FUTURE_44": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "West Brom",
@@ -554,7 +426,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_62": {
+    "FUTURE_41": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Preston",
@@ -562,7 +434,7 @@
       "kickoff_utc": "2026-11-07T15:00:00+00:00",
       "status": "TIMED"
     },
-    "FUTURE_56": {
+    "FUTURE_35": {
       "date": "2026-11-07",
       "competition": "Championship",
       "HomeTeam": "Birmingham",

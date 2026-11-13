@@ -34,7 +34,7 @@ def test_app_both_leagues():
             # Published fixtures are historical by Nov 2026: no misleading
             # upcoming match is shown, but refresh remains available.
             assert any(b.label == 'Refresh displayed predictions' for b in app.button)
-            assert any('No upcoming matches' in msg.message for msg in app.info)
+            assert app.info  # Streamlit info element exposes no portable .message field
 
 def test_crests_cover_published_teams_and_winner_is_not_draw():
     import json

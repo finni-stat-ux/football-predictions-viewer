@@ -27,8 +27,14 @@ def test_app_both_leagues():
     for league in ('EPL','Championship'):
         app.selectbox[0].select(league).run()
         assert not app.exception
-        assert any('HYBRID MATCH PICK' in x.value for x in app.markdown)
-        assert any('cv-outcomes' in x.value for x in app.markdown)
+        if any(s.label == 'Prediction model' for s in app.selectbox):
+            assert any('HYBRID MATCH PICK' in x.value for x in app.markdown)
+            assert any('cv-outcomes' in x.value for x in app.markdown)
+        else:
+            # Published fixtures are historical by Nov 2026: no misleading
+            # upcoming match is shown, but refresh remains available.
+            assert any(b.label == 'Refresh displayed predictions' for b in app.button)
+            assert app.info  # Streamlit info element exposes no portable .message field
 
 def test_crests_cover_published_teams_and_winner_is_not_draw():
     import json
@@ -92,8 +98,14 @@ def test_fixture_tiles_select_a_match_without_an_editable_fixture_box():
     from pathlib import Path
     app=AppTest.from_file(str(Path(__file__).resolve().parents[1]/'viewer_dashboard.py')).run()
     assert not app.exception
-    assert [s.label for s in app.selectbox][:2]==['Competition','Prediction model']
-    assert 'Historical competition' in [s.label for s in app.selectbox]
+    labels = [s.label for s in app.selectbox]
+    if 'Prediction model' not in labels:
+        assert 'Historical competition' in labels
+        assert not any(b.key and b.key.startswith('fixture_tile_') for b in app.button)
+        assert any(b.label == 'Refresh displayed predictions' for b in app.button)
+        return
+    assert labels[:2]==['Competition','Prediction model']
+    assert 'Historical competition' in labels
     assert not any(s.label == 'Editable fixture' for s in app.selectbox)
     tiles=[b for b in app.button if b.key and b.key.startswith('fixture_tile_')]
     assert len(tiles)>1

@@ -57,5 +57,20 @@ def test_published_matrix_and_hybrid_have_matching_season_samples():
     summary = compare_leagues(raw)
     assert len(paired) == 12
     assert summary["Matches"].tolist() == [1140, 1656]
-    assert summary.iloc[0]["Log loss difference"] == pytest.approx(0.0000957935, abs=1e-7)
-    assert summary.iloc[1]["Log loss difference"] == pytest.approx(-0.0052712995, abs=1e-7)
+    # Published metrics are periodically refreshed. Compare the saved
+    # summary against independently calculated weighted seasonal differences,
+    # not numeric values frozen to an older CSV revision.
+    for _, outcome in summary.iterrows():
+        league = "EPL" if outcome["Competition"] == "English Premier League" else "Championship"
+        league_rows = paired[paired.competition.eq(league)]
+        matrix = league_rows[league_rows.model.eq("Matrix")]
+        hybrid = league_rows[league_rows.model.eq("Hybrid")]
+        joined = matrix.merge(
+            hybrid, on=["competition", "season", "matches"],
+            suffixes=("_matrix", "_hybrid"), validate="one_to_one",
+        )
+        expected = (
+            (joined["1x2_log_loss_matrix"] - joined["1x2_log_loss_hybrid"])
+            * joined["matches"]
+        ).sum() / joined["matches"].sum()
+        assert outcome["Log loss difference"] == pytest.approx(expected, abs=1e-10)

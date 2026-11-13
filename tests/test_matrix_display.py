@@ -39,6 +39,14 @@ def test_matrix_selection_changes_pick_chart_and_own_measure_for_both_leagues():
     for league in ('EPL','Championship'):
         app=AppTest.from_file(str(ROOT/'viewer_dashboard.py')).run()
         app.selectbox[0].select(league).run()
+        assert not app.exception
+        if not any(s.label == 'Prediction model' for s in app.selectbox):
+            # All published fixtures ended: recover using the refresh panel
+            # instead of presenting historical games as future predictions.
+            assert any(b.label == 'Refresh displayed predictions' for b in app.button)
+            assert len([e for e in app.get('expander')
+                        if e.label == 'Refresh predictions · display or full cloud refresh']) == 1
+            continue
         assert app.selectbox[1].value=='Hybrid'
         app.selectbox[1].select('Matrix').run()
         assert not app.exception

@@ -11,7 +11,6 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from cloud_refresh_ui import show_cloud_refresh
 from matrix_display import load_matrix, performance_summary
 # Streamlit Cloud may cache model_accuracy from before the single-footer update.
 # Reload only this stateless display helper; leave authenticated refresh module
@@ -100,12 +99,35 @@ def read_prediction_snapshot():
     matrix_p, matrix_s, matrix_m, metadata = load_matrix(PUB, content)
     return original, original_scores, original_metrics, matrix_p, matrix_s, matrix_m, metadata
 
+def render_refresh_controls():
+    """Show the refresh panel even when no future fixture can be selected."""
+    import cloud_refresh_ui as player_refresh_ui
+    # Reload as before; rate-limit globals survive reload thanks to module guards.
+    player_refresh_ui = importlib.reload(player_refresh_ui)
+    show_cloud_refresh = player_refresh_ui.show_cloud_refresh
+    with st.expander('Refresh predictions · display or full cloud refresh'):
+        st.caption('Refreshing the display only reloads existing published data; it does not train the models.')
+        if st.button('Refresh displayed predictions', help='Reload the latest published snapshot; does not retrain models'):
+            st.cache_data.clear()
+            st.rerun()
+        if 'embedded' in inspect.signature(show_cloud_refresh).parameters:
+            show_cloud_refresh(embedded=True)
+            st.divider()
+            st.markdown('**Refresh player xG**')
+            player_refresh_ui.show_cloud_refresh(players=True, embedded=True)
+    # Legacy helpers need a separate expander instead of an illegal nested one.
+    if 'embedded' not in inspect.signature(show_cloud_refresh).parameters:
+        show_cloud_refresh()
+
+
 predictions, scores, metrics, matrix_predictions, matrix_scores, matrix_metrics, matrix_metadata = read_prediction_snapshot()
 if not matrix_predictions.empty:
     predictions = pd.concat([predictions, matrix_predictions], ignore_index=True)
     scores = pd.concat([scores, matrix_scores], ignore_index=True)
 if predictions.empty:
-    st.info('No predictions published yet.'); st.stop()
+    st.info('No predictions have been published yet. You can use the refresh controls below to request new forecasts.')
+    render_refresh_controls()
+    st.stop()
 
 st.caption('Predictions updated (UTC): ' + pd.Timestamp(predictions.published_at_utc.iloc[0]).strftime('%d %b %Y, %H:%M UTC'))
 age_notice = stale_forecast_notice(predictions.published_at_utc.iloc[0])
@@ -130,7 +152,11 @@ def read_schedule():
 
 options = upcoming_fixtures(filtered, read_schedule())
 if options.empty:
-    st.info('No upcoming matches in the published snapshot. Refresh the predictions for the next fixtures.'); st.stop()
+    st.info('No upcoming matches remain in the published snapshot. Use the refresh controls below to request new fixtures.')
+    render_refresh_controls()
+    # Historical pre-match scores stay accessible if the future fixture list is empty.
+    historical_matches.show_historical_matches(read('historical_match_results.csv'), league)
+    st.stop()
 selection_key = 'selected_fixture_' + league
 available = options.fixture_id.tolist()
 if st.session_state.get(selection_key) not in available:
@@ -215,11 +241,6 @@ if player_form:
 # from today's trained model. Selecting a past match cannot alter live picks.
 historical_matches.show_historical_matches(read('historical_match_results.csv'), league)
 
-# Reload refresh controls without clearing process-wide authentication throttles.
-import cloud_refresh_ui as player_refresh_ui
-player_refresh_ui = importlib.reload(player_refresh_ui)
-show_cloud_refresh = player_refresh_ui.show_cloud_refresh
-
 # One compact information centre: no stacked model accordions on mobile.
 with st.expander('Models & performance · methods, comparisons and results'):
     tab_methods, tab_comparison, tab_results = st.tabs([
@@ -268,26 +289,7 @@ with st.expander('Models & performance · methods, comparisons and results'):
         st.markdown('**W-H-W evidence · underlying Hybrid backtests**')
         whw_analysis.show_whw_history(metrics, embedded=True)
 
-# Operational controls stay separate from the model explanations.
-with st.expander('Refresh predictions · display or full cloud refresh'):
-    st.caption('Refreshing the display only reloads existing published data; it does not train the models.')
-    if st.button('Refresh displayed predictions', help='Reload the latest published snapshot; does not retrain models'):
-        st.cache_data.clear()
-        st.rerun()
-    # Older cloud sessions may still hold the original no-argument refresh UI.
-    # The refreshed helper preserves its process-wide lock and failed-login
-    # history across module reloads; each workflow has distinct widget keys.
-    if 'embedded' in inspect.signature(show_cloud_refresh).parameters:
-        show_cloud_refresh(embedded=True)
-        st.divider()
-        st.markdown('**Refresh player xG**')
-        player_refresh_ui.show_cloud_refresh(players=True, embedded=True)
-
-# A legacy cached refresh helper owns its own expander. Render it outside this
-# expander rather than nesting expanders or causing an unexpected-keyword crash.
-if 'embedded' not in inspect.signature(show_cloud_refresh).parameters:
-    show_cloud_refresh()
-
+render_refresh_controls()
 
 st.caption('Probabilities are estimates, not guarantees. Forecasts and historical player form can become stale; lineups and player availability are not confirmed.')
 st.caption('League and team marks identify the competitions covered. All trademarks belong to their owners; no affiliation or endorsement is implied.')

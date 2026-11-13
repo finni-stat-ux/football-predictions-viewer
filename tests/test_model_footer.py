@@ -20,9 +20,25 @@ def _app(league):
     return app
 
 
+def _expired_snapshot(app):
+    """October forecasts eventually expire; no live match picks is correct."""
+    return not any(widget.label == "Prediction model" for widget in app.selectbox)
+
+
+def _assert_expired_view_is_usable(app):
+    labels = [item.label for item in app.get("expander")]
+    assert labels.count(REFRESH_PANEL) == 1
+    assert labels.count(MATCH_HISTORY_PANEL) == 1
+    assert MODEL_PANEL not in labels
+    assert any(button.label == "Refresh displayed predictions" for button in app.button)
+
+
 def test_single_model_information_panel_and_separate_refresh_for_both_leagues():
     for league in ("EPL", "Championship"):
         app = _app(league)
+        if _expired_snapshot(app):
+            _assert_expired_view_is_usable(app)
+            continue
         expanders = [item.label for item in app.get("expander")]
         assert expanders.count(MODEL_PANEL) == 1
         assert expanders.count(REFRESH_PANEL) == 1
@@ -34,6 +50,9 @@ def test_single_model_information_panel_and_separate_refresh_for_both_leagues():
 
 def test_whw_selection_preserves_single_footer_and_its_prediction_table():
     app = _app("Championship")
+    if _expired_snapshot(app):
+        _assert_expired_view_is_usable(app)
+        return
     selected = next(c for c in app.selectbox if c.label == "Prediction model")
     selected.select("W-H-W Analysis").run()
     assert not app.exception, f"W-H-W failed: {app.exception}"
@@ -62,7 +81,10 @@ def test_old_model_accuracy_import_is_reloaded_on_app_run(monkeypatch):
     monkeypatch.setattr(model_accuracy, "show_league_accuracy", cached_old_helper)
     app = _app("Championship")
     assert not app.exception
-    assert [item.label for item in app.get("expander")].count(MODEL_PANEL) == 1
+    if _expired_snapshot(app):
+        _assert_expired_view_is_usable(app)
+    else:
+        assert [item.label for item in app.get("expander")].count(MODEL_PANEL) == 1
 
 
 def test_cached_cloud_refresh_helper_updates_without_resetting_login_limits(monkeypatch):
@@ -83,6 +105,9 @@ def test_cached_cloud_refresh_helper_updates_without_resetting_login_limits(monk
     assert labels.count("Cloud Prediction Refresh") == 0
     assert cloud_refresh_ui._FAILED_ATTEMPTS is entries
     assert cloud_refresh_ui._AUTH_LOCK is lock
-    assert labels.count(MODEL_PANEL) == 1
+    if _expired_snapshot(app):
+        _assert_expired_view_is_usable(app)
+    else:
+        assert labels.count(MODEL_PANEL) == 1
     source = (ROOT / "viewer_dashboard.py").read_text(encoding="utf-8")
     assert "importlib.reload(model_accuracy)" in source
